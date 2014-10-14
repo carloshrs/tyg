@@ -1,0 +1,268 @@
+/**************************************************************
+Health colors:
+#0070A6 -    (4)
+#b5b5b5-     (3)
+#FFDBC4 -    (2)
+#D2D2D2 -    (1)
+
+#333333 - Gris oscuro
+#999999 - Gris medio
+#CCCCCC - Gris claro
+
+Para textos Blanco:#FFFFFF o #333333
+**************************************************************/
+/*************************************************************
+
+/*Background body*/
+.body 
+{
+	margin-left : 20px;
+	margin-bottom : 20px;
+	margin-right : 20px;
+	margin-top : 20px;
+
+}
+
+/*Login user*/
+.login { font-family: Arial; font-size: 10px; color: #000000; font-weight: bold; }
+
+/*Path*/
+.path { font-family: Verdana; font-size: 10px; color: #333333; font-weight: normal; background-color: #FFFFFF; border-bottom: #666666 1px dotted; }
+
+
+/***************************************************
+*	Title
+****************************************************/
+
+/* Título principal */
+.generaltitle { color:#0070A6; font-size: 8pt; font-family: Verdana; font-weight: bold; text-align: center; background-color: #FFFFFF; padding-left: 4px; padding-right: 4px; border-bottom:#0070A6 1px solid; border-top:#0070A6 1px solid; border-right:#0070A6 1px solid;}
+.generaltitle-lateral { color:#999999; font-size: 7pt; font-family: Verdana; font-weight: normal; text-align: left; text-indent: 10pt; border-bottom:#999999 1px solid; border-top:#999999 1px solid; border-left:#999999 1px solid;}
+
+/*subtitulos - corresponde a los subtítulos del formulario de ingreso de datos. Se construye igual que el título del formulario de reporte (una tabla dividida en tres columnas. En la primera se coloca el gif de incio que comienza siempre con "beg". La segunda contiene una celda con el estilo detallado a continuación y en la tercera el gif de cierre que comienza con "end" */
+.generaltitle2 { font-weight: bold; font-size: 8pt; color: #FFFFFF; font-family: Verdana; text-align: center; border-top: #0070A6 1px solid; background-color:  #0070A6; padding-left: 1; padding-right: 1; padding-top: 1; padding-bottom: 1;}
+.generaltitle-solapa { font-weight: bold; font-size: 8pt; color: #FFFFFF; font-family: Verdana; text-align: center; border-top: #B5B5B5 1px solid; background-color: #B5B5B5 ; padding-left: 1; padding-right: 1; padding-top: 1; padding-bottom: 1;}
+
+
+/* Corresponde al título inmediato inferior del título principal del formulario de ingreso de datos. Se utiliza también en pop up que requieran un título, como el de selección o búsqueda */
+.title1 { font-weight: bold; font-size: 8pt; color: #0076A0; font-family: Verdana; text-align: left; padding-left: 4; padding-right: 2; padding-top: 2; padding-bottom: 2; border-bottom:#CCCCCC1px solid; background-color: #FFFFFF;}
+
+/* Título formulario de reporte de datos.
+Este título se construye dentro de una tabla para poder dar forma a la solapa.
+Definición de tabla: una fila con tres columnas. Primera columna colocar begmenuac-title2.gif; segunda columna corresponde al estilo detallado como title2, seleccionando la celda; en la tercera columna colocar endmenuac-title2.gif
+Por debajo se ubica una fila que se correspone con el estilo separatortitle2*/
+.title2 { font-weight: bold; font-size: 8pt; color: #FF9933; font-family: Verdana; text-align: center; border-top: #0070A6 1px solid; background-color: #ffffff; padding-left: 2; padding-right: 2; padding-top: 1; padding-bottom: 1;}
+.separatortitle2 { height: 1px; background-color: #0070A6;}
+
+
+/***************************************************
+*	Buttons
+****************************************************/
+
+/* Botonera formulario de ingreso de datos. Al aplicar los estilos a buttons, deberá hacerse la diferencia entre los seteados por default, los main (igualmente principales pero no seleccionados, los standards como imprimir, editar, seleccionar, eliminar, modificar, limpiar, etc y los de navegación - volver y seguir- */
+
+/*Se define un boton default, para mostrarlo seleccionado por defecto.*/
+.btnmaindefault { font-size: 7pt; width:80px; font-family: Verdana; color: white; font-weight: bold; text-align: center; border-right:#999999 2px solid; border-top:#999999 2px solid; border-left:#999999 2px solid; border-bottom:#999999 2px solid; background-color: #b5b5b5; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; cursor: hand;}
+
+/* Se define un boton principal, no seleccionado por defecto.*/
+.btnmain {
+	font-size: 7pt;
+	font-family: Verdana;
+	color: #b5b5b5;
+	font-weight: bold;
+	text-align: center;
+	background-color: #FFFFFF;
+	padding-left:1;
+	padding-right:1;
+	padding-top:1;
+	padding-bottom:1;
+	width: 50px;
+	cursor: hand;
+	border: #b5b5b5 1px solid;
+}
+
+/* Se define un boton standard para las acciones imprimir, editar, seleccionar, eliminar, modificar, limpiar, agregar */
+.btnstandard {
+	font-size: 7pt;
+	font-family: Verdana;
+	color: #999999;
+	font-weight: normal;
+	text-align: center;
+	background-color: #FFFFFF;
+	padding-left:1;
+	padding-right:1;
+	padding-top:1;
+	padding-bottom:1;
+	cursor: hand;
+	border: 1px solid #999999;
+}
+
+/* Se define un boton de navegación, para las acciones volver y seguir */
+.btnlittlestandard { font-size: 7pt; font-family: Verdana; color: white;  font-weight: bold; text-align: center; border-right:#0070A6 1px solid; border-top:#0070A6 1px solid; border-left:#0070A6 1px solid; border-bottom:#0070A6 1px solid; background-color: #66A9CA; padding-left:1; padding-right:1; padding-top:1; padding-bottom:1; cursor: hand;}
+
+/* Botonera reporte de datos */
+.btnmaindefault-report { font-size: 7pt; width:80px; font-family: Verdana; color:#0070A6; font-weight: normal; text-align: center; border-right: #0070A6 2px solid; border-top: #0070A6 2px solid; border-left:#0070A6 2px solid; border-bottom:#0070A6 2px solid; background-color: white; padding-left:1; padding-right:1; padding-top:1; padding-bottom:1; cursor: hand;}
+
+.btnmain-report { font-size: 7pt; font-family: Verdana; color:#0070A6;  font-weight: normal; text-align: center; border-right: #0070A6 1px solid; border-top: #0070A6 1px solid; border-left:#0070A6 1px solid; border-bottom:#0070A6 1px solid; background-color: white; padding-left:1; padding-right:1; padding-top:1; padding-bottom:1; cursor: hand;}
+
+.btnstandard-report { font-size: 7pt; font-family: Verdana; color:#0070A6;  font-weight: normal; text-align: center; border-right: #0070A6 1px solid; border-top: #0070A6 1px solid; border-left: #0070A6 1px solid; border-bottom: #0070A6 1px solid; background-color: white; padding-left:1; padding-right:1; padding-top:1; padding-bottom:1; cursor: hand;}
+
+.btnexception { font-size: 7pt; font-family: Verdana; color: #333333; font-weight: bold; text-align: center; border-right: #999999 2px solid; border-top: #999999 2px solid; border-left: #999999 2px solid; border-bottom: #999999 2px solid; background-color: #cccccc; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; cursor: hand;}
+
+.btnlittlestandard-report { font-size: 7pt; font-family: Verdana; color: #66A9CA;  font-weight: bold; text-align: center; border-right:#0070A6 1px solid; border-top:#0070A6 1px solid; border-left:#0070A6 1px solid; border-bottom:#0070A6 1px solid; background-color: white; cursor: hand;}
+
+.btnform {text-align:right; padding:0;}
+
+.btnMenu 
+{
+	font-size:8.5pt; 
+	font-family:Verdana; 
+	background-color:White;
+	color:#0070A6; 
+	font-weight:bold; 
+	text-align:center; 
+	border-bottom:1px solid #0070A6; 
+	border-left:1px solid #0070A6; 
+	border-top:1px solid #0070A6; 
+	border-right:1px solid #0070A6; 
+	cursor:hand;
+}
+
+
+/*******************************************************
+* Forms
+********************************************************/
+
+/* Formulario de ingreso de datos (table standard, al igual que labels y controls van a dejar de 
+usarse más adelante y será reemplazado por el nombre inputdataform. Labels y controls corresponden 
+a estilos que están sintetizados en el estilo inputdataform. Al seleccionar una tabla y aplicar el 
+estilo inputdataform, aplica estilo a labels y controls al mismo tiempo) Labels deberá ser eliminado 
+ya que se encuentra definido dentro de inputdataform */
+.inputdataform 
+{ 
+	font-size: 8pt; 
+	color: #333333; 
+	Font-family: Verdana; 
+	background-image:  url(../Images/fondo-punteadogris.gif); 
+	text-align: left; 
+	padding-left: 2px;
+}
+
+/* Formulario de ingreso de datos secundario */
+.inputdataform2 { font-size: 8pt; color: #333333; font-family: Verdana; text-align: left;}
+
+/* Fila blanca de separación */
+.separatorRow { color:white; height: 15px;}
+
+/* Fila punteada de separación */
+.tdseparate { background-image:   url(../Images/fondo2.gif); height: 1px;}
+
+/* Se aplica a todos los input */
+.inputstandard { font-size: 8pt; font-family: Verdana; color: #333333; border-right: #333333 1px solid; border-top: #333333 1px solid; border-left: #333333 1px solid; border-bottom: #333333 1px solid; background-color: white; padding-left: 2; padding-right: 2;}
+
+/* CheckBox: Se utiliza "seleccionar.gif" */
+
+/* Textbox que se encuentra desabilitado */  
+.inputstandard-disabled { font-size: 8pt; font-family: Verdana; background: #eeeeee; color: #333333; border-right: #333333 1px solid; border-top: #333333 1px solid; border-left: #333333 1px solid; border-bottom: #333333 1px solid; padding-left: 2; padding-right: 2;} 
+
+.inputstandard-readonly { font-size: 8pt; font-family: Verdana; background: #eeeeee; color: #333333; border: 1px solid #eeeeee;padding-left: 2; padding-right: 2;} 
+
+/**********************************************************************
+* DataGrid: estilos definido para el formulario de reporte de datos
+***********************************************************************/
+
+/* Items de encabezado, aplicado a la fila */
+.datagrid_Header { font-size: 8pt; color: #333333; font-family: Verdana; font-weight: bold; text-align: left; background-image:   url(/Images/fondo-punteadogris.gif); padding-left:2; padding-right:2; padding-top:2; padding-bottom:2; cellpadding: 4; border-bottom: #666666 1 px solid;}
+
+/* Item principal en negrita, al inicio de la fila. Se aplica solo al primer item de cada fila */
+.datagrid_Itemprincipal { font-weight: bold; }
+
+/* Item-lista item nuevo */
+/*.datagrid_Item { font-family: Verdana; color: #999999; font-size: 8pt; font-weight: normal; border-bottom: #cccccc 1px solid; cellpadding: 4;}*/
+.datagrid_Item { font-family: Verdana; color: #333333; font-size: 8pt; font-weight: normal; cellpadding: 4; border-bottom: #cccccc 1px solid; border-right:#cccccc 1px solid;}
+
+/* Item lista datos existentes */
+/*.datagrid_Itemstored { font-family: Verdana; color: #666666; font-size: 8pt; font-weight: normal; border-bottom: #cccccc 1px solid; cellpadding: 2;}*/
+.datagrid_Itemstored { font-family: Verdana; color: #333333; font-size: 8pt; font-weight: normal; cellpadding: 2;}
+
+.datagrid_selected {  font-family: Verdana; color: #333333;  font-size: 8pt;  cellpadding: 4; background-color: #EEEEEE;}
+
+/*.datagrid_selectedItem { font-family: Verdana; color: #333333; font-size: 8pt; font-weight: bold; cellpadding: 4; background-color:#CCCCCC}*/
+.datagrid_selectedItem { font-family: Verdana; color: #333333; font-size: 8pt;  cellpadding: 4; background-color: #EEEEEE;}
+
+/*.statusbar { color:#999999; font-size: 7pt; font-family: Verdana; font-weight:bold; background-color: #FFFFFF; border-right: #9999991px solid; border-top: #9999991px solid; border-left: #9999991px solid; border-bottom: #9999991px solid;}*/
+.statusbar {
+	color:#999999;
+	font-size: 7pt;
+	font-family: Verdana;
+	background-color: #FFFFFF;
+	border: 1px solid #0070A6;
+}
+
+
+/*.errormsg { color:#FF0000; font-size: 7pt; font-family: Verdana; font-weight:bold; }*/
+.errormsg { color:#FF0000; font-size: 8pt; font-family: Verdana;  font-weight : bold;  }
+
+
+.alertmsg { color:#999999; font-size: 8pt; font-family: Verdana; font-weight:bold; }
+ 
+.table_selected{behavior :  url(/StyleSheet/RollOver.htc);}
+ 
+ /*******************************************************
+* Links
+********************************************************/
+
+.a: {  font-family: Verdana; color: #999999; font-size: 7pt; font-weight: normal; text-decoration: none}
+
+.a:hover {  font-family: Verdana; color: #666666; font-size: 7pt; font-weight: bold; text-decoration: none}
+
+.a:link {  font-family: Verdana; color: #666666; font-size: 7pt; font-weight: normal; text-decoration: none}
+
+.a:active {  font-family: Verdana; color: #666666; font-size: 7pt; font-weight: normal; text-decoration: none}
+
+.a:visited {  font-family: Verdana; color: #999999; font-size: 7pt; font-weight: normal; text-decoration: none}
+
+
+/*******************************************************
+* Error: se mostrará a comienzo de cada formulario
+********************************************************/
+
+/*.error { font-family: Verdana; color: #FF0000; font-size: 8pt;  border-top:#CCCCCC1px solid; border-bottom:#CCCCCC1px solid; background-color: white; text-align: left; padding-left: 2; padding-right: 2; padding-top: 2; padding-bottom: 2;}*/
+.error { font-family: Verdana; color: #FF0000; font-size: 8pt;  background-color: white; text-align: left;  font-weight : bold;  }
+.exception { font-size: 8pt; color: #333333; font-family: Verdana; background-image:  url(/Images/fondo-punteadogris.gif); text-align: center;}
+.exceptionselected { font-weight: bold; }
+
+/*******************************************************
+* Calendar
+*******************************************************/
+.calGray {background-color: #C5C5C5}
+.calToggle {color: #FFDBC4}
+.calBG {background-color: #ffffff; border-color: #ffffff; color:#0070A6;}
+.calWhite {color:#ffffff}
+.calDiv {background-color: #FFDBC4}
+.calBody {background-color: #C5C5C5}
+
+/*******************************************************
+* Scrollbar
+********************************************************/
+<style>
+
+<!--
+
+BODY 
+{
+scrollbar-face-color:#ffffff;
+scrollbar-arrow-color:#0070A6;
+scrollbar-track-color:#ececec;
+scrollbar-shadow-color:#0070A6 3px;
+/*scrollbar-highlight-color:#0070A6; */
+scrollbar-3dlight-color:#ffffff;
+scrollbar-darkshadow-Color:#FFFFFF;
+/*margin-left : 20px;
+ margin-bottom : 20px;
+ margin-right : 20px;
+ margin-top : 20px;
+ */
+background-color : White;
+}
+-->
+</style>

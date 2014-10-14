@@ -1,0 +1,1 @@
+﻿ALTER TABLE informeambiental MODIFY telefono varchar(100);

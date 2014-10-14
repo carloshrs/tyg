@@ -1,0 +1,1 @@
+ALTER TABLE informepropiedadtitulares CHANGE porcentaje porcentaje VARCHAR(10);

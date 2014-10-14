@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: 
+Disallow: /site/regalo2011/
+Disallow: /site/images/
+Disallow: /site/intranet/
+Disallow: /site/img/
+Sitemap: http://www.tiempoygestion.com/site
