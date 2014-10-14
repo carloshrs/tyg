@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="TiempoyGestion">
+</Property><Property Name="Archivo de la solución" Value="D:\Sitios\TyG\trunk\TiempoyGestion.sln">
+</Property><Property Name="Date" Value="miércoles, 10 de febrero de 2010">
+</Property><Property Name="Time" Value="16:29">
+</Property></Properties><Event ErrorLevel="0" Project="Automotores" Source="BackEnd\Automotores\Automotores.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Automotores" Source="BackEnd\Automotores\Automotores.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="BackServices" Source="BackEnd\BackServices\BackServices.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="BackServices" Source="BackEnd\BackServices\BackServices.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Busquedas" Source="BackEnd\Busquedas\Busquedas.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Busquedas" Source="BackEnd\Busquedas\Busquedas.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Clientes" Source="BackEnd\Clientes\Clientes.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Clientes" Source="BackEnd\Clientes\Clientes.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Contratos" Source="BackEnd\Contratos\Contratos.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Contratos" Source="BackEnd\Contratos\Contratos.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="ControlAcceso" Source="BackEnd\ControlAcceso\ControlAcceso.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="ControlAcceso" Source="BackEnd\ControlAcceso\ControlAcceso.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Gravamenes" Source="BackEnd\Gravamenes\Gravamenes.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Gravamenes" Source="BackEnd\Gravamenes\Gravamenes.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="InboxSuport" Source="BackEnd\InboxSuport\InboxSuport.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="InboxSuport" Source="BackEnd\InboxSuport\InboxSuport.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Informes" Source="BackEnd\Informes\Informes.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Informes" Source="BackEnd\Informes\Informes.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="Verificaciones" Source="BackEnd\Verificaciones\Verificaciones.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="Verificaciones" Source="BackEnd\Verificaciones\Verificaciones.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="WebCustomControls" Source="FrontEnd\WebCustomControls\WebCustomControls.csproj" Description="Proyecto convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WebCustomControls" Source="FrontEnd\WebCustomControls\WebCustomControls.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PasswordReset" Source="FrontEnd\PasswordReset\PasswordReset.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="PasswordReset" Source="FrontEnd\PasswordReset\PasswordReset.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="WebControlLibrary" Source="FrontEnd\WebControlLibrary\WebControlLibrary.csproj" Description="Proyecto convertido correctamente">
+</Event><Event ErrorLevel="3" Project="WebControlLibrary" Source="FrontEnd\WebControlLibrary\WebControlLibrary.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="synchService" Source="synchService\synchService.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="synchService" Source="synchService\synchService.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="ImportadorFox" Source="ImportadorFox\ImportadorFox.csproj" Description="El archivo de proyecto no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="ImportadorFox" Source="ImportadorFox\ImportadorFox.csproj" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="" Source="TiempoyGestion.sln" Description="El archivo de soluciones no requiere conversión.">
+</Event><Event ErrorLevel="3" Project="" Source="TiempoyGestion.sln" Description="No requiere conversión">
+</Event><Event ErrorLevel="0" Project="WebCustomControls" Source="FrontEnd\WebCustomControls\WebCustomControls.csproj" Description="Examen completo: no es necesario actualizar los archivos de proyecto.">
+</Event><Event ErrorLevel="0" Project="WebControlLibrary" Source="FrontEnd\WebControlLibrary\WebControlLibrary.csproj" Description="Examen completo: no es necesario actualizar los archivos de proyecto.">
+</Event></UpgradeLog>

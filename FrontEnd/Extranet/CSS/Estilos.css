@@ -1,0 +1,79 @@
+body 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	scrollbar-face-color: #d8d8d8;
+	scrollbar-shadow-color: #d8d8d8;
+	scrollbar-highlight-color:#d8d8d8;
+	scrollbar-3dlight-color: #d8d8d8;
+	scrollbar-darkshadow-color: #b5b2b5;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-arrow-color: #FFFFFF;
+ }
+ 
+.title { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #3557a1; FONT-FAMILY: Tahoma }
+.titlesmall { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #3557a1; FONT-FAMILY: Tahoma }
+.titleg { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: green; FONT-FAMILY: Tahoma }
+.titleb { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: black; FONT-FAMILY: Tahoma }
+.text 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	TEXT-DECORATION: none;
+	COLOR: #000000; 
+}
+
+.textw 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	TEXT-DECORATION: none;
+	COLOR: #FFFFFF; 
+}
+
+.txtlabel
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	FONT-WEIGHT: bold;
+}
+
+A.link { FONT-SIZE: 7pt; COLOR: #3557a1; FONT-FAMILY: Tahoma; TEXT-DECORATION: none }
+A.linkr { FONT-SIZE: 7pt; COLOR: red; FONT-FAMILY: Tahoma; TEXT-DECORATION: none }
+A.linkt { FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #3557a1; FONT-FAMILY: Verdana; TEXT-DECORATION: none }
+A.link:hover { COLOR: #ff6666 }
+.Encabezado 
+{
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #3557a1; 
+	FONT-FAMILY: Tahoma;
+	TEXT-DECORATION: none;
+}
+
+Input {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+}
+
+.Plano {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+}
+
+
+select {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+	width:180pt;
+}
+

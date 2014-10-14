@@ -1,0 +1,519 @@
+﻿This report shows the steps taken to convert your Web application from ASP.NET 1.1 to ASP.NET 2.0. 
+There may be some unresolved conversion issues you will need to manually fix. 
+For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic "Converting from Visual Studio .NET 2002 or 2003".
+Conversion Started on project file Intranet.csproj at February 20 2008, 11:57:04.
+
+=========================ERRORS===================
+ERROR: Unable to convert project reference WebCustomControls.
+
+=========================WARNINGS=================
+Warning: This web project was converted as a file-based web application. If your site contained any IIS meta-information, e.g. sub-folders marked as virtual directories, it is recommended that you close this web site and re-open it using the Open Web Site command and selecting the Local IIS tab.
+The following files were excluded from the website because they were not found in the project file or the associated 'BuildAction' is set to 'None'.
+File List == bandejaentrada\verinforme.aspx.
+
+=========================COMMENTS=================
+Web.Config: Added 'xhtmlConformance' attribute.
+Removed attribute AutoEventWireup from file Default.aspx.
+Removed attribute Codebehind from file Default.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Default.aspx.cs (Line 14).
+Removed attribute Codebehind from file Global.asax.
+Removed attribute AutoEventWireup from file Login.aspx.
+Removed attribute Codebehind from file Login.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Login.aspx.cs (Line 19).
+Warning: Access level of 'btnLogin_Click' changed to 'protected' in file Login.aspx.cs (Line 56).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Login.aspx.cs (Line 92).
+Removed attribute AutoEventWireup from file PaginaError.aspx.
+Removed attribute Codebehind from file PaginaError.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file PaginaError.aspx.cs (Line 12).
+Removed attribute AutoEventWireup from file Admin\Caracter\abmlCaracter.aspx.
+Removed attribute Codebehind from file Admin\Caracter\abmlCaracter.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Caracter\abmlCaracter.aspx.cs (Line 18).
+Removed attribute AutoEventWireup from file Admin\Clientes\AbmCliente.aspx.
+Removed attribute Codebehind from file Admin\Clientes\AbmCliente.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\AbmCliente.aspx.cs (Line 24).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Clientes\AbmCliente.aspx.cs (Line 164).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\Clientes\AbmCliente.aspx.cs (Line 213).
+Warning: Access level of 'btnUsuarios_Click' changed to 'protected' in file Admin\Clientes\AbmCliente.aspx.cs (Line 223).
+Warning: Access level of 'ddlProvincia_SelectedIndexChanged' changed to 'protected' in file Admin\Clientes\AbmCliente.aspx.cs (Line 234).
+Removed attribute AutoEventWireup from file Admin\Clientes\AbmUsuario.aspx.
+Removed attribute Codebehind from file Admin\Clientes\AbmUsuario.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\AbmUsuario.aspx.cs (Line 17).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\Clientes\AbmUsuario.aspx.cs (Line 109).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Clientes\AbmUsuario.aspx.cs (Line 125).
+Warning: Access level of 'ddlProvincia_SelectedIndexChanged' changed to 'protected' in file Admin\Clientes\AbmUsuario.aspx.cs (Line 219).
+Removed attribute AutoEventWireup from file Admin\Clientes\ListaClientes.aspx.
+Removed attribute Codebehind from file Admin\Clientes\ListaClientes.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\ListaClientes.aspx.cs (Line 23).
+Warning: Access level of 'dgridClientes_PreRender' changed to 'protected' in file Admin\Clientes\ListaClientes.aspx.cs (Line 122).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file Admin\Clientes\ListaClientes.aspx.cs (Line 155).
+Warning: Access level of 'btnNewCliente_Click' changed to 'protected' in file Admin\Clientes\ListaClientes.aspx.cs (Line 167).
+Removed attribute AutoEventWireup from file Admin\Clientes\ListaCtaCte.aspx.
+Removed attribute Codebehind from file Admin\Clientes\ListaCtaCte.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\ListaCtaCte.aspx.cs (Line 18).
+'Reference' tag with reference to '~/Admin/Clientes/ListaClientes.aspx' added to file Admin\Clientes\ListaCtaCte.aspx.
+Warning: Access level of 'btnFiltro_Click' changed to 'protected' in file Admin\Clientes\ListaCtaCte.aspx.cs (Line 101).
+Warning: Access level of 'dgridEncabezados_PreRender' changed to 'protected' in file Admin\Clientes\ListaCtaCte.aspx.cs (Line 125).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file Admin\Clientes\ListaCtaCte.aspx.cs (Line 156).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\Clientes\ListaCtaCte.aspx.cs (Line 161).
+Removed attribute AutoEventWireup from file Admin\Clientes\ListaUsuarios.aspx.
+Removed attribute Codebehind from file Admin\Clientes\ListaUsuarios.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\ListaUsuarios.aspx.cs (Line 18).
+Warning: Access level of 'btnNewUser_Click' changed to 'protected' in file Admin\Clientes\ListaUsuarios.aspx.cs (Line 108).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file Admin\Clientes\ListaUsuarios.aspx.cs (Line 116).
+Warning: Access level of 'dgridUsuarios_PreRender' changed to 'protected' in file Admin\Clientes\ListaUsuarios.aspx.cs (Line 125).
+Removed attribute AutoEventWireup from file Admin\Clientes\UsuarioAddRol.aspx.
+Removed the id attribute from the <form> tag in file Admin\Clientes\UsuarioAddRol.aspx.
+Removed attribute Codebehind from file Admin\Clientes\UsuarioAddRol.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Clientes\UsuarioAddRol.aspx.cs (Line 23).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\Clientes\UsuarioAddRol.aspx.cs (Line 137).
+Warning: Access level of 'btnAddRol_Click' changed to 'protected' in file Admin\Clientes\UsuarioAddRol.aspx.cs (Line 156).
+Warning: Access level of 'btnRemoveRol_Click' changed to 'protected' in file Admin\Clientes\UsuarioAddRol.aspx.cs (Line 171).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Clientes\UsuarioAddRol.aspx.cs (Line 183).
+Removed attribute AutoEventWireup from file Admin\Empresas\AbmEmpresa.aspx.
+Removed attribute Codebehind from file Admin\Empresas\AbmEmpresa.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Empresas\AbmEmpresa.aspx.cs (Line 39).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Admin\Empresas\AbmEmpresa.aspx.cs (Line 170).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged_1' changed to 'protected' in file Admin\Empresas\AbmEmpresa.aspx.cs (Line 201).
+Removed attribute AutoEventWireup from file Admin\Empresas\AltaEmpresa.aspx.
+Removed attribute Codebehind from file Admin\Empresas\AltaEmpresa.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Empresas\AltaEmpresa.aspx.cs (Line 19).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Admin\Empresas\AltaEmpresa.aspx.cs (Line 96).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Admin\Empresas\AltaEmpresa.aspx.cs (Line 128).
+Removed attribute AutoEventWireup from file Admin\Empresas\ListaEmpresas.aspx.
+Removed attribute Codebehind from file Admin\Empresas\ListaEmpresas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Empresas\ListaEmpresas.aspx.cs (Line 24).
+Removed attribute AutoEventWireup from file Admin\EstadoCivil\abmlEstadoCivil.aspx.
+Removed attribute Codebehind from file Admin\EstadoCivil\abmlEstadoCivil.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\EstadoCivil\abmlEstadoCivil.aspx.cs (Line 16).
+Removed attribute AutoEventWireup from file Admin\EstadoInformes\abmlEstadoInformes.aspx.
+Removed attribute Codebehind from file Admin\EstadoInformes\abmlEstadoInformes.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\EstadoInformes\abmlEstadoInformes.aspx.cs (Line 16).
+Removed attribute AutoEventWireup from file Admin\Imagenes\ABMImagenes.aspx.
+Removed attribute Codebehind from file Admin\Imagenes\ABMImagenes.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Imagenes\ABMImagenes.aspx.cs (Line 20).
+Warning: Access level of 'dgImagenes_PreRender' changed to 'protected' in file Admin\Imagenes\ABMImagenes.aspx.cs (Line 73).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\Imagenes\ABMImagenes.aspx.cs (Line 137).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Imagenes\ABMImagenes.aspx.cs (Line 146).
+Removed attribute AutoEventWireup from file Admin\Imagenes\VerImagen.aspx.
+Removed attribute Codebehind from file Admin\Imagenes\VerImagen.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Imagenes\VerImagen.aspx.cs (Line 20).
+Removed attribute AutoEventWireup from file Admin\Imagenes\VerImagenes.aspx.
+Removed attribute Codebehind from file Admin\Imagenes\VerImagenes.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Imagenes\VerImagenes.aspx.cs (Line 16).
+Removed attribute AutoEventWireup from file Admin\Informes\MatriculaCheck.aspx.
+Removed attribute Codebehind from file Admin\Informes\MatriculaCheck.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Informes\MatriculaCheck.aspx.cs (Line 13).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\Informes\MatriculaCheck.aspx.cs (Line 76).
+Warning: Access level of 'dgMatriculas_PreRender' changed to 'protected' in file Admin\Informes\MatriculaCheck.aspx.cs (Line 87).
+Removed attribute AutoEventWireup from file Admin\Personas\AbmPersonas.aspx.
+Removed attribute Codebehind from file Admin\Personas\AbmPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Personas\AbmPersonas.aspx.cs (Line 18).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged_1' changed to 'protected' in file Admin\Personas\AbmPersonas.aspx.cs (Line 93).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Admin\Personas\AbmPersonas.aspx.cs (Line 99).
+Removed attribute AutoEventWireup from file Admin\Personas\AltaPersonas.aspx.
+Removed attribute Codebehind from file Admin\Personas\AltaPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Personas\AltaPersonas.aspx.cs (Line 17).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged_1' changed to 'protected' in file Admin\Personas\AltaPersonas.aspx.cs (Line 87).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Admin\Personas\AltaPersonas.aspx.cs (Line 93).
+Removed attribute AutoEventWireup from file Admin\Personas\ListaPersonas.aspx.
+Removed attribute Codebehind from file Admin\Personas\ListaPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Personas\ListaPersonas.aspx.cs (Line 24).
+Warning: Access level of 'dgridContratos_PreRender' changed to 'protected' in file Admin\Personas\ListaPersonas.aspx.cs (Line 113).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file Admin\Personas\ListaPersonas.aspx.cs (Line 148).
+Warning: Access level of 'btnPersonas_Click' changed to 'protected' in file Admin\Personas\ListaPersonas.aspx.cs (Line 160).
+Removed attribute AutoEventWireup from file Admin\Personas\PersonasCheck.aspx.
+Removed attribute Codebehind from file Admin\Personas\PersonasCheck.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Personas\PersonasCheck.aspx.cs (Line 13).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\Personas\PersonasCheck.aspx.cs (Line 54).
+Warning: Access level of 'dgPersonas_PreRender' changed to 'protected' in file Admin\Personas\PersonasCheck.aspx.cs (Line 65).
+Removed attribute AutoEventWireup from file Admin\Seguridad\ABMFuncion.aspx.
+Removed attribute Codebehind from file Admin\Seguridad\ABMFuncion.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Seguridad\ABMFuncion.aspx.cs (Line 13).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\Seguridad\ABMFuncion.aspx.cs (Line 52).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Seguridad\ABMFuncion.aspx.cs (Line 58).
+Removed attribute AutoEventWireup from file Admin\Seguridad\ABMRol.aspx.
+Removed attribute Codebehind from file Admin\Seguridad\ABMRol.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Seguridad\ABMRol.aspx.cs (Line 15).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\Seguridad\ABMRol.aspx.cs (Line 54).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\Seguridad\ABMRol.aspx.cs (Line 60).
+Removed attribute AutoEventWireup from file Admin\Seguridad\FuncionAddRol.aspx.
+Removed the id attribute from the <form> tag in file Admin\Seguridad\FuncionAddRol.aspx.
+Removed attribute Codebehind from file Admin\Seguridad\FuncionAddRol.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Seguridad\FuncionAddRol.aspx.cs (Line 18).
+Removed attribute AutoEventWireup from file Admin\Seguridad\ListaFunciones.aspx.
+Removed the id attribute from the <form> tag in file Admin\Seguridad\ListaFunciones.aspx.
+Removed attribute Codebehind from file Admin\Seguridad\ListaFunciones.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Seguridad\ListaFunciones.aspx.cs (Line 14).
+Warning: Access level of 'btnNuevaFuncion_Click' changed to 'protected' in file Admin\Seguridad\ListaFunciones.aspx.cs (Line 44).
+Removed attribute AutoEventWireup from file Admin\Seguridad\ListaRoles.aspx.
+Removed the id attribute from the <form> tag in file Admin\Seguridad\ListaRoles.aspx.
+Removed attribute Codebehind from file Admin\Seguridad\ListaRoles.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\Seguridad\ListaRoles.aspx.cs (Line 14).
+Warning: Access level of 'btnNuevoRol_Click' changed to 'protected' in file Admin\Seguridad\ListaRoles.aspx.cs (Line 43).
+Warning: Access level of 'dgRoles_PreRender' changed to 'protected' in file Admin\Seguridad\ListaRoles.aspx.cs (Line 88).
+Removed attribute AutoEventWireup from file Admin\TipoCatastral\abmlTipoCatastral.aspx.
+Removed attribute Codebehind from file Admin\TipoCatastral\abmlTipoCatastral.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoCatastral\abmlTipoCatastral.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file Admin\TipoDocumento\abmlTipoDocumento.aspx.
+Removed attribute Codebehind from file Admin\TipoDocumento\abmlTipoDocumento.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoDocumento\abmlTipoDocumento.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file Admin\TipoGravamenes\abmlTipoGravamenes.aspx.
+Removed attribute Codebehind from file Admin\TipoGravamenes\abmlTipoGravamenes.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoGravamenes\abmlTipoGravamenes.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file Admin\TipoInforme\abmlTipoInforme.aspx.
+Removed attribute Codebehind from file Admin\TipoInforme\abmlTipoInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoInforme\abmlTipoInforme.aspx.cs (Line 16).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\TipoInforme\abmlTipoInforme.aspx.cs (Line 57).
+Removed attribute AutoEventWireup from file Admin\TipoInforme\abmPreciosTipoInforme.aspx.
+Removed the id attribute from the <form> tag in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.
+Removed attribute Codebehind from file Admin\TipoInforme\abmPreciosTipoInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.cs (Line 21).
+Warning: Access level of 'dgTipoInforme_PreRender' changed to 'protected' in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.cs (Line 69).
+Warning: Access level of 'btnAceptar_Click' changed to 'protected' in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.cs (Line 104).
+Warning: Access level of 'btnCancelar_Click' changed to 'protected' in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.cs (Line 148).
+Warning: Access level of 'btnCerrar_Click' changed to 'protected' in file Admin\TipoInforme\abmPreciosTipoInforme.aspx.cs (Line 163).
+Removed attribute AutoEventWireup from file Admin\TipoObjetos\abmlTipoObjetos.aspx.
+Removed attribute Codebehind from file Admin\TipoObjetos\abmlTipoObjetos.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoObjetos\abmlTipoObjetos.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file Admin\TipoPropiedad\abmlTipoPropiedad.aspx.
+Removed attribute Codebehind from file Admin\TipoPropiedad\abmlTipoPropiedad.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Admin\TipoPropiedad\abmlTipoPropiedad.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file Automotores\abmTitular.aspx.
+Removed attribute Codebehind from file Automotores\abmTitular.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Automotores\abmTitular.aspx.cs (Line 17).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Automotores\abmTitular.aspx.cs (Line 77).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Automotores\abmTitular.aspx.cs (Line 140).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file Automotores\abmTitular.aspx.cs (Line 146).
+Removed attribute AutoEventWireup from file Automotores\Informe.aspx.
+Removed attribute Codebehind from file Automotores\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 56).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 216).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 224).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 306).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 392).
+Warning: Access level of 'cmbProvinciaRegistro_SelectedIndexChanged' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 397).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 403).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 422).
+Warning: Access level of 'dgTitulares_PreRender' changed to 'protected' in file Automotores\Informe.aspx.cs (Line 429).
+Removed attribute AutoEventWireup from file Automotores\VerInforme.aspx.
+Removed attribute Codebehind from file Automotores\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Automotores\VerInforme.aspx.cs (Line 55).
+Warning: Access level of 'dgTitulares_PreRender' changed to 'protected' in file Automotores\VerInforme.aspx.cs (Line 279).
+Removed attribute AutoEventWireup from file Automotores\VerInformeCalle.aspx.
+Removed attribute Codebehind from file Automotores\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Automotores\VerInformeCalle.aspx.cs (Line 55).
+Removed attribute AutoEventWireup from file BandejaEntrada\abmInforme.aspx.
+Removed attribute Codebehind from file BandejaEntrada\abmInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 45).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 596).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 691).
+Warning: Access level of 'cmbTipoGravamen_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 703).
+Warning: Access level of 'cmbTipoCatastral_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 712).
+Warning: Access level of 'DropDownList1_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 736).
+Warning: Access level of 'cmbProvinciaRegistro_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 745).
+Warning: Access level of 'cmbProvinciaCatastro_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 754).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 763).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\abmInforme.aspx.cs (Line 772).
+Removed attribute AutoEventWireup from file BandejaEntrada\altaInforme.aspx.
+Removed attribute Codebehind from file BandejaEntrada\altaInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 31).
+Warning: Access level of 'cmbTipoInforme_SelectedIndexChanged_1' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 90).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 99).
+'Reference' tag with reference to '~/Inc/Encabezado.aspx' added to file BandejaEntrada\altaInforme.aspx.
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 201).
+Warning: Access level of 'cmbTipoCatastral_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 391).
+Warning: Access level of 'DropDownList1_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 415).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 517).
+Warning: Access level of 'cmbProvinciaRegistro_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 526).
+Warning: Access level of 'cmbProvinciaCatastro_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 535).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 544).
+Warning: Access level of 'cmbClientes_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 571).
+Warning: Access level of 'cmbUsuarios_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 599).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 618).
+Warning: Access level of 'cmbTipoGravamen_SelectedIndexChanged_1' changed to 'protected' in file BandejaEntrada\altaInforme.aspx.cs (Line 638).
+Removed attribute AutoEventWireup from file BandejaEntrada\PopUpCambioEstado.aspx.
+Removed the id attribute from the <form> tag in file BandejaEntrada\PopUpCambioEstado.aspx.
+Removed attribute Codebehind from file BandejaEntrada\PopUpCambioEstado.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\PopUpCambioEstado.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file BandejaEntrada\Principal.aspx.
+Removed attribute Codebehind from file BandejaEntrada\Principal.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 21).
+Warning: Access level of 'btnFiltro_Click' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 114).
+Warning: Access level of 'dgridEncabezados_PreRender' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 132).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 307).
+Warning: Access level of 'btnInforme_Click' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 312).
+Warning: Access level of 'dgridEncabezados_SelectedIndexChanged' changed to 'protected' in file BandejaEntrada\Principal.aspx.cs (Line 317).
+Removed attribute AutoEventWireup from file BandejaEntrada\VerHistorial.aspx.
+Removed attribute Codebehind from file BandejaEntrada\VerHistorial.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\VerHistorial.aspx.cs (Line 15).
+Removed attribute AutoEventWireup from file BandejaEntrada\Referencias\altaReferencia.aspx.
+Removed attribute Codebehind from file BandejaEntrada\Referencias\altaReferencia.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\Referencias\altaReferencia.aspx.cs (Line 21).
+Removed attribute AutoEventWireup from file BandejaEntrada\Referencias\ListaReferencias.aspx.
+Removed attribute Codebehind from file BandejaEntrada\Referencias\ListaReferencias.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\Referencias\ListaReferencias.aspx.cs (Line 17).
+Removed attribute AutoEventWireup from file BandejaEntrada\Referencias\VerHistorial.aspx.
+Removed attribute Codebehind from file BandejaEntrada\Referencias\VerHistorial.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\Referencias\VerHistorial.aspx.cs (Line 14).
+Removed attribute AutoEventWireup from file BandejaEntrada\Referencias\VerReferencia.aspx.
+Removed attribute Codebehind from file BandejaEntrada\Referencias\VerReferencia.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BandejaEntrada\Referencias\VerReferencia.aspx.cs (Line 19).
+Removed attribute AutoEventWireup from file BienFamilia\Informe.aspx.
+Removed attribute Codebehind from file BienFamilia\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BienFamilia\Informe.aspx.cs (Line 31).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BienFamilia\Informe.aspx.cs (Line 106).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file BienFamilia\Informe.aspx.cs (Line 111).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BienFamilia\Informe.aspx.cs (Line 123).
+Removed attribute AutoEventWireup from file BienFamilia\VerInforme.aspx.
+Removed attribute Codebehind from file BienFamilia\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BienFamilia\VerInforme.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file BienFamilia\VerInformeCalle.aspx.
+Removed attribute Codebehind from file BienFamilia\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BienFamilia\VerInformeCalle.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file BusquedaAutomotor\abmDominio.aspx.
+Removed attribute Codebehind from file BusquedaAutomotor\abmDominio.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaAutomotor\abmDominio.aspx.cs (Line 17).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BusquedaAutomotor\abmDominio.aspx.cs (Line 58).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BusquedaAutomotor\abmDominio.aspx.cs (Line 76).
+Removed attribute AutoEventWireup from file BusquedaAutomotor\Informe.aspx.
+Removed attribute Codebehind from file BusquedaAutomotor\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 32).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 168).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 221).
+Warning: Access level of 'dgDominios_PreRender' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 232).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 256).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file BusquedaAutomotor\Informe.aspx.cs (Line 305).
+Removed attribute AutoEventWireup from file BusquedaAutomotor\VerInforme.aspx.
+Removed attribute Codebehind from file BusquedaAutomotor\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaAutomotor\VerInforme.aspx.cs (Line 37).
+Removed attribute AutoEventWireup from file BusquedaAutomotor\VerInformeCalle.aspx.
+Removed attribute Codebehind from file BusquedaAutomotor\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaAutomotor\VerInformeCalle.aspx.cs (Line 37).
+Removed attribute AutoEventWireup from file BusquedaPropiedad\Informe.aspx.
+Removed attribute Codebehind from file BusquedaPropiedad\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaPropiedad\Informe.aspx.cs (Line 32).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file BusquedaPropiedad\Informe.aspx.cs (Line 207).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file BusquedaPropiedad\Informe.aspx.cs (Line 260).
+Warning: Access level of 'dgDominios_PreRender' changed to 'protected' in file BusquedaPropiedad\Informe.aspx.cs (Line 271).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file BusquedaPropiedad\Informe.aspx.cs (Line 295).
+Removed attribute AutoEventWireup from file BusquedaPropiedad\VerInforme.aspx.
+Removed attribute Codebehind from file BusquedaPropiedad\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaPropiedad\VerInforme.aspx.cs (Line 37).
+Removed attribute AutoEventWireup from file BusquedaPropiedad\VerInformeCalle.aspx.
+Removed attribute Codebehind from file BusquedaPropiedad\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file BusquedaPropiedad\VerInformeCalle.aspx.cs (Line 37).
+Removed attribute AutoEventWireup from file Contactenos\ListaContactos.aspx.
+Removed attribute Codebehind from file Contactenos\ListaContactos.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contactenos\ListaContactos.aspx.cs (Line 14).
+Removed attribute AutoEventWireup from file Contratos\abmHistorico.aspx.
+Removed attribute Codebehind from file Contratos\abmHistorico.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\abmHistorico.aspx.cs (Line 21).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Contratos\abmHistorico.aspx.cs (Line 71).
+Removed attribute AutoEventWireup from file Contratos\AbmPersonas.aspx.
+Removed attribute Codebehind from file Contratos\AbmPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\AbmPersonas.aspx.cs (Line 20).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged_1' changed to 'protected' in file Contratos\AbmPersonas.aspx.cs (Line 114).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Contratos\AbmPersonas.aspx.cs (Line 138).
+Warning: Access level of 'cmbTipo_SelectedIndexChanged' changed to 'protected' in file Contratos\AbmPersonas.aspx.cs (Line 281).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file Contratos\AbmPersonas.aspx.cs (Line 286).
+Removed attribute AutoEventWireup from file Contratos\altaContrato.aspx.
+Removed attribute Codebehind from file Contratos\altaContrato.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\altaContrato.aspx.cs (Line 21).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Contratos\altaContrato.aspx.cs (Line 52).
+Warning: Access level of 'cmbClientes_SelectedIndexChanged' changed to 'protected' in file Contratos\altaContrato.aspx.cs (Line 110).
+Warning: Access level of 'cmbUsuarios_SelectedIndexChanged' changed to 'protected' in file Contratos\altaContrato.aspx.cs (Line 116).
+Removed attribute AutoEventWireup from file Contratos\AltaPersonas.aspx.
+Removed attribute Codebehind from file Contratos\AltaPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\AltaPersonas.aspx.cs (Line 19).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged_1' changed to 'protected' in file Contratos\AltaPersonas.aspx.cs (Line 104).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Contratos\AltaPersonas.aspx.cs (Line 128).
+Warning: Access level of 'Dropdownlist1_SelectedIndexChanged' changed to 'protected' in file Contratos\AltaPersonas.aspx.cs (Line 213).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file Contratos\AltaPersonas.aspx.cs (Line 232).
+Removed attribute AutoEventWireup from file Contratos\Historial.aspx.
+Removed attribute Codebehind from file Contratos\Historial.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\Historial.aspx.cs (Line 19).
+Warning: Access level of 'btnInforme_Click' changed to 'protected' in file Contratos\Historial.aspx.cs (Line 58).
+Warning: Access level of 'dgridEncabezados_PreRender' changed to 'protected' in file Contratos\Historial.aspx.cs (Line 64).
+Removed attribute AutoEventWireup from file Contratos\ListaContratos.aspx.
+Removed attribute Codebehind from file Contratos\ListaContratos.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\ListaContratos.aspx.cs (Line 21).
+Warning: Access level of 'btnInforme_Click' changed to 'protected' in file Contratos\ListaContratos.aspx.cs (Line 70).
+Warning: Access level of 'btnBuscar_Click' changed to 'protected' in file Contratos\ListaContratos.aspx.cs (Line 75).
+Warning: Access level of 'dgridEncabezados_PreRender' changed to 'protected' in file Contratos\ListaContratos.aspx.cs (Line 91).
+Removed attribute AutoEventWireup from file Contratos\ListaPersonas.aspx.
+Removed attribute Codebehind from file Contratos\ListaPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Contratos\ListaPersonas.aspx.cs (Line 20).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Contratos\ListaPersonas.aspx.cs (Line 72).
+Warning: Access level of 'btnPersonas_Click' changed to 'protected' in file Contratos\ListaPersonas.aspx.cs (Line 104).
+Warning: Access level of 'dgridContratos_PreRender' changed to 'protected' in file Contratos\ListaPersonas.aspx.cs (Line 131).
+Removed attribute AutoEventWireup from file Embargo\Informe.aspx.
+Removed attribute Codebehind from file Embargo\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Embargo\Informe.aspx.cs (Line 31).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Embargo\Informe.aspx.cs (Line 106).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file Embargo\Informe.aspx.cs (Line 111).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Embargo\Informe.aspx.cs (Line 123).
+Removed attribute AutoEventWireup from file Embargo\VerInforme.aspx.
+Removed attribute Codebehind from file Embargo\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Embargo\VerInforme.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file Embargo\VerInformeCalle.aspx.
+Removed attribute Codebehind from file Embargo\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Embargo\VerInformeCalle.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file Hipoteca\Informe.aspx.
+Removed attribute Codebehind from file Hipoteca\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Hipoteca\Informe.aspx.cs (Line 31).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Hipoteca\Informe.aspx.cs (Line 106).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file Hipoteca\Informe.aspx.cs (Line 111).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Hipoteca\Informe.aspx.cs (Line 123).
+Removed attribute AutoEventWireup from file Hipoteca\VerInforme.aspx.
+Removed attribute Codebehind from file Hipoteca\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Hipoteca\VerInforme.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file Hipoteca\VerInformeCalle.aspx.
+Removed attribute Codebehind from file Hipoteca\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Hipoteca\VerInformeCalle.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file imagenes\altaimagen.aspx.
+Removed attribute Codebehind from file imagenes\altaimagen.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file imagenes\altaimagen.aspx.cs (Line 19).
+Removed attribute AutoEventWireup from file imagenes\lista.aspx.
+Removed attribute Codebehind from file imagenes\lista.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file imagenes\lista.aspx.cs (Line 23).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file imagenes\lista.aspx.cs (Line 109).
+Removed attribute AutoEventWireup from file Inc\BandejaEntrada.aspx.
+Removed attribute Codebehind from file Inc\BandejaEntrada.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inc\BandejaEntrada.aspx.cs (Line 15).
+Removed attribute AutoEventWireup from file Inc\Encabezado.aspx.
+Removed attribute Codebehind from file Inc\Encabezado.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inc\Encabezado.aspx.cs (Line 13).
+Removed attribute TargetSchema from file Inc\menu.ascx.
+Removed attribute AutoEventWireup from file Inc\menu.ascx.
+Removed attribute Codebehind from file Inc\menu.ascx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inc\menu.ascx.cs (Line 15).
+Removed attribute AutoEventWireup from file Inc\calendar\PopupCalendar.aspx.
+Removed attribute Codebehind from file Inc\calendar\PopupCalendar.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inc\calendar\PopupCalendar.aspx.cs (Line 14).
+Removed attribute AutoEventWireup from file InformePropiedad\abmTitular.aspx.
+Removed attribute Codebehind from file InformePropiedad\abmTitular.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file InformePropiedad\abmTitular.aspx.cs (Line 17).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file InformePropiedad\abmTitular.aspx.cs (Line 76).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file InformePropiedad\abmTitular.aspx.cs (Line 139).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file InformePropiedad\abmTitular.aspx.cs (Line 145).
+Removed attribute AutoEventWireup from file InformePropiedad\Informe.aspx.
+Removed attribute Codebehind from file InformePropiedad\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file InformePropiedad\Informe.aspx.cs (Line 33).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file InformePropiedad\Informe.aspx.cs (Line 309).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file InformePropiedad\Informe.aspx.cs (Line 320).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file InformePropiedad\Informe.aspx.cs (Line 336).
+Warning: Access level of 'dgTitulares_PreRender' changed to 'protected' in file InformePropiedad\Informe.aspx.cs (Line 367).
+Removed attribute AutoEventWireup from file InformePropiedad\VerFormularioCalle.aspx.
+Removed attribute Codebehind from file InformePropiedad\VerFormularioCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file InformePropiedad\VerFormularioCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file InformePropiedad\VerInforme.aspx.
+Removed attribute Codebehind from file InformePropiedad\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file InformePropiedad\VerInforme.aspx.cs (Line 31).
+Warning: Access level of 'dgTitulares_PreRender' changed to 'protected' in file InformePropiedad\VerInforme.aspx.cs (Line 329).
+Removed attribute AutoEventWireup from file InformePropiedad\VerInformeCalle.aspx.
+Removed attribute Codebehind from file InformePropiedad\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file InformePropiedad\VerInformeCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file Inhibicion\Informe.aspx.
+Removed attribute Codebehind from file Inhibicion\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 30).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 155).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 217).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 230).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 322).
+Warning: Access level of 'cmbTipoPersona_SelectedIndexChanged' changed to 'protected' in file Inhibicion\Informe.aspx.cs (Line 328).
+Removed attribute AutoEventWireup from file Inhibicion\VerInforme.aspx.
+Removed attribute Codebehind from file Inhibicion\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inhibicion\VerInforme.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file Inhibicion\VerInformeCalle.aspx.
+Removed attribute Codebehind from file Inhibicion\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Inhibicion\VerInformeCalle.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file Usufructo\Informe.aspx.
+Removed attribute Codebehind from file Usufructo\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Usufructo\Informe.aspx.cs (Line 31).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file Usufructo\Informe.aspx.cs (Line 106).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file Usufructo\Informe.aspx.cs (Line 111).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file Usufructo\Informe.aspx.cs (Line 123).
+Removed attribute AutoEventWireup from file Usufructo\VerInforme.aspx.
+Removed attribute Codebehind from file Usufructo\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Usufructo\VerInforme.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file Usufructo\VerInformeCalle.aspx.
+Removed attribute Codebehind from file Usufructo\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file Usufructo\VerInformeCalle.aspx.cs (Line 33).
+Removed attribute AutoEventWireup from file verifContrato\Historial.aspx.
+Removed attribute Codebehind from file verifContrato\Historial.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifContrato\Historial.aspx.cs (Line 19).
+Removed attribute AutoEventWireup from file verifContrato\Informe.aspx.
+Removed attribute Codebehind from file verifContrato\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 31).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 213).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 274).
+Warning: Access level of 'dgridEncabezados_PreRender' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 286).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 304).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file verifContrato\Informe.aspx.cs (Line 352).
+Removed attribute AutoEventWireup from file verifContrato\ListaPersonas.aspx.
+Removed attribute Codebehind from file verifContrato\ListaPersonas.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifContrato\ListaPersonas.aspx.cs (Line 21).
+Warning: Access level of 'dgridContratos_PreRender_1' changed to 'protected' in file verifContrato\ListaPersonas.aspx.cs (Line 97).
+Removed attribute AutoEventWireup from file verifContrato\VerInforme.aspx.
+Removed attribute Codebehind from file verifContrato\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifContrato\VerInforme.aspx.cs (Line 35).
+Removed attribute AutoEventWireup from file verifDomComercial\Informe.aspx.
+Removed attribute Codebehind from file verifDomComercial\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 30).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 267).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 275).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 281).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 287).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file verifDomComercial\Informe.aspx.cs (Line 371).
+Removed attribute AutoEventWireup from file verifDomComercial\VerFormularioCalle.aspx.
+Removed attribute Codebehind from file verifDomComercial\VerFormularioCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomComercial\VerFormularioCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file verifDomComercial\VerInforme.aspx.
+Removed attribute Codebehind from file verifDomComercial\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomComercial\VerInforme.aspx.cs (Line 32).
+Removed attribute AutoEventWireup from file verifDomComercial\VerInformeCalle.aspx.
+Removed attribute Codebehind from file verifDomComercial\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomComercial\VerInformeCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file verifDomLaboral\Informe.aspx.
+Removed attribute Codebehind from file verifDomLaboral\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomLaboral\Informe.aspx.cs (Line 37).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file verifDomLaboral\Informe.aspx.cs (Line 544).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file verifDomLaboral\Informe.aspx.cs (Line 555).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file verifDomLaboral\Informe.aspx.cs (Line 571).
+Warning: Access level of 'cmbEmpresas_SelectedIndexChanged' changed to 'protected' in file verifDomLaboral\Informe.aspx.cs (Line 617).
+Removed attribute AutoEventWireup from file verifDomLaboral\VerFormularioCalle.aspx.
+Removed attribute Codebehind from file verifDomLaboral\VerFormularioCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomLaboral\VerFormularioCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file verifDomLaboral\VerInforme.aspx.
+Removed attribute Codebehind from file verifDomLaboral\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomLaboral\VerInforme.aspx.cs (Line 32).
+Removed attribute AutoEventWireup from file verifDomLaboral\VerInformeCalle.aspx.
+Removed attribute Codebehind from file verifDomLaboral\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomLaboral\VerInformeCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file verifDomParticular\Informe.aspx.
+Removed attribute Codebehind from file verifDomParticular\Informe.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 33).
+Warning: Access level of 'Aceptar_Click' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 257).
+Warning: Access level of 'Cancelar_Click' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 265).
+Warning: Access level of 'cmbProvincia_SelectedIndexChanged' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 270).
+Warning: Access level of 'cmbProvinciaEmpresas_SelectedIndexChanged' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 276).
+Warning: Access level of 'AceptarFinalizar_Click' changed to 'protected' in file verifDomParticular\Informe.aspx.cs (Line 380).
+Removed attribute AutoEventWireup from file verifDomParticular\VerFormularioCalle.aspx.
+Removed attribute Codebehind from file verifDomParticular\VerFormularioCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomParticular\VerFormularioCalle.aspx.cs (Line 31).
+Removed attribute AutoEventWireup from file verifDomParticular\VerInforme.aspx.
+Removed attribute Codebehind from file verifDomParticular\VerInforme.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomParticular\VerInforme.aspx.cs (Line 32).
+Removed attribute AutoEventWireup from file verifDomParticular\VerInformeCalle.aspx.
+Removed attribute Codebehind from file verifDomParticular\VerInformeCalle.aspx.
+Warning: Access level of 'Page_Load' changed to 'protected' in file verifDomParticular\VerInformeCalle.aspx.cs (Line 31).
+Added folder App_Code.
+Moved file Global.asax.cs to the App_Code\ directory.
+Moved file AssemblyInfo.cs to the App_Code\ directory.
+Changed HTML validation schema for all projects to 'Internet Explorer 6.0'.
+Removed file Bin\intranet.dll.
+Removed file Bin\intranet.pdb.
+Removed file Intranet.csproj.
+Removed file Intranet.csproj.webinfo.
+Warning: Renamed file bandejaentrada\verinforme.aspx to file verinforme.aspx.exclude.
+Project Intranet.csproj has been converted successfully at February 20 2008, 11:57:28.

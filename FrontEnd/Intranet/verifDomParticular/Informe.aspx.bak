@@ -1,0 +1,465 @@
+<%@ Register TagPrefix="mnu" TagName="menu" Src="/Inc/menu.ascx" %>
+<%@ Page language="c#" Codebehind="Informe.aspx.cs" AutoEventWireup="false" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.verifDomParticular.Informe" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+		<title>Alta de Informe</title>
+		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
+			<script>
+			function ToggleImg(name, src, alt)
+			{
+				name.src = "/img/" + src;
+				name.alt = alt
+			}
+
+			function mostrarFiltro(First, name)
+			{
+				if (masInfo.style.display == "none") 
+				{
+					masInfo.style.display = "list-item";
+					ToggleImg(name, 'Cerrar.gif', 'Cerrar Más Info');
+				} 
+				else 
+				{
+					masInfo.style.display = "none";
+					ToggleImg(name, 'Arrow.gif', 'Más Info');
+				}
+			}
+
+			</script>
+</HEAD>
+	<body leftmargin="0" topmargin="0">
+		<DIV id="divDateControl" style="Z-INDEX: 102; LEFT: -35px; VISIBILITY: hidden; POSITION: absolute; TOP: -150px"><IFRAME name="popFrame" src="/inc/calendar/calendar.htm" frameBorder="0" width="160" scrolling="no"
+				height="160"></IFRAME></DIV>
+		<mnu:menu id="Menu" runat="server"></mnu:menu>
+		<table cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td width="10">&nbsp;</td>
+				<td>
+					<br>
+					<form id="Form1" method="post" runat="server">
+						<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+							<tr>
+								<td class="title" width="100%">Verificación de Domicilio Particular
+								</td>
+							</tr>
+							<tr>
+								<td width="100%">
+									<table cellSpacing="0" cellPadding="0" width="480" border="0">
+										<TR>
+											<TD class="text" width="260">&nbsp;</TD>
+										</TR>
+										<TR>
+											<td width="536" colSpan="4">
+												<table cellSpacing="0" cellPadding="0" width="100%" border="0" id="pnlFisica">
+													<TR>
+														<TD class="text" width="50%">
+															<asp:Panel id="pnlFisica" runat="server">
+                        <TABLE id=Table8 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD width=536 colSpan=4>
+                              <TABLE id=Table9 cellSpacing=0 cellPadding=0 
+                              width="100%" border=0>
+                                <TR>
+                                <TD class=title width="100%" bgColor=lightgrey 
+                                colSpan=3 height=10>&nbsp;&nbsp; Datos 
+                                personales</TD></TR></TABLE>&nbsp; </TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Nombre&nbsp; 
+<asp:requiredfieldvalidator id=Requiredfieldvalidator2 runat="server" ErrorMessage="Ingrese el nombre" ControlToValidate="txtNombre">*</asp:requiredfieldvalidator></TD>
+                            <TD class=text width="50%" 
+                              colSpan=2>Apellido&nbsp; 
+<asp:requiredfieldvalidator id=Requiredfieldvalidator3 runat="server" ErrorMessage="Ingrese el apellido" ControlToValidate="txtApellido">*</asp:requiredfieldvalidator></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>
+<asp:textbox id=txtNombre runat="server" Width="230px"></asp:textbox></TD>
+                            <TD class=text width="50%" colSpan=2>
+<asp:textbox id=txtApellido runat="server" Width="100%"></asp:textbox></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Tipo de 
+                              documento</TD>
+                            <TD class=text width="50%" colSpan=2>Documento 
+<asp:requiredfieldvalidator id=Requiredfieldvalidator4 runat="server" ErrorMessage="Ingrese el nro de documento" ControlToValidate="txtDocumento">*</asp:requiredfieldvalidator></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>
+<asp:dropdownlist id=cmbTipoDocumento runat="server" Width="230px"></asp:dropdownlist></TD>
+                            <TD class=text width="50%" colSpan=2>
+<asp:textbox id=txtDocumento runat="server" Width="100%"></asp:textbox></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Estado 
+                            civil</TD>
+                            <TD class=text width="50%" colSpan=2></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>
+<asp:dropdownlist id=cmbEstadoCivil runat="server" Width="230px"></asp:dropdownlist></TD>
+                            <TD class=text width="50%" colSpan=2></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>&nbsp;</TD>
+                            <TD class=text width="50%" colSpan=2></TD></TR>
+                          <TR>
+                            <TD width=536 colSpan=4>
+                              <TABLE id=Table10 cellSpacing=0 cellPadding=0 
+                              width="100%" border=0>
+                                <TR>
+                                <TD class=title width="100%" bgColor=lightgrey 
+                                colSpan=3 height=10>&nbsp;&nbsp; Domicilio a 
+                                verificar</TD></TR></TABLE>&nbsp; </TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Calle&nbsp; 
+<asp:requiredfieldvalidator id=Requiredfieldvalidator1 runat="server" ErrorMessage="Ingrese la calle" ControlToValidate="txtCalle">*</asp:requiredfieldvalidator></TD>
+                            <TD class=text width="50%" colSpan=2></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=4>
+<asp:textbox id=txtCalle runat="server" Width="496px"></asp:textbox></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Barrio&nbsp; 
+<asp:requiredfieldvalidator id=Requiredfieldvalidator11 runat="server" ErrorMessage="Ingrese el barrio" ControlToValidate="txtBarrio">*</asp:requiredfieldvalidator></TD>
+                            <TD class=text width="50%" 
+                              colSpan=2>Teléfono&nbsp; </TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>
+<asp:textbox id=txtBarrio runat="server" Width="100%"></asp:textbox></TD>
+                            <TD class=text width="50%" colSpan=2>
+<asp:textbox id=txtTelefono runat="server" Width="230px"></asp:textbox></TD></TR>
+                          <TR>
+                            <TD class=text width="25%">Nro</TD>
+                            <TD class=text width="25%">Piso</TD>
+                            <TD class=text width="25%">Depto.</TD>
+                            <TD class=text width="25%">C.P.</TD></TR>
+                          <TR>
+                            <TD class=text width="25%">
+<asp:textbox id=txtNro runat="server" Width="100px"></asp:textbox></TD>
+                            <TD class=text width="25%">
+<asp:textbox id=txtPiso runat="server" Width="100px"></asp:textbox></TD>
+                            <TD class=text align=left width="25%">
+<asp:textbox id=txtDepto runat="server" Width="100px"></asp:textbox></TD>
+                            <TD class=text align=left width="25%">
+<asp:textbox id=txtCP runat="server" Width="100px"></asp:textbox></TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>Provincia </TD>
+                            <TD class=text width="50%" 
+                              colSpan=2>Localidad&nbsp; </TD></TR>
+                          <TR>
+                            <TD class=text width="50%" colSpan=2>
+<asp:dropdownlist id=cmbProvincia runat="server" Width="268px" AutoPostBack="True"></asp:dropdownlist></TD>
+                            <TD class=text width="50%" colSpan=2>
+<asp:dropdownlist id=cmbLocalidad runat="server"></asp:dropdownlist></TD></TR></TABLE>
+															</asp:Panel>
+														</TD>
+													</TR>
+												</table>
+												<asp:panel id="pnlDomComercial" runat="server">
+                  <TABLE id=Table1 cellSpacing=0 cellPadding=0 width="100%" 
+                  border=0>
+                    <TR>
+                      <TD width=536 colSpan=4>
+                        <TABLE id=Table2 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=title width="100%" bgColor=lightgrey 
+                            colSpan=3 height=10>&nbsp;&nbsp; 
+<asp:label id=lblInforme runat="server" CssClass="Title">Persona Jurídica</asp:label></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=536>Razón Social&nbsp; 
+<asp:RequiredFieldValidator id=RequiredFieldValidator8 runat="server" ErrorMessage="Ingrese la razón social" ControlToValidate="RazonSocial">*</asp:RequiredFieldValidator></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+<asp:TextBox id=RazonSocial runat="server" Width="100%"></asp:TextBox></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+                        <TABLE id=Table3 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=text width="50%">Nombre de Fantasía</TD>
+                            <TD class=text width="10%">Teléfono</TD></TR>
+                          <TR>
+                            <TD class=text width="50%">
+<asp:TextBox id=NombreFantasia runat="server" Width="320px"></asp:TextBox></TD>
+                            <TD class=text width="10%">
+<asp:TextBox id=Telefono runat="server" Width="200px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+                        <TABLE id=Table4 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=text width="50%">Rubro</TD>
+                            <TD class=text width="10%">Cuit&nbsp; 
+<asp:RequiredFieldValidator id=RequiredFieldValidator9 runat="server" ErrorMessage="Ingrese el CUIT" ControlToValidate="Cuit">*</asp:RequiredFieldValidator></TD></TR>
+                          <TR>
+                            <TD class=text width="50%">
+<asp:TextBox id=Rubro runat="server" Width="320px"></asp:TextBox></TD>
+                            <TD class=text width="10%">
+<asp:TextBox id=Cuit runat="server" Width="200px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+                        <TABLE id=Table5 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=text width="70%">Calle&nbsp; </TD>
+                            <TD class=text width="10%">Nro.&nbsp; </TD>
+                            <TD class=text width="10%">Dpto.</TD>
+                            <TD class=text width="10%">&nbsp;&nbsp;Piso</TD></TR>
+                          <TR>
+                            <TD class=text width="70%">
+<asp:TextBox id=CalleEmpresa runat="server" Width="320px"></asp:TextBox></TD>
+                            <TD class=text width="10%">
+<asp:TextBox id=NroEmpresa runat="server" Width="46px"></asp:TextBox></TD>
+                            <TD class=text width="10%">
+<asp:TextBox id=DptoEmpresa runat="server" Width="46px"></asp:TextBox></TD>
+                            <TD class=text align=right width="10%">
+<asp:TextBox id=PisoEmpresa runat="server" Width="47px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+                        <TABLE id=Table6 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=text width="50%">Barrio&nbsp; </TD>
+                            <TD class=text width="10%">Código Postal&nbsp; 
+                          </TD></TR>
+                          <TR>
+                            <TD class=text width="50%">
+<asp:TextBox id=BarrioEmpresa runat="server" Width="320px"></asp:TextBox></TD>
+                            <TD class=text width="10%">
+<asp:TextBox id=CPEmpresa runat="server" Width="200px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=536 colSpan=4>
+                        <TABLE id=Table7 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=text width="50%" height=14>Provincia </TD>
+                            <TD class=text width="10%" 
+                              height=14>Localidad&nbsp; </TD></TR>
+                          <TR>
+                            <TD class=text width="50%">
+<asp:dropdownlist id=cmbProvinciaEmpresas runat="server" Width="268px" AutoPostBack="True"></asp:dropdownlist></TD>
+                            <TD class=text width="50%">
+<asp:dropdownlist id=cmbLocalidadEmpresas runat="server" Width="268px"></asp:dropdownlist></TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text 
+                  colSpan=4>&nbsp;&nbsp;</TD></TR></TABLE>
+												</asp:panel>
+											</td>
+										</TR>
+										<TR>
+											<td class="text" width="535" colSpan="4">&nbsp;</td>
+										</TR>
+										<TR>
+											<TD colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="title" width="100%" bgColor="lightgrey" colSpan="3" height="10">&nbsp;&nbsp; 
+															Gestión sobre la verificación</TD>
+													</TR>
+												</TABLE>
+												&nbsp;
+											</TD>
+										</TR>
+										<TR>
+											<td class="text" width="535" colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="text" width="25%">Fecha</TD>
+														<TD class="text" width="30%">Habita en lugar declarado</TD>
+														<TD class="text" width="25%">
+															Antiguedad</TD>
+														<TD class="text" width="25%">Tel. alternativo</TD>
+													</TR>
+													<TR>
+														<TD class="text"><asp:textbox id="txtFecha" runat="server" Width="80px" ReadOnly="True"></asp:textbox>&nbsp;<IMG id="imgFecha" style="CURSOR: hand" onclick="popFrame.fPopCalendar(imgFecha, txtFecha, divDateControl);"
+																alt="Abrir Calendario" src="/img/fecha.gif"></TD>
+														<TD class="text"><asp:textbox id="txtHabita" runat="server" Width="100px"></asp:textbox></TD>
+														<TD class="text"><asp:textbox id="txtAntiguedad" runat="server" Width="100px"></asp:textbox></TD>
+														<TD class="text">
+															<asp:textbox id="txtTelAlternativo" runat="server" Width="100px"></asp:textbox></TD>
+													</TR>
+												</TABLE>
+											</td>
+										</TR>
+										<TR>
+											<td class="text" width="535" colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="text" width="33%">
+															<P>Monto alquiler</P>
+														</TD>
+														<TD class="text" width="33%">Vencimiento de contrato</TD>
+														<TD class="text" width="33%">Enviar correspondencia a</TD>
+													</TR>
+													<TR>
+														<TD class="text"><asp:textbox id="txtMontoAlquiler" runat="server" Width="140px"></asp:textbox>&nbsp;
+															<asp:CompareValidator id="CompareValidator1" runat="server" ControlToValidate="txtMontoAlquiler" ErrorMessage="El monto debe ser numérico"
+																ToolTip="El monto debe ser numérico" Operator="DataTypeCheck" Type="Currency">*</asp:CompareValidator></TD>
+														<TD class="text"><asp:textbox id="txtVencimiento" runat="server" Width="100px" ReadOnly="True"></asp:textbox>&nbsp;<IMG id="imgFechaVence" style="CURSOR: hand" onclick="popFrame.fPopCalendar(imgFechaVence, txtVencimiento, divDateControl);"
+																alt="Abrir Calendario" src="/img/fecha.gif"></TD>
+														<TD class="text"><asp:textbox id="txtEnviar" runat="server" Width="140px"></asp:textbox></TD>
+													</TR>
+												</TABLE>
+											</td>
+										</TR>
+										<TR>
+											<TD class="text" colSpan="4">
+												<TABLE class="text" cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD width="33%">&nbsp;</TD>
+														<TD width="33%"></TD>
+														<TD width="33%"></TD>
+													</TR>
+													<TR>
+														<TD>Tipo de vivienda</TD>
+														<TD>Estado de conservación</TD>
+														<TD>Tipo de construcción</TD>
+													</TR>
+													<TR>
+														<TD vAlign="top"><asp:radiobuttonlist id="raTipoVivienda" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+														<TD vAlign="top"><asp:radiobuttonlist id="raEstadoCons" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+														<TD vAlign="top"><asp:radiobuttonlist id="raTipoConstruccion" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+													</TR>
+													<TR>
+														<TD height="14"></TD>
+														<TD height="14"></TD>
+														<TD height="14"></TD>
+													</TR>
+													<TR>
+														<TD height="14">Tipo de Zona</TD>
+														<TD height="14">Tipo de calle</TD>
+														<TD height="14">Vive en caracter 
+                    de</TD>
+													</TR>
+													<TR>
+														<TD vAlign="top"><asp:radiobuttonlist id="raTipoZona" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+														<TD vAlign="top"><asp:radiobuttonlist id="raTipoCalle" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+														<TD vAlign="top"><asp:radiobuttonlist id="raInteresado" runat="server" CssClass="text"></asp:radiobuttonlist></TD>
+													</TR>
+												</TABLE>
+											</TD>
+										</TR>
+										<tr>
+											<td colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="text" width="33%">Acceso al domicilio&nbsp;</TD>
+														<TD class="text" width="33%">Informó&nbsp;</TD>
+														<TD class="text" width="33%">Relación&nbsp;
+														</TD>
+													</TR>
+													<TR>
+														<TD class="text"><asp:textbox id="txtAccesoDomicilio" runat="server" Width="150px"></asp:textbox></TD>
+														<TD class="text"><asp:textbox id="txtInformo" runat="server" Width="150px"></asp:textbox></TD>
+														<TD class="text"><asp:textbox id="txtRelacion" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+												</TABLE>
+											</td>
+										</tr>
+										<TR>
+											<TD class="text" width="261" colSpan="2">&nbsp;</TD>
+											<TD class="text" width="50%" colSpan="2"></TD>
+										</TR>
+										<TR>
+											<TD colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="title" width="100%" bgColor="lightgrey" colSpan="3" height="10">&nbsp;&nbsp; 
+															Referencia vecinal</TD>
+													</TR>
+												</TABLE>
+											</TD>
+										</TR>
+										<tr>
+											<td colSpan="4">
+												<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="text">Apellido y nombre</TD>
+														<TD class="text">Domicilio</TD>
+														<TD class="text">Conoce a la persona</TD>
+													</TR>
+													<TR>
+														<TD class="text"><asp:textbox id="txtNombreVecino" runat="server" Width="150px"></asp:textbox></TD>
+														<TD class="text"><asp:textbox id="txtDomicilioVecino" runat="server" Width="150px"></asp:textbox></TD>
+														<TD class="text"><asp:textbox id="txtConoceVecino" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+												</TABLE>
+											</td>
+										</tr>
+										<TR>
+											<TD class="text" width="175" colSpan="4"><asp:label id="Label5" runat="server">Observaciones</asp:label>&nbsp;</TD>
+										</TR>
+										<TR>
+											<TD class="text" width="100%" colSpan="4"><asp:textbox id="txtObservaciones" runat="server" Width="100%" TextMode="MultiLine" Rows="5"
+													CssClass="Plano"></asp:textbox></TD>
+										</TR>
+										<TR>
+											<TD class="text" align="center" width="50%" colSpan="2">&nbsp;</TD>
+											<TD vAlign="top" width="50%" colSpan="2"></TD>
+										</TR>
+										<TR>
+											<TD class="text" width="50%" colSpan="2">Plano de&nbsp;ubicación</TD>
+											<TD class="text" vAlign="top" width="50%" colSpan="2"></TD>
+										</TR>
+										<TR>
+											<TD class="text" align="center" width="50%" colSpan="2">
+												<P align="left"><IMG height="200" src="/img/plano.gif" width="200" border="1">&nbsp;<BR>
+												</P>
+											</TD>
+											<td vAlign="top" width="50%">
+												<TABLE class="text" cellSpacing="1" cellPadding="2">
+													<TR>
+														<TD>Ubicación <B>A</B></TD>
+														<TD>
+															<asp:textbox id="txtPlanoA" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>B</B></TD>
+														<TD>
+															<asp:textbox id="txtPlanoB" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>C</B></TD>
+														<TD>
+															<asp:textbox id="txtPlanoC" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>D</B></TD>
+														<TD>
+															<asp:textbox id="txtPlanoD" runat="server" Width="150px"></asp:textbox></TD>
+													</TR>
+												</TABLE>
+											</td>
+										</TR>
+										<TR>
+											<TD class="text" align="left" colSpan="3">
+												<asp:Image id="imgFoto" runat="server" Visible="False" ImageUrl="/img/shim.gif" BorderWidth="1px"></asp:Image><BR>
+												<asp:HyperLink id="hypMasFotos" runat="server" CssClass="text" Visible="False" NavigateUrl="#">Seleccione foto...</asp:HyperLink></TD>
+											<TD vAlign="top" width="50%" colSpan="2"></TD>
+										</TR>
+										<TR>
+											<td width="535" colSpan="4"><INPUT id="hidConFoto" type="hidden" runat="server">
+												<hr>
+											</td>
+										</TR>
+              <TR>
+                <TD width=536 colSpan=4>
+<asp:ValidationSummary id=VSVerifDomParticular runat="server" CssClass="text" ShowSummary="False" ShowMessageBox="True"></asp:ValidationSummary></TD></TR>
+										<TR>
+											<td width="536" colSpan="4">
+												<table cellSpacing="0" cellPadding="0" width="100%" border="0">
+													<TR>
+														<TD class="text" align="right"><asp:button id="Aceptar" runat="server" Width="48px" Text="Aceptar"></asp:button>&nbsp;&nbsp;
+															<asp:button id="AceptarFinalizar" runat="server" Width="96px" Text="Aceptar y Finalizar"></asp:button>&nbsp;&nbsp;
+															<asp:button id="Cancelar" runat="server" CausesValidation="False" Width="48px" Text="Cancelar"></asp:button></TD>
+													</TR>
+												</table>
+											</td>
+										</TR>
+									</table>
+								</td>
+							</tr>
+						</TABLE>
+						<input id="idInforme" type="hidden" name="idInforme" runat="server"> <input id="idReferencia" type="hidden" name="idReferencia" runat="server">
+						<INPUT id="idTipoProp" type="hidden" name="idTipoProp" runat="server"><INPUT id="idTipoPersona" type="hidden" name="idTipoPersona" runat="server">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</body>
+</HTML>

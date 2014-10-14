@@ -1,0 +1,75 @@
+.TopGroup
+{
+  background-color:buttonface; 
+  border-width:1px; 
+  border-color:gray; 
+  border-style:solid;
+}
+
+.MenuGroup
+{
+  background-image:url(/images/menu/background.gif);
+  border-width:1px; 
+  border-color:#7E7E81; 
+  border-style:solid;
+  cursor:default;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=135, Strength=3); 
+}
+
+.TopMenuItem
+{
+  background-color:buttonface; 
+  color:black; 
+  font-family:MS Sans Serif; 
+  font-size:12px; 
+  border-width:1px; 
+  border-color:buttonface; 
+  border-style:solid;
+  padding:2px;
+  padding-left:10px;
+  padding-right:10px;
+  cursor:default;
+}
+
+.TopMenuItemOver 
+{
+  background-color:#B5BED6; 
+  color:black; 
+  font-family:MS Sans Serif; 
+  font-size:12px; 
+  border-width:1px; 
+  border-color:#08246B; 
+  border-style:solid;
+  padding:2px;
+  padding-left:10px;
+  padding-right:10px;
+  cursor:default;
+}
+
+.MenuItem
+{
+  font-family:MS Sans Serif; 
+  font-size:9px; 
+  padding:5px;
+  padding-left:10px;
+  padding-right:10px;
+  cursor:default;
+  background-color:#F5F5F5; 
+}
+
+.MenuItemOver 
+{
+  background-color:#B5BED6; 
+  color:black; 
+  font-family:MS Sans Serif; 
+  font-size:9px; 
+  padding:5px;
+  padding-left:10px;
+  padding-right:10px;
+  cursor:default;
+}
+
+.MenuBreak
+{
+  margin-left:27px; 
+}

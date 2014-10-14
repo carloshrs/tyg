@@ -1,0 +1,208 @@
+body 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	scrollbar-face-color: #d8d8d8;
+	scrollbar-shadow-color: #d8d8d8;
+	scrollbar-highlight-color:#d8d8d8;
+	scrollbar-3dlight-color: #d8d8d8;
+	scrollbar-darkshadow-color: #b5b2b5;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-arrow-color: #FFFFFF;
+ }
+ 
+.title { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #3557a1; FONT-FAMILY: Tahoma }
+.titlesmall { FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #3557a1; FONT-FAMILY: Tahoma }
+.titleg { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: green; FONT-FAMILY: Tahoma }
+.titleb { FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: black; FONT-FAMILY: Tahoma }
+.text 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	TEXT-DECORATION: none;
+	COLOR: #000000; 
+	
+}
+
+.textw 
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	TEXT-DECORATION: none;
+	COLOR: #FFFFFF; 
+}
+
+.txtlabel
+{
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	FONT-WEIGHT: bold;
+}
+
+A.link { FONT-SIZE: 7pt; COLOR: #3557a1; FONT-FAMILY: Tahoma; TEXT-DECORATION: none }
+A.linkr { FONT-SIZE: 7pt; COLOR: red; FONT-FAMILY: Tahoma; TEXT-DECORATION: none }
+A.linkt { FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #3557a1; FONT-FAMILY: Verdana; TEXT-DECORATION: none }
+A.link:hover { COLOR: #ff6666 }
+.Encabezado 
+{
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt; 
+	COLOR: #3557a1; 
+	FONT-FAMILY: Tahoma;
+	TEXT-DECORATION: none;
+}
+
+Input {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+}
+/*input[type="text"]
+{
+    text-transform: uppercase;
+}*/
+
+.Plano {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+	text-transform: uppercase;
+}
+
+.tablaInforme span
+{
+    text-transform: uppercase;
+}
+
+select {
+	border-style: groove;
+	font-family: Arial, Verdana, Helvetica, Sans-Serif;
+	font-size:8pt;
+	border : 1px solid Gray;
+	background-color : #F5F5F5;
+	width:180pt;
+}
+
+
+.caja{
+	background-color:#DDDDDD;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	height:20px;
+	padding:10px;
+	margin:0px;
+}
+
+.caja2{
+	background-color:#B3B3B3;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	height:10px;
+	padding:3px;
+	margin:0px;
+	border : 1px solid Gray;
+	text-align:left;
+}
+
+
+    .CajaDialogo
+    {
+        background-color:White;
+        border-width: 1px;
+        border-style: outset;
+        border-color:Navy;
+        padding: 0px;
+        width: 200px;
+        font-weight: bold;
+        font-style: italic;
+    }
+    .CajaDialogo div
+    {
+        margin: 5px;
+        text-align: center;
+    }
+
+    .FondoAplicacion
+    {
+        background-color: Gray;
+        filter: alpha(opacity=70);
+        opacity: 0.7;
+    }
+    
+    
+.completionList {
+    border:solid 1px #444444;
+    margin:0px;
+    padding:2px;
+    height: 100px;
+    overflow:auto;
+    font-family: Arial, Verdana, Helvetica, Sans-Serif;
+    font-size:11px;
+    background-color: #FFFFFF;
+}
+
+.listItem {
+    color: #000000;
+}
+
+.itemHighlighted {
+    background-color: #3557A1;
+    color: #FFFFFF;
+} 
+
+A.link2  
+{
+	FONT-SIZE: 9pt; 
+	COLOR: #3557a1; 
+	TEXT-DECORATION: none;
+	line-height:1.2; 
+}
+
+A.link2:hover { COLOR: #ff6666 }
+
+h1.SaltoDePagina{
+	page-break-after:always;
+}
+
+.projectSelectionLink {font-weight: bold; font-size: 14px; color: #AAA; text-decoration:none; background: url('/Img/theme/bg_green_link.gif') repeat-x 0% 100%}
+.projectSelectionLink:link, .projectSelectionLink:visited {color: #496A29}
+.projectSelectionLink:hover {background:none; color: #000;}
+.projectSelectionLink IMG.icon { border: none; margin: 0px; position: relative; top: 3px; }
+
+.generalTable {width: 100%;
+               border-top: #3657A6 1px solid;
+               border-bottom: #3657A6 1px solid;
+               border-left: #3657A6 1px solid;
+               border-right: #3657A6 1px solid;
+               }
+.generalTable TR {background:  url('/Img/theme/bg_dashed.gif') repeat-x 0px 0px}
+.generalTable .innerListRow TD {border-top: 1px solid #CCC}
+
+.generalTable .innerListRow TD TD {border: none}
+.generalTable .headRow {background: none; vertical-align: middle;
+                        font-weight: bold;
+                        color: #3756A6;
+                        background-color: #DFE7F4;
+                        } 
+.generalTable .footerRow TD {background: #E5E5E5; vertical-align: top; border-top: 1px solid #CCC}
+.generalTable .footerRow TD TABLE TR TD {background: #E5E5E5; vertical-align: top; border-top: none}
+
+#main .table tr:hover {background: #E4F6D9}
+#main .nohover tr:hover {background: none}
+
+.rowTop {background: none; vertical-align: middle;
+                        font-weight: bold;
+                        color: #3756A6;
+                        background-color: #DFE7F4;
+                        } 
+                        
+#main {margin-top: 5px}
+#main TH, .generalTable TH {text-align: left; font-size: 11px; font-weight: normal; color: #666}
+#main TH A:link {color: #666}
+#main TH A:hover {color: #28428B; text-decoration: none; color: #FFF; background: #507CB6}
+#main TH.centered {text-align: center}
+
