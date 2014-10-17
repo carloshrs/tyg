@@ -1,8 +1,10 @@
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Extranet.Informes.altaInforme" CodeFile="altaInforme.aspx.cs" %>
+<%@ Page language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Extranet.Informes.altaInforme" CodeFile="altaInforme.aspx.cs" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
   <HEAD>
-		<title>Alta de Informe</title>
+  		<title>Alta de Informe</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 		
 	    <link rel="stylesheet" href="../jquery/themes/base/jquery.ui.all.css"/>
@@ -315,13 +317,11 @@ function MostrarAviso() {
                             </tr>
                             <tr>
                                 <td class="text" width="535"><b>Referencia </b>
-                                    <asp:RequiredFieldValidator ID="valReferencia" runat="server" 
-                                        ControlToValidate="txtReferencia" ErrorMessage="Ingrese referencia">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text" width="535">
-                                    <asp:TextBox ID="txtReferencia" runat="server" Width="300px" MaxLength="50" Style="text-transform: uppercase;"></asp:TextBox>
+                                    <asp:TextBox ID="txtReferencia" runat="server" Width="300px" MaxLength="50" Style="text-transform: uppercase;" CssClass="validate[required]"></asp:TextBox>
                                     <asp:HiddenField ID="htxtReferencia" runat="server" />
                                     <input id="idReferencia" type="hidden" name="idReferencia" runat="server"/>
                                 </td>
@@ -356,39 +356,35 @@ function MostrarAviso() {
                   height=10>&nbsp;&nbsp;Datos Personales</TD></TR>
               <TR>
                 <TD class="text" width=535 colSpan=3>Apellido 
-<asp:requiredfieldvalidator id=reqApellido runat="server" ControlToValidate="Apellido" ErrorMessage="Ingrese el apellido">*</asp:requiredfieldvalidator></TD></TR>
+</TD></TR>
               <TR>
                 <TD class="text" width=535 colSpan=3>
-<asp:textbox id=Apellido runat="server" Width="100%" style="text-transform: uppercase;"></asp:textbox></TD></TR>
+<asp:textbox id="Apellido" runat="server" Width="100%" style="text-transform: uppercase;" CssClass="validate[required]"></asp:textbox></TD></TR>
               <TR>
                 <TD class="text" width=535 colSpan=3>Nombre 
-<asp:requiredfieldvalidator id=reqNombre runat="server" ControlToValidate="Nombre" ErrorMessage="Ingrese el nombre">*</asp:requiredfieldvalidator></TD></TR>
+</TD></TR>
               <TR>
                 <TD class="text" width=535 colSpan=3>
-<asp:textbox id=Nombre runat="server" Width="100%" style="text-transform: uppercase;"></asp:textbox></TD></TR>
+<asp:textbox id="Nombre" runat="server" Width="100%" style="text-transform: uppercase;" CssClass="validate[required]"></asp:textbox></TD></TR>
               <TR>
                 <TD class="text" width=100>Tipo Documento</TD>
                 <TD class="text" width=235>&nbsp;Documento&nbsp; 
-                    <asp:CompareValidator ID="cmpDocumento" runat="server" 
-                    ControlToValidate="Documento" ErrorMessage="Documento no válido" 
-                    Operator="DataTypeCheck" Type="Integer">*</asp:CompareValidator>
-                    <asp:RequiredFieldValidator ID="valDocumento" runat="server" ControlToValidate="Documento" ErrorMessage="Ingrese el nro de documento">*</asp:RequiredFieldValidator>
-                  </TD>
+                    </TD>
                   <TD class="text" width="161">
                     <asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil"></asp:Label></TD>
                   </TR>
               <TR>
                 
                 <TD class="text" width=25>
-<asp:dropdownlist id=cmbTipoDocumento runat="server" Width="167px">
+<asp:dropdownlist id="cmbTipoDocumento" runat="server" Width="167px">
 														<asp:ListItem Value="1" Selected="True">DNI</asp:ListItem>
 														<asp:ListItem Value="2">Libreta C&#237;vica</asp:ListItem>
 														<asp:ListItem Value="3">Libreta de enrolamiento</asp:ListItem>
 													</asp:dropdownlist></TD>
                 <TD class="text" width=235>
-<asp:textbox id=Documento runat="server" Width="144px"></asp:textbox></TD>
+<asp:textbox id="Documento" runat="server" Width="144px" CssClass="validate[required,custom[onlyNumber],maxSize[8]]"></asp:textbox></TD>
                 <TD class="text" width=161>
-<asp:dropdownlist id=cmbEstadoCivil runat="server" Width="161px">
+<asp:dropdownlist id="cmbEstadoCivil" runat="server" Width="161px">
                                                         <asp:ListItem Selected="True">Seleccione estado civil</asp:ListItem>
 														<asp:ListItem Value="1">Soltero/a</asp:ListItem>
 														<asp:ListItem Value="2">Casado/a</asp:ListItem>
@@ -423,10 +419,10 @@ border="0">
                                 <img id="imgMasInfo" alt="Más Info" border="0" src="/img/Arrow.gif"></img></a></TD></TR></TABLE></TD></TR>
                     <TR>
                       <TD class="text" width="100%">Dominio&nbsp; 
-<asp:RequiredFieldValidator id=RequiredFieldValidator1 runat="server" ControlToValidate="Dominio" ErrorMessage="Ingrese el dominio">*</asp:RequiredFieldValidator></TD></TR>
+</TD></TR>
                     <TR>
                       <TD class="text" width="100%">
-<asp:TextBox id=Dominio runat="server" Width="100%" style="text-transform: uppercase;"></asp:TextBox></TD></TR>
+<asp:TextBox id=Dominio runat="server" Width="100%" style="text-transform: uppercase;" CssClass="validate[required,custom[noSpecialCharacters],maxSize[6]]"></asp:TextBox></TD></TR>
                     <TR id=masInfo style="DISPLAY: none">
                       <TD class="text" width="100%">
                         <TABLE cellSpacing="0" cellPadding="0" width="100%" 
@@ -494,16 +490,16 @@ border="0">
 border="0">
                           <TR>
                             <TD class="text" width="70%">Calle&nbsp; 
-<asp:RequiredFieldValidator id=RequiredFieldValidator2 runat="server" ControlToValidate="Calle" ErrorMessage="Ingrese la calle">*</asp:RequiredFieldValidator></TD>
+</TD>
                             <TD class="text" width="10%">Nro. 
-<asp:RequiredFieldValidator id=RequiredFieldValidator3 runat="server" ControlToValidate="Nro" ErrorMessage="Ingrese el Nro">*</asp:RequiredFieldValidator></TD>
+</TD>
                             <TD class="text" width="10%">Dpto.</TD>
                             <TD class="text" width="10%">Piso</TD></TR>
                           <TR>
                             <TD class="text" width="70%">
-<asp:textbox id=Calle runat="server" Width="320px" style="text-transform: uppercase;"></asp:textbox></TD>
+<asp:textbox id=Calle runat="server" Width="320px" style="text-transform: uppercase;" CssClass="validate[required]"></asp:textbox></TD>
                             <TD class="text" width="10%">
-<asp:textbox id=Nro runat="server" Width="46px"></asp:textbox></TD>
+<asp:textbox id=Nro runat="server" Width="46px" CssClass="validate[required]"></asp:textbox></TD>
                             <TD class="text" width="10%">
 <asp:textbox id=Dpto runat="server" Width="46px" style="text-transform: uppercase;"></asp:textbox></TD>
                             <TD class="text" width="10%">
@@ -623,17 +619,13 @@ border="0">
                     <tr>
                       <td class="text" width="175">
 <asp:Label id="lblTipoPropiedad" runat="server" Font-Bold="True">Nro de Matricula</asp:Label>&nbsp; 
-<asp:RequiredFieldValidator id="ValMatricula" runat="server" ControlToValidate="txtLegajo" ErrorMessage="Ingrese la matricula">*</asp:RequiredFieldValidator>
-                          <asp:CustomValidator ID="valCusMatricula" ControlToValidate="txtLegajo" ClientValidationFunction="validarMatricula" runat="server" ErrorMessage="Matricula no válida. Ver ejemplo." Text="*"></asp:CustomValidator>
-                          
-
 </td></tr>
                     <tr>
                       <td class="text" width="100%">
-<asp:TextBox id="txtLegajo" runat="server" Width="95%" style="text-transform: uppercase;" onprerender="txtLegajo_PreRender" MaxLength="12"></asp:TextBox>
+<asp:TextBox id="txtLegajo" runat="server" Width="95%" style="text-transform: uppercase;" onprerender="txtLegajo_PreRender" MaxLength="12" CssClass="validate[required,custom[matricula]]"></asp:TextBox>
                           &nbsp;<a href="javascript:;" onclick="MostrarAyuda('infprop');"><img
     alt="" src="../Img/signo.jpg" width="16" height="16" border="0" /></a></TD></TR>
-<asp:panel id=pnlDominioLegEspecial runat="server" Width="100%">
+<asp:panel id="pnlDominioLegEspecial" runat="server" Width="100%">
                 <tr><td><table>
                     <TR>
                       <TD class="text" width=175>Folio&nbsp; 
@@ -773,14 +765,13 @@ border="0">
                         <tr>
                             <td class="text" width="50%">
                                 Razón Social&nbsp;
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Ingrese razón social"
-                        ControlToValidate="RazonSocial">*</asp:RequiredFieldValidator></td></td>
+                    </td></td>
                             <td class="text" width="10%">
                                 Cargo </td>
                         </tr>
                         <tr>
                             <td class="text" width="50%">
-                                <asp:TextBox ID="RazonSocial" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                <asp:TextBox ID="RazonSocial" runat="server" Width="320px" style="text-transform: uppercase;" CssClass="validate[required]"></asp:TextBox></td>
                             <td class="text" width="10%">
                                 <asp:TextBox ID="Cargo" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
                         </tr>
@@ -796,9 +787,9 @@ border="0">
                             <TD class="text" width="10%">Teléfono</TD></TR>
                           <TR>
                             <TD class="text" width="50%">
-<asp:TextBox id=NombreFantasia runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></TD>
+<asp:TextBox id="NombreFantasia" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></TD>
                             <TD class="text" width="10%">
-<asp:TextBox id=Telefono runat="server" Width="144px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+<asp:TextBox id="Telefono" runat="server" Width="144px"></asp:TextBox></TD></TR></TABLE></TD></TR>
                     <TR>
                       <TD>
                         <TABLE cellSpacing="0" cellPadding="0" width="100%" 
@@ -806,12 +797,15 @@ border="0">
                           <TR>
                             <TD class="text" width="50%">Rubro</TD>
                             <TD class="text" width="10%">Cuit&nbsp; 
-<asp:RequiredFieldValidator id=RequiredFieldValidator9 runat="server" ControlToValidate="Cuit" ErrorMessage="Ingrese el CUIT">*</asp:RequiredFieldValidator></TD></TR>
+</TD></TR>
                           <TR>
                             <TD class="text" width="50%">
-<asp:TextBox id=Rubro runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></TD>
+<asp:TextBox id="Rubro" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></TD>
                             <TD class="text" width="10%">
-<asp:TextBox id=Cuit runat="server" Width="144px"></asp:TextBox></TD></TR></TABLE></TD></TR>
+<asp:TextBox id="Cuit" runat="server" Width="144px" CssClass="validate[required]"></asp:TextBox>
+                                <cc1:MaskedEditExtender ID="MEECuit" runat="server" TargetControlID="Cuit" Mask="99-99999999-9" MaskType="Number">
+                                </cc1:MaskedEditExtender>
+</TD></TR></TABLE></TD></TR>
                     <TR>
                       <TD>
                         <TABLE cellSpacing="0" cellPadding="0" width="100%" 
@@ -877,17 +871,17 @@ border="0">
 <asp:DropDownList id=cmbTipoGravamen runat="server" AutoPostBack="True" Width="480px" onselectedindexchanged="cmbTipoGravamen_SelectedIndexChanged"></asp:DropDownList></TD></TR>
                     <TR>
                       <TD class="text" width="33%">Folio&nbsp; 
-<asp:RequiredFieldValidator id=valFolio runat="server" ControlToValidate="Folio" ErrorMessage="Ingrese el folio">*</asp:RequiredFieldValidator></TD>
+</TD>
                       <TD class="text" width="33%">Tomo</TD>
                       <TD class="text" width="33%">Año&nbsp; 
-<asp:RequiredFieldValidator id=valAno runat="server" ControlToValidate="Ano" ErrorMessage="Ingrese el año">*</asp:RequiredFieldValidator></TD></TR>
+</TD></TR>
                     <TR>
                       <TD class="text" width="33%">
-<asp:TextBox id=Folio runat="server" Width="150px"></asp:TextBox></TD>
+<asp:TextBox id=Folio runat="server" Width="150px" CssClass="validate[required,custom[onlyNumber],maxSize[5]]"></asp:TextBox></TD>
                       <TD class="text" width="33%">
 <asp:TextBox id=Tomo runat="server" Width="150px"></asp:TextBox></TD>
                       <TD class="text" width="33%">
-<asp:TextBox id=Ano runat="server" Width="160px"></asp:TextBox></TD></TR>
+<asp:TextBox id=Ano runat="server" Width="160px" CssClass="validate[required,custom[onlyNumber],maxSize[4]]"></asp:TextBox></TD></TR>
                     <TR>
                       <TD class="text" width=535 colSpan=3 
                     height=10></TD></TR></TABLE>
@@ -922,10 +916,9 @@ border="0">
               <TR>
                 <TD class="text">
 <asp:Label id=lblConFoto runat="server" Font-Bold="True">Con foto</asp:Label>&nbsp; 
-<asp:RequiredFieldValidator id=valConFoto runat="server" ControlToValidate="raFoto" ErrorMessage="¿Con o sin foto?">*</asp:RequiredFieldValidator>
-<asp:RadioButtonList id=raFoto runat="server" Width="56px" CssClass="text" RepeatDirection="Horizontal">
+<asp:RadioButtonList id=raFoto runat="server" Width="56px" RepeatDirection="Horizontal" CssClass="text">
 														<asp:ListItem Value="1"> Si</asp:ListItem>
-														<asp:ListItem Value="0"> No</asp:ListItem>
+														<asp:ListItem Value="0" Selected="True"> No</asp:ListItem>
 													</asp:RadioButtonList></TD></TR></TABLE>
 									</asp:panel>
 								</TD>
@@ -950,7 +943,7 @@ border="0">
 							</TR>
 							<TR>
 								<td class="text" width="535" colSpan="4">Observaciones&nbsp;
-									<asp:RequiredFieldValidator id="valObservaciones" runat="server" ErrorMessage="Ingrese observaciones" ControlToValidate="Observaciones">*</asp:RequiredFieldValidator></td>
+									</td>
 							</TR>
 							<TR>
 								<td class="text" width="535" colSpan="4"><asp:textbox id="Observaciones" runat="server" Width="480px" CssClass="Plano" Height="79px" Rows="5"
@@ -959,7 +952,6 @@ border="0">
 							<TR>
 								<td width="535" colSpan="4">
 									<hr>
-									<asp:ValidationSummary id="VSBandejaEntrada" runat="server" CssClass="text" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>
                                     <asp:Label ID="lblMensajeAlerta" runat="server" Font-Bold="true" ForeColor="Red" Visible="false"></asp:Label>
 								</td>
 							</TR>
@@ -970,7 +962,7 @@ border="0">
 											<TD class="text" width="60%">&nbsp;<asp:HiddenField ID="hidCliente" runat="server" />
                                             </TD>
 											<TD class="text" align="right" width="20%">
-                                                <asp:button id="Aceptar" runat="server" Width="80px" Text="Aceptar" onclick="Aceptar_Click" CausesValidation="False"></asp:button></TD>
+                                                <asp:button id="Aceptar" runat="server" Width="80px" Text="Aceptar" OnClick="Aceptar_Click"></asp:button></TD>
 											<TD class="text" align="right" width="20%"><asp:button id="Cancelar" runat="server" Width="80px" Text="Cancelar" CausesValidation="False" onclick="Cancelar_Click"></asp:button></TD>
 										</TR>
 									</table>
@@ -1008,4 +1000,22 @@ border="0">
 
 		</form>
 	</body>
+
+    <link href="../CSS/ValidationEngine.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="../jquery/jquery.validationEngine-es.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../jquery/jquery.validationEngine.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#Form1").validationEngine('attach', { promptPosition: "topRight" });
+        });
+    </script>
+    <script type="text/javascript">
+        function DateFormat(field, rules, i, options) {
+            var regex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+            if (!regex.test(field.val())) {
+                return "Please enter date in dd/MM/yyyy format."
+            }
+        }
+    </script>
 </HTML>
