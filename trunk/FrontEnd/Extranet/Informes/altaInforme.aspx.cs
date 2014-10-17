@@ -349,16 +349,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 					pnlDomComercial.Visible = true;
 					pnlParticulares.Visible = false;
 				}
-				valFolio.Visible = false;
-				valAno.Visible = false;
+				//valFolio.Visible = false;
+				//valAno.Visible = false;
 			} 
 			else 
 			{
 				pnlTipoPersona.Visible = false;
 				pnlParticulares.Visible = false;
 				pnlDomComercial.Visible = false;
-				valFolio.Visible = true;
-				valAno.Visible = true;
+				//valFolio.Visible = true;
+				//valAno.Visible = true;
 			} 
 		} 
 
@@ -378,9 +378,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 			pnlCatastral.Visible = false;
 			pnlFoto.Visible = false;
 			pnlUrgencia.Visible= false;
-			valObservaciones.Visible = false;
-			reqApellido.Enabled = true;
-			reqNombre.Enabled = true;
+			//valObservaciones.Visible = false;
+			//reqApellido.Enabled = true;
+			//reqNombre.Enabled = true;
 			pnlTipoPersona.Visible = false;
             pnlMensaje.Visible = false;
 			switch(Informe)
@@ -435,7 +435,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 					lblTitulo.Text = "Registro Público de Comercio";
 					pnlDomComercial.Visible = true;
 					pnlTitulo.Visible = true;
-					valObservaciones.Visible = true;
+					//valObservaciones.Visible = true;
 					break;
 				case 10: // Busqueda Automotor
 					pnlParticulares.Visible = true;
@@ -472,8 +472,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 				case 14: // Informe Contractual
 					pnlTipoPersona.Visible = true;
 					pnlParticulares.Visible = true;
-					reqApellido.Enabled = false;
-					reqNombre.Enabled = false;
+					//reqApellido.Enabled = false;
+					//reqNombre.Enabled = false;
 					break;
                 case 15: // Relevamiento Ambiental BANCOR
                     pnlParticulares.Visible = true;
@@ -490,8 +490,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     }
                     else
                         pnlDomComercial.Visible = true;
-                    reqApellido.Enabled = true;
-                    reqNombre.Enabled = true;
+                    //reqApellido.Enabled = true;
+                    //reqNombre.Enabled = true;
                     pnlUrgencia.Visible = true;
                     break;
                 case 17: // Informe de Morosidad
@@ -536,32 +536,32 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 				case 1: 
 					pnlDominioLegEspecial.Visible = false;
 					ValtxtFolio.Visible = false;
-					ValMatricula.Visible = true;
+					//ValMatricula.Visible = true;
 					lblTipoPropiedad.Text = "Nro. de Matricula";
-                    ValMatricula.ErrorMessage = "Ingrese la matricula";
+                    //ValMatricula.ErrorMessage = "Ingrese la matricula";
                     pnlUrgencia.Visible = false;
 					break;
 				case 2: 
 					lblTipoPropiedad.Text = "Dominio";
 					ValtxtFolio.Visible = true;
-					ValMatricula.Visible = false;
+					//ValMatricula.Visible = false;
 					pnlDominioLegEspecial.Visible = true;
                     pnlUrgencia.Visible = false;
 					break;
 				case 3: 
 					lblTipoPropiedad.Text = "Nro. de Legajo Especial";
 					ValtxtFolio.Visible = true;
-					ValMatricula.Visible = true;
+					//ValMatricula.Visible = true;
 					pnlDominioLegEspecial.Visible = true;
-                    ValMatricula.ErrorMessage = "Ingrese Nro de legajo especial";
+                    //ValMatricula.ErrorMessage = "Ingrese Nro de legajo especial";
                     RequiredFieldValidatortxtAno.Enabled = false;
                     pnlUrgencia.Visible = true;
 					break;
                 case 4:
                     pnlDominioLegEspecial.Visible = false;
                     ValtxtFolio.Visible = false;
-                    ValMatricula.Visible = true;
-                    ValMatricula.ErrorMessage = "Ingrese planilla";
+                    //ValMatricula.Visible = true;
+                    //ValMatricula.ErrorMessage = "Ingrese planilla";
                     RequiredFieldValidatortxtAno.Enabled = true;
                     lblTipoPropiedad.Text = "Nro. de Planilla";
                     pnlUrgencia.Visible = true;
