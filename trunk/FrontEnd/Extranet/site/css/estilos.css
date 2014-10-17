@@ -1,0 +1,522 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color:#6F6F6F;
+}
+
+h5 {
+	font-size:16px;
+	margin-bottom:10px;
+}
+
+li.servicios {
+	list-style-image:url(../img/check.png);
+	margin:5px;
+}
+
+.cajaGeneral {
+	width: 868px;
+	margin-top: 20px;
+	position: absolute;
+	left: 50%;
+	margin-left: -475px;
+}
+.tituloNovedades {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #06518B;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.tituloNovedad {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #000000;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+.formAcceso {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000;
+	margin: 20px;
+	padding-top:30px;
+	overflow:hidden;
+	
+}
+
+
+
+.botonesTop {
+	background-color: #024B90;
+	text-align: right;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:20px;
+	margin-right:20px;
+	float:left;
+	width: 848px;
+}
+
+.menuIzquierdo {
+	float: left;
+	width: 200px;
+	background-color: #DFDFDF;
+	overflow: none;
+}
+
+.menuIzquierdoInterno {
+	width: 185px;
+	background-color: #DFDFDF;
+	float: left;
+	height:397px;
+}
+
+.cajaInput {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333;
+	margin: 1px;
+	padding: 1px;
+	border:#8C8C8C 1px solid;
+}
+
+.contenido {
+	float: left;
+	width: 667px;
+	background-color: #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #828282;
+}
+
+.contenidoPrincipalInterno {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #828282;
+	float: left;
+	background-color: #FFF;
+	width: 668px;
+}
+
+
+.pie {
+	background-color: #313131;
+	text-align: center;
+	width: 852px;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFF;
+	padding: 8px;
+}
+.contenidoHome {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #484848;
+	width: 580px;
+	text-align: justify;
+	margin:30px;
+}
+
+
+.contenidoInterno {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 450px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	min-height:530px;
+	height:auto!important;
+}
+
+.contenidoInternoServicios {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 450px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+
+.contenidoInternoFull {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 633px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 40px;
+	padding-left: 25px;
+}
+
+
+a.linkContenido {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333;
+	text-decoration: none;
+}
+.contenidoInternoNota {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 490px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	overflow: auto;
+	height: 370px;
+	
+}
+
+
+#contenidoInterno {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 490px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+
+.contenidoProductos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #7E7E7E;
+	float: left;
+	width: 670 px;
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+
+
+.novedadesHome {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #7E7E7E;
+	float: left;
+	width: 152px;
+	border-left: 1px solid #B2B2B2;
+	padding:15px;
+}
+
+a.novedadesLink {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #01AEA8;
+	text-decoration:none;
+}
+
+a.novedadesLink:hover {
+	color: #000000;
+	text-decoration:none;
+}
+
+.linkEnviar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #01AEA8;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	text-align:right;
+	text-decoration: none;
+}
+.imagenDerecha {
+	float: right;
+	width: 143px;
+	text-align: right;
+	padding-top: 50px;
+
+}
+.listadoProductos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #D1EBEC;
+	width: 90%;
+	margin-right: 0px;
+	margin-left: 0px;
+	border: thin solid #A3CF4C;
+}
+
+.textoProductos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#7E7E7E;
+}
+
+.contenidoPrincipalProductos {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #828282;
+	float: left;
+	background-color: #FFF;
+	width: 683px;
+	height:847px;
+}
+
+
+.menuIzquierdoProductos {
+	width: 185px;
+	background-color: #DFDFDF;
+	float: left;
+	height:847px;
+}
+a.linkMenu {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	margin-left:8px;
+	margin-right:8px;
+}
+
+a.linkMenu:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+a.linkMenuOn {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #76983C;
+	text-decoration: none;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+a.linkMenuOn:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.tituloArticulo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #7E7E7E;
+	text-decoration: none;
+}
+
+.tituloArticulo:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.fondoContenido {
+	background-color: #DFDFDF;
+	width: 868px;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+.textoLogo {
+	font-weight: bold;
+	color: #4F7898;
+}
+.listadoClientes {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #06518B;
+	float: left;
+	width: 640px;
+	padding-top: 5px;
+	padding-right: 30px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+}
+
+.listadoClientesLogos
+{
+	padding: 8px;
+	border:#B2B2B2 1px solid;
+	text-align: center;
+	background-color:#FFF;
+	float:left;
+
+	
+	}
+
+
+.titulo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #7E7E7E;
+}
+.cajaServicio {
+	float: left;
+	width: 150px;
+	height: 180px;
+	text-align: justify;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.contenidoMensajeria {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 40px;
+	width: 350px;
+	font-weight: bold;
+	color: #014598;
+}
+.tituloMensajeria {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #000;
+	font-style: italic;
+}
+
+.pieMensajeria {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	color: #000;
+	font-style: italic;
+}
+
+.topFlash {
+	margin: 0px;
+	padding: 0px;
+	height: 238px;
+	width: 867px;
+	float:left;
+	background-image:url(../img/tophome1.jpg);
+}
+
+
+#rotorIzq {
+	position:absolute;
+	left:8px;
+	top:190px;
+	width:185px;
+	height:147px;
+	z-index:1;
+	
+}
+
+.botonEnviar {
+	
+	
+}
+
+li.vgCliente {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	list-style-image:url(../img/vinietas_a.gif);
+	margin:0px;
+	margin-left:-10px;
+	color: #828282;
+}
+
+/* OVERLAY LOGIN BOX */
+#login_box {float:left; margin:0 auto;}
+#login_box h2 {font-size:20px; color:#21AAE4; border-bottom:1px #CCCCCC solid; line-height:32px; margin-bottom:7px;}
+.login_box_1_f {background:#21AAE4; color:#FFF!important; border:none!important; padding: 0 0 0 10px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#login_box span.form_control_bg {background-color:#F4F4F4;}
+#Login_nombre, #Login_pass, #Login_pass_fake {width:270px; color:#AAA;}
+#Olvido_form input {width:340px; color:#AAA;}
+#login_box_1 .left.login {padding-left:30px; margin-left:30px; margin-right:10px; border-left:1px dotted #CCC; width:290px;}
+#Login_form .porta_bt {float:right;}
+#login_box_1 .left.new .porta_bt {float:left;}
+#login_box_1 .left.new {width:255px; margin-left:10px;}
+#login_box_1 .left.new p {margin:0 0 10px 0;}
+#login_box_1, #login_box_new_user, #login_box_olvido {font-size:13px; color:#777;}
+#login_box_1 {width:626px; padding:15px 0;}
+#login_box_olvido {width:370px; padding:15px 0;}
+#login_box_olvido_askconfirm_resp {width:370px;}
+.olvido_pass {display:block; margin-top:12px; text-decoration:underline!important;}
+#Olvido_form {clear:both; padding-top:8px;}
+#Olvido_form .login_box_volver {margin-top:12px;}
+#login_box_olvido_resp {padding:10px 0; width:400px; overflow:hidden;}
+#login_box_olvido_resp a {font-size:14px!important; text-decoration:underline!important;}
+
+.linkServicios {
+	text-decoration:none;
+	color: #828282;
+}
+
+.linkServicios:hover {
+	text-decoration:none;
+	color:#024B90;
+}
+
+.cajaServicioSoftware {
+	background-image: url(../img/fondo_servicio_software.png);
+	padding: 10px;
+	float: left;
+	width: 216px;
+	text-align:left;
+	height:240px;
+	margin-left:40px; 
+	margin-top:30px;
+
+}
+
+.cajaServicioSoftware:hover {
+	background-image: url(../img/fondo_servicio_software_gr.png);
+	padding: 10px;
+	float: left;
+	width: 216px;
+	text-align:left;
+	height:240px;
+	margin-left:40px; 
+	margin-top:30px;
+	color:#024B90;
+}
+
+
+.cajaServicioSoftwareAbajo {
+	float:left; 
+	width:180px; 
+	margin-top:0px; 
+	margin-right:10px;
+	padding:10px; 
+	background-color:#EEE; 
+	border-bottom:3px solid #4078C3;	
+	text-align:left;
+}
+
+.logocliente {
+	margin:4px; 
+	margin-bottom:12px;	
+	margin-left:10px;
+	margin-right:10px;
+
+}
