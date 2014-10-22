@@ -81,7 +81,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 				//((ImageButton)myItem.FindControl("Editar")).ToolTip = "Modificar Informe";
 				if (int.Parse(myItem.Cells[10].Text) == 6) myItem.Cells[7].Text= "<IMG SRC='/img/Estado2.gif' widht='14' height='14' border='0'>&nbsp;&nbsp;&nbsp;En Proceso";
 				else  myItem.Cells[7].Text= "<IMG SRC='/img/Estado" + myItem.Cells[10].Text + ".gif' widht='14' height='14' border='0'>&nbsp;&nbsp;&nbsp;" + myItem.Cells[6].Text;
-                if (int.Parse(myItem.Cells[10].Text) == 1 || int.Parse(myItem.Cells[10].Text) == 5 || int.Parse(myItem.Cells[10].Text) == 9)
+                if (int.Parse(myItem.Cells[10].Text) == 1 || int.Parse(myItem.Cells[10].Text) == 5) // || int.Parse(myItem.Cells[10].Text) == 9 se quita
 				{
 					((ImageButton)myItem.FindControl("Editar")).Visible= true;
 					((ImageButton)myItem.FindControl("Cancelar")).Attributes.Add("onclick",@"javascript: return confirm('¿Está seguro que desea Cancelar el Informe?');");
