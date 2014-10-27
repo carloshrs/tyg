@@ -686,7 +686,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Verificaciones.Dal
 			if (strConoceVecino.Trim() != "") strSQL+=",'"+strConoceVecino.Trim()+"'"; 
 			else strSQL+=",null";
 
-            if (strInformesAnteriores.Trim() != "") strSQL += ",'" + strInformesAnteriores.Trim() + "'";
+            if (strInformesAnteriores.Trim() != "") strSQL += ",'" + strInformesAnteriores.Trim().Replace("'", "''") + "'";
             else strSQL += ",null";
 
             if (strObservaciones.Trim() != "") strSQL += ",'" + strObservaciones.Trim().Replace("'", "''") + "')"; 
