@@ -371,26 +371,36 @@ function MostrarAviso() {
                 <TD class="text" width=235>&nbsp;Documento&nbsp; 
                     </TD>
                   <TD class="text" width="161">
-                    <asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil"></asp:Label></TD>
+                    <asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil"></asp:Label>
+                    <asp:Label ID="lblSexo" runat="server" Text="Sexo" Visible="false"></asp:Label>
+                    </TD>
                   </TR>
               <TR>
                 
                 <TD class="text" width=25>
-<asp:dropdownlist id="cmbTipoDocumento" runat="server" Width="167px">
-														<asp:ListItem Value="1" Selected="True">DNI</asp:ListItem>
-														<asp:ListItem Value="2">Libreta C&#237;vica</asp:ListItem>
-														<asp:ListItem Value="3">Libreta de enrolamiento</asp:ListItem>
-													</asp:dropdownlist></TD>
+                    <asp:dropdownlist id="cmbTipoDocumento" runat="server" Width="167px">
+						<asp:ListItem Value="1" Selected="True">DNI</asp:ListItem>
+						<asp:ListItem Value="2">Libreta C&#237;vica</asp:ListItem>
+						<asp:ListItem Value="3">Libreta de enrolamiento</asp:ListItem>
+					</asp:dropdownlist></TD>
                 <TD class="text" width=235>
 <asp:textbox id="Documento" runat="server" Width="144px" CssClass="validate[required,custom[onlyNumber],maxSize[8]]"></asp:textbox></TD>
                 <TD class="text" width=161>
-<asp:dropdownlist id="cmbEstadoCivil" runat="server" Width="161px">
-                                                        <asp:ListItem Selected="True">Seleccione estado civil</asp:ListItem>
-														<asp:ListItem Value="1">Soltero/a</asp:ListItem>
-														<asp:ListItem Value="2">Casado/a</asp:ListItem>
-														<asp:ListItem Value="3">Divorciado/a</asp:ListItem>
-														<asp:ListItem Value="4">Viudo/a</asp:ListItem>
-													</asp:dropdownlist></TD>
+                    <asp:dropdownlist id="cmbEstadoCivil" runat="server" Width="161px">
+                        <asp:ListItem Selected="True">Seleccione estado civil</asp:ListItem>
+						<asp:ListItem Value="1">Soltero/a</asp:ListItem>
+						<asp:ListItem Value="2">Casado/a</asp:ListItem>
+						<asp:ListItem Value="3">Divorciado/a</asp:ListItem>
+						<asp:ListItem Value="4">Viudo/a</asp:ListItem>
+					</asp:dropdownlist>
+                    <asp:dropdownlist id="cmbSexo" runat="server" Width="161px" Visible="false">
+                        <asp:ListItem Value="0" Selected="True">Seleccione sexo</asp:ListItem>
+						<asp:ListItem Value="1">Masculino</asp:ListItem>
+						<asp:ListItem Value="2">Femenino</asp:ListItem>
+					</asp:dropdownlist>
+
+                                                    
+                                                    </TD>
 </TR>
               <TR>
                 <TD class="text" width=535 colSpan=3 height=10></TD></TR>

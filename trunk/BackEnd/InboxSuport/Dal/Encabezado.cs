@@ -116,6 +116,9 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 		private String strObservaciones;
 		private String strApreciaciones;
 
+        // Partidas defunsión
+        private int intSexo = 0;
+
         //Integración FOX
         private int intIdFOX = 0;
 
@@ -291,6 +294,18 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 				intEstadoCivil = value;
 			}
 		}
+
+        public int Sexo
+        {
+            get
+            {
+                return intSexo;
+            }
+            set
+            {
+                intSexo = value;
+            }
+        }
 		public int TipoDocumento
 		{
 			get
@@ -1254,7 +1269,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			strSQL = strSQL  + "RazonSocial, NombreFantasia, CargoEmpresa, TelefonoEmpresa, Rubro, Cuit, CalleEmpresa, NroEmpresa, DptoEmpresa, PisoEmpresa, BarrioEmpresa, CPEmpresa, LocalidadEmpresa, ProvinciaEmpresa,";
 			strSQL = strSQL  + "RegPubFolio, RegPubTomo, RegPubAno, ";
 
-            strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
+            strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad, Sexo) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
 			if (intidReferencia != 0)
 			{
 				strSQL = strSQL  + intidReferencia.ToString() + ",";
@@ -1275,7 +1290,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 strSQL = strSQL + ",'" + dtFechaCarga +"'";
             else
                 strSQL = strSQL + ", getdate()";
-            strSQL = strSQL + ",'" + IdFOX + "'," + Leido.ToString() + ", '" + strLocalidad + "')"; 
+            strSQL = strSQL + ",'" + IdFOX + "'," + Leido.ToString() + ", '" + strLocalidad + "', " + intSexo + ")"; 
 
 			String strMaxID = "SELECT MAX(idEncabezado) as MaxId FROM BandejaEntrada";
 
@@ -1394,25 +1409,25 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 
 					break;
 				case 4: // Ambiental
-                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
 					break;
 				case 5: // Dom Particular
-                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
 					break;
 				case 6: //Verificación de Domicilio Laboral
-					Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento + " - Razón Social: " + strRazonSocial;
+					Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento + " - Razón Social: " + strRazonSocial;
 					break;
 				case 7: //Verificación de Domicilio Comercial
-                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento + " - Razón Social: " + strRazonSocial;
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento + " - Razón Social: " + strRazonSocial;
 					break;
 				case 8: // Verificación Especial
-					Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+					Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
 					break;
 				case 9: // Registro Público de Comercio
 					Descripcion = "Registro Público de Comercio";
 					break;
 				case 10: // Busqueda Automotor
-					if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+					if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
 					else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
 					break;
 				case 11: // Informe Propiedad Otras Provincias
@@ -1458,21 +1473,21 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 					}
                     break;
 				case 13: // Búsqueda Propiedad
-                    if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+                    if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ": </B> " + strDocumento;
 					else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
 					if (intCaracter == 1) Descripcion = Descripcion + " - <B>Carácter: </B> Normal";
 					if (intCaracter == 2) Descripcion = Descripcion + " - <B>Carácter: </B> Urgente";
 					if (intCaracter == 3) Descripcion = Descripcion + " - <B>Carácter: </B> Super Urgente";
 					break;
 				case 14: // Informe Contractual
-					if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+					if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
 					else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
 					break;
                 case 15: // Relevamiento Ambiental BANCOR
                     Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre;
                     break;
                 case 16: // Inhibicion
-                    if (intIdTipoPersona == 1) Descripcion = "<B>" + strApellido + ", " + strNombre + "</B> - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+                    if (intIdTipoPersona == 1) Descripcion = "<B>" + strApellido + ", " + strNombre + "</B> - <B>" + strTipoDocumento + ":</B> " + strDocumento;
                     else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
                     Descripcion = "Inhibición - " + Descripcion;
                     if (intCaracter == 1) Descripcion = Descripcion + " - <B>Carácter: </B> Normal";
@@ -1481,8 +1496,14 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 
                     break;
                 case 17: // Informe de Morosidad
-                    if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>Tipo Documento: </B>" + strTipoDocumento + ", <B> Documento: </B> " + strDocumento;
+                    if (intIdTipoPersona == 1) Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B>" + strTipoDocumento + ":</B> " + strDocumento;
                     else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
+                    break;
+                case 18: // Gravámenes DIR
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
+                    break;
+                case 19: // Partidas de defunción
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
                     break;
 			}
 						
@@ -1554,6 +1575,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			strSQL = strSQL  + "ConFoto = " + intConFoto.ToString() + ", Caracter = " + intCaracter.ToString();
 			strSQL = strSQL  + ", DescripcionInf = '" + TraerDescripcionInforme() + "' ";
             strSQL = strSQL + ", txtLocalidad = '" + strLocalidad + "' ";
+            strSQL = strSQL + ", Sexo = " + intSexo + " ";
             
 			strSQL = strSQL  + " WHERE idEncabezado =  " + idEncabezado.ToString();
 
@@ -1801,6 +1823,10 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 		    //Integración FOX
             if( ds.Tables[0].Rows[0]["idFox"].ToString() != "" )
                 intIdFOX = int.Parse(ds.Tables[0].Rows[0]["idFox"].ToString());
+
+            // Partidas Defuncion
+            if (ds.Tables[0].Rows[0]["Sexo"].ToString() != "")
+                intSexo = int.Parse(ds.Tables[0].Rows[0]["Sexo"].ToString());
 		}
 
 		public bool CambiarEstado(int idInforme)

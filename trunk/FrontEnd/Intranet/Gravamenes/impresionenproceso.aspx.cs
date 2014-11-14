@@ -31,19 +31,19 @@ public partial class InformeGravamenes_listadopendientes : System.Web.UI.Page
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
 
-        dlSUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 3, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlSUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 3, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlSUrgente.DataBind();
         if (dlSUrgente.Items.Count == 0)
             lblSUrgente.Visible = false;
 
 
-        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 2, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 2, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlUrgente.DataBind();
         if (dlUrgente.Items.Count == 0)
             lblUrgente.Visible = false;
 
 
-        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 1, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 3, estado, 1, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlNormal.DataBind();
         if (dlNormal.Items.Count == 0)
             lblNormal.Visible = false;

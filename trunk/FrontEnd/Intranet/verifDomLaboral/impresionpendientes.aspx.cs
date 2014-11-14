@@ -34,7 +34,7 @@ public partial class verifDomLaboral_listadopendientes : System.Web.UI.Page
         BandejaEntradaApp bandeja = new BandejaEntradaApp();
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
-        dlVerificaciones.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 6, estado, -1, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlVerificaciones.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 6, estado, -1, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlVerificaciones.DataBind();
         int cantReg = dlVerificaciones.Items.Count;
         

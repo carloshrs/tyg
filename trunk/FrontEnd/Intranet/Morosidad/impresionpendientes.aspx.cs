@@ -34,7 +34,7 @@ public partial class morosidad_listadopendientes : System.Web.UI.Page
         BandejaEntradaApp bandeja = new BandejaEntradaApp();
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
-        dlMorosidad.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 17, estado, -1, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlMorosidad.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 17, estado, -1, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlMorosidad.DataBind();
         int cantReg = dlMorosidad.Items.Count;
         

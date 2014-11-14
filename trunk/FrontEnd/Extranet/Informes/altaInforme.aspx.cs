@@ -263,7 +263,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 			Encabezado.CatCP = CatCP.Text.ToString();
 			Encabezado.CatLocalidad = int.Parse(cmbLocalidadCatastro.SelectedValue);
 			Encabezado.CatProvincia = int.Parse(cmbProvinciaCatastro.SelectedValue);
-
+            // PARTIDAS DEFUNCIÓN
+            Encabezado.Sexo = int.Parse(cmbSexo.SelectedValue);
 
 
 			Encabezado.Crear();
@@ -500,6 +501,22 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         pnlParticulares.Visible = true;
                     else
                         pnlDomComercial.Visible = true;
+                    break;
+                case 18: // Gravamenes DIR
+                    pnlTipoPersona.Visible = true;
+                    if (cmbTipoPersona.SelectedItem.Value.Equals("1"))
+                        pnlParticulares.Visible = true;
+                    else
+                        pnlDomComercial.Visible = true;
+                    break;
+                case 19: // Partidas de defunción
+                    pnlTipoPersona.Visible = false;
+                    pnlParticulares.Visible = true;
+                    lblEstadoCivil.Visible = false;
+                    cmbEstadoCivil.Visible = false;
+                    lblSexo.Visible = true;
+                    cmbSexo.Visible = true;
+                    pnlUrgencia.Visible = false;
                     break;
 			}
 		}

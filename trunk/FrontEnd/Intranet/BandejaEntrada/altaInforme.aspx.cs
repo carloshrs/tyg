@@ -256,6 +256,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.RegPubFolio = FolioRegPublico.Text.ToUpper();
             Encabezado.RegPubTomo = TomoRegPublico.Text.ToUpper();
             Encabezado.RegPubAno = AnoRegPublico.Text.ToUpper();
+            // PARTIDAS DEFUNCIÓN
+            Encabezado.Sexo = int.Parse(cmbSexo.SelectedValue);
 
 
             if (hIdTransferido.Value != "")
@@ -538,6 +540,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         pnlParticulares.Visible = true;
                     else
                         pnlDomComercial.Visible = true;
+                    break;
+                case 18: // Gravamenes DIR
+                    pnlTipoPersona.Visible = true;
+                    reqCalleEmpresa.Enabled = false;
+                    reqNroCalleEmpresa.Enabled = false;
+                    if (cmbTipoPersona.SelectedItem.Value.Equals("1"))
+                        pnlParticulares.Visible = true;
+                    else
+                        pnlDomComercial.Visible = true;
+                    break;
+                case 19: // Partidas de defunción
+                    pnlTipoPersona.Visible = false;
+                    pnlParticulares.Visible = true;
+                    lblEstadoCivil.Visible = false;
+                    cmbEstadoCivil.Visible = false;
+                    lblSexo.Visible = true;
+                    cmbSexo.Visible = true;
+                    pnlUrgencia.Visible = false;
                     break;
 			}
 		}
