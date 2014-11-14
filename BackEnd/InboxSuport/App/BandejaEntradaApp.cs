@@ -63,7 +63,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
 
 		public int[] CargarDatos()
 		{
-			int[] MenuArray = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+			int[] MenuArray = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 			BandejaEntradaDal bandeja = new BandejaEntradaDal();
 			DataTable Datos = bandeja.TraerDatosMenu();
 			foreach(DataRow myRow in Datos.Rows)
@@ -398,7 +398,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
         }
 
 
-        public DataTable ListaEncabezadosGrupos(int idCliente, int Usuario, int idTipoInforme, string Estado, int Caracter, String FechaDesde, String FechaHasta, int vRegPorPagina, bool Extranet, int idGrupo)
+        public DataTable ListaEncabezadosGrupos(int idCliente, int Usuario, int idTipoInforme, string Estado, int Caracter, String FechaDesde, String FechaHasta, int vRegPorPagina, bool Extranet, int idGrupo, string vVar) //vVar es variable opcional, ejemplo se usa en partidas defunción
         {
             String SQLWhere = "";
             SQLWhere = SQLWhere + " AND G.idTipoGrupo = " + idGrupo;
@@ -454,6 +454,18 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             {
                 FechaHasta = DateTime.Today.ToShortDateString();
                 FechaHasta = "'" + FechaHasta + " 23:59:59.999'";
+            }
+
+            // Partidas de defunción por sexo
+            if (idTipoInforme == 19) 
+            {
+                if (vVar != "")
+                {
+                    if(vVar == "M")
+                        SQLWhere = SQLWhere + " AND B.Sexo = 1 ";
+                    else
+                        SQLWhere = SQLWhere + " AND B.Sexo = 2 ";
+                }
             }
 
             if (vRegPorPagina != 0)
@@ -635,6 +647,76 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             DataTable Datos = bandeja.ListaEncabezados(SQLWhere, Pagina, RegPorPagina);
             return Datos;
         }
+
+
+        public DataTable ListaInformesFinalizados(int idCliente, int Usuario, int idTipoInforme, string Estado, int Caracter, String FechaDesde, String FechaHasta, int vRegPorPagina, bool Extranet, int idGrupo)
+        {
+            String SQLWhere = "";
+            SQLWhere = SQLWhere + " AND ice.idTipoGrupo = " + idGrupo;
+            SQLWhere = SQLWhere + " AND B.idTipoInforme = " + idTipoInforme;
+
+            if (Usuario != -1)
+                SQLWhere = SQLWhere + " AND B.idUsuario = " + Usuario.ToString();
+
+            if (idCliente != -1)
+                SQLWhere = SQLWhere + " AND B.idCliente = " + idCliente.ToString();
+
+            if (Estado != "")
+            {
+                string[] Est = Estado.Split(",".ToCharArray());
+                if (Est[0] != "-1")
+                {
+                    SQLWhere = SQLWhere + " AND ( ";
+                    for (int i = 0; i < Est.Length; i++)
+                    {
+                        if (i < Est.Length && i > 0)
+                            SQLWhere = SQLWhere + " OR ";
+                        SQLWhere = SQLWhere + " B.Estado = " + Est[i].ToString();
+                    }
+                    SQLWhere = SQLWhere + ")";
+                }
+            }
+
+            if (Caracter != -1)
+                SQLWhere = SQLWhere + " AND B.Caracter = " + Caracter.ToString();
+            else
+            {
+                if (Extranet)
+                {
+                    SQLWhere = SQLWhere + " AND B.Estado in (1,5) ";
+                }
+            }
+
+
+
+            if (FechaDesde != "")
+                FechaDesde = "'" + FechaDesde + " 00:00:00.000'";
+            else
+            {
+                FechaDesde = DateTime.Today.AddMonths(-3).ToShortDateString();
+                FechaDesde = "'" + FechaDesde + " 00:00:00.000'";
+            }
+
+
+
+            if (FechaHasta != "")
+                FechaHasta = "'" + FechaHasta + " 23:59:59.999'";
+            else
+            {
+                FechaHasta = DateTime.Today.ToShortDateString();
+                FechaHasta = "'" + FechaHasta + " 23:59:59.999'";
+            }
+
+            if (vRegPorPagina != 0)
+                intRegPorPagina = vRegPorPagina;
+
+            SQLWhere = SQLWhere + " AND B.FechaCarga BETWEEN '" + FechaDesde + "' AND '" + FechaHasta + "'";
+
+            BandejaEntradaDal bandeja = new BandejaEntradaDal();
+            DataTable Datos = bandeja.ListaInformesFinalizados(SQLWhere, Pagina, RegPorPagina);
+            return Datos;
+        }
+
         #endregion
 
         #region Métodos Privados

@@ -333,6 +333,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     case "17":
                         ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text  + ")");
                         break;
+                    case "18": //Realizar Informe de Gravámenes DIR
+                        strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
+                        break;
+                    case "19": //Realizar Informe de Partidas de Defunción
+                        strRedir = "/defuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
+                        break;
 
 				}
 				if (myItem.Cells[12].Text == "3")
@@ -357,7 +363,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					((ImageButton)myItem.FindControl("VerEncabezado")).Attributes.Add("src",@"/img/printer.gif");
 
                     // Informes que NO visualiza la impresion de form. calle
-                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
+                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17" || myItem.Cells[14].Text == "18" || myItem.Cells[14].Text == "19") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
 
                     // Informe de Morosidad
                     if (myItem.Cells[14].Text == "17" && myItem.Cells[12].Text != "2") { ((ImageButton)myItem.FindControl("realizar")).Visible = false; }
@@ -477,6 +483,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                                 //Response.Redirect("Principal.aspx?idTipo=17");
                                 ListaBandejaFiltro();
                                 break;
+                            case "18": //Gravámenes DIR
+                                Response.Redirect("/gravamenesDIR/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=18");
+                                break;
+                            case "19": //Partidas de defunción
+                                Response.Redirect("/defuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=19");
+                                break;
 							default:
 								Response.Redirect("principal.aspx");
 								break;
@@ -593,6 +605,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 case 17: // Informe Morosidad
                     lblTipo.Text = " - Informe Morosidad";
                     break;
+                case 18: // Informe Gravamen DIR
+                    lblTipo.Text = " - Informe de Partidas de Defunción";
+                    break;
+                case 19: // Informe Partidas de Defunción
+                    lblTipo.Text = " - Informe de Partidas de Defunción";
+                    btnPropiedadRegistro.Text = "Importar / Imprimir";
+                    break;
+
+                    
 
 			}
 		}
@@ -600,7 +621,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
         private void EnviarRegistro(int idTipo)
         {
             btnPropiedadRegistro.Visible = false;
-            if (idTipo == 1 || idTipo == 2 || idTipo == 3 || idTipo == 10 || idTipo == 12 || idTipo == 13 || IdTipo == 15 || IdTipo == 16) { btnPropiedadRegistro.Visible = true; }
+            if (idTipo == 1 || idTipo == 2 || idTipo == 3 || idTipo == 10 || idTipo == 12 || idTipo == 13 || IdTipo == 15 || IdTipo == 16 || IdTipo == 19) { btnPropiedadRegistro.Visible = true; }
         }
 
         protected void btnPropiedadRegistro_Click(object sender, EventArgs e)
@@ -630,6 +651,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     break;
                 case 16:
                     Response.Redirect("../Inhibicion/inhibicion_registro.aspx");
+                    break;
+                case 19:
+                    Response.Redirect("../defuncion/importar.aspx");
                     break;
             }
         }

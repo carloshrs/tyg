@@ -265,7 +265,9 @@
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Ingrese documento"
                                                                 ControlToValidate="Documento">*</asp:RequiredFieldValidator></td>
                                                         <td class="text" width="161">
-                                                            <asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil"></asp:Label></td>
+                                                            <asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil"></asp:Label>
+                                                            <asp:Label ID="lblSexo" runat="server" Text="Sexo" Visible="false"></asp:Label>
+                                                            </td>
                                                     </tr>
                                                     <tr>
                                                         
@@ -283,7 +285,14 @@
                                                                 <asp:ListItem Value="2">Casado/a</asp:ListItem>
                                                                 <asp:ListItem Value="3">Divorciado/a</asp:ListItem>
                                                                 <asp:ListItem Value="4">Viudo/a</asp:ListItem>
-                                                            </asp:DropDownList></td>
+                                                            </asp:DropDownList>
+                                                            
+                                                            <asp:dropdownlist id="cmbSexo" runat="server" Width="161px" Visible="false">
+                                                                <asp:ListItem Value="0" Selected="True">Seleccione sexo</asp:ListItem>
+						                                        <asp:ListItem Value="1">Masculino</asp:ListItem>
+						                                        <asp:ListItem Value="2">Femenino</asp:ListItem>
+					                                        </asp:dropdownlist>
+                                                            </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text" width="535" colspan="3" height="10">

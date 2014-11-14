@@ -32,9 +32,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 
 			Gravamenes.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=3";
 			if (registros[2] > 0)
-				Gravamenes.Text = "Gravámenes <B>(" + registros[2].ToString() + ")</B>";
+				Gravamenes.Text = "Gravámenes (Folios) <B>(" + registros[2].ToString() + ")</B>";
 			else
-				Gravamenes.Text = "Gravámenes (" + registros[2].ToString() + ")";
+                Gravamenes.Text = "Gravámenes (Folios) (" + registros[2].ToString() + ")";
+
+            Gravamenes.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=18";
+            if (registros[17] > 0)
+                Gravamenes.Text = "Gravámenes (DIR) <B>(" + registros[17].ToString() + ")</B>";
+            else
+                Gravamenes.Text = "Gravámenes (DIR) (" + registros[17].ToString() + ")";
 
 			Ambientales.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=4";
 			if (registros[3] > 0)
@@ -92,9 +98,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 
 			BusquedaPropiedad.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=13";
 			if (registros[12] > 0)
-				BusquedaPropiedad.Text = "Búsq. Propiedad <B>(" + registros[12].ToString() + ")</B>";
+                BusquedaPropiedad.Text = "Búsq. Propiedad (DIR) <B>(" + registros[12].ToString() + ")</B>";
 			else
-				BusquedaPropiedad.Text = "Búsq. Propiedad (" + registros[12].ToString() + ")";
+                BusquedaPropiedad.Text = "Búsq. Propiedad (DIR) (" + registros[12].ToString() + ")";
 
 
 			contractuales.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=14";
@@ -111,15 +117,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 
             Inhibicion.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=16";
             if (registros[15] > 0)
-                Inhibicion.Text = "Inhibición <B>(" + registros[15].ToString() + ")</B>";
+                Inhibicion.Text = "Inhibición (DIR) <B>(" + registros[15].ToString() + ")</B>";
             else
-                Inhibicion.Text = "Inhibición (" + registros[15].ToString() + ")";
+                Inhibicion.Text = "Inhibición (DIR) (" + registros[15].ToString() + ")";
 
             Morosidad.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=17";
             if (registros[16] > 0)
                 Morosidad.Text = "Morosidad <B>(" + registros[16].ToString() + ")</B>";
             else
                 Morosidad.Text = "Morosidad (" + registros[16].ToString() + ")";
+
+            Morosidad.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=19";
+            if (registros[18] > 0)
+                Morosidad.Text = "Partidas de defunción <B>(" + registros[18].ToString() + ")</B>";
+            else
+                Morosidad.Text = "Partidas de defunción (" + registros[18].ToString() + ")";
 
 
             ContactenosApp oContactos = new ContactenosApp();

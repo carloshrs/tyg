@@ -31,10 +31,10 @@ public partial class InformeInhibicion_listadopendientes : System.Web.UI.Page
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
 
-        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 16, estado, 2, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 16, estado, 2, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlUrgente.DataBind();
 
-        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 16, estado, 1, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 16, estado, 1, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlNormal.DataBind();
         
     }

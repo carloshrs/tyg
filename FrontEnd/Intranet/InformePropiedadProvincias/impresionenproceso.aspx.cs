@@ -28,13 +28,13 @@ public partial class InformePropiedadOtrasProvincias_listadopendientes : System.
         BandejaEntradaApp bandeja = new BandejaEntradaApp();
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
-        dlSUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 3, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlSUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 3, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlSUrgente.DataBind();
 
-        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 2, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 2, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlUrgente.DataBind();
 
-        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 1, FechaDesde, FechaHasta, 0, false, intGrupo);
+        dlNormal.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, "2", 1, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlNormal.DataBind();
         
     }

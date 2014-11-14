@@ -417,6 +417,50 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 
         }
 
+
+        public DataTable ListaInformesFinalizados(String SQLWhere, int pagina, int registros)
+        {
+            String strSQLCount = "SELECT COUNT(B.idEncabezado) as Total FROM BandejaEntrada B";
+            if (SQLWhere != "")
+            {
+                SQLWhere = SQLWhere.Replace("''", "'");
+                string SQLWhereC = " WHERE " + SQLWhere.Substring(SQLWhere.IndexOf("AND") + 3);
+                strSQLCount = strSQLCount + SQLWhereC;
+            }
+            /*IDataReader dr = EjecutarDataReader(strSQLCount);
+            if (dr.Read())
+            {
+                intTotalRegistros = dr.GetInt32(0);
+                int totPaginas = ((int)(intTotalRegistros / registros)) + 1;
+                if (pagina > totPaginas) pagina = totPaginas;
+            }
+             */
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "select b.idencabezado, b.apellido, b.nombre, b.documento, b.sexo, ipd.Fallecido, ipd.FechaFallecido, " +
+            "ipd.acta, ipd.tomo, ipd.folio, ipd.lugarfallecimiento, ipd.observaciones, B.FechaCarga " +
+            "from bandejaentrada b " +
+            "inner join informesCambioEstado ice on b.idEncabezado = ice.idinforme " +
+            "left join informepartidadefuncion ipd on b.idEncabezado = ipd.idinforme ";
+            strSQL = strSQL + "WHERE 1=1 ";
+            if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'", "''");
+            int iniciopag = (pagina - 1) * registros;
+            string strSQLSP = "execute_query '" + strSQL + "', 'FechaCarga DESC', " + pagina + ", " + registros + ", 10";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQLSP, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
+
 		#endregion
 
 		#region Métodos Privados
