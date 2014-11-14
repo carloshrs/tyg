@@ -36,11 +36,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 			else
                 Gravamenes.Text = "Gravámenes (Folios) (" + registros[2].ToString() + ")";
 
-            Gravamenes.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=18";
+            GravamenesDIR.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=18";
             if (registros[17] > 0)
-                Gravamenes.Text = "Gravámenes (DIR) <B>(" + registros[17].ToString() + ")</B>";
+                GravamenesDIR.Text = "Gravámenes (DIR) <B>(" + registros[17].ToString() + ")</B>";
             else
-                Gravamenes.Text = "Gravámenes (DIR) (" + registros[17].ToString() + ")";
+                GravamenesDIR.Text = "Gravámenes (DIR) (" + registros[17].ToString() + ")";
 
 			Ambientales.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=4";
 			if (registros[3] > 0)
@@ -127,11 +127,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
             else
                 Morosidad.Text = "Morosidad (" + registros[16].ToString() + ")";
 
-            Morosidad.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=19";
+            partidas.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=19";
             if (registros[18] > 0)
-                Morosidad.Text = "Partidas de defunción <B>(" + registros[18].ToString() + ")</B>";
+                partidas.Text = "Partidas de defunción <B>(" + registros[18].ToString() + ")</B>";
             else
-                Morosidad.Text = "Partidas de defunción (" + registros[18].ToString() + ")";
+                partidas.Text = "Partidas de defunción (" + registros[18].ToString() + ")";
 
 
             ContactenosApp oContactos = new ContactenosApp();

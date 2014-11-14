@@ -112,6 +112,10 @@
 													<td align="right" width="20"><img src="/img/treeArrow.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="Gravamenes"> Gravámenes</asp:HyperLink></td>
 												</tr>
+                                                <tr>
+													<td align="right" width="20"><img src="/img/treeArrow.gif"></td>
+													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="GravamenesDIR"> Gravámenes DIR</asp:HyperLink></td>
+												</tr>
 												<tr>
 													<td align="right" width="20"><img src="/img/treeArrow.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="Inhibicion"> Inhibición</asp:HyperLink></td>
@@ -135,6 +139,10 @@
 												<tr>
 													<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="contractuales"> Contractuales</asp:HyperLink></td>
+												</tr>
+                                                <tr>
+													<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
+													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="partidas"> Partidas de defunción</asp:HyperLink></td>
 												</tr>
 											</TBODY>
 										</TABLE>
