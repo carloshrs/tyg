@@ -201,6 +201,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 case "16":
                     path = "Inhibicion";
                     break;
+                case "17":
+                    path = "Morosidad";
+                    break;
+                case "18":
+                    path = "gravamenesDIR";
+                    break;
+                case "19":
+                    path = "defuncion";
+                    break;
 
             }
 
