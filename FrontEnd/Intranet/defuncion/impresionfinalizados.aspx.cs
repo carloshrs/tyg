@@ -64,7 +64,7 @@ public partial class InformePartidasDefuncion_listadopendientes : System.Web.UI.
                 {
                     if ((myItem.Cells[7].Text == "1"))
                     {
-                        resultado = "FALLECIDO/A." + Convert.ToDateTime(myItem.Cells[8].Text).ToShortDateString() + " ACTA: " + myItem.Cells[9].Text + " TOMO: " + myItem.Cells[10].Text + " FOLIO: " + myItem.Cells[11].Text;
+                        resultado = "FALLECIDO/A: " + Convert.ToDateTime(myItem.Cells[8].Text).ToShortDateString() + " ACTA: " + myItem.Cells[9].Text + " TOMO: " + myItem.Cells[10].Text + " FOLIO: " + myItem.Cells[11].Text;
                         ((Label)myItem.FindControl("lblResultado")).Text = resultado;
                     }
                     else
