@@ -219,7 +219,7 @@ function MM_swapImage() { //v3.0
 	<div class="coda-slider preload" id="coda-slider-2" style=" width:590px; padding-bottom:0px; ">
 			<% 
 				Dim aCliente
-           		ReDim aCliente(19)
+           		ReDim aCliente(20)
                 
                 aCliente(0) = "<a href=""#"" target=""_blank""><img  src=""clientes/logo_bancor.png"" border=""0"" style=""margin:5px; margin-left:10px; margin-right:10px;""/></a>"
 				aCliente(1) = "<a href=""#"" target=""_blank""><img  src=""clientes/logo_hsbc.jpg"" border=""0"" class=""logocliente""/></a>"
@@ -242,6 +242,8 @@ function MM_swapImage() { //v3.0
 				aCliente(18) = "<a href=""http://www.domuspropiedades.com.ar/"" target=""_blank""><img  src=""clientes/domus.png"" border=""0"" class=""logocliente""/></a>"
 				
 				aCliente(19) = "<a href=""http://www.caballeroluciano.com.ar/"" target=""_blank""><img  src=""clientes/caballero-luciano.jpg"" border=""0"" class=""logocliente""/></a>"
+				
+				aCliente(20) = "<a href=""http://www.noblesraices.com/"" target=""_blank""><img  src=""clientes/logo-noble-raices.png"" border=""0"" class=""logocliente""/></a>"
 				
 				
 				
