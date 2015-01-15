@@ -260,7 +260,7 @@ function MM_swapImage() { //v3.0
 					if (iLoop2 mod 3 = 2) Then Response.Write "</div>"
 				Next
 				
-				Response.Write "</div>" ' Se agrega por cantidad dispar
+				'Response.Write "</div>" ' Se agrega por cantidad dispar
             %>
 			
   
