@@ -77,29 +77,29 @@ function bannerLeft
 <%
 			Set oConn = Server.CreateObject("ADODB.Connection")
 '			response.write Application("ConnectionString")
-			oConn.open Application("ConnectionString")
+			'oConn.open Application("ConnectionString")
 			SQL = "Select idNota, fecha, titulo, brief "
 			SQL = SQL & "FROM notas WHERE habilitado=1 AND idTipoNota=1 AND privado=0 "
 			SQL = SQL & "ORDER BY orden"
             'response.write sql
             'response.end
-			Set Novedades = oConn.execute(SQL)
+			'Set Novedades = oConn.execute(SQL)
 		%>
     <!--<div class="novedadesHome" style="background-color:#eee; margin-left:10px; margin-right:10px; margin-top:30px; -moz-border-radius:3px; -khtml-border-radius:3px; -webkit-border-radius:3px;	border-radius:3px; border:solid 1px #666; width:130px;">
       <span class="tituloNovedades">Novedades</span><br />
 			<% 
-			i=0
-			If Not Novedades.EOF Then
-					While Not Novedades.EOF 
-						Response.write "<span class=""tituloNovedad"">" & Novedades("titulo") & "</span><br>"
-						Response.write Novedades("brief")
-                        Response.write "<br />"
-                        Response.write left(Novedades("fecha"),10) & " | <a href=""novedad.asp?idNota=" & Novedades("idNota") & """ class=""novedadesLink"">Ver m&aacute;s</a><br /><br />"
-						Novedades.MoveNext
-					Wend
-				Else
-					Response.Write("No hay novedades")
-				End If
+			'i=0
+			'If Not Novedades.EOF Then
+			'		While Not Novedades.EOF 
+			'			Response.write "<span class=""tituloNovedad"">" & Novedades("titulo") & "</span><br>"
+			'			Response.write Novedades("brief")
+            '           Response.write "<br />"
+            '            Response.write left(Novedades("fecha"),10) & " | <a href=""novedad.asp?idNota=" & Novedades("idNota") & """ class=""novedadesLink"">Ver m&aacute;s</a><br /><br />"
+			'			Novedades.MoveNext
+			'		Wend
+			'	Else
+			'		Response.Write("No hay novedades")
+			'	End If
 			%>
       </p>
 </div>-->
