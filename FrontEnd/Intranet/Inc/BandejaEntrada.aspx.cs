@@ -134,9 +134,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
                 partidas.Text = "Partidas de defunción (" + registros[18].ToString() + ")";
 
 
-            ContactenosApp oContactos = new ContactenosApp();
-            int totalConsultasNoLeidas = oContactos.TraerDatos();
-            Consulta.Text = "Consultas <B>(" + totalConsultasNoLeidas + ")</B>";
+            // Se deshabilita temporalmente las consultas web
+            //ContactenosApp oContactos = new ContactenosApp();
+            //int totalConsultasNoLeidas = oContactos.TraerDatos();
+            //Consulta.Text = "Consultas <B>(" + totalConsultasNoLeidas + ")</B>";
 
         }
 
