@@ -82,12 +82,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 0)
             {
+                pnEnEsperaDigitales.Visible = true;
                 pnEnEsperaSUrgentes.Visible = true;
                 pnEnEsperaUrgentes.Visible = true;
                 pnEnEsperaNormales.Visible = true;
 
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+
+                dgridEnEsperaDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 4, "", "", 100, false);
+                dgridEnEsperaDigitales.DataBind();
+                if (dgridEnEsperaDigitales.Items.Count == 0)
+                    pnEnEsperaDigitales.Visible = false;
+
                 dgridEnEsperaSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 3, "", "", 100, false);
                 dgridEnEsperaSUrgentes.DataBind();
                 if (dgridEnEsperaSUrgentes.Items.Count == 0)
@@ -106,7 +113,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnEnEsperaNormales.Visible = false;
 
 
-                if ((dgridEnEsperaSUrgentes.Items.Count == 0) && (dgridEnEsperaUrgentes.Items.Count == 0) && (dgridEnEsperaNormales.Items.Count == 0))
+                if ((dgridEnEsperaDigitales.Items.Count == 0) && (dgridEnEsperaSUrgentes.Items.Count == 0) && (dgridEnEsperaUrgentes.Items.Count == 0) && (dgridEnEsperaNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad para generar el formulario taza.";
                     lblMensaje.Visible = true;
@@ -116,6 +123,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 1)
             {
+                pnEnProcesoDigitales.Visible = true;
                 pnEnProcesoSUrgentes.Visible = true;
                 pnEnProcesoUrgentes.Visible = true;
                 pnEnProcesoNormales.Visible = true;
@@ -123,6 +131,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Estados = "2";
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridEnProcesoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 4, "", "", 100, false);
+                dgridEnProcesoDigitales.DataBind();
+                if (dgridEnProcesoDigitales.Items.Count == 0)
+                    pnEnProcesoDigitales.Visible = false;
+
                 dgridEnProcesoSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 3, "", "", 100, false);
                 dgridEnProcesoSUrgentes.DataBind();
                 if (dgridEnProcesoSUrgentes.Items.Count == 0)
@@ -130,18 +143,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
                 dgridEnProcesoUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 2, "", "", 100, false);
                 dgridEnProcesoUrgentes.DataBind();
-
                 if (dgridEnProcesoUrgentes.Items.Count == 0)
                     pnEnProcesoUrgentes.Visible = false;
 
                 dgridEnProcesoNormales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 1, "", "", 100, false);
                 dgridEnProcesoNormales.DataBind();
-
                 if (dgridEnProcesoNormales.Items.Count == 0)
                     pnEnProcesoNormales.Visible = false;
 
 
-                if ((dgridEnProcesoSUrgentes.Items.Count == 0) && (dgridEnProcesoUrgentes.Items.Count == 0) && (dgridEnProcesoNormales.Items.Count == 0))
+                if ((dgridEnProcesoDigitales.Items.Count == 0) && (dgridEnProcesoSUrgentes.Items.Count == 0) && (dgridEnProcesoUrgentes.Items.Count == 0) && (dgridEnProcesoNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad para enviar al registro";
                     lblMensaje.Visible = true;
@@ -151,6 +162,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 2)
             {
+                pnProblemaDigitales.Visible = true;
                 pnProblemaSUrgentes.Visible = true;
                 pnProblemaUrgentes.Visible = true;
                 pnProblemaNormales.Visible = true;
@@ -158,6 +170,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Estados = "9";
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridProblemaDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 4, "", "", 100, false);
+                dgridProblemaDigitales.DataBind();
+                if (dgridProblemaDigitales.Items.Count == 0)
+                    pnProblemaDigitales.Visible = false;
+
                 dgridProblemaSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 3, "", "", 100, false);
                 dgridProblemaSUrgentes.DataBind();
                 if (dgridProblemaSUrgentes.Items.Count == 0)
@@ -165,18 +182,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
                 dgridProblemaUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 2, "", "", 100, false);
                 dgridProblemaUrgentes.DataBind();
-
                 if (dgridProblemaUrgentes.Items.Count == 0)
                     pnProblemaUrgentes.Visible = false;
 
                 dgridProblemaNormales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 1, "", "", 100, false);
                 dgridProblemaNormales.DataBind();
-
                 if (dgridProblemaNormales.Items.Count == 0)
                     pnProblemaNormales.Visible = false;
 
 
-                if ((dgridProblemaSUrgentes.Items.Count == 0) && (dgridProblemaUrgentes.Items.Count == 0) && (dgridProblemaNormales.Items.Count == 0))
+                if ((dgridProblemaDigitales.Items.Count == 0) && (dgridProblemaSUrgentes.Items.Count == 0) && (dgridProblemaUrgentes.Items.Count == 0) && (dgridProblemaNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad con problemas.";
                     lblMensaje.Visible = true;
@@ -187,6 +202,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 3)
             {
+                pnTransferidoDigitales.Visible = true;
                 pnTransferidoSUrgentes.Visible = true;
                 pnTransferidoUrgentes.Visible = true;
                 pnTransferidoNormales.Visible = true;
@@ -195,6 +211,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Estados = "10";
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridTransferidoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 4, "", "", 100, false);
+                dgridTransferidoDigitales.DataBind();
+                if (dgridTransferidoDigitales.Items.Count == 0)
+                    pnTransferidoDigitales.Visible = false;
+
                 dgridTransferidoSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 3, "", "", 100, false);
                 dgridTransferidoSUrgentes.DataBind();
                 if (dgridTransferidoSUrgentes.Items.Count == 0)
@@ -202,18 +223,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
                 dgridTransferidoUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 2, "", "", 100, false);
                 dgridTransferidoUrgentes.DataBind();
-
                 if (dgridTransferidoUrgentes.Items.Count == 0)
                     pnTransferidoUrgentes.Visible = false;
 
                 dgridTransferidoNormales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 1, "", "", 100, false);
                 dgridTransferidoNormales.DataBind();
-
                 if (dgridTransferidoNormales.Items.Count == 0)
                     pnTransferidoNormales.Visible = false;
 
 
-                if ((dgridTransferidoSUrgentes.Items.Count == 0) && (dgridTransferidoUrgentes.Items.Count == 0) && (dgridTransferidoNormales.Items.Count == 0))
+                if ((dgridTransferidoDigitales.Items.Count == 0) && (dgridTransferidoSUrgentes.Items.Count == 0) && (dgridTransferidoUrgentes.Items.Count == 0) && (dgridTransferidoNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad Transferidos.";
                     lblMensaje.Visible = true;
@@ -223,6 +242,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 4)
             {
+                pnCondicionalDigitales.Visible = true;
                 pnCondicionalSUrgentes.Visible = true;
                 pnCondicionalUrgentes.Visible = true;
                 pnCondicionalNormales.Visible = true;
@@ -230,6 +250,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Estados = "11";
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridCondicionalDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 4, "", "", 100, false);
+                dgridCondicionalDigitales.DataBind();
+                if (dgridCondicionalDigitales.Items.Count == 0)
+                    pnCondicionalDigitales.Visible = false;
+
                 dgridCondicionalSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, Estados, 3, "", "", 100, false);
                 dgridCondicionalSUrgentes.DataBind();
                 if (dgridCondicionalSUrgentes.Items.Count == 0)
@@ -248,7 +273,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnCondicionalNormales.Visible = false;
 
 
-                if ((dgridCondicionalSUrgentes.Items.Count == 0) && (dgridCondicionalUrgentes.Items.Count == 0) && (dgridCondicionalNormales.Items.Count == 0))
+                if ((dgridCondicionalDigitales.Items.Count == 0) && (dgridCondicionalSUrgentes.Items.Count == 0) && (dgridCondicionalUrgentes.Items.Count == 0) && (dgridCondicionalNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad condicionales.";
                     lblMensaje.Visible = true;
@@ -258,6 +283,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
         }
 
+
+        protected void dgridEnEsperaDigitales_PreRender(object sender, EventArgs e)
+        {
+            string strDescripcion = "";
+            foreach (DataGridItem myItem in dgridEnEsperaDigitales.Items)
+            {
+                ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[2].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[2].Text).ToShortTimeString();
+                if (int.Parse(myItem.Cells[4].Text) == 1)
+                    strDescripcion = "<b>Mat.</b> " + myItem.Cells[5].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 2)
+                    strDescripcion = "<b>Dom.</b> " + myItem.Cells[5].Text + " / <b>F°</b> " + myItem.Cells[6].Text + " / <b>T°</b> " + myItem.Cells[7].Text + " / <b>A°</b> " + myItem.Cells[8].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 3)
+                    strDescripcion = "<b>LE</b> " + myItem.Cells[5].Text + " / <b>F°</b> " + myItem.Cells[6].Text + " / <b>T°</b> " + myItem.Cells[7].Text + " / <b>A°</b> " + myItem.Cells[8].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 4)
+                    strDescripcion = "<b>Planilla</b> " + myItem.Cells[5].Text;
+
+                ((Label)myItem.FindControl("lblDescripcion")).Text = strDescripcion;
+
+            }
+        }
 
         protected void dgridEnEsperaSUrgentes_PreRender(object sender, EventArgs e)
         {
@@ -279,6 +324,37 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             }
         }
 
+        protected void dgridEnProcesoDigitales_PreRender(object sender, EventArgs e)
+        {
+            string strDescripcion = "";
+            foreach (DataGridItem myItem in dgridEnProcesoDigitales.Items)
+            {
+                ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[2].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[2].Text).ToShortTimeString();
+                if (int.Parse(myItem.Cells[4].Text) == 1)
+                    strDescripcion = "<b>Mat.</b> " + myItem.Cells[5].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 2)
+                    strDescripcion = "<b>Dom.</b> " + myItem.Cells[5].Text + " / <b>F°</b> " + myItem.Cells[6].Text + " / <b>T°</b> " + myItem.Cells[7].Text + " / <b>A°</b> " + myItem.Cells[8].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 3)
+                    strDescripcion = "<b>LE</b> " + myItem.Cells[5].Text + " / <b>F°</b> " + myItem.Cells[6].Text + " / <b>T°</b> " + myItem.Cells[7].Text + " / <b>A°</b> " + myItem.Cells[8].Text;
+                if (int.Parse(myItem.Cells[4].Text) == 4)
+                    strDescripcion = "<b>Planilla</b> " + myItem.Cells[5].Text;
+
+                ((Label)myItem.FindControl("lblDescripcion")).Text = strDescripcion;
+
+                string strScript1 = "cambiarEstado(1, " + myItem.Cells[0].Text + "); return false;";
+                ((ImageButton)myItem.FindControl("Problema")).OnClientClick = strScript1;
+
+                //string strScript2 = "cambiarEstado(2, " + myItem.Cells[0].Text + "); return false;";
+                //((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+                string strScript2 = "if (confirm('¿Desea transferir el informe?')) {TransferirInforme(" + myItem.Cells[0].Text + "); return false;} else return false;";
+                ((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+
+
+                string strScript3 = "cambiarEstado(3, " + myItem.Cells[0].Text + "); return false;";
+                ((ImageButton)myItem.FindControl("Condicional")).OnClientClick = strScript3;
+
+            }
+        }
 
         protected void dgridEnProcesoSUrgentes_PreRender(object sender, EventArgs e)
         {
@@ -312,6 +388,31 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             }
         }
 
+        protected void dgridProblemaDigitales_PreRender(object sender, EventArgs e)
+        {
+            string strDescripcion = "";
+            foreach (DataGridItem myItem in dgridProblemaDigitales.Items)
+            {
+                ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                if (int.Parse(myItem.Cells[3].Text) == 1)
+                    strDescripcion = "<b>Mat.</b> " + myItem.Cells[4].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 2)
+                    strDescripcion = "<b>Dom.</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 3)
+                    strDescripcion = "<b>LE</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 4)
+                    strDescripcion = "<b>Planilla</b> " + myItem.Cells[4].Text;
+
+                ((Label)myItem.FindControl("lblDescripcion")).Text = strDescripcion;
+
+                //string strScript2 = "cambiarEstado(2, " + myItem.Cells[0].Text + "); return false;";
+                //((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+                string strScript2 = "if (confirm('¿Desea transferir el informe?')) {TransferirInforme(" + myItem.Cells[0].Text + "); return false;} else return false;";
+                ((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+
+            }
+        }
+
         protected void dgridProblemaSUrgentes_PreRender(object sender, EventArgs e)
         {
             string strDescripcion = "";
@@ -338,6 +439,30 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
         }
 
 
+        protected void dgridTransferidoDigitales_PreRender(object sender, EventArgs e)
+        {
+            string strDescripcion = "";
+            foreach (DataGridItem myItem in dgridTransferidoDigitales.Items)
+            {
+                ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                if (int.Parse(myItem.Cells[3].Text) == 1)
+                    strDescripcion = "<b>Mat.</b> " + myItem.Cells[4].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 2)
+                    strDescripcion = "<b>Dom.</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 3)
+                    strDescripcion = "<b>LE</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 4)
+                    strDescripcion = "<b>Planilla</b> " + myItem.Cells[4].Text;
+
+                ((Label)myItem.FindControl("lblDescripcion")).Text = strDescripcion;
+
+                ((ImageButton)myItem.FindControl("Cancelar")).Attributes.Add("onclick", @"javascript: return confirm('¿Desea cancelar el Informe?');");
+                //((ImageButton)myItem.FindControl("Agregar")).Attributes.Add("onclick", @"javascript: TransferirInforme(" + myItem.Cells[0].Text + "); return false;");
+                string strScript2 = "if (confirm('¿Desea transferir el informe?')) {TransferirInforme(" + myItem.Cells[0].Text + "); return false;} else return false;";
+                ((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+            }
+        }
+
         protected void dgridTransferidoSUrgentes_PreRender(object sender, EventArgs e)
         {
             string strDescripcion = "";
@@ -359,6 +484,37 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 //((ImageButton)myItem.FindControl("Agregar")).Attributes.Add("onclick", @"javascript: TransferirInforme(" + myItem.Cells[0].Text + "); return false;");
                 string strScript2 = "if (confirm('¿Desea transferir el informe?')) {TransferirInforme(" + myItem.Cells[0].Text + "); return false;} else return false;";
                 ((ImageButton)myItem.FindControl("Transferido")).OnClientClick = strScript2;
+            }
+        }
+
+        protected void dgridCondicionalDigitales_PreRender(object sender, EventArgs e)
+        {
+            string strDescripcion = "";
+            string strDuracion = "";
+            string estado = "";
+
+            foreach (DataGridItem myItem in dgridCondicionalDigitales.Items)
+            {
+                ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                if (int.Parse(myItem.Cells[3].Text) == 1)
+                    strDescripcion = "<b>Mat.</b> " + myItem.Cells[4].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 2)
+                    strDescripcion = "<b>Dom.</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 3)
+                    strDescripcion = "<b>LE</b> " + myItem.Cells[4].Text + " / <b>F°</b> " + myItem.Cells[5].Text + " / <b>T°</b> " + myItem.Cells[6].Text + " / <b>A°</b> " + myItem.Cells[7].Text;
+                if (int.Parse(myItem.Cells[3].Text) == 4)
+                    strDescripcion = "<b>Planilla</b> " + myItem.Cells[4].Text;
+
+                ((Label)myItem.FindControl("lblDescripcion")).Text = strDescripcion;
+
+                if (myItem.Cells[13].Text != null && myItem.Cells[13].Text != "" && myItem.Cells[13].Text != "&nbsp;")
+                    strDuracion = diferenciaFecha(myItem.Cells[13].Text.ToString());
+                ((Label)myItem.FindControl("lblDuracion")).Text = strDuracion;
+
+                estado = myItem.Cells[14].Text.ToString();
+                ((DropDownList)myItem.FindControl("ddEstadoCondicional")).SelectedValue = estado;
+
+                ((ImageButton)myItem.FindControl("Cancelar")).Attributes.Add("onclick", @"javascript: return confirm('¿Desea cancelar el Informe?');");
             }
         }
 
@@ -682,6 +838,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            CheckBox chkSelDigital;
             CheckBox chkSelSUrgente;
             CheckBox chkSelUrgente;
             CheckBox chkSelNormal;
@@ -690,8 +847,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             EncabezadoApp Encabezado = new EncabezadoApp();
             UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
 
-            if (dgridEnEsperaSUrgentes.Items.Count > 0 || dgridEnEsperaUrgentes.Items.Count > 0 || dgridEnEsperaNormales.Items.Count > 0)
+            if (dgridEnEsperaDigitales.Items.Count > 0 || dgridEnEsperaSUrgentes.Items.Count > 0 || dgridEnEsperaUrgentes.Items.Count > 0 || dgridEnEsperaNormales.Items.Count > 0)
                 intGrupo = Encabezado.crearGrupoCambioEstado(Usuario.IdUsuario, 1);
+
+            foreach (DataGridItem dgDigi in dgridEnEsperaDigitales.Items)
+            {
+                chkSelDigital = (CheckBox)dgDigi.FindControl("chkDigital");
+                if (chkSelDigital.Checked)
+                {
+                    intIdInforme = int.Parse(dgDigi.Cells[0].Text);
+                    Encabezado.cargarEncabezado(intIdInforme);
+                    Encabezado.Estado = 2;
+                    Encabezado.CambiarEstado(intIdInforme);
+                    Encabezado.Leido = 1;
+                    Encabezado.CambiarLeido(intIdInforme);
+                    Encabezado.crearCambiosEstadoInformes(intGrupo, intIdInforme, 2);
+                }
+            }
 
             foreach (DataGridItem dgSUrg in dgridEnEsperaSUrgentes.Items)
 			{
@@ -745,6 +917,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
         protected void btnAceptar2_Click(object sender, EventArgs e)
         {
+            CheckBox chkSelDigital;
             CheckBox chkSelSUrgente;
             CheckBox chkSelUrgente;
             CheckBox chkSelNormal;
@@ -752,12 +925,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             EncabezadoApp Encabezado = new EncabezadoApp();
 
 
-            foreach (DataGridItem dgSUrg in dgridEnProcesoSUrgentes.Items)
+            foreach (DataGridItem dgDigi in dgridEnProcesoDigitales.Items)
             {
-                chkSelSUrgente = (CheckBox)dgSUrg.FindControl("chkSUrgente");
-                if (chkSelSUrgente.Checked)
+                chkSelDigital = (CheckBox)dgDigi.FindControl("chkDigital");
+                if (chkSelDigital.Checked)
                 {
-                    intIdInforme = int.Parse(dgSUrg.Cells[0].Text);
+                    intIdInforme = int.Parse(dgDigi.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
                     Encabezado.Estado = 6;
                     Encabezado.CambiarEstado(intIdInforme);
@@ -816,6 +989,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             ListaBandeja(Int32.Parse(e.Item.Value));
         }
 
+        protected void dgridProblemaDigitales_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.Item.Cells[0].Text != "")
+            {
+                switch (((ImageButton)e.CommandSource).CommandName)
+                {
+                    case "Editar":
+                        Response.Redirect("../BandejaEntrada/abmInforme.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=1");
+                        break;
+
+                }
+            }
+        }
+
         protected void dgridProblemaSUrgentes_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             if (e.Item.Cells[0].Text != "")
@@ -826,6 +1013,28 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         Response.Redirect("../BandejaEntrada/abmInforme.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=1");
                         break;
 
+                }
+            }
+        }
+
+        protected void dgridTransferidoDigitales_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.Item.Cells[0].Text != "")
+            {
+                switch (((ImageButton)e.CommandSource).CommandName)
+                {
+                    case "Cancelar":
+                        CancelarEncabezado(int.Parse(e.Item.Cells[0].Text));
+                        Response.Redirect("/BandejaEntrada/Principal.aspx?IdTipo=1");
+                        break;
+                    /*
+                case "Agregar":
+                    Response.Redirect("/BandejaEntrada/altaInforme.aspx?idTransferido=" + int.Parse(e.Item.Cells[0].Text));
+                    break;
+                     */
+                    case "Detalle":
+                        ListarDetallesTransferidos(int.Parse(e.Item.Cells[0].Text));
+                        break;
                 }
             }
         }
@@ -847,6 +1056,25 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                          */
                     case "Detalle":
                         ListarDetallesTransferidos(int.Parse(e.Item.Cells[0].Text));
+                        break;
+                }
+            }
+        }
+
+
+        protected void dgridCondicionalDigitales_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.Item.Cells[0].Text != "")
+            {
+                switch (((ImageButton)e.CommandSource).CommandName)
+                {
+                    case "Editar":
+                        Response.Redirect("../BandejaEntrada/abmInforme.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=1");
+                        break;
+
+                    case "Cancelar":
+                        CancelarEncabezado(int.Parse(e.Item.Cells[0].Text));
+                        Response.Redirect("/BandejaEntrada/Principal.aspx?IdTipo=1");
                         break;
                 }
             }
@@ -993,6 +1221,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 0)
             {
+                pnEnEsperaDigitales.Visible = true;
                 pnEnEsperaSUrgentes.Visible = true;
                 pnEnEsperaUrgentes.Visible = true;
                 pnEnEsperaNormales.Visible = true;
@@ -1000,6 +1229,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 0;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridEnEsperaDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 4, "", "", 100, false);
+                dgridEnEsperaDigitales.DataBind();
+                if (dgridEnEsperaDigitales.Items.Count == 0)
+                    pnEnEsperaDigitales.Visible = false;
+
                 dgridEnEsperaSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
                 dgridEnEsperaSUrgentes.DataBind();
                 if (dgridEnEsperaSUrgentes.Items.Count == 0)
@@ -1018,7 +1252,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnEnEsperaNormales.Visible = false;
 
 
-                if ((dgridEnEsperaSUrgentes.Items.Count == 0) && (dgridEnEsperaUrgentes.Items.Count == 0) && (dgridEnEsperaNormales.Items.Count == 0))
+                if ((dgridEnEsperaDigitales.Items.Count == 0) && (dgridEnEsperaSUrgentes.Items.Count == 0) && (dgridEnEsperaUrgentes.Items.Count == 0) && (dgridEnEsperaNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad para generar el formulario taza para la búsqueda <b> " + pFiltro + "</b>.";
                     lblMensaje.Visible = true;
@@ -1028,6 +1262,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 1)
             {
+                pnEnProcesoDigitales.Visible = true;
                 pnEnProcesoSUrgentes.Visible = true;
                 pnEnProcesoUrgentes.Visible = true;
                 pnEnProcesoNormales.Visible = true;
@@ -1036,6 +1271,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 1;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridEnProcesoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
+                dgridEnProcesoDigitales.DataBind();
+                if (dgridEnProcesoDigitales.Items.Count == 0)
+                    pnEnProcesoDigitales.Visible = false;
+
                 dgridEnProcesoSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
                 dgridEnProcesoSUrgentes.DataBind();
                 if (dgridEnProcesoSUrgentes.Items.Count == 0)
@@ -1065,6 +1305,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 2)
             {
+                pnProblemaDigitales.Visible = true;
                 pnProblemaSUrgentes.Visible = true;
                 pnProblemaUrgentes.Visible = true;
                 pnProblemaNormales.Visible = true;
@@ -1073,6 +1314,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 2;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridProblemaDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 4, "", "", 100, false);
+                dgridProblemaDigitales.DataBind();
+                if (dgridProblemaDigitales.Items.Count == 0)
+                    pnProblemaDigitales.Visible = false;
+
                 dgridProblemaSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
                 dgridProblemaSUrgentes.DataBind();
                 if (dgridProblemaSUrgentes.Items.Count == 0)
@@ -1091,7 +1337,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnProblemaNormales.Visible = false;
 
 
-                if ((dgridProblemaSUrgentes.Items.Count == 0) && (dgridProblemaUrgentes.Items.Count == 0) && (dgridProblemaNormales.Items.Count == 0))
+                if ((dgridProblemaDigitales.Items.Count == 0) && (dgridProblemaSUrgentes.Items.Count == 0) && (dgridProblemaUrgentes.Items.Count == 0) && (dgridProblemaNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad con problemas para la búsqueda <b> " + pFiltro + "</b>.";
                     lblMensaje.Visible = true;
@@ -1102,6 +1348,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 3)
             {
+                pnTransferidoDigitales.Visible = true;
                 pnTransferidoSUrgentes.Visible = true;
                 pnTransferidoUrgentes.Visible = true;
                 pnTransferidoNormales.Visible = true;
@@ -1110,6 +1357,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 3;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridTransferidoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 4, "", "", 100, false);
+                dgridTransferidoDigitales.DataBind();
+                if (dgridTransferidoDigitales.Items.Count == 0)
+                    pnTransferidoDigitales.Visible = false;
+
                 dgridTransferidoSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
                 dgridTransferidoSUrgentes.DataBind();
                 if (dgridTransferidoSUrgentes.Items.Count == 0)
@@ -1128,7 +1380,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnTransferidoNormales.Visible = false;
 
 
-                if ((dgridTransferidoSUrgentes.Items.Count == 0) && (dgridTransferidoUrgentes.Items.Count == 0) && (dgridTransferidoNormales.Items.Count == 0))
+                if ((dgridTransferidoDigitales.Items.Count == 0) && (dgridTransferidoSUrgentes.Items.Count == 0) && (dgridTransferidoUrgentes.Items.Count == 0) && (dgridTransferidoNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad transferidos para la búsqueda <b> " + pFiltro + "</b>.";
                     lblMensaje.Visible = true;
@@ -1140,6 +1392,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             if (idTab == 4)
             {
+                pnCondicionalDigitales.Visible = true;
                 pnCondicionalSUrgentes.Visible = true;
                 pnCondicionalUrgentes.Visible = true;
                 pnCondicionalNormales.Visible = true;
@@ -1148,6 +1401,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 4;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
+                dgridCondicionalDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 4, "", "", 100, false);
+                dgridCondicionalDigitales.DataBind();
+                if (dgridCondicionalDigitales.Items.Count == 0)
+                    pnCondicionalDigitales.Visible = false;
+
                 dgridCondicionalSUrgentes.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
                 dgridCondicionalSUrgentes.DataBind();
                 if (dgridCondicionalSUrgentes.Items.Count == 0)
@@ -1166,7 +1424,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnCondicionalNormales.Visible = false;
 
 
-                if ((dgridCondicionalSUrgentes.Items.Count == 0) && (dgridCondicionalUrgentes.Items.Count == 0) && (dgridCondicionalNormales.Items.Count == 0))
+                if ((dgridCondicionalDigitales.Items.Count == 0) && (dgridCondicionalSUrgentes.Items.Count == 0) && (dgridCondicionalUrgentes.Items.Count == 0) && (dgridCondicionalNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad condicionales para la búsqueda <b> " + pFiltro + "</b>.";
                     lblMensaje.Visible = true;
@@ -1254,6 +1512,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             string estadoSel;
             bool modificado = false;
 
+            foreach (DataGridItem myItem in dgridCondicionalDigitales.Items)
+            {
+                estado = "";
+                estadoSel = "";
+
+                estado = myItem.Cells[14].Text.ToString();
+                estadoSel = ((DropDownList)myItem.FindControl("ddEstadoCondicional")).SelectedValue;
+
+                if (estado != estadoSel)
+                {
+                    cambiarEstadoCondicional(int.Parse(myItem.Cells[0].Text.ToString()), estadoSel);
+                    modificado = true;
+                }
+            }
+
             foreach (DataGridItem myItem in dgridCondicionalSUrgentes.Items)
             {
                 estado = "";
@@ -1313,6 +1586,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             oEncabezado.cargarEncabezado(idEncabezado);
             lblTitTransferidoDetalle.Text = oEncabezado.TraerDescripcionInforme();
 
+            pnTransferidoDigitales.Visible = false;
             pnTransferidoSUrgentes.Visible = false;
             pnTransferidoUrgentes.Visible = false;
             pnTransferidoNormales.Visible = false;
