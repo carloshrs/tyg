@@ -174,7 +174,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			else Encabezado.ConFoto = 0;
             int idCaracter = int.Parse(cmbCaracter.SelectedValue);
             if (idCaracter == 0 && int.Parse(cmbTipoInforme.SelectedValue) != 1) idCaracter = 1;
-            if (idCaracter == 0 && int.Parse(cmbTipoInforme.SelectedValue) == 1) idCaracter = 2;
+            if (idCaracter == 0 && int.Parse(cmbTipoInforme.SelectedValue) == 1) idCaracter = 4;
             Encabezado.Caracter = idCaracter;
 			Encabezado.IdTipoPersona= int.Parse(cmbTipoPersona.SelectedValue);
             Encabezado.Nombre = Nombre.Text.ToUpper();
@@ -727,7 +727,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
 			foreach (DataRow myRow in myTb.Rows)
 			{
-                if (!((IdTipo == 13 || IdTipo == 16) && int.Parse(myRow[0].ToString()) == 3)) // SE QUITA SUPER URGENTE PARA INFORMES DE BUSQUEDA DE PROPIEDAD (13) E INHIBICION (16)
+                if (!((IdTipo == 13 || IdTipo == 16) && (int.Parse(myRow[0].ToString()) == 3 || int.Parse(myRow[0].ToString()) == 4)) && !((IdTipo == 1) && int.Parse(myRow[0].ToString()) == 4)) // SE QUITA SUPER URGENTE PARA INFORMES DE BUSQUEDA DE PROPIEDAD (13) E INHIBICION (16)
                 {
                     myItem = new ListItem(myRow[1].ToString(), myRow[0].ToString());
                     cmbCaracter.Items.Add(myItem);

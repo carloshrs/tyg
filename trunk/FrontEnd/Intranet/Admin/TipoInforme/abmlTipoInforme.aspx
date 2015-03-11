@@ -49,10 +49,41 @@
 										</Columns>
 										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 											BackColor="#999999"></PagerStyle>
-									</asp:datagrid>&nbsp;</td>
+									</asp:datagrid>
+                                    
+                                    <asp:datagrid id="dgTipoPropiedad" runat="server" Width="100%" AutoGenerateColumns="False" GridLines="Vertical"
+										BackColor="White" BorderWidth="1px" BorderStyle="Solid" BorderColor="#3657A6" CellPadding="3"
+										PageSize="20" Font-Size="8pt" Visible="false">
+										<FooterStyle ForeColor="Black" BackColor="#CCCCCC"></FooterStyle>
+										<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C"></SelectedItemStyle>
+										<AlternatingItemStyle BackColor="#FBFBFB"></AlternatingItemStyle>
+										<ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3"></ItemStyle>
+										<HeaderStyle Font-Names="Arial" Font-Bold="True" ForeColor="#3756A6" BackColor="#DFE7F4"></HeaderStyle>
+										<Columns>
+											<asp:BoundColumn Visible="False" DataField="idTipoPropiedad" HeaderText="id">
+												<HeaderStyle HorizontalAlign="Center" Width="15px"></HeaderStyle>
+												<ItemStyle HorizontalAlign="Center"></ItemStyle>
+											</asp:BoundColumn>
+											<asp:BoundColumn DataField="Descripcion" HeaderText="Descripci&#243;n">
+												<ItemStyle HorizontalAlign="Left"></ItemStyle>
+											</asp:BoundColumn>
+											<asp:TemplateColumn>
+												<HeaderStyle Width="20px"></HeaderStyle>
+												<ItemStyle HorizontalAlign="Center"></ItemStyle>
+												<ItemTemplate>
+													<asp:ImageButton id="Editar" runat="server" Width="16px" CausesValidation="False" ToolTip="Precios"
+														CommandName="Precios" ImageUrl="/Img/Precios.gif"></asp:ImageButton>
+												</ItemTemplate>
+											</asp:TemplateColumn>
+										</Columns>
+										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
+											BackColor="#999999"></PagerStyle>
+									</asp:datagrid>
+                                    &nbsp;</td>
 							</tr>
 							<tr>
 								<td align="right">
+                                <asp:Button id="btnVolver" runat="server" Text="Volver" onclick="btnVolver_Click" Visible="false"></asp:Button>
 									<asp:Button id="btnCerrar" runat="server" Text="Cerrar" onclick="btnCerrar_Click"></asp:Button>
 								</td>
 							</tr>
