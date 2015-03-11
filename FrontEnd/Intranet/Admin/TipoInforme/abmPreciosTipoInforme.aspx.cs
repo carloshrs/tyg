@@ -17,30 +17,49 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 	public partial class abmPreciosTipoInforme : Page
 	{
 		private int intIdTipoInforme;
+        private int idTipoPropiedad;
+        private string txtTipoPropiedad;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!Page.IsPostBack)
-			{
-				try
-				{
-					TipoInformeDal tipoInforme = new TipoInformeDal();
-					intIdTipoInforme = int.Parse(Request.QueryString["IdTipo"]);
-					tipoInforme.Cargar(intIdTipoInforme);
-					lblTipoInforme.Text = tipoInforme.Descripcion;
-					ViewState["IdTipoInforme"] = intIdTipoInforme.ToString();
-					ListaCaracteres();
+            if (!Page.IsPostBack)
+            {
+                try
+                {
+                    TipoInformeDal tipoInforme = new TipoInformeDal();
+                    if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
+                    {
+                        intIdTipoInforme = 1;
+                        idTipoPropiedad = int.Parse(Request.QueryString["idTipo"]);
+                        hidTipoPropiedad.Value = Request.QueryString["idTipo"];
+                        TipoPropiedadDal tipoPropiedad = new TipoPropiedadDal();
+                        tipoPropiedad.Cargar(idTipoPropiedad);
+                        txtTipoPropiedad = tipoPropiedad.Descripcion;
+                    }
+                    else
+                        intIdTipoInforme = int.Parse(Request.QueryString["IdTipo"]);
+                    tipoInforme.Cargar(intIdTipoInforme);
+                    lblTipoInforme.Text = tipoInforme.Descripcion;
+                    if (txtTipoPropiedad != "")
+                        lblTipoInforme.Text = lblTipoInforme.Text + " - " + txtTipoPropiedad;
+                    ViewState["IdTipoInforme"] = intIdTipoInforme.ToString();
+                    ViewState["IdTipoPropiedad"] = idTipoPropiedad.ToString();
+                    ListaCaracteres();
                     if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
-						ddlTipoPrecio.Visible = false;
-				}
-				catch
-				{
-					Response.Redirect("/Admin/TipoInforme/abmlTipoInforme.aspx");
-				}
-				ActualizarGrilla();
-			}
-			else
-				intIdTipoInforme = int.Parse(ViewState["IdTipoInforme"].ToString());
+                        ddlTipoPrecio.Visible = false;
+                }
+                catch
+                {
+                    Response.Redirect("/Admin/TipoInforme/abmlTipoInforme.aspx");
+                }
+                ActualizarGrilla();
+            }
+            else
+            {
+                intIdTipoInforme = int.Parse(ViewState["IdTipoInforme"].ToString());
+                if (ViewState["IdTipoPropiedad"] != null && ViewState["IdTipoPropiedad"].ToString() != "")
+                    idTipoPropiedad = int.Parse(ViewState["IdTipoPropiedad"].ToString());
+            }
 
 		}
 
@@ -69,7 +88,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 
 		protected void dgTipoInforme_PreRender(object sender, EventArgs e)
 		{
-			string [] strTiposPrecio = {"Normal", "Urgente", "Super Urgente"};
+			string [] strTiposPrecio = {"Normal", "Urgente", "Super Urgente", "Digital"};
 			
 			foreach (DataGridItem myItem in dgTipoInforme.Items)
 			{
@@ -112,10 +131,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 					{
 						float flPrecio = float.Parse(txtPrecio.Text, NumberStyles.Currency);
 						DateTime dtFecha = DateTime.ParseExact(hidFecha.Value, "dd-MMM-yyyy HH:mm:ss", null);
-                        if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
-							GestorPrecios.ModificarPrecio(dtFecha, 1, intIdTipoInforme, flPrecio);
-						else
-							GestorPrecios.ModificarPrecio(dtFecha, byte.Parse(ddlTipoPrecio.SelectedValue), intIdTipoInforme, flPrecio);
+                        if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
+                        {
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                                GestorPrecios.ModificarPrecioPropiedad(dtFecha, 1, idTipoPropiedad, flPrecio);
+                            else
+                                GestorPrecios.ModificarPrecioPropiedad(dtFecha, byte.Parse(ddlTipoPrecio.SelectedValue), idTipoPropiedad, flPrecio);
+                        }
+                        else
+                        {
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                                GestorPrecios.ModificarPrecio(dtFecha, 1, intIdTipoInforme, flPrecio);
+                            else
+                                GestorPrecios.ModificarPrecio(dtFecha, byte.Parse(ddlTipoPrecio.SelectedValue), intIdTipoInforme, flPrecio);
+                        }
 					}
 					catch
 					{ 
@@ -128,10 +157,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 					try
 					{
 						float flPrecio = float.Parse(txtPrecio.Text);
-                        if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
-							GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, 1);
-						else
-							GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, byte.Parse(ddlTipoPrecio.SelectedValue));
+
+                        if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
+                        {
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                                GestorPrecios.AgregarPrecioPropiedad(flPrecio, idTipoPropiedad, 1);
+                            else
+                                GestorPrecios.AgregarPrecioPropiedad(flPrecio, idTipoPropiedad, byte.Parse(ddlTipoPrecio.SelectedValue));
+                        }
+                        else
+                        {
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                                GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, 1);
+                            else
+                                GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, byte.Parse(ddlTipoPrecio.SelectedValue));
+                        }
 					}
 					catch
 					{
@@ -157,8 +197,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 
 		private void ActualizarGrilla()
 		{
-			dgTipoInforme.DataSource = GestorPrecios.TraerPrecios(intIdTipoInforme);
-			dgTipoInforme.DataBind();
+            if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
+            {
+                dgTipoInforme.DataSource = GestorPrecios.TraerPreciosPropiedad(idTipoPropiedad);
+                dgTipoInforme.DataBind();
+            }
+            else
+            {
+                dgTipoInforme.DataSource = GestorPrecios.TraerPrecios(intIdTipoInforme);
+                dgTipoInforme.DataBind();
+            }
 		}
 
 		protected void btnCerrar_Click(object sender, System.EventArgs e)

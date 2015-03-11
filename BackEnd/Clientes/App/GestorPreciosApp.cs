@@ -40,7 +40,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             " AND b.idCliente = " + lIdCliente +
             " AND b.estado=3 " +
             //"AND p.fecDesde < b.FechaFin " +
-            "AND p.actual = 1 " +
+            //"AND p.actual = 1 " +
             "AND b.idEncabezado NOT IN ( " +
             "SELECT bb.idEncabezado FROM remitoinforme ri " +
             "INNER JOIN bandejaentrada bb ON ri.idEncabezado=bb.idEncabezado " +
@@ -60,9 +60,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
         {
 
             string strSQL = " WHERE b.idCliente = " + lIdCliente +
-            " AND b.estado=3 " +
+            " AND b.estado=3 ";
             //" AND p.fecDesde < b.fechaFin " +
-            " AND p.actual = 1 ";
+            //" AND p.actual = 1 ";
 
             if (lTipoDocumentacion == 1)
             {
@@ -116,7 +116,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             "WHERE bb.idCliente = " + lIdCliente + " ) " +
             "ORDER BY b.idTipoInforme ASC ";
 
-            DataTable Datos = GestorPrecios.RemitoParteEntregaListarInformes(idTipoDocumento, 0, strSQL);
+            DataTable Datos = GestorPrecios.RemitoParteEntregaListarInformes(idTipoDocumento, lTipoInforme, 0, strSQL);
             return Datos;
         }
 
@@ -162,7 +162,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
                 }
             }
 
-            DataTable Datos = GestorPrecios.RemitoParteEntregaListarInformes(idTipoDocumento, lnroRemito, strSQL);
+            DataTable Datos = GestorPrecios.RemitoParteEntregaListarInformes(idTipoDocumento, lTipoInforme, lnroRemito, strSQL);
             return Datos;
         }
 

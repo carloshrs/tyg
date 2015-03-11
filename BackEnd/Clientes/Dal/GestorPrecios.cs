@@ -68,6 +68,28 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			return dtSalida;
 		}
 
+        public static DataTable TraerPreciosPropiedad(int lIdTipoPropiedad)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select FecDesde, TipoPrecio, Precio, Actual ");
+            strQuery.Append(" From preciosPropiedad ");
+            strQuery.Append(" Where IdTipoPropiedad = " + lIdTipoPropiedad.ToString());
+            strQuery.Append(" Order by FecDesde Desc");
+
+            try
+            {
+
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "PreciosPropiedad").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+
+            return dtSalida;
+        }
+
 
         public static DataTable TraerPreciosAdicionales()
         {
@@ -118,6 +140,34 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
 		}
 
+        public static float TraerPrecioActualPropiedad(int lIdTipoPropiedad, byte lTipoPrecio)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            IDataReader drPrecio = null;
+            float flSalida = 0;
+            strQuery.Append("Select Precio ");
+            strQuery.Append(" From PreciosPropiedad ");
+            strQuery.Append(" Where IdTipoPropiedad = " + lIdTipoPropiedad.ToString());
+            strQuery.Append(" And TipoPrecio = " + lTipoPrecio.ToString());
+            strQuery.Append(" And Actual = 1");
+
+            try
+            {
+                drPrecio = StaticDal.EjecutarDataReader(strQuery.ToString());
+                if (drPrecio.Read())
+                {
+                    flSalida = drPrecio.GetFloat(0);
+                }
+            }
+            catch
+            {
+                flSalida = 0;
+            }
+
+            return flSalida;
+
+        }
+
 		public static void AgregarPrecio(float lPrecio, int lIdTipoInforme, byte lTipoPrecio)
 		{
 			try
@@ -144,6 +194,33 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			}
 
 		}
+
+        public static void AgregarPrecioPropiedad(float lPrecio, int lIdTipoPropiedad, byte lTipoPrecio)
+        {
+            try
+            {
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery.Append("Update PreciosPropiedad Set Actual = 0 Where ");
+                strQuery.Append(" IdTipoPropiedad = " + StaticDal.Traduce(lIdTipoPropiedad));
+                strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
+                StaticDal.EjecutarComando(strQuery.ToString());
+
+                strQuery = new StringBuilder(512);
+                strQuery.Append("Insert Into PreciosPropiedad (IdTipoPropiedad, FecDesde, TipoPrecio, Precio) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(lIdTipoPropiedad));
+                strQuery.Append(", getdate() ");
+                strQuery.Append(", " + StaticDal.Traduce(lTipoPrecio));
+                strQuery.Append(", " + StaticDal.Traduce(lPrecio) + ")");
+
+
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
 
 
         public static void AgregarPrecioAdicional(float lPrecio, int lTipoAdicional)
@@ -191,6 +268,26 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
 		}
 
+        public static void ModificarPrecioPropiedad(DateTime lFecha, byte lTipoPrecio, int lIdTipoPropiedad, float lPrecio)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            strQuery.Append("Update PreciosPropiedad ");
+            strQuery.Append(" Set Precio = " + StaticDal.Traduce(lPrecio));
+            strQuery.Append(" Where IdTipoPropiedad = " + StaticDal.Traduce(lIdTipoPropiedad));
+            strQuery.Append(" And FecDesde = " + StaticDal.Traduce(lFecha));
+            strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
+
+            try
+            {
+
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
 
         public static void ModificarPrecioAdicional(int lidPrecioAdicional, int lTipoAdicional, float lPrecio)
         {
@@ -375,7 +472,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             strQuery.Append("Into #Temp ");
             strQuery.Append("FROM bandejaentrada b ");
             strQuery.Append("INNER JOIN tiposinformes ti ON b.idTipoInforme=ti.idTipoInforme ");
-            strQuery.Append("INNER JOIN precios p ON ti.idTipoInforme=p.idTipoInforme AND p.tipoprecio=b.caracter ");
+            strQuery.Append("LEFT OUTER JOIN precios p ON ti.idTipoInforme=p.idTipoInforme AND p.tipoprecio=b.caracter AND p.actual = 1 ");
             //strQuery.Append("INNER JOIN caracter c ON b.caracter = c.idCaracter ");
             strQuery.Append(strSQL);
             //strQuery.Append("GO ");
@@ -414,7 +511,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
 
 
-        public static DataTable RemitoParteEntregaListarInformes(int idTipoDocumento, int nroRemito, string strSQL)
+        public static DataTable RemitoParteEntregaListarInformes(int idTipoDocumento, int TipoInforme, int nroRemito, string strSQL)
         {
             
 
@@ -426,7 +523,13 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("SELECT b.idEncabezado, b.fechaCarga, b.descripcioninf, p.precio ");
                 strQuery.Append("FROM bandejaentrada b ");
                 strQuery.Append("INNER JOIN tiposinformes ti on b.idTipoInforme=ti.idTipoInforme ");
-                strQuery.Append("INNER JOIN precios p on ti.idTipoInforme=p.idTipoInforme AND p.tipoprecio=b.caracter ");
+                if (TipoInforme == 1) //Informes de propiedad
+                {
+                    strQuery.Append("INNER JOIN tipoPropiedad tp on b.PROPTipo=tp.idTipoPropiedad ");
+                    strQuery.Append("INNER JOIN preciosPropiedad p on ti.idTipoInforme=1 AND p.idTipoPropiedad=b.PROPTipo AND p.tipoprecio=b.caracter ");
+                }
+                else
+                    strQuery.Append("INNER JOIN precios p on ti.idTipoInforme=p.idTipoInforme AND p.tipoprecio=b.caracter ");
             }
             else
             {

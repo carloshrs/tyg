@@ -37,7 +37,7 @@
 													<asp:ListItem Value="1">Super Urgente</asp:ListItem>
 												</asp:DropDownList>&nbsp;
 												<asp:button id="btnAceptar" runat="server" Width="80px" Text="Agregar" onclick="btnAceptar_Click"></asp:button>&nbsp;
-												<asp:button id="btnCancelar" runat="server" Width="80px" Text="Cancelar" CausesValidation="False" onclick="btnCancelar_Click"></asp:button><INPUT id="hidFecha" type="hidden" size="1" name="hidFecha" runat="server">
+												<asp:button id="btnCancelar" runat="server" Width="80px" Text="Cancelar" CausesValidation="False" onclick="btnCancelar_Click"></asp:button><asp:HiddenField ID="hidTipoPropiedad" runat="server" /><asp:HiddenField ID="hidFecha" runat="server" />
 												<BR>
 											</TD>
 										</TR>

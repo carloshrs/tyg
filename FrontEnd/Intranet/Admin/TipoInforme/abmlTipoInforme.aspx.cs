@@ -17,9 +17,25 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Extranet.TipoInforme
 		{
 			if (!Page.IsPostBack)
 			{
-				TipoInformeApp objTipoInforme = new TipoInformeApp();
+
+                btnVolver.Visible = false;
+                dgTipoPropiedad.Visible = false;
+                dgTipoInforme.Visible = true;
+                TipoInformeApp objTipoInforme = new TipoInformeApp();
 				dgTipoInforme.DataSource = objTipoInforme.TraerDatos();
 				dgTipoInforme.DataBind();
+
+                if (Request.QueryString["idTipo"] != null)
+                {
+                    btnVolver.Visible = true;
+                    dgTipoPropiedad.Visible = true;
+                    dgTipoInforme.Visible = false;
+
+                    TipoPropiedadApp objTipoPropiedad = new TipoPropiedadApp();
+                    dgTipoPropiedad.DataSource = objTipoPropiedad.TraerDatos();
+                    dgTipoPropiedad.DataBind();
+                }
+
 			}
 		}
 
@@ -41,7 +57,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Extranet.TipoInforme
 		private void InitializeComponent()
 		{
 			this.dgTipoInforme.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.dgTipoInforme_ItemCommand);
-
+            this.dgTipoPropiedad.ItemCommand += new System.Web.UI.WebControls.DataGridCommandEventHandler(this.dgTipoPropiedad_ItemCommand);
 		}
 
 		#endregion
@@ -50,16 +66,37 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Extranet.TipoInforme
 		{
 			if (e.Item.Cells[0].Text != "")
 			{
-				Response.Redirect("/Admin/TipoInforme/abmPreciosTipoInforme.aspx?idTipo=" + e.Item.Cells[0].Text);
+                if (int.Parse(e.Item.Cells[0].Text) ==1)
+                    Response.Redirect("/Admin/TipoInforme/abmlTipoInforme.aspx?idTipo=" + e.Item.Cells[0].Text);
+                else
+
+                Response.Redirect("/Admin/TipoInforme/abmPreciosTipoInforme.aspx?idTipo=" + e.Item.Cells[0].Text);
 			}
 
 		}
+
+
+        private void dgTipoPropiedad_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.Item.Cells[0].Text != "")
+            {
+                Response.Redirect("/Admin/TipoInforme/abmPreciosTipoInforme.aspx?idTipoPropiedad=1&idTipo=" + e.Item.Cells[0].Text);
+            }
+
+        }
 
 		protected void btnCerrar_Click(object sender, System.EventArgs e)
 		{
 			Response.Redirect("/Default.aspx");
 
 		}
+
+
+        protected void btnVolver_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("abmlTipoInforme.aspx");
+
+        }
 
 	}
 }
