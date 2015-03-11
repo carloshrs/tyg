@@ -24,6 +24,29 @@ function imprimir() {
         <div style="float:right;"><asp:Label ID="lblFechaActual" runat="server" Font-Bold="True" Text="06/01/2011"></asp:Label></div>
         <div style="width:100%; float:left; margin-bottom:20px; font-weight:bold; text-align:center; font-size:16px;">LISTADO DE INFORMES DE PROPIEDAD - FORMULARIO TAZA</div>
         <div style="width:100%; float:left; border-bottom: solid 3px #000000; margin-bottom:10px;">
+            <asp:Label ID="lblDigital" runat="server" Text="Digital" Font-Size="16px" Font-Bold="true"></asp:Label>
+        <asp:DataList ID="dlDigital" runat="server" ShowFooter="False" 
+            ShowHeader="False" style="float:left; width:100%;" RepeatColumns="2">
+            <ItemTemplate>
+                <asp:Panel ID="pnDigital" runat="server" style="width:100%; float:left; margin:0px; padding:0px;">
+                    <div style="width:100%; float:left;">
+                        Cliente:
+                        <asp:Label ID="lblCliente" runat="server" Text='<%# Eval("Cliente")%>' Font-Bold="true"></asp:Label> - <asp:Label ID="lblUsuario" runat="server" Text='<%# Eval("UsuarioCliente")%>' Font-Bold="true"></asp:Label>
+                        <asp:Label ID="lblRow" runat="server" Text='<%# Eval("row_no") %>' Visible="false"></asp:Label>
+                    </div>
+                    <div style="width:100%; float:left;">
+                        Descripción:
+                        <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionInf")%>' Font-Bold="true" Font-Size="Small"></asp:Label>
+                    </div>
+                    <div style="width:100%; float:left; border-bottom:#000000 1px solid; padding-bottom:36px;">
+                        Observaciones:
+                        <asp:Label ID="lblObservaciones" runat="server" Text='<%# Eval("comentarios")%>'></asp:Label>
+                    </div>
+                </asp:Panel>
+            </ItemTemplate>
+        </asp:DataList>
+        </div>
+        <div style="width:100%; float:left; border-bottom: solid 3px #000000; margin-bottom:10px;">
             <asp:Label ID="lblSUrgente" runat="server" Text="Super urgente" Font-Size="16px" Font-Bold="true"></asp:Label>
         <asp:DataList ID="dlSUrgente" runat="server" ShowFooter="False" 
             ShowHeader="False" style="float:left; width:100%;" RepeatColumns="2">

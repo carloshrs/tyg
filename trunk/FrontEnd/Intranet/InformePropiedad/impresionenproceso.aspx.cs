@@ -31,6 +31,11 @@ public partial class InformePropiedad_listadopendientes : System.Web.UI.Page
         BandejaEntradaApp bandeja = new BandejaEntradaApp();
         bandeja.RegPorPagina = 1000;
         bandeja.Pagina = 1;
+        dlDigital.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, estado, 4, FechaDesde, FechaHasta, 0, false, intGrupo, "");
+        dlDigital.DataBind();
+        if (dlDigital.Items.Count == 0)
+            lblDigital.Visible = false;
+
         dlSUrgente.DataSource = bandeja.ListaEncabezadosGrupos(-1, -1, 1, estado, 3, FechaDesde, FechaHasta, 0, false, intGrupo, "");
         dlSUrgente.DataBind();
         if (dlSUrgente.Items.Count == 0)

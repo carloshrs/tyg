@@ -324,6 +324,52 @@ function OnSucceeded(result) {
                          <asp:MultiView ID="contenedor" runat="server" ActiveViewIndex="0">
                 <asp:View ID="enEspera" runat="server">   
                 <div style="margin-top:10px;">Informes de propiedad <b>En Espera</b> en codiciones para generar el formulario de taza.</div>
+                                <asp:Panel ID="pnEnEsperaDigitales" runat="server" style="margin-top:20px;">
+                                    <asp:Label ID="lblTitEnEsperaDigitales" runat="server" Text="Digitales" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                        <asp:datagrid id="dgridEnEsperaDigitales" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
+										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										AutoGenerateColumns="False" onprerender="dgridEnEsperaDigitales_PreRender">
+                                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                            <SelectedItemStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                            <AlternatingItemStyle BackColor="#FBFBFB" />
+                                            <ItemStyle BackColor="#F3F3F3" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#DFE7F4" Font-Bold="True" Font-Names="Arial" ForeColor="#3756A6" />
+                                            <Columns>
+                                                <asp:BoundColumn DataField="idEncabezado" HeaderText="id" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderTemplate>
+                                                        <asp:CheckBox ID="CheckAll" OnClick="javascript: return select_deselectAll (this.checked, this.id, 'chkDigital');" runat="server" Checked="true" />
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:CheckBox ID="chkDigital" runat="server" Checked="True" />
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="25px" />
+                                                    <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False"
+                                                        Font-Underline="False" HorizontalAlign="Center" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn Visible="False" DataField="FechaCarga" HeaderText="Fecha"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="50px" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="PROPTipo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPMatricula" HeaderText="mat" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Left" />
+                                                    <HeaderStyle Width="120px" />
+                                                </asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPFolio" HeaderText="folio" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPtomo" HeaderText="tomo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPano" HeaderText="ano" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Descripci&#243;n">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                            </Columns>
+                                        </asp:datagrid>
+                                    </asp:Panel>
                                     <asp:Panel ID="pnEnEsperaSUrgentes" runat="server" style="margin-top:20px;">
                                     <asp:Label ID="lblTitEnEsperaSUrgentes" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridEnEsperaSUrgentes" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
@@ -471,7 +517,82 @@ function OnSucceeded(result) {
 						</asp:View>
 						<asp:View ID="EnProceso" runat="server">   
 						    <div style="margin-top:10px;">Informes de propiedad <b>En Proceso</b> en codiciones para ser ingresados al Registro de la Propiedad.</div>
-						                                        <asp:Panel ID="pnEnProcesoSUrgentes" runat="server" style="margin-top:20px;">
+						         
+                                 <asp:Panel ID="pnEnProcesoDigitales" runat="server" style="margin-top:20px;">
+                                    <asp:Label ID="lblTitEnProcesoDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                        <asp:datagrid id="dgridEnProcesoDigitales" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
+										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										AutoGenerateColumns="False" onprerender="dgridEnProcesoDigitales_PreRender">
+                                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                            <SelectedItemStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                            <AlternatingItemStyle BackColor="#FBFBFB" />
+                                            <ItemStyle BackColor="#F3F3F3" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#DFE7F4" Font-Bold="True" Font-Names="Arial" ForeColor="#3756A6" />
+                                            <Columns>
+                                                <asp:BoundColumn DataField="idEncabezado" HeaderText="id" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderTemplate>
+                                                        <asp:CheckBox ID="CheckAll" OnClick="javascript: return select_deselectAll (this.checked, this.id, 'chkDigital');" runat="server" Checked="true" />
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        &nbsp;<asp:CheckBox ID="chkDigital" runat="server" Checked="True" />
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="25px" />
+                                                    <ItemStyle Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False"
+                                                        Font-Underline="False" HorizontalAlign="Center" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn Visible="False" DataField="FechaCarga" HeaderText="Fecha"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="50px" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="PROPTipo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPMatricula" HeaderText="mat" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Left" />
+                                                    <HeaderStyle Width="120px" />
+                                                </asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPFolio" HeaderText="folio" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPtomo" HeaderText="tomo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPano" HeaderText="ano" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Descripci&#243;n">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                <HeaderStyle Width="25px">
+                                                </HeaderStyle>
+                                                <ItemStyle HorizontalAlign="Center">
+                                                </ItemStyle>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton id="Problema" runat="server" Width="16px" ToolTip="Con problemas" CommandName="Problema" ImageUrl="/img/Estado9.gif" BorderWidth="0"></asp:ImageButton>
+                                                </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                <HeaderStyle Width="25px">
+                                                </HeaderStyle>
+                                                <ItemStyle HorizontalAlign="Center">
+                                                </ItemStyle>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton id="Transferido" runat="server" Width="16px" ToolTip="Transferir informe" CommandName="Transferido" ImageUrl="/img/Estado10.gif" BorderWidth="0"></asp:ImageButton>
+                                                </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                <HeaderStyle Width="25px">
+                                                </HeaderStyle>
+                                                <ItemStyle HorizontalAlign="Center">
+                                                </ItemStyle>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton id="Condicional" runat="server" Width="16px" ToolTip="Condicional" CommandName="Condicional" ImageUrl="/img/Estado11.gif" BorderWidth="0"></asp:ImageButton>
+                                                </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                            </Columns>
+                                        </asp:DataGrid>
+                                    </asp:Panel>
+
+                                 <asp:Panel ID="pnEnProcesoSUrgentes" runat="server" style="margin-top:20px;">
                                     <asp:Label ID="lblTitEnProcesoSUrgentes" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridEnProcesoSUrgentes" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
 										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
@@ -700,6 +821,63 @@ function OnSucceeded(result) {
 						</asp:View>
 						<asp:View ID="Problemas" runat="server">   
 						<div style="margin-top:10px;">Informes de propiedad con <b>Problemas</b>, informar al cliente el estado particular.</div>
+                                    
+                                    <asp:Panel ID="pnProblemaDigitales" runat="server" style="margin-top:20px;">
+                                    <asp:Label ID="lblTitProblemaDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                        <asp:datagrid id="dgridProblemaDigitales" runat="server" Width="50%" 
+                                            Font-Size="8pt" PageSize="20"
+										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										AutoGenerateColumns="False" onprerender="dgridProblemaDigitales_PreRender" 
+                                            onitemcommand="dgridProblemaDigitales_ItemCommand">
+                                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                            <SelectedItemStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                            <AlternatingItemStyle BackColor="#FBFBFB" />
+                                            <ItemStyle BackColor="#F3F3F3" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#DFE7F4" Font-Bold="True" Font-Names="Arial" ForeColor="#3756A6" />
+                                            <Columns>
+                                                <asp:BoundColumn DataField="idEncabezado" HeaderText="id" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn Visible="False" DataField="FechaCarga" HeaderText="Fecha"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="50px" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="PROPTipo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPMatricula" HeaderText="mat" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Left" />
+                                                    <HeaderStyle Width="120px" />
+                                                </asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPFolio" HeaderText="folio" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPtomo" HeaderText="tomo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPano" HeaderText="ano" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Descripci&#243;n">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                <HeaderStyle Width="25px">
+                                                </HeaderStyle>
+                                                <ItemStyle HorizontalAlign="Center">
+                                                </ItemStyle>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton id="Transferido" runat="server" Width="16px" ToolTip="Transferir informe" CommandName="Transferido" ImageUrl="/img/Estado10.gif" BorderWidth="0"></asp:ImageButton>
+                                                </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                            </Columns>
+                                        </asp:datagrid>
+                                    </asp:Panel>
+
                                     <asp:Panel ID="pnProblemaSUrgentes" runat="server" style="margin-top:20px;">
                                     <asp:Label ID="lblTitProblemaSUrgentes" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridProblemaSUrgentes" runat="server" Width="50%" 
@@ -870,6 +1048,72 @@ function OnSucceeded(result) {
 						</asp:View>
 						<asp:View ID="Transferido" runat="server">   
 						<div style="margin-top:10px;">Informes de propiedad <b>Transferidos</b>, informar al cliente el estado particular.</div>
+
+                                <asp:Panel ID="pnTransferidoDigitales" runat="server" style="margin-top:20px;">
+                                    <asp:Label ID="lblTitTransferidoDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                        <asp:datagrid id="dgridTransferidoDigitales" runat="server" Width="50%" 
+                                            Font-Size="8pt" PageSize="20"
+										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										AutoGenerateColumns="False" onprerender="dgridTransferidoDigitales_PreRender" 
+                                            onitemcommand="dgridTransferidoDigitales_ItemCommand">
+                                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                            <SelectedItemStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                            <AlternatingItemStyle BackColor="#FBFBFB" />
+                                            <ItemStyle BackColor="#F3F3F3" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#DFE7F4" Font-Bold="True" Font-Names="Arial" ForeColor="#3756A6" />
+                                            <Columns>
+                                                <asp:BoundColumn DataField="idEncabezado" HeaderText="id" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn Visible="False" DataField="FechaCarga" HeaderText="Fecha"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="50px" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="PROPTipo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPMatricula" HeaderText="mat" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Left" />
+                                                    <HeaderStyle Width="120px" />
+                                                </asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPFolio" HeaderText="folio" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPtomo" HeaderText="tomo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPano" HeaderText="ano" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Descripci&#243;n">
+                                                <HeaderStyle Width="200px" />
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Cancelar" runat="server" Width="16px" ToolTip="Cancelar" CommandName="Cancelar" ImageUrl="/img/cruz.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Detalle" runat="server" Width="16px" ToolTip="Detalle" CommandName="Detalle" ImageUrl="/img/ico-detalles.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Transferido" runat="server" Width="16px" ToolTip="Transferir informe" CommandName="Transferido" ImageUrl="/img/Estado10.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                            </Columns>
+                                        </asp:datagrid>
+                                    </asp:Panel>
                                     <asp:Panel ID="pnTransferidoSUrgentes" runat="server" style="margin-top:20px;">
                                     <asp:Label ID="lblTitTransferidoSUrgentes" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridTransferidoSUrgentes" runat="server" Width="50%" 
@@ -1102,6 +1346,81 @@ function OnSucceeded(result) {
 						
 											<asp:View ID="Condicional" runat="server">   
 						<div style="margin-top:10px;">Informes de propiedad <b>condicionales</b>, informar al cliente el estado particular.</div>
+
+                                <asp:Panel ID="pnCondicionalDigitales" runat="server" style="margin-top:20px;">
+                                    <asp:Label ID="lblTitCondicionalDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                        <asp:datagrid id="dgridCondicionalDigitales" runat="server" Width="70%" 
+                                            Font-Size="8pt" PageSize="20"
+										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										AutoGenerateColumns="False" onprerender="dgridCondicionalDigitales_PreRender" 
+                                            onitemcommand="dgridCondicionalDigitales_ItemCommand">
+                                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                            <SelectedItemStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                            <AlternatingItemStyle BackColor="#FBFBFB" />
+                                            <ItemStyle BackColor="#F3F3F3" Font-Names="Arial" Font-Size="8pt" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#DFE7F4" Font-Bold="True" Font-Names="Arial" ForeColor="#3756A6" />
+                                            <Columns>
+                                                <asp:BoundColumn DataField="idEncabezado" HeaderText="id" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn Visible="False" DataField="FechaCarga" HeaderText="Fecha"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Fecha">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    <HeaderStyle Width="50px" />
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="PROPTipo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPMatricula" HeaderText="mat" Visible="False">
+                                                    <ItemStyle HorizontalAlign="Left" />
+                                                    <HeaderStyle Width="120px" />
+                                                </asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPFolio" HeaderText="folio" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPtomo" HeaderText="tomo" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="PROPano" HeaderText="ano" Visible="False"></asp:BoundColumn>
+                                                <asp:TemplateColumn HeaderText="Descripci&#243;n">
+                                                <HeaderStyle Width="200px" />
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn HeaderText="Duraci&#243;n">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblDuracion" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn HeaderText="Estado">
+                                                   <HeaderStyle Width="120px" />
+                                                    <ItemTemplate>
+                                                 
+                                                        <asp:DropDownList ID="ddEstadoCondicional" runat="server" AutoPostBack="true">
+                                                            <asp:ListItem Text="" Value="0" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Pendiente de confirmación" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="En seguimiento" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    <ItemTemplate>
+                                                    <asp:ImageButton id="Cancelar" runat="server" Width="16px" ToolTip="Cancelar" CommandName="Cancelar" ImageUrl="/img/cruz.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateColumn>
+                                                <asp:BoundColumn DataField="FechaCondicional" Visible="False"></asp:BoundColumn>
+                                                <asp:BoundColumn DataField="EstadoCondicional" Visible="False"></asp:BoundColumn>
+                                            </Columns>
+                                        </asp:datagrid>
+                                    </asp:Panel>
                                     <asp:Panel ID="pnCondicionalSUrgentes" runat="server" style="margin-top:20px;">
                                     <asp:Label ID="lblTitCondicionalSUrgentes" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridCondicionalSUrgentes" runat="server" Width="70%" 
