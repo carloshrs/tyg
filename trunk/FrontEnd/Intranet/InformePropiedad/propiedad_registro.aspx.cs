@@ -1271,7 +1271,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Response.Write("<script>var menu = 1;</script>");    
                 BandejaEntradaApp bandeja = new BandejaEntradaApp();
                 //if (chkSoloMias.Checked) idUser = IdUsuario;
-                dgridEnProcesoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 3, "", "", 100, false);
+                dgridEnProcesoDigitales.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, idCliente, idUser, Estados, 4, "", "", 100, false);
                 dgridEnProcesoDigitales.DataBind();
                 if (dgridEnProcesoDigitales.Items.Count == 0)
                     pnEnProcesoDigitales.Visible = false;
@@ -1294,7 +1294,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnEnProcesoNormales.Visible = false;
 
 
-                if ((dgridEnProcesoSUrgentes.Items.Count == 0) && (dgridEnProcesoUrgentes.Items.Count == 0) && (dgridEnProcesoNormales.Items.Count == 0))
+                if ((dgridEnProcesoDigitales.Items.Count == 0) && (dgridEnProcesoSUrgentes.Items.Count == 0) && (dgridEnProcesoUrgentes.Items.Count == 0) && (dgridEnProcesoNormales.Items.Count == 0))
                 {
                     lblMensaje.Text = "No hay Informes de Propiedad para enviar al registro para la búsqueda <b> " + pFiltro + "</b>.";
                     lblMensaje.Visible = true;
