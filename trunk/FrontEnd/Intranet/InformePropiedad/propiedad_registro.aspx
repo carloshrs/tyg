@@ -519,7 +519,7 @@ function OnSucceeded(result) {
 						    <div style="margin-top:10px;">Informes de propiedad <b>En Proceso</b> en codiciones para ser ingresados al Registro de la Propiedad.</div>
 						         
                                  <asp:Panel ID="pnEnProcesoDigitales" runat="server" style="margin-top:20px;">
-                                    <asp:Label ID="lblTitEnProcesoDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                    <asp:Label ID="lblTitEnProcesoDigitales" runat="server" Text="Digitales" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridEnProcesoDigitales" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
 										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
 										AutoGenerateColumns="False" onprerender="dgridEnProcesoDigitales_PreRender">
@@ -823,7 +823,7 @@ function OnSucceeded(result) {
 						<div style="margin-top:10px;">Informes de propiedad con <b>Problemas</b>, informar al cliente el estado particular.</div>
                                     
                                     <asp:Panel ID="pnProblemaDigitales" runat="server" style="margin-top:20px;">
-                                    <asp:Label ID="lblTitProblemaDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                    <asp:Label ID="lblTitProblemaDigitales" runat="server" Text="Digitales" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridProblemaDigitales" runat="server" Width="50%" 
                                             Font-Size="8pt" PageSize="20"
 										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
@@ -1050,7 +1050,7 @@ function OnSucceeded(result) {
 						<div style="margin-top:10px;">Informes de propiedad <b>Transferidos</b>, informar al cliente el estado particular.</div>
 
                                 <asp:Panel ID="pnTransferidoDigitales" runat="server" style="margin-top:20px;">
-                                    <asp:Label ID="lblTitTransferidoDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                    <asp:Label ID="lblTitTransferidoDigitales" runat="server" Text="Digitales" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridTransferidoDigitales" runat="server" Width="50%" 
                                             Font-Size="8pt" PageSize="20"
 										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
@@ -1348,7 +1348,7 @@ function OnSucceeded(result) {
 						<div style="margin-top:10px;">Informes de propiedad <b>condicionales</b>, informar al cliente el estado particular.</div>
 
                                 <asp:Panel ID="pnCondicionalDigitales" runat="server" style="margin-top:20px;">
-                                    <asp:Label ID="lblTitCondicionalDigitales" runat="server" Text="Super Urgentes" Font-Bold="true" Font-Size="8"></asp:Label><br />
+                                    <asp:Label ID="lblTitCondicionalDigitales" runat="server" Text="Digitales" Font-Bold="true" Font-Size="8"></asp:Label><br />
                                         <asp:datagrid id="dgridCondicionalDigitales" runat="server" Width="70%" 
                                             Font-Size="8pt" PageSize="20"
 										CellPadding="3" BorderColor="#3657A6" BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
