@@ -1345,7 +1345,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("isnull(CASE WHEN b.idTipoInforme=1 AND b.PROPTipo <> 1 THEN ' (' + c.descripcion + ')' ELSE NULL END, '') + ");
                 strQuery.Append("isnull(CASE WHEN (b.idTipoInforme=13 OR b.idTipoInforme=3 OR b.idTipoInforme=16 ) THEN ' (' + c.descripcion + ')' ELSE NULL END, '') ");
                 strQuery.Append(") as descripcion, ");
-                strQuery.Append("ri.precio as precioUnitario, (count(ri.idTipoInforme) * ri.precio) as precioTotal, 1 as orden, ri.idTipoInforme  ");
+                strQuery.Append("ri.precio as precioUnitario, (count(ri.idTipoInforme) * ri.precio) as precioTotal, 1 as orden, ri.idTipoInforme, b.caracter  ");
                 strQuery.Append("from CtaCteRemitos ccr  ");
                 strQuery.Append("inner join CtaCteMovimientosRemitos ccmr on ccr.nroMovimiento=ccmr.nroMovimiento ");
                 strQuery.Append("inner join remitos r on ccmr.nroRemito=r.nroRemito ");
@@ -1356,9 +1356,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("inner join caracter c on b.caracter=c.idCaracter ");
                 strQuery.Append("where ccmr.nroMovimiento=" + NroMovimiento + " ");
                 strQuery.Append("and ccr.idCliente=" + idCliente + " ");
-                strQuery.Append("group by ri.idTipoInforme, ti.descripcion, ri.precio, b.idTipoInforme, b.PROPTipo, tp.descripcion, c.descripcion ");
+                strQuery.Append("group by ri.idTipoInforme, ti.descripcion, ri.precio, b.idTipoInforme, b.PROPTipo, tp.descripcion, c.descripcion, b.caracter ");
                 strQuery.Append("union ");
-                strQuery.Append("select sum(ra.cantidad), sa.descripcion, ra.precio as precioUnitario, (sum(ra.cantidad)*ra.precio) as precio, 2 as orden, 1000 as idTipoInforme  ");
+                strQuery.Append("select sum(ra.cantidad), sa.descripcion, ra.precio as precioUnitario, (sum(ra.cantidad)*ra.precio) as precio, 2 as orden, 1000 as idTipoInforme, 0  ");
                 strQuery.Append("from CtaCteRemitos ccr  ");
                 strQuery.Append("inner join ctaCteMovimientosRemitos ccmr on ccr.nroMovimiento=ccmr.nroMovimiento ");
                 strQuery.Append("inner join remitos r on ccmr.nroRemito=r.nroRemito ");
@@ -1378,7 +1378,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("isnull(CASE WHEN b.idTipoInforme=1 AND b.PROPTipo <> 1 THEN ' (' + c.descripcion + ')' ELSE NULL END, '') + ");
                 strQuery.Append("isnull(CASE WHEN (b.idTipoInforme=13 OR b.idTipoInforme=3 OR b.idTipoInforme=16 ) THEN ' (' + c.descripcion + ')' ELSE NULL END, '') ");
                 strQuery.Append(") as descripcion, ");
-                strQuery.Append("ri.precio as precioUnitario, (count(ri.idTipoInforme) * ri.precio) as precioTotal, 1 as orden, ri.idTipoInforme  ");
+                strQuery.Append("ri.precio as precioUnitario, (count(ri.idTipoInforme) * ri.precio) as precioTotal, 1 as orden, ri.idTipoInforme, b.caracter  ");
                 strQuery.Append("from CtaCtePartesEntrega ccr  ");
                 strQuery.Append("inner join CtaCteMovimientosPartesEntrega ccmr on ccr.nroMovimiento=ccmr.nroMovimiento ");
                 strQuery.Append("inner join partesEntrega r on ccmr.nroParte=r.nroParte ");
@@ -1389,9 +1389,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("inner join caracter c on b.caracter=c.idCaracter ");
                 strQuery.Append("where ccmr.nroMovimiento=" + NroMovimiento + " ");
                 strQuery.Append("and ccr.idCliente=" + idCliente + " ");
-                strQuery.Append("group by ri.idTipoInforme, ti.descripcion, ri.precio, b.idTipoInforme, b.PROPTipo, tp.descripcion, c.descripcion ");
+                strQuery.Append("group by ri.idTipoInforme, ti.descripcion, ri.precio, b.idTipoInforme, b.PROPTipo, tp.descripcion, c.descripcion, b.caracter ");
                 strQuery.Append("union ");
-                strQuery.Append("select sum(ra.cantidad), sa.descripcion, ra.precio as precioUnitario, (sum(ra.cantidad)*ra.precio) as precio, 2 as orden, 1000 as idTipoInforme  ");
+                strQuery.Append("select sum(ra.cantidad), sa.descripcion, ra.precio as precioUnitario, (sum(ra.cantidad)*ra.precio) as precio, 2 as orden, 1000 as idTipoInforme, 0  ");
                 strQuery.Append("from CtaCtePartesEntrega ccr  ");
                 strQuery.Append("inner join CtaCteMovimientosPartesEntrega ccmr on ccr.nroMovimiento=ccmr.nroMovimiento ");
                 strQuery.Append("inner join partesEntrega r on ccmr.nroParte=r.nroParte ");
@@ -1573,6 +1573,91 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
 
             //return MaxID;
+        }
+
+        public void setearMontoRemito(int idDocumento, int idTipoDocumentacion, int tipoPeriodo)
+        {
+            //int MaxID = 0;
+            OdbcConnection oConnection = this.OpenConnection();
+            String strSQL = "";
+
+            strSQL = "setMontoDocumento " + idDocumento + ", " + idTipoDocumentacion + ", 1 ";
+
+            //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
+
+            try
+            {
+                OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                myCommand.ExecuteNonQuery();
+
+                //MaxID = ObtenerMaxID(strMaxID, oConnection);
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                //return MaxID;
+            }
+
+            //return MaxID;
+
+        }
+
+        public static DataTable ListaDocumentosPendientesCobrar(int idCliente, string FechaDesde, string FechaHasta, int Estado)
+        {
+
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+
+            //remitos diarios    
+            strQuery.Append("select '1_1_' + ltrim(str(nroRemito)) as ID, nroRemito as 'nroDocumento', 1 as 'tipoDocumento', 1 as 'tipoPeriodo', fecha, 'Remito - diario Nº: ' + ltrim(str(nroRemito))  as 'Documento', isnull(monto,0) as monto ");
+            strQuery.Append("from remitos ");
+            strQuery.Append("where ");
+            strQuery.Append("periodoCobranza=1 ");
+            strQuery.Append("AND estado=" + Estado);
+            strQuery.Append(" AND idCliente=" + idCliente);
+            strQuery.Append(" AND fecha between '" + FechaDesde + " 00:00:00' AND '" + FechaHasta + " 23:59:59' ");
+
+            strQuery.Append("union ");
+
+            // partes diarios
+            strQuery.Append("select '2_1_' + ltrim(str(nroParte)) as ID, nroParte as 'nroDocumento', 2 as 'tipoDocumento', 1 as 'tipoPeriodo', fecha, 'Parte de entrega - diario Nº: ' + ltrim(str(nroParte))  as 'Documento', isnull(monto,0) as monto ");
+            strQuery.Append("from partesEntrega ");
+            strQuery.Append("where ");
+            strQuery.Append("periodoCobranza=1 ");
+            strQuery.Append("AND estado=" + Estado);
+            strQuery.Append(" AND idCliente=" + idCliente);
+            strQuery.Append(" AND fecha between '" + FechaDesde + " 00:00:00' AND '" + FechaHasta + " 23:59:59' ");
+
+            strQuery.Append("union ");
+
+            //remitos mensuales
+            strQuery.Append("select '1_2_' + ltrim(str(nroMovimiento)) as ID, nroMovimiento as 'nroDocumento', 1 as 'tipoDocumento', 2 as 'tipoPeriodo' , fecha, 'Remito - mensual Nº: ' + ltrim(str(nroMovimiento))  as 'Documento', isnull(monto,0) as monto ");
+            strQuery.Append("from CtaCteRemitos ");
+            strQuery.Append("where ");
+            strQuery.Append("estado=" + Estado);
+            strQuery.Append(" AND idCliente=" + idCliente);
+            strQuery.Append(" AND fecha between '" + FechaDesde + " 00:00:00' AND '" + FechaHasta + " 23:59:59' ");
+
+            strQuery.Append("union ");
+
+            // partesEntrega mensuales
+            strQuery.Append("select '2_2_' + ltrim(str(nroMovimiento)) as ID, nroMovimiento as 'nroDocumento', 2 as 'tipoDocumento', 2 as 'tipoPeriodo' , fecha, 'Partes de entrega - mensual Nº: ' + ltrim(str(nroMovimiento))  as 'Documento', isnull(monto,0) as monto  ");
+            strQuery.Append("from CtaCtePartesEntrega ");
+            strQuery.Append("where ");
+            strQuery.Append("estado=" + Estado);
+            strQuery.Append(" AND idCliente=" + idCliente);
+            strQuery.Append(" AND fecha between '" + FechaDesde + " 00:00:00' AND '" + FechaHasta + " 23:59:59' ");
+
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "ListadoDocumentosPendientes").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
         }
 
 	}
