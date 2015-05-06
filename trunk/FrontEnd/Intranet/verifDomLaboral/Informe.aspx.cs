@@ -734,7 +734,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.verifDomLaboral
                 if (solicitudes != null && solicitudes.Rows.Count != 0)
                 {
                     int idCliente = -1;
-                    mensaje += "SOLICITADA POR: ";
+                    mensaje += "FUE CONSULTADO POR: ";
                     foreach (DataRow solicitud in solicitudes.Rows)
                     {
                         bool cambio = false;
