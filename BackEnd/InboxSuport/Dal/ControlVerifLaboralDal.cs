@@ -23,8 +23,8 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             " WHERE " +
             " NOT BE.idEncabezado = " + lid +
             " AND BE.documento='" + dni + "' " +
-            " AND NOT BE.estado=4 " + 
-            " AND idTipoInforme=6 " + 
+            " AND NOT BE.estado=4 " +
+            " AND idTipoInforme IN (5,6,7,10,13,14,15,16,17,18,19) " + 
             " ORDER BY C.RazonSocial, BE.FechaCarga DESC ");
 			try
 			{
