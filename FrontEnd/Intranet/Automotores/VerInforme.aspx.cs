@@ -106,7 +106,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Automotores
 			if (cargar)
 			{
 				lblNum.Text = Id.ToString();
-				lblFec.Text = DateTime.Today.ToShortDateString();
+				//lblFec.Text = DateTime.Today.ToShortDateString();
+                if (oEncabezado.FechaFin != "")
+                    lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
                 string solicitante = "";
                 if (cliente.NombreFantasia != null && cliente.NombreFantasia != "")
                     solicitante = cliente.NombreFantasia;
