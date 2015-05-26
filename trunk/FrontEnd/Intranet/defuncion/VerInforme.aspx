@@ -111,6 +111,12 @@
 														<TD class="text" width="50%"><STRONG>Sexo:</STRONG>
 															<asp:label id="lblSexo" runat="server"></asp:label></TD>
 													</TR>
+                                                    <TR>
+														<TD class="text" width="50%"><STRONG>CUIT:</STRONG>&nbsp;
+															<asp:label id="lblCUIT" runat="server"></asp:label></TD>
+														<TD class="text" width="50%"><STRONG></STRONG>
+															</TD>
+													</TR>
 
                                                     <TR>
 														<TD width="99%" colSpan="4">

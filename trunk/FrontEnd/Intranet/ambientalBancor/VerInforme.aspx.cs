@@ -105,7 +105,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 			if (cargar)
 			{
 				lblNum.Text = Id.ToString();
-				lblFec.Text = DateTime.Today.ToShortDateString();
+				//lblFec.Text = DateTime.Today.ToShortDateString();
+                if (oEncabezado.FechaFin != "")
+                    lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
 				lblSolicitante.Text = cliente.RazonSocial;
 
                 if (oEncabezado.idReferencia != 0)
