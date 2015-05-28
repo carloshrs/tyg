@@ -846,6 +846,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             int intGrupo = 0;
             EncabezadoApp Encabezado = new EncabezadoApp();
             UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
+            Encabezado.IdUsuario = Usuario.IdUsuario;
 
             if (dgridEnEsperaDigitales.Items.Count > 0 || dgridEnEsperaSUrgentes.Items.Count > 0 || dgridEnEsperaUrgentes.Items.Count > 0 || dgridEnEsperaNormales.Items.Count > 0)
                 intGrupo = Encabezado.crearGrupoCambioEstado(Usuario.IdUsuario, 1);
@@ -1432,6 +1433,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 }
             }
         }
+
+
         protected void btnImpresiones_Click(object sender, EventArgs e)
         {
             Response.Redirect("historialimpresiones.aspx?idTipo=1");
