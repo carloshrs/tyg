@@ -195,9 +195,9 @@ function OnSucceeded(result) {
 
     var tempP = new Array();
     tempP = result.split('_');
-    alert(tempP[0]);
-    alert(tempP[1]);
-    alert(tempP[2]);
+    //alert(tempP[0]);
+    //alert(tempP[1]);
+    //alert(tempP[2]);
     idEnca = tempP[0];
     var tempPer = new Array();
     tempPer = tempP[1].split('|');
