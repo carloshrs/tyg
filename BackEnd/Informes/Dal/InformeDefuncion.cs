@@ -17,6 +17,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
         private string strNombre;
         private string strApellido;
         private string strDocumento;
+        private string strCUIT;
         private int intSexo;
         private int intFallecido;
         private string strFechaFallecido;
@@ -123,6 +124,18 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
             set
             {
                 strDocumento = value;
+            }
+        }
+
+        public string Cuit
+        {
+            get
+            {
+                return strCUIT;
+            }
+            set
+            {
+                strCUIT = value;
             }
         }
 
@@ -242,8 +255,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
             }
             
             OdbcConnection oConnection = this.OpenConnection();
-            String strSQL = "INSERT INTO InformePartidaDefuncion (idInforme, Nombre, Apellido, NroDoc, Sexo, Fallecido, FechaFallecido, Acta, Tomo, Folio, LugarFallecimiento,observaciones) ";
-            strSQL = strSQL + " VALUES (" + intIdEncabezado + ", '" + strNombre + "','" + strApellido + "', " + strDocumento + ", " + intSexo + ", " + intFallecido + ", '" + strFechaFallecido + "'";
+            String strSQL = "INSERT INTO InformePartidaDefuncion (idInforme, Nombre, Apellido, NroDoc, Cuit, Sexo, Fallecido, FechaFallecido, Acta, Tomo, Folio, LugarFallecimiento,observaciones) ";
+            strSQL = strSQL + " VALUES (" + intIdEncabezado + ", '" + strNombre + "','" + strApellido + "', " + strDocumento + ", " + strCUIT + ", " + intSexo + ", " + intFallecido + ", '" + strFechaFallecido + "'";
             strSQL = strSQL + ",'" + strActa + "','" + strTomo + "','" + strFolio + "','" + strLugarFallecimiento + "','" + strObservaciones + "')";
 
             String strMaxID = "SELECT MAX(idInforme) as MaxId FROM InformePartidaDefuncion";
@@ -289,6 +302,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
             strSQL = strSQL + "Nombre = '" + strNombre + "',";
             strSQL = strSQL + "Apellido = '" + strApellido +"',";
             strSQL = strSQL + "NroDoc = " + strDocumento + ",";
+            strSQL = strSQL + "Cuit = " + strCUIT + ",";
             strSQL = strSQL + "Sexo = " + intSexo +",";
             strSQL = strSQL + "Fallecido = " + intFallecido +",";
             if(dtFechaFallecido != "")
@@ -353,6 +367,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
             strNombre = ds.Tables[0].Rows[0]["Nombre"].ToString();
             strApellido = ds.Tables[0].Rows[0]["Apellido"].ToString();
             strDocumento = ds.Tables[0].Rows[0]["NroDoc"].ToString();
+            strCUIT = ds.Tables[0].Rows[0]["Cuit"].ToString();
             intSexo = int.Parse(ds.Tables[0].Rows[0]["Sexo"].ToString());
             intFallecido = int.Parse(ds.Tables[0].Rows[0]["Fallecido"].ToString());
             strFechaFallecido = ds.Tables[0].Rows[0]["FechaFallecido"].ToString();

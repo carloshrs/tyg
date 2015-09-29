@@ -71,6 +71,17 @@
 					                                                </asp:dropdownlist>
                                                                     </TD>
 																</TR>
+                                                                <TR>
+																	<TD class="text" width="50%">CUIT&nbsp;
+																		<asp:RequiredFieldValidator id="rqCUIT" runat="server" ErrorMessage="Ingrese el CUIT" ControlToValidate="txtDNI">*</asp:RequiredFieldValidator></TD>
+																	<TD class="text" width="50%">
+																		</TD>
+																</TR>
+																<TR>
+																	<TD class="text" width="50%"><asp:textbox id="txtCUIT" runat="server" Width="180px"></asp:textbox></TD>
+																	<TD class="text" width="50%">
+                                                                    </TD>
+																</TR>
 																<TR>
 																	<TD class="text" width="50%" colSpan="3">&nbsp;</TD>
 																</TR>
