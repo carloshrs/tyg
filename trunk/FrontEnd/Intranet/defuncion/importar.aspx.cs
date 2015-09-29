@@ -405,6 +405,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             int vNombre = 0;
             int vApellido = 0;
             int vSexo = 0;
+            int vCUIT = 0;
             int idRef;
 
             vDNI = int.Parse(cmbColDNI.SelectedValue);
@@ -412,6 +413,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             if (cmbColNombre.SelectedValue != "")
                 vNombre = int.Parse(cmbColNombre.SelectedValue);
             vSexo = int.Parse(cmbColSexo.SelectedValue);
+            vCUIT = int.Parse(cmbColCUIT.SelectedValue);
 
 
             UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
@@ -430,6 +432,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             string tApellido = "";
             string tNombre = "";
             string tSexo = "";
+            string tCUIT = "";
 
 
             DataTable dt = Session["dtGrilla"] as DataTable;
@@ -443,8 +446,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 if (vNombre !=0)
                     tNombre = dgImportar[vNombre - 1].ToString();
                 tSexo = dgImportar[vSexo - 1].ToString();
+                tCUIT = dgImportar[vCUIT - 1].ToString();
 
-                InsertarEncabezadosPartidas(idRef, Usuario.IdUsuario, tDNI, tApellido, tNombre, tSexo);
+                InsertarEncabezadosPartidas(idRef, Usuario.IdUsuario, tDNI, tApellido, tNombre, tSexo, tCUIT);
             }
 
             pnObtener.Visible = false;
@@ -452,7 +456,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
         }
 
 
-            private void InsertarEncabezadosPartidas(int vReferencia, int vidUsuario, string vDNI, string vApellido, string vNombre, string vSexo) 
+            private void InsertarEncabezadosPartidas(int vReferencia, int vidUsuario, string vDNI, string vApellido, string vNombre, string vSexo, string vCUIT) 
             {
                 EncabezadoApp Encabezado = new EncabezadoApp();
                 Encabezado.IdTipoInforme = 19;
@@ -471,6 +475,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 Encabezado.TipoDocumento = 1;
                 Encabezado.txtTipoDocumento = "DNI";
                 Encabezado.Documento = vDNI;
+                Encabezado.Cuit = vCUIT;
                 Encabezado.Calle = "";
                 Encabezado.Barrio = "";
                 Encabezado.CatCalle = "";

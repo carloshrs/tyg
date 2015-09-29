@@ -384,6 +384,14 @@ function OnSucceeded(result) {
                                                 <asp:ListItem Value="3">Columna Nº3</asp:ListItem>
                                                 <asp:ListItem Value="4">Columna Nº4</asp:ListItem>
                                                 <asp:ListItem Value="5">Columna Nº5</asp:ListItem>
+					                          </asp:dropdownlist><br />
+                                              CUIT:&nbsp;&nbsp;&nbsp; <asp:dropdownlist id="cmbColCUIT" runat="server" Width="161px">
+                                                <asp:ListItem Value="0" Selected="True">Seleccione Orden</asp:ListItem>
+						                        <asp:ListItem Value="1">Columna Nº1</asp:ListItem>
+						                        <asp:ListItem Value="2">Columna Nº2</asp:ListItem>
+                                                <asp:ListItem Value="3">Columna Nº3</asp:ListItem>
+                                                <asp:ListItem Value="4">Columna Nº4</asp:ListItem>
+                                                <asp:ListItem Value="5">Columna Nº5</asp:ListItem>
 					                          </asp:dropdownlist>
                                               </fieldset>
                                               <br /><br />

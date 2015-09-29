@@ -96,6 +96,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
             txtNombre.Text = oEncabezado.Nombre;
             txtApellido.Text = oEncabezado.Apellido;
             txtDNI.Text = oEncabezado.Documento;
+            txtCUIT.Text = oEncabezado.Cuit;
             cmbSexo.SelectedValue = oEncabezado.Sexo.ToString();
         }
 
@@ -108,6 +109,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
             txtNombre.Text = oInfDefuncion.Nombre;
             txtApellido.Text = oInfDefuncion.Apellido;
             txtDNI.Text = oInfDefuncion.Documento.ToString();
+            txtCUIT.Text = oInfDefuncion.Cuit.ToString();
             cmbSexo.SelectedValue = oInfDefuncion.Sexo.ToString();
             rbFallecido.SelectedValue = oInfDefuncion.Fallecido.ToString();
             
