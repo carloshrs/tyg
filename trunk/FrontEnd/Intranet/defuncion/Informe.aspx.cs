@@ -170,6 +170,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
             oInfDef.Nombre = txtNombre.Text;
             oInfDef.Apellido = txtApellido.Text;
             oInfDef.Documento = txtDNI.Text;
+            oInfDef.Cuit = txtCUIT.Text;
             oInfDef.Sexo = int.Parse(cmbSexo.SelectedValue);
             oInfDef.Fallecido = int.Parse(rbFallecido.SelectedValue);
             oInfDef.FechaFallecido = txtFechaFallece.Text;     
