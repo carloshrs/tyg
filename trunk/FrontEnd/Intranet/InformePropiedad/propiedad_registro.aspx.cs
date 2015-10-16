@@ -846,7 +846,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             int intGrupo = 0;
             EncabezadoApp Encabezado = new EncabezadoApp();
             UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
-            Encabezado.IdUsuario = Usuario.IdUsuario;
 
             if (dgridEnEsperaDigitales.Items.Count > 0 || dgridEnEsperaSUrgentes.Items.Count > 0 || dgridEnEsperaUrgentes.Items.Count > 0 || dgridEnEsperaNormales.Items.Count > 0)
                 intGrupo = Encabezado.crearGrupoCambioEstado(Usuario.IdUsuario, 1);
@@ -859,6 +858,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     intIdInforme = int.Parse(dgDigi.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
                     Encabezado.Estado = 2;
+                    Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
                     Encabezado.Leido = 1;
                     Encabezado.CambiarLeido(intIdInforme);
@@ -874,6 +874,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     intIdInforme = int.Parse(dgSUrg.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
                     Encabezado.Estado = 2;
+                    Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
                     Encabezado.Leido = 1;
                     Encabezado.CambiarLeido(intIdInforme);
@@ -890,6 +891,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     intIdInforme = int.Parse(dgUrg.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
                     Encabezado.Estado = 2;
+                    Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
                     Encabezado.Leido = 1;
                     Encabezado.CambiarLeido(intIdInforme);
@@ -906,6 +908,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     intIdInforme = int.Parse(dgNorm.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
                     Encabezado.Estado = 2;
+                    Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
                     Encabezado.Leido = 1;
                     Encabezado.CambiarLeido(intIdInforme);
