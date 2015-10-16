@@ -95,15 +95,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.VerifDomComercial
 			lblApellido.Text = oInformeComercial.Apellido;
 			lblTipoDocumento.Text = LoadTipoDNI(oInformeComercial.TipoDocumento);
 			lblDocumento.Text= oInformeComercial.Documento;
-			lblCalle.Text = oInformeComercial.CalleEmpresa;
-			lblBarrio.Text = oInformeComercial.BarrioEmpresa;
-
-			lblNro.Text= oInformeComercial.NroEmpresa;
-			lblPiso.Text= oInformeComercial.PisoEmpresa;
-			lblDepto.Text= oInformeComercial.DptoEmpresa;
-			lblCP.Text= oInformeComercial.CPEmpresa;
 			lblTelefono.Text = oInformeComercial.TelefonoEmpresa;
-			lblLocalidad.Text = CargarLocalidades(23, oInformeComercial.Localidad);
 			if(oInformeComercial.ConFoto == 1) lblConFoto.Visible = true;
 
 
@@ -115,6 +107,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.VerifDomComercial
 				lblRazonSocial.Text= oInformeComercial.RazonSocial;
 				lblRubro.Text= oInformeComercial.Rubro;
 				lblCuit.Text= oInformeComercial.Cuit;
+                lblCalle.Text = oInformeComercial.CalleEmpresa;
+                lblBarrio.Text = oInformeComercial.BarrioEmpresa;
+                lblNro.Text = oInformeComercial.NroEmpresa;
+                lblPiso.Text = oInformeComercial.PisoEmpresa;
+                lblDepto.Text = oInformeComercial.DptoEmpresa;
+                lblCP.Text = oInformeComercial.CPEmpresa;
+                lblLocalidad.Text = CargarLocalidades(23, oInformeComercial.Localidad);
 			} 
 			else 
 			{
@@ -124,6 +123,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.VerifDomComercial
 				lblRazonSocialEmp.Text= oInformeComercial.RazonSocial;
 				lblRubroEmp.Text= oInformeComercial.Rubro;
 				lblCuitEmp.Text= oInformeComercial.Cuit;
+                lblCalleEmp.Text = oInformeComercial.CalleEmpresa;
+                lblBarrioEmp.Text = oInformeComercial.BarrioEmpresa;
+                lblNroEmp.Text = oInformeComercial.NroEmpresa;
+                lblPisoEmp.Text = oInformeComercial.PisoEmpresa;
+                lblDeptoEmp.Text = oInformeComercial.DptoEmpresa;
+                lblCPEmp.Text = oInformeComercial.CPEmpresa;
+                lblLocalidadEmp.Text = CargarLocalidades(23, oInformeComercial.Localidad);
 			}
 
 		}
