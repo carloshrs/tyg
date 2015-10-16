@@ -1644,7 +1644,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			OdbcConnection oConnection = this.OpenConnection();
 
             String strSQLTransferido = "Delete from informepropiedadtransferido where idEncabezado = " + idEncabezado.ToString();
-			String strSQL = "Delete from BandejaEntrada where idEncabezado = " + idEncabezado.ToString();
+			String strSQL = "Delete from BandejaEntrada where estado=1 AND idEncabezado = " + idEncabezado.ToString();
 			
 			String strAuditoria = "INSERT INTO HistoricoAcciones (idCliente, idUsuario, Instante, Evento, Observaciones, idTipoObjeto, idReferencia, idEstado) VALUES (";
             strAuditoria = strAuditoria + intIdCliente + "," + intIdUsuario + ", getdate(), 'Eliminación de Informe', 'Eliminación del Informe Nro." + idEncabezado.ToString() + "' ,1," + idEncabezado.ToString() + "," + Estado.ToString() + ")";
