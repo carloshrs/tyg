@@ -256,8 +256,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.RegPubFolio = FolioRegPublico.Text.ToUpper();
             Encabezado.RegPubTomo = TomoRegPublico.Text.ToUpper();
             Encabezado.RegPubAno = AnoRegPublico.Text.ToUpper();
-            // PARTIDAS DEFUNCIÓN
+            // VERIFICACION DE DEFUNCIÓN
             Encabezado.Sexo = int.Parse(cmbSexo.SelectedValue);
+            // INFORMES PARTIDAS DEFUNCIÓN
+            Encabezado.TomoFallecido = txtTomoFallecido.Text;
+            Encabezado.FolioFallecido = txtFolioFallecido.Text;
+            Encabezado.ActaFallecido = txtActaFallecido.Text;
+            Encabezado.FechaFallecido = txtFechaFallecimiento.Text;
+            Encabezado.LugarFallecido = txtLugarFallecido.Text;
+
+
 
 
             if (hIdTransferido.Value != "")
@@ -402,6 +410,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			reqApellido.Enabled = true;
 			reqNombre.Enabled = true;
 			pnlTipoPersona.Visible = false;
+            pnlPartidas.Visible = false;
 			switch (Informe)
 			{
 				case 1: // Propiedad
@@ -550,9 +559,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     else
                         pnlDomComercial.Visible = true;
                     break;
-                case 19: // Partidas de defunción
+                case 19: // Verificación de defunción
                     pnlTipoPersona.Visible = false;
                     pnlParticulares.Visible = true;
+                    lblEstadoCivil.Visible = false;
+                    cmbEstadoCivil.Visible = false;
+                    lblSexo.Visible = true;
+                    cmbSexo.Visible = true;
+                    pnlUrgencia.Visible = false;
+                    break;
+                case 20: // Informe de partidas de defunción
+                    pnlTipoPersona.Visible = false;
+                    pnlParticulares.Visible = true;
+                    pnlPartidas.Visible = true;
                     lblEstadoCivil.Visible = false;
                     cmbEstadoCivil.Visible = false;
                     lblSexo.Visible = true;

@@ -1211,9 +1211,66 @@
                                                         </asp:Panel>
                                                     </td>
                                                 </tr>
-                                            </table>
+
+
+                                                <tr>
+                                        <td class="text" width="100%">
+                                            <asp:Panel ID="pnlPartidas" runat="server">
+                                                <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                    <tr>
+                                                        <td class="title" width="535" bgcolor="lightgrey" colspan="3" height="10">
+                                                            &nbsp;&nbsp;Datos de fallecimiento</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text" >
+                                                            Fecha
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Ingrese apellido"
+                                                                ControlToValidate="Apellido">*</asp:RequiredFieldValidator></td>
+                                                                <td class="text" colspan="3">
+                                                            Lugar de fallecimiento
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Ingrese nombre"
+                                                                ControlToValidate="Nombre">*</asp:RequiredFieldValidator></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text" >
+                                                            <asp:TextBox ID="txtFechaFallecimiento" runat="server" Width="60" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                            <td class="text" colspan="3">
+                                                            <asp:TextBox ID="txtLugarFallecido" runat="server" Width="100%" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text" width="100">
+                                                            Acta</td>
+                                                        <td class="text" width="235">
+                                                            &nbsp;Tomo&nbsp;
+                                                        </td>
+                                                        <td class="text" width="161">
+                                                            &nbsp;Folio&nbsp;
+                                                            </td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td class="text" width="25">
+                                                            &nbsp;<asp:TextBox ID="txtActaFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                            </td>
+                                                        <td class="text" width="235">
+                                                            &nbsp;<asp:TextBox ID="txtTomoFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                          <td class="text" width="161">
+                                                            &nbsp;<asp:TextBox ID="txtFolioFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                            </td>                                                          
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text" width="535" colspan="3" height="10">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text" width="535" colspan="3" height="10">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </asp:Panel>
                                         </td>
                                     </tr>
+                                            
                                     <tr>
                                         <td>
                                             <asp:Panel ID="pnlTitulo" runat="server">

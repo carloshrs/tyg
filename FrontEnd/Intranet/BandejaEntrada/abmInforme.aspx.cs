@@ -226,6 +226,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             // PARTIDAS DEFUNCIÓN
             if (Encabezado.Sexo.ToString() != "")
                 cmbSexo.SelectedValue = Encabezado.Sexo.ToString();
+
+            txtTomoFallecido.Text = Encabezado.TomoFallecido;
+            txtFolioFallecido.Text = Encabezado.FolioFallecido;
+            txtActaFallecido.Text = Encabezado.ActaFallecido;
+            txtFechaFallecimiento.Text = Encabezado.FechaFallecido;
+            txtLugarFallecido.Text = Encabezado.LugarFallecido;
 		}
 
 		#endregion
@@ -572,6 +578,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			reqApellido.Enabled = true;
 			reqNombre.Enabled = true;
 			pnlTipoPersona.Visible = false;
+            pnlPartidas.Visible = false;
 			switch (Informe)
 			{
 				case 1: // Propiedad
@@ -724,6 +731,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 case 19: // Partidas de defunción
                     pnlTipoPersona.Visible = false;
                     pnlParticulares.Visible = true;
+                    lblEstadoCivil.Visible = false;
+                    cmbEstadoCivil.Visible = false;
+                    lblSexo.Visible = true;
+                    cmbSexo.Visible = true;
+                    pnlUrgencia.Visible = false;
+                    break;
+                case 20: // Informe de partidas de defunción
+                    pnlTipoPersona.Visible = false;
+                    pnlParticulares.Visible = true;
+                    pnlPartidas.Visible = true;
                     lblEstadoCivil.Visible = false;
                     cmbEstadoCivil.Visible = false;
                     lblSexo.Visible = true;
@@ -894,9 +911,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             if (hIdTransferido.Value != "")
                 Encabezado.IdEncabezadoTransferido = int.Parse(hIdTransferido.Value);
 
-            // PARTIDAS DEFUNCIÓN
+            // VERIFICACION DE DEFUNCIÓN
             if (cmbSexo.SelectedValue != "")
                 Encabezado.Sexo = int.Parse(cmbSexo.SelectedValue);
+
+            // INFORMES PARTIDAS DEFUNCIÓN
+            Encabezado.TomoFallecido = txtTomoFallecido.Text;
+            Encabezado.FolioFallecido = txtFolioFallecido.Text;
+            Encabezado.ActaFallecido = txtActaFallecido.Text;
+            Encabezado.FechaFallecido = txtFechaFallecimiento.Text;
+            Encabezado.LugarFallecido = txtLugarFallecido.Text;
 
 			Encabezado.Modificar(int.Parse(idEncabezado.Value));
 
