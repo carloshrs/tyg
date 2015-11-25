@@ -336,8 +336,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     case "18": //Realizar Informe de Gravámenes DIR
                         strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
                         break;
-                    case "19": //Realizar Informe de Partidas de Defunción
+                    case "19": //Realizar Verificacion de Defunción
                         strRedir = "/defuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
+                        break;
+                    case "20": //Realizar Informe de Partidas de Defunción
+                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
                         break;
 
 				}
@@ -363,7 +366,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					((ImageButton)myItem.FindControl("VerEncabezado")).Attributes.Add("src",@"/img/printer.gif");
 
                     // Informes que NO visualiza la impresion de form. calle
-                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17" || myItem.Cells[14].Text == "18" || myItem.Cells[14].Text == "19") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
+                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17" || myItem.Cells[14].Text == "18" || myItem.Cells[14].Text == "19" || myItem.Cells[14].Text == "20") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
 
                     // Informe de Morosidad
                     if (myItem.Cells[14].Text == "17" && myItem.Cells[12].Text != "2") { ((ImageButton)myItem.FindControl("realizar")).Visible = false; }
@@ -486,8 +489,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                             case "18": //Gravámenes DIR
                                 Response.Redirect("/gravamenesDIR/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=18");
                                 break;
-                            case "19": //Partidas de defunción
+                            case "19": //verificacion de defunción
                                 Response.Redirect("/defuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=19");
+                                break;
+                            case "20": //Partidas de defunción
+                                ListaBandejaFiltro();
                                 break;
 							default:
 								Response.Redirect("principal.aspx");
@@ -559,7 +565,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     btnPropiedadRegistro.Text = "Registro del automotor";
 					break;
 				case 3: // Gravámenes
-					lblTipo.Text = " - Gravámenes";
+					lblTipo.Text = " - Gravámenes (folios)";
 					break;
 				case 4: // Ambiental
 					lblTipo.Text = " - Ambiental";
@@ -606,9 +612,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     lblTipo.Text = " - Informe Morosidad";
                     break;
                 case 18: // Informe Gravamen DIR
-                    lblTipo.Text = " - Informe de Partidas de Defunción";
+                    lblTipo.Text = " - Informe de Gravámenes (DIR)";
                     break;
-                case 19: // Informe Partidas de Defunción
+                case 19: // Verificación de Defunción
+                    lblTipo.Text = " - Verificación de Defunción";
+                    btnPropiedadRegistro.Text = "Importar / Imprimir";
+                    break;
+                case 20: // Informe Partidas de Defunción
                     lblTipo.Text = " - Informe de Partidas de Defunción";
                     btnPropiedadRegistro.Text = "Importar / Imprimir";
                     break;
@@ -621,7 +631,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
         private void EnviarRegistro(int idTipo)
         {
             btnPropiedadRegistro.Visible = false;
-            if (idTipo == 1 || idTipo == 2 || idTipo == 3 || idTipo == 10 || idTipo == 12 || idTipo == 13 || IdTipo == 15 || IdTipo == 16 || IdTipo == 19) { btnPropiedadRegistro.Visible = true; }
+            if (idTipo == 1 || idTipo == 2 || idTipo == 3 || idTipo == 10 || idTipo == 12 || idTipo == 13 || IdTipo == 15 || IdTipo == 16 || IdTipo == 19 || IdTipo == 20) { btnPropiedadRegistro.Visible = true; }
         }
 
         protected void btnPropiedadRegistro_Click(object sender, EventArgs e)
@@ -654,6 +664,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     break;
                 case 19:
                     Response.Redirect("../defuncion/importar.aspx");
+                    break;
+                case 20:
+                    Response.Redirect("../defuncion/importar_partidas.aspx");
                     break;
             }
         }
