@@ -116,8 +116,14 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 		private String strObservaciones;
 		private String strApreciaciones;
 
-        // Partidas defunsión
+        // Partidas defunción
         private int intSexo = 0;
+        private string strFechaFallecido = "";
+        private string strLugarFallecido = "";
+        private string strActaFallecido = "";
+        private string strTomoFallecido = "";
+        private string strFolioFallecido = "";
+
 
         //Integración FOX
         private int intIdFOX = 0;
@@ -1230,6 +1236,67 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
         }
 
+        public string FechaFallecido
+        {
+            get
+            {
+                return strFechaFallecido;
+            }
+            set
+            {
+                strFechaFallecido = value;
+            }
+        }
+
+        public string LugarFallecido
+        {
+            get
+            {
+                return strLugarFallecido;
+            }
+            set
+            {
+                strLugarFallecido = value;
+            }
+        }
+
+        public string ActaFallecido
+        {
+            get
+            {
+                return strActaFallecido;
+            }
+            set
+            {
+                strActaFallecido = value;
+            }
+        }
+
+        public string TomoFallecido
+        {
+            get
+            {
+                return strTomoFallecido;
+            }
+            set
+            {
+                strTomoFallecido = value;
+            }
+        }
+
+        public string FolioFallecido
+        {
+            get
+            {
+                return strFolioFallecido;
+            }
+            set
+            {
+                strFolioFallecido = value;
+            }
+        }
+
+
 		#endregion
 
 		#region Métodos Publicos
@@ -1269,7 +1336,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			strSQL = strSQL  + "RazonSocial, NombreFantasia, CargoEmpresa, TelefonoEmpresa, Rubro, Cuit, CalleEmpresa, NroEmpresa, DptoEmpresa, PisoEmpresa, BarrioEmpresa, CPEmpresa, LocalidadEmpresa, ProvinciaEmpresa,";
 			strSQL = strSQL  + "RegPubFolio, RegPubTomo, RegPubAno, ";
 
-            strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad, Sexo) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
+            strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad, Sexo, FechaFallecido, LugarFallecido, ActaFallecido, TomoFallecido, FolioFallecido) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
 			if (intidReferencia != 0)
 			{
 				strSQL = strSQL  + intidReferencia.ToString() + ",";
@@ -1290,7 +1357,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 strSQL = strSQL + ",'" + dtFechaCarga +"'";
             else
                 strSQL = strSQL + ", getdate()";
-            strSQL = strSQL + ",'" + IdFOX + "'," + Leido.ToString() + ", '" + strLocalidad + "', " + intSexo + ")"; 
+            strSQL = strSQL + ",'" + IdFOX + "'," + Leido.ToString() + ", '" + strLocalidad + "', " + intSexo + ", '" + strFechaFallecido + "', '" + strLugarFallecido + "', '" + strActaFallecido + "', '" + strTomoFallecido + "', '" + strFolioFallecido + "')"; 
 
 			String strMaxID = "SELECT MAX(idEncabezado) as MaxId FROM BandejaEntrada";
 
@@ -1500,10 +1567,14 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                     else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
                     break;
                 case 18: // Gravámenes DIR
+                    if (intIdTipoPersona == 1) Descripcion = "<B>" + strApellido + ", " + strNombre + "</B> - <B>" + strTipoDocumento + ":</B> " + strDocumento;
+                    else Descripcion = "<B>Razón Social: </B>" + strRazonSocial + " - <B>Cuit: </B> " + strCuit;
+                    break;
+                case 19: // Verifcación de defunción
                     Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
                     break;
-                case 19: // Partidas de defunción
-                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
+                case 20: // Informe de partida defunción
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento + ", Fallecido: " + strFechaFallecido;
                     break;
 			}
 						
@@ -1576,6 +1647,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			strSQL = strSQL  + ", DescripcionInf = '" + TraerDescripcionInforme() + "' ";
             strSQL = strSQL + ", txtLocalidad = '" + strLocalidad + "' ";
             strSQL = strSQL + ", Sexo = " + intSexo + " ";
+            strSQL = strSQL + ", FechaFallecido = '" + strFechaFallecido + "' ";
+            strSQL = strSQL + ", LugarFallecido = '" + strLugarFallecido + "' ";
+            strSQL = strSQL + ", ActaFallecido = '" + strActaFallecido + "' ";
+            strSQL = strSQL + ", TomoFallecido = '" + strTomoFallecido + "' ";
+            strSQL = strSQL + ", FolioFallecido = '" + strFolioFallecido + "' ";
             
 			strSQL = strSQL  + " WHERE idEncabezado =  " + idEncabezado.ToString();
 
@@ -1827,6 +1903,12 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             // Partidas Defuncion
             if (ds.Tables[0].Rows[0]["Sexo"].ToString() != "")
                 intSexo = int.Parse(ds.Tables[0].Rows[0]["Sexo"].ToString());
+
+            strFechaFallecido = ds.Tables[0].Rows[0]["FechaFallecido"].ToString();
+            strLugarFallecido = ds.Tables[0].Rows[0]["LugarFallecido"].ToString();
+            strActaFallecido = ds.Tables[0].Rows[0]["ActaFallecido"].ToString();
+            strTomoFallecido = ds.Tables[0].Rows[0]["TomoFallecido"].ToString();
+            strFolioFallecido = ds.Tables[0].Rows[0]["FolioFallecido"].ToString();
 		}
 
 		public bool CambiarEstado(int idInforme)

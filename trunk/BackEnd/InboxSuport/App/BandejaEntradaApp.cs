@@ -63,7 +63,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
 
 		public int[] CargarDatos()
 		{
-			int[] MenuArray = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+			int[] MenuArray = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 			BandejaEntradaDal bandeja = new BandejaEntradaDal();
 			DataTable Datos = bandeja.TraerDatosMenu();
 			foreach(DataRow myRow in Datos.Rows)
