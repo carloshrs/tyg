@@ -127,11 +127,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
             else
                 Morosidad.Text = "Morosidad (" + registros[16].ToString() + ")";
 
-            partidas.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=19";
+            defuncion.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=19";
             if (registros[18] > 0)
-                partidas.Text = "Partidas de defunción <B>(" + registros[18].ToString() + ")</B>";
+                defuncion.Text = "Defunción <B>(" + registros[18].ToString() + ")</B>";
             else
-                partidas.Text = "Partidas de defunción (" + registros[18].ToString() + ")";
+                defuncion.Text = "Defunción (" + registros[18].ToString() + ")";
+
+            partidas.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=20";
+            if (registros[19] > 0)
+                partidas.Text = "Partidas de defunción <B>(" + registros[19].ToString() + ")</B>";
+            else
+                partidas.Text = "Partidas de defunción (" + registros[19].ToString() + ")";
+
 
 
             // Se deshabilita temporalmente las consultas web

@@ -60,16 +60,19 @@
 				</TR>
 				<TR>
 					<td valign="top">
+                        <asp:Panel ID="pnReferencias" runat="server">
+                            <table>
+							    <tr>
+								    <td width="16"><img ID="Img1" Runat="server" src="/Img/Referencia.gif" height="16"></td>
+								    <td><asp:hyperlink Runat="server" CssClass="linkt" NavigateUrl="/BandejaEntrada/Referencias/ListaReferencias.aspx"
+										    Target="Main" ID="Hyperlink4">Grupos de informes</asp:hyperlink></td>
+							    </tr>
+						    </table>
+                        </asp:Panel>
 						<table>
 							<tr>
 								<td width="150">
-									<table>
-										<tr>
-											<td width="16"><img ID="Img1" Runat="server" src="/Img/Referencia.gif" height="16"></td>
-											<td><asp:hyperlink Runat="server" CssClass="linkt" NavigateUrl="/BandejaEntrada/Referencias/ListaReferencias.aspx"
-													Target="Main" ID="Hyperlink4">Grupos de informes</asp:hyperlink></td>
-										</tr>
-									</table>
+									
 								</td>
 							</tr>
 							<TR>
@@ -176,6 +179,10 @@
 												<tr>
 													<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="Especial"> Especial</asp:HyperLink></td>
+												</tr>
+                                                <tr>
+													<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
+													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="defuncion"> Defunción</asp:HyperLink></td>
 												</tr>
 											</TBODY>
 										</table>
