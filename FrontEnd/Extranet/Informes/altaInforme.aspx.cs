@@ -581,7 +581,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     //ValMatricula.ErrorMessage = "Ingrese planilla";
                     RequiredFieldValidatortxtAno.Enabled = true;
                     lblTipoPropiedad.Text = "Nro. de Planilla";
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
                     break;
 			}
 		}
