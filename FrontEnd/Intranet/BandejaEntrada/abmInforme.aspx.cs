@@ -527,7 +527,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     ValMatricula.ErrorMessage = "Ingrese planilla";
                     valAno.Enabled = true;
                     lblTipoPropiedad.Text = "Nro. de Planilla";
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
                     break;
 			}
 		}
@@ -984,9 +984,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
 		#endregion
 
-		#region DropDownList1_SelectedIndexChanged
+        #region cmbTipoPropiedad_SelectedIndexChanged
 
-		protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void cmbTipoPropiedad_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			SelectTipoPropiedad(int.Parse(cmbTipoPropiedad.SelectedValue));
             cmbTipoPropiedad.Focus();

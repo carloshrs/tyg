@@ -670,7 +670,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     ValMatricula.ErrorMessage = "Ingrese planilla";
                     RequiredFieldValidator6.Enabled = true;
                     lblTipoPropiedad.Text = "Nro. de Planilla";
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
                     break;
 			}
 		}

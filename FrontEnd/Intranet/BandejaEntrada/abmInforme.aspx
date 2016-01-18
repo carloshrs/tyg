@@ -566,7 +566,7 @@
                                                                 <tr>
                                                                     <td class="text" width="100%" colspan="3">
                                                                         <asp:DropDownList ID="cmbTipoPropiedad" runat="server" AutoPostBack="True" Width="100%"
-                                                                            OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                                                            OnSelectedIndexChanged="cmbTipoPropiedad_SelectedIndexChanged">
                                                                             <asp:ListItem Value="1">Matricula</asp:ListItem>
                                                                             <asp:ListItem Value="2">Dominio</asp:ListItem>
                                                                             <asp:ListItem Value="3">Legajo Especial</asp:ListItem>
