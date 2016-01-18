@@ -15,9 +15,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 	{
         private int paginaActual = 1;
         private int IdUsuario = 1; //VALOR QUE SE OBTENDRA DEL CONTEXTO
+        private bool blObtenerClienteMensual = false;
 
 		protected void Page_Load(object sender, EventArgs e)
         {
+            blObtenerClienteMensual = ObtenerClienteMensual();
             VerificarPrimerUsuarioLogueado();
             this.GetPostBackEventReference(this);
             paginaActual = int.Parse(hPagina.Value);
@@ -152,9 +154,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
 					}
 
-                    // Se oculta la opcion de visualizar el informe final
-					//if (strRedir != "")
-					//	((ImageButton) myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
+                    // Se habilita la opcion de imprimir informe si reune 2 condiciones:
+                    // 1- Es cliente mensual; 2- Es cliente diarios y está abonado el informe.
+                    if (strRedir != "" && blObtenerClienteMensual)
+						((ImageButton) myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
 
 				}
 			}
@@ -303,6 +306,22 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
             if (fechaUltimoIngreso.ToShortDateString() == ("01/01/1900").ToString()) //Al ser la primera vez que ingresa al sistema, se activa el saludo de bienvenida y carga de datos de usuario/empresa
                 Response.Redirect("/Admin/Clientes/AbmUsuario.aspx");
+        }
+
+        private bool ObtenerClienteMensual()
+        {
+            bool esMensual = false;
+            // Put user code to initialize the page here
+            UsuarioAutenticado Usuario = (UsuarioAutenticado)Context.User;
+
+            if (Usuario.TipoPeriodo != null)
+            {
+                if (Usuario.TipoPeriodo == 2)
+                    esMensual = true;
+            }
+
+            return esMensual;
+                
         }
 	}
 }
