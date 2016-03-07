@@ -1,9 +1,9 @@
 ﻿<%@ Page language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.Admin_Cuentas_remitos" CodeFile="remitos.aspx.cs" %>
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<html>
 	<head runat="server">
 		<title>Administración de Precios</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
@@ -17,12 +17,10 @@
     <script type="text/javascript">
 
         function ShowIcon() {
-
             var e = document.getElementById("processing");
-
             e.style.visibility = (e.style.visibility == 'visible') ? 'hidden' : 'visible';
-
         }
+
         function IAmSelected(source, eventArgs) {
             //alert( " Key : "+ eventArgs.get_text() +"  Value :  "+eventArgs.get_value()); 
             valor = eventArgs.get_value();
@@ -177,7 +175,7 @@ function recalcular(tipo, campo) {
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp;Listado de <asp:Label ID="lblTipo" runat="server"></asp:Label>
+								<td class="title" height="38">&nbsp;Listado de Parte de Entrega / Remitos<asp:Label ID="lblTipo" runat="server"></asp:Label>
 									<HR>
 									<BR>
 								</td>
@@ -238,87 +236,184 @@ function recalcular(tipo, campo) {
 							</tr>
 							<tr>
 								<td>
-                                    <asp:Panel ID="pnListadoRemitos" runat="server">
-                                    <div style="height:180px; overflow:auto">
-                                        <asp:datagrid id="dgridRemitos" 
-                                        runat="server" Width="50%" 
-                                        Font-Size="8pt" PageSize="15" CellPadding="3" BorderColor="#3657A6" 
-                                        BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
-										AutoGenerateColumns="False" onprerender="dgridRemitos_PreRender" onitemcommand="dgridRemitos_ItemCommand" >
-                                        <SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C">
-                                        </SelectedItemStyle>
+                                
+                                <asp:Panel ID="pnListadoRemitos" runat="server" Visible="false">
 
-                                        <AlternatingItemStyle BackColor="#FBFBFB">
-                                        </AlternatingItemStyle>
+                                    <cc1:TabContainer ID="TabContainer1" runat="server">
+                                        <cc1:TabPanel runat="server" HeaderText="Remitos" ID="tabRemito">
+                                            <ContentTemplate>
+                                                 <div style="height:180px; overflow:auto">
+                                                    <asp:datagrid id="dgridRemitos" 
+                                                    runat="server" Width="50%" 
+                                                    Font-Size="8pt" PageSize="15" CellPadding="3" BorderColor="#3657A6" 
+                                                    BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										            AutoGenerateColumns="False" onprerender="dgridRemitos_PreRender" onitemcommand="dgridRemitos_ItemCommand" >
+                                                    <SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C">
+                                                    </SelectedItemStyle>
 
-                                        <ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3">
-                                        </ItemStyle>
+                                                    <AlternatingItemStyle BackColor="#FBFBFB">
+                                                    </AlternatingItemStyle>
 
-                                        <HeaderStyle Font-Names="Arial" Font-Bold="True" ForeColor="#3756A6" BackColor="#DFE7F4">
-                                        </HeaderStyle>
+                                                    <ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3">
+                                                    </ItemStyle>
 
-                                        <FooterStyle ForeColor="Black" BackColor="#CCCCCC">
-                                        </FooterStyle>
+                                                    <HeaderStyle Font-Names="Arial" Font-Bold="True" ForeColor="#3756A6" BackColor="#DFE7F4">
+                                                    </HeaderStyle>
 
-                                        <Columns>
-                                        <asp:BoundColumn DataField="nroRemito" HeaderText="Remito">
-                                        <HeaderStyle HorizontalAlign="Center" Width="15px">
-                                        </HeaderStyle>
+                                                    <FooterStyle ForeColor="Black" BackColor="#CCCCCC">
+                                                    </FooterStyle>
 
-                                        <ItemStyle HorizontalAlign="Center">
-                                        </ItemStyle>
-                                        </asp:BoundColumn>
-                                        <asp:BoundColumn Visible="False" DataField="fecha" HeaderText="Fecha"></asp:BoundColumn>
-                                        <asp:TemplateColumn HeaderText="Fecha">
-                                        <HeaderStyle Width="50px">
-                                        </HeaderStyle>
+                                                    <Columns>
+                                                    <asp:BoundColumn DataField="nroRemito" HeaderText="Remito">
+                                                    <HeaderStyle HorizontalAlign="Center" Width="15px">
+                                                    </HeaderStyle>
 
-                                        <ItemTemplate>
-                                        <asp:Label id="lblFecha" runat="server"></asp:Label>
-                                        </ItemTemplate>
-                                        </asp:TemplateColumn>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
+                                                    <asp:BoundColumn Visible="False" DataField="fecha" HeaderText="Fecha"></asp:BoundColumn>
+                                                    <asp:TemplateColumn HeaderText="Fecha">
+                                                    <HeaderStyle Width="50px">
+                                                    </HeaderStyle>
+
+                                                    <ItemTemplate>
+                                                    <asp:Label id="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
                                         
-                                       <asp:BoundColumn DataField="cantInformes" HeaderText="Cantidad de informes">
-                                        <HeaderStyle Width="120px">
-                                        </HeaderStyle>
-                                        <ItemStyle HorizontalAlign="Center">
-                                        </ItemStyle>
-                                        </asp:BoundColumn>
+                                                   <asp:BoundColumn DataField="cantInformes" HeaderText="Cantidad de informes">
+                                                    <HeaderStyle Width="120px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
 
-                                        <asp:BoundColumn DataField="cantAdicionales" HeaderText="Cantidad adicionales">
-                                        <HeaderStyle Width="120px">
-                                        </HeaderStyle>
-                                        <ItemStyle HorizontalAlign="Center">
-                                        </ItemStyle>
-                                        </asp:BoundColumn>
+                                                    <asp:BoundColumn DataField="cantAdicionales" HeaderText="Cantidad adicionales">
+                                                    <HeaderStyle Width="120px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
 
-                                        <asp:TemplateColumn>
-                                        <HeaderStyle Width="25px">
-                                        </HeaderStyle>
+                                                    <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
 
-                                        <ItemStyle HorizontalAlign="Center">
-                                        </ItemStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
 
-                                        <ItemTemplate>
-                                            <asp:ImageButton id="Ver" runat="server" Width="16px" ImageUrl="/Img/lupita.gif" CommandName="Ver" ToolTip="Ver remito" Height="16px" BorderWidth="0"></asp:ImageButton>
-                                        </ItemTemplate>
-                                        </asp:TemplateColumn>
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton id="Ver" runat="server" Width="16px" ImageUrl="/Img/lupita.gif" CommandName="Ver" ToolTip="Ver remito" Height="16px" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
 
-                                        <asp:TemplateColumn>
-                                        <HeaderStyle Width="25px">
-                                        </HeaderStyle>
+                                                    <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
 
-                                        <ItemStyle HorizontalAlign="Center">
-                                        </ItemStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
 
-                                        <ItemTemplate>
-                                            <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
-                                        </ItemTemplate>
-                                        </asp:TemplateColumn>
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
 
-                                   </Columns>
-                                </asp:datagrid>
-                                </div>
+                                               </Columns>
+                                            </asp:datagrid>
+                                            </div>
+                                            </ContentTemplate>
+                                        </cc1:TabPanel>
+
+                                        <cc1:TabPanel runat="server" HeaderText="Partes de entrega" ID="tabPartes">
+                                            <ContentTemplate>
+                                                 <div style="height:180px; overflow:auto">
+                                                    <asp:datagrid id="dgridPartes" 
+                                                    runat="server" Width="50%" 
+                                                    Font-Size="8pt" PageSize="15" CellPadding="3" BorderColor="#3657A6" 
+                                                    BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
+										            AutoGenerateColumns="False" onprerender="dgridPartes_PreRender" onitemcommand="dgridPartes_ItemCommand" >
+                                                    <SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C">
+                                                    </SelectedItemStyle>
+
+                                                    <AlternatingItemStyle BackColor="#FBFBFB">
+                                                    </AlternatingItemStyle>
+
+                                                    <ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3">
+                                                    </ItemStyle>
+
+                                                    <HeaderStyle Font-Names="Arial" Font-Bold="True" ForeColor="#3756A6" BackColor="#DFE7F4">
+                                                    </HeaderStyle>
+
+                                                    <FooterStyle ForeColor="Black" BackColor="#CCCCCC">
+                                                    </FooterStyle>
+
+                                                    <Columns>
+                                                    <asp:BoundColumn DataField="nroParte" HeaderText="Partes E.">
+                                                    <HeaderStyle HorizontalAlign="Center" Width="15px">
+                                                    </HeaderStyle>
+
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
+                                                    <asp:BoundColumn Visible="False" DataField="fecha" HeaderText="Fecha"></asp:BoundColumn>
+                                                    <asp:TemplateColumn HeaderText="Fecha">
+                                                    <HeaderStyle Width="50px">
+                                                    </HeaderStyle>
+
+                                                    <ItemTemplate>
+                                                    <asp:Label id="lblFecha" runat="server"></asp:Label>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
+                                        
+                                                   <asp:BoundColumn DataField="cantInformes" HeaderText="Cantidad de informes">
+                                                    <HeaderStyle Width="120px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
+
+                                                    <asp:BoundColumn DataField="cantAdicionales" HeaderText="Cantidad adicionales">
+                                                    <HeaderStyle Width="120px">
+                                                    </HeaderStyle>
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+                                                    </asp:BoundColumn>
+
+                                                    <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton id="Ver" runat="server" Width="16px" ImageUrl="/Img/lupita.gif" CommandName="Ver" ToolTip="Ver remito" Height="16px" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
+
+                                                    <asp:TemplateColumn>
+                                                    <HeaderStyle Width="25px">
+                                                    </HeaderStyle>
+
+                                                    <ItemStyle HorizontalAlign="Center">
+                                                    </ItemStyle>
+
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
+                                                    </ItemTemplate>
+                                                    </asp:TemplateColumn>
+
+                                               </Columns>
+                                            </asp:datagrid>
+                                            </div>
+                                            </ContentTemplate>
+                                        </cc1:TabPanel>
+                                    </cc1:TabContainer>
+
+                                    
+
+                                    
                                 </asp:Panel>
                                 </td>
 							</tr>

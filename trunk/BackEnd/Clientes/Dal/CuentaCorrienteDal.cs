@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Text;
 using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
+using System.Data.Odbc;
 
 namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 {
@@ -144,5 +145,87 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
 		}
 
+        public bool ValClienteCC(int lIdCliente)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0; 
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "SELECT saldoActual FROM CPCuentaCliente " +
+            " WHERE idCliente = " + lIdCliente;
+            
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldoActual"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return false;
+            }
+
+            return true;
+        }
+
+
+        public float ObtenerSaldoClienteCC(int lIdCliente)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0;
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "SELECT saldoActual FROM CPCuentaCliente " +
+            " WHERE idCliente = " + lIdCliente;
+
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldoActual"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return -1;
+            }
+
+            return fSaldo;
+        }
+
+
+        private static int ObtenerMaxID(string strMaxID, OdbcConnection oConnection)
+        {
+            DataSet ds = new DataSet();
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strMaxID, oConnection);
+            myConsulta.Fill(ds);
+            int MaxID = 0;
+            try
+            {
+                MaxID = int.Parse(ds.Tables[0].Rows[0]["Maxid"].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+            return MaxID;
+        }
 	}
 }

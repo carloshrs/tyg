@@ -156,14 +156,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
             GestorPreciosApp gp = new GestorPreciosApp();
             int idMovimiento = gp.crearMovimiento(idTipoDocumentacion, idCliente, idUsuarioIntra);
-
+            decimal montoTotal = 0;
 
             foreach (DataGridItem myItem in dgridRemitos.Items)
             {
                 chkEstado = (CheckBox)myItem.FindControl("chkEstado");
-				if(chkEstado.Checked)
+                if (chkEstado.Checked)
+                {
                     gp.agregarRemitoParteEntregaMovimiento(idTipoDocumentacion, idMovimiento, int.Parse(myItem.Cells[1].Text));
+                    montoTotal = montoTotal + gp.precioTotalRemitoParteEntrega(idTipoDocumentacion, int.Parse(myItem.Cells[1].Text)); 
+                }
             }
+
+            //gp
+
+
 
             return idMovimiento;
 

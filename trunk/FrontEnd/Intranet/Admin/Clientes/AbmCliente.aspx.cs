@@ -97,6 +97,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
             txtEncargado.Text = dalCliente.Encargado;
             txtCargo.Text = dalCliente.Cargo;
             txtObservaciones.Text = dalCliente.Observaciones;
+            //bool tipoDocumento = false;
+            raTipoDocumento1.Checked = (dalCliente.TipoDocumento == 1) ? true : false;
+            raTipoDocumento2.Checked = (dalCliente.TipoDocumento == 2) ? true : false;
+            raTipoPeriodo1.Checked = (dalCliente.TipoPeriodo == 1) ? true : false;
+            raTipoPeriodo2.Checked = (dalCliente.TipoPeriodo == 2) ? true : false;
 
 			Session.Add("Cliente",dalCliente);
 		}
@@ -218,6 +223,27 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 dalCliente.Encargado = txtEncargado.Text;
                 dalCliente.Cargo = txtCargo.Text;
                 dalCliente.Observaciones = txtObservaciones.Text;
+
+                //Tipo de Documento
+                // 1- REMITO : 2- PARTE DE ENTREGA
+                //Tipo Periodo
+                // 1- DIARIO : 2- MENSUAL
+
+                int tipoDocumento = 0;
+                if (raTipoDocumento1.Checked)
+                    tipoDocumento = 1;
+                if (raTipoDocumento2.Checked)
+                    tipoDocumento = 2;
+                dalCliente.TipoDocumento = tipoDocumento;
+
+                int tipoPeriodo = 0;
+                if (raTipoPeriodo1.Checked)
+                    tipoPeriodo = 1;
+                if (raTipoPeriodo2.Checked)
+                    tipoPeriodo = 2;
+                dalCliente.TipoPeriodo = tipoPeriodo;
+
+
 				resultado=dalCliente.Modificar();
 			}
 			Salir(resultado);

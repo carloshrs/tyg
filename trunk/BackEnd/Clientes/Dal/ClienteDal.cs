@@ -36,6 +36,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private string strEncargado;
         private string strCargo;
         private string strObservaciones;
+        private int intTipoDocumento;
+        private int intTipoPeriodo;
+
 
 		public ClienteDal() : base()
 		{
@@ -318,6 +321,30 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
         }
 
+        public int TipoDocumento
+        {
+            get 
+            {
+                return intTipoDocumento;
+            }
+            set
+            {
+                intTipoDocumento = value;
+            }
+        }
+
+        public int TipoPeriodo
+        {
+            get
+            {
+                return intTipoPeriodo;
+            }
+            set
+            {
+                intTipoPeriodo = value;
+            }
+        }
+
 		#endregion
 
 		#region Métodos Publicos
@@ -329,7 +356,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			if (lIdCliente != 0)
 			{
 				StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox ");
+                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo ");
 				strSqlGet.Append(" From Clientes C ");
 				strSqlGet.Append(" Where C.IdCliente = " + Traduce(lIdCliente));
 				try
@@ -378,6 +405,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                             strCargo = drCliente.GetString(17);
                         if (!drCliente.IsDBNull(18))
                             strObservaciones = drCliente.GetString(18);
+                        if (!drCliente.IsDBNull(20))
+                            intTipoDocumento = Convert.ToInt32(drCliente.GetValue(20));
+                        if (!drCliente.IsDBNull(21))
+                            intTipoPeriodo = Convert.ToInt32(drCliente.GetValue(21));
 
 					}
 					drCliente.Close();
@@ -396,7 +427,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             if (nomCliente != "")
             {
                 StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.IdCliente, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox ");
+                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.IdCliente, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo ");
                 strSqlGet.Append(" From Clientes C ");
                 strSqlGet.Append(" Where C.RazonSocial LIKE '" + nomCliente + "%'");
                 try
@@ -444,6 +475,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                             strCargo = drCliente.GetString(17);
                         if (!drCliente.IsDBNull(18))
                             strObservaciones = drCliente.GetString(18);
+                        if (!drCliente.IsDBNull(20))
+                            intTipoDocumento = drCliente.GetInt16(20);
+                        if (!drCliente.IsDBNull(21))
+                            intTipoPeriodo = drCliente.GetInt16(21);
                     }
                     drCliente.Close();
                 }
@@ -533,6 +568,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strSQL+=",Encargado='" + strEncargado.Trim() + "'";
                 strSQL+=",Cargo='" + strCargo.Trim() + "'";
                 strSQL+=",Observaciones='" + strObservaciones.Trim() + "'";
+                strSQL += ",tipoDocumento=" + intTipoDocumento + "";
+                strSQL += ",tipoPeriodo=" + intTipoPeriodo + "";
 				strSQL+=" WHERE IdCliente="+intIdCliente;
 			
 				try

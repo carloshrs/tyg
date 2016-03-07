@@ -26,14 +26,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             if (!Page.IsPostBack)
             {
-                idTipoDocumentacion = int.Parse(Request.QueryString["idTipo"]);
-                tipoDocumentacion.Value = Request.QueryString["idTipo"];
-                setTipoCobranza(idTipoDocumentacion);
+                //idTipoDocumentacion = int.Parse(Request.QueryString["idTipo"]);
+                //tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                //setTipoCobranza(idTipoDocumentacion);
                     
                 Session["ArrayAdicionales"] = new int[30];
                 pnCliente.Visible = false;
                 //pnAdicionales.Visible = false;
                 //pnRemito.Visible = false;
+                btnAceptar.Visible = false;
 
                 if (txtFechaInicio.Text == "")
                     txtFechaInicio.Text = DateTime.Today.AddDays(-15).ToShortDateString();
@@ -46,7 +47,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     tipoDocumentacion.Value = Request.QueryString["idTipo"];
                     ClienteDal cargarCliente = new ClienteDal();
                     cargarCliente.Cargar(int.Parse(hIdCliente.Value));
-                    txtCliente.Text = cargarCliente.NombreFantasia;
+                    txtCliente.Text = cargarCliente.NombreFantasia.Replace("/n","<br>");
                     ActualizarListadoInformes();
                 }
                 //ListaAdicionales();
@@ -77,12 +78,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             pnListadoRemitos.Visible = true;
             pnCliente.Visible = true;
+            btnAceptar.Visible = true;
             //pnAdicionales.Visible = true;
             //pnRemito.Visible = true;
             //int idUser = -1;
             idCliente = int.Parse(hIdCliente.Value);
-            idTipoDocumentacion =  int.Parse(tipoDocumentacion.Value);
-            lblCliente.Text = txtCliente.Text;
+            //idTipoDocumentacion = 1; // int.Parse(tipoDocumentacion.Value);
+            lblCliente.Text = txtCliente.Text.Replace("/n", "<br>");
 
             if (txtFechaInicio.Text == "")
                 txtFechaInicio.Text = DateTime.Today.AddDays(-5).ToShortDateString();
@@ -93,8 +95,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             FechaHasta = txtFechaFinal.Text;
 
             GestorPreciosApp remitos = new GestorPreciosApp();
-            dgridRemitos.DataSource = remitos.ListaRemitosPartesEntrega(idTipoDocumentacion, idCliente, FechaDesde, FechaHasta, false, "");
+            dgridRemitos.DataSource = remitos.ListaRemitosPartesEntrega(1, idCliente, FechaDesde, FechaHasta, false, "");
             dgridRemitos.DataBind();
+
+            GestorPreciosApp partes = new GestorPreciosApp();
+            dgridPartes.DataSource = partes.ListaRemitosPartesEntrega(2, idCliente, FechaDesde, FechaHasta, false, "");
+            dgridPartes.DataBind();
 
         }
         /*
@@ -283,22 +289,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void btnAceptar_Click1(object sender, EventArgs e)
         {
-            int idTipo = int.Parse(Request.QueryString["idTipo"]);
+            //int idTipo = int.Parse(Request.QueryString["idTipo"]);
             string cliente = "";
-            //if (hIdCliente.Value != "")
-                //cliente = "&idCliente=" + hIdCliente.Value;
+            if (hIdCliente.Value != "")
+                cliente = "?idCliente=" + hIdCliente.Value;
 
-            Response.Redirect("AbmRemitos.aspx?idTipo=" + idTipo + cliente);
+            //Response.Redirect("AbmRemitos.aspx?idTipo=" + idTipo + cliente);
+            Response.Redirect("AbmRemitos.aspx" + cliente);
         }
 
         protected void dgridRemitos_PreRender(object sender, EventArgs e)
         {
-            int idTipo = int.Parse(Request.QueryString["idTipo"]);
+            /*int idTipo = int.Parse(Request.QueryString["idTipo"]);
             if (idTipo == 1)
                 dgridRemitos.Columns[0].HeaderText = "Remito";
             else
                 dgridRemitos.Columns[0].HeaderText = "Parte E.";
-
+            */
             foreach (DataGridItem myItem in dgridRemitos.Items)
             {
                 try
@@ -315,11 +322,45 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             switch (((ImageButton)e.CommandSource).CommandName)
             {
                 case "Ver":
-                    Response.Redirect("VerRemitos.aspx?idTipo=" + tipoDocumentacion.Value + "&nroRemito=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                    Response.Redirect("VerRemitos.aspx?idTipo=1&nroRemito=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
                     break;
 
                 case "Editar":
-                    Response.Redirect("AbmRemitos.aspx?idTipo=" + tipoDocumentacion.Value + "&id=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                    Response.Redirect("AbmRemitos.aspx?idTipo=1&id=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                    break;
+            }
+        }
+
+
+        protected void dgridPartes_PreRender(object sender, EventArgs e)
+        {
+            /*int idTipo = int.Parse(Request.QueryString["idTipo"]);
+            if (idTipo == 1)
+                dgridRemitos.Columns[0].HeaderText = "Remito";
+            else
+                dgridRemitos.Columns[0].HeaderText = "Parte E.";
+            */
+            foreach (DataGridItem myItem in dgridPartes.Items)
+            {
+                try
+                {
+                    ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                }
+                catch (Exception exc)
+                { }
+            }
+        }
+
+        protected void dgridPartes_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            switch (((ImageButton)e.CommandSource).CommandName)
+            {
+                case "Ver":
+                    Response.Redirect("VerRemitos.aspx?idTipo=2&nroRemito=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                    break;
+
+                case "Editar":
+                    Response.Redirect("AbmRemitos.aspx?idTipo=2&id=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
                     break;
             }
         }

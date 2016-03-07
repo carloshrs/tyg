@@ -45,7 +45,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
                     ViewState["IdTipoInforme"] = intIdTipoInforme.ToString();
                     ViewState["IdTipoPropiedad"] = idTipoPropiedad.ToString();
                     ListaCaracteres();
-                    if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                    if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
                         ddlTipoPrecio.Visible = false;
                 }
                 catch
@@ -93,7 +93,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 			foreach (DataGridItem myItem in dgTipoInforme.Items)
 			{
 				((ImageButton) myItem.FindControl("Editar")).ToolTip = "Modificar Precio";
-                if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
 					((Label) myItem.FindControl("lblTipoPrecio")).Text = "No Aplica";
 				else
 					((Label) myItem.FindControl("lblTipoPrecio")).Text = strTiposPrecio[int.Parse(myItem.Cells[1].Text) - 1];
@@ -133,14 +133,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 						DateTime dtFecha = DateTime.ParseExact(hidFecha.Value, "dd-MMM-yyyy HH:mm:ss", null);
                         if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
                         {
-                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
                                 GestorPrecios.ModificarPrecioPropiedad(dtFecha, 1, idTipoPropiedad, flPrecio);
                             else
                                 GestorPrecios.ModificarPrecioPropiedad(dtFecha, byte.Parse(ddlTipoPrecio.SelectedValue), idTipoPropiedad, flPrecio);
                         }
                         else
                         {
-                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
                                 GestorPrecios.ModificarPrecio(dtFecha, 1, intIdTipoInforme, flPrecio);
                             else
                                 GestorPrecios.ModificarPrecio(dtFecha, byte.Parse(ddlTipoPrecio.SelectedValue), intIdTipoInforme, flPrecio);
@@ -160,14 +160,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 
                         if (Request.QueryString["idTipoPropiedad"] != null && Request.QueryString["idTipoPropiedad"] != "")
                         {
-                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
                                 GestorPrecios.AgregarPrecioPropiedad(flPrecio, idTipoPropiedad, 1);
                             else
                                 GestorPrecios.AgregarPrecioPropiedad(flPrecio, idTipoPropiedad, byte.Parse(ddlTipoPrecio.SelectedValue));
                         }
                         else
                         {
-                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16)
+                            if (intIdTipoInforme != 1 && intIdTipoInforme != 3 && intIdTipoInforme != 13 && intIdTipoInforme != 16 && intIdTipoInforme != 18)
                                 GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, 1);
                             else
                                 GestorPrecios.AgregarPrecio(flPrecio, intIdTipoInforme, byte.Parse(ddlTipoPrecio.SelectedValue));
@@ -190,7 +190,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.TipoInforme
 		{
 			txtPrecio.Text = "";
 			hidFecha.Value = "";
-            if (intIdTipoInforme == 1 || intIdTipoInforme == 3 || intIdTipoInforme == 13 || intIdTipoInforme == 16)
+            if (intIdTipoInforme == 1 || intIdTipoInforme == 3 || intIdTipoInforme == 13 || intIdTipoInforme == 16 || intIdTipoInforme == 18)
 				ddlTipoPrecio.SelectedValue = "1";
 			btnAceptar.Text = "Agregar";
 		}
