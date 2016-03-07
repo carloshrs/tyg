@@ -183,6 +183,30 @@
 													<TR>
 														<TD class="text" colSpan="4" height="10"></TD>
 													</TR>
+                                                    <TR>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Sistema de cobranza de informes</TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4">
+                                                            <table cellSpacing="2" cellPadding="4" width="100%" border="0">
+																<TR style="background-color:#eee;">
+																	<TD class="text" width="30%" >Tipo de documento</TD>
+                                                                    <TD class="text" width="100%">
+                                                                        <asp:RadioButton ID="raTipoDocumento1" runat="server" Text="Remito" GroupName="TipoDocumento" />&nbsp;&nbsp;&nbsp;
+                                                                        <asp:RadioButton ID="raTipoDocumento2" runat="server" Text="Parte de entrega" GroupName="TipoDocumento" /></TD>
+                                                                </TR>
+                                                                 <TR style="background-color:#eee;">
+																	<TD class="text" >Periodo</TD>
+                                                                    <TD class="text" width="100%">
+                                                                        <asp:RadioButton ID="raTipoPeriodo1" runat="server" Text="Diario" GroupName="TipoPeriodo" />&nbsp;&nbsp;&nbsp;
+                                                                        <asp:RadioButton ID="raTipoPeriodo2" runat="server" Text="Mensual" GroupName="TipoPeriodo" /></TD>
+                                                                </TR>
+                                                            </table>
+                                                        </TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4" height="10"></TD>
+													</TR>
 													<TR>
 														<td colSpan="4">
 															<table cellSpacing="0" cellPadding="0" width="100%" border="0">

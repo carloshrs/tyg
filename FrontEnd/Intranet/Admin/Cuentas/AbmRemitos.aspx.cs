@@ -29,12 +29,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             if (!Page.IsPostBack)
             {
 
-                idTipoDocumentacion = int.Parse(Request.QueryString["idTipo"]);
-                tipoDocumentacion.Value = Request.QueryString["idTipo"];
-                setTipoDocumentacion(idTipoDocumentacion);
+                //idTipoDocumentacion = int.Parse(Request.QueryString["idTipo"]);
+                //tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                //setTipoDocumentacion(idTipoDocumentacion);
 
                 Session["ArrayAdicionales"] = new int[30];
-                pnCliente.Visible = false;
+                //pnCliente.Visible = false;
                 pnAdicionales.Visible = false;
                 pnRemito.Visible = false;
 
@@ -43,21 +43,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 if (txtFechaFinal.Text == "")
                     txtFechaFinal.Text = DateTime.Today.ToShortDateString();
 
+                cargarCliente();
+
                 if (Request.QueryString["id"] != null)
                 {
+                    Panel1TipoDoc.Visible = true;
+                    pnlTipoDocumento.Visible = true;
+                    pnlTipoPeriodo.Visible = true;
                     pnListadoInformes.Visible = true;
                     //btnAceptar.Visible = false;
                     hNroRemito.Value = Request.QueryString["id"];
                     hIdCliente.Value = Request.QueryString["idCliente"];
-                    tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                    //tipoDocumentacion.Value = Request.QueryString["idTipo"];
                     nroRemito = int.Parse(hNroRemito.Value);
-                    ClienteDal cargarCliente = new ClienteDal();
-                    cargarCliente.Cargar(int.Parse(hIdCliente.Value));
-                    txtCliente.Text = cargarCliente.NombreFantasia;
+                    ClienteDal oCargarCliente = new ClienteDal();
+                    oCargarCliente.Cargar(int.Parse(hIdCliente.Value));
+                    txtCliente.Text = oCargarCliente.NombreFantasia;
                     txtCliente.ReadOnly = true;
 
                     GestorPrecios cargarRemito = new GestorPrecios();
-                    cargarRemito.cargarRemitoParte(int.Parse(tipoDocumentacion.Value), nroRemito);
+                    cargarRemito.cargarRemitoParte(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
                     if (cargarRemito.TipoPeriodo != 0)
                     {
                         if (cargarRemito.TipoPeriodo == 1)
@@ -66,10 +71,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             raTipoPeriodo.SelectedIndex = 1;
                     }
 
-                    ActualizarListadoInformes(int.Parse(tipoDocumentacion.Value), nroRemito);
-                    CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text, int.Parse(tipoDocumentacion.Value), nroRemito);
+                    ActualizarListadoInformes(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
+                    CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text, 1, nroRemito);
                     InicializarTablaAdicionales();
-                    CargarAdicionales(int.Parse(tipoDocumentacion.Value), nroRemito);
+                    CargarAdicionales(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
                 }
 
                 ListaAdicionales();
@@ -84,7 +89,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             nroRemito = int.Parse(hNroRemito.Value);
                         else
                             nroRemito = 0;
-                        EliminarItemRemito(int.Parse(tipoDocumentacion.Value), nroRemito, Request.Params["__EVENTARGUMENT"]);
+                        //int.Parse(tipoDocumentacion.Value)
+                        EliminarItemRemito(1, nroRemito, Request.Params["__EVENTARGUMENT"]);
                     }
                             
                 }
@@ -102,7 +108,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             if (hIdCliente.Value != "" && txtFechaInicio.Text != "" && txtFechaFinal.Text != "")
             {
                 InicializarTablaAdicionales();
-                ActualizarListadoInformes(int.Parse(tipoDocumentacion.Value), nroRemito);
+                //int.Parse(tipoDocumentacion.Value)
+                ActualizarListadoInformes(1, nroRemito);
                 CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text);
             }
         }
@@ -122,16 +129,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("remitos.aspx?idTipo=" + idTipoDocumentacion + "&idCliente=" + hIdCliente.Value);
+            Response.Redirect("remitos.aspx?idCliente=" + hIdCliente.Value);
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             int idRemito = GenerarRemito();
-            Response.Redirect("VerRemitos.aspx?idTipo=" + tipoDocumentacion.Value + "&idCliente=" + hIdCliente.Value + "&nroRemito=" + idRemito);
+            Response.Redirect("VerRemitos.aspx?idCliente=" + hIdCliente.Value + "&nroRemito=" + idRemito + "&idTipo=" + raTipoDocumento.Text);
         }
 
         private void ActualizarListadoInformes(int tipoDocumentacion, int nroRemito)
         {
+            //pnlTipoDocumento.Visible = false;
+            //pnlTipoPeriodo.Visible = false;
             pnListadoInformes.Visible = false;
             pnCliente.Visible = true;
             pnAdicionales.Visible = true;
@@ -142,9 +151,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             ClienteDal oCliente = new ClienteDal();
             oCliente.Cargar(idCliente);
-            lblDireccion.Text = oCliente.Calle + " " + oCliente.Numero;
-            if (oCliente.IdLocalidad != 1)
-                lblDireccion.Text = lblDireccion.Text + " - Localidad: " + CargarLocalidades(oCliente.IdProvincia, oCliente.IdLocalidad);
+            //lblDireccion.Text = oCliente.Calle + " " + oCliente.Numero;
+            //if (oCliente.IdLocalidad != 1)
+            //    lblDireccion.Text = lblDireccion.Text + " - Localidad: " + CargarLocalidades(oCliente.IdProvincia, oCliente.IdLocalidad);
 
             if (txtFechaInicio.Text == "")
                 txtFechaInicio.Text = DateTime.Today.AddDays(-5).ToShortDateString();
@@ -199,7 +208,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 ListView lvInformes = (ListView)e.Item.FindControl("lvInformes");
 
                 GestorPreciosApp gp = new GestorPreciosApp();
-                int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
+                //int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
+                int idTipoDocumentacion = 1;
 
                 if (nroRemito != 0)
                     lvInformes.DataSource = gp.listarInformesRemitoParteEntrega(idTipoDocumentacion, nroRemito, idTipoInfo);
@@ -239,8 +249,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 //else
 
             }
-
-            Response.Redirect("AbmRemitos.aspx?idTipo=" + idTipoDocumentacion + "&id=" + nroRemito + "&idCliente=" + hIdCliente.Value);
+            //idTipo=" + idTipoDocumentacion + "&
+            gp.setearMontoRemito(nroRemito, idTipoDocumentacion, 1);
+            Response.Redirect("AbmRemitos.aspx?id=" + nroRemito + "&idCliente=" + hIdCliente.Value);
         }
 
         private int GenerarRemito()
@@ -251,7 +262,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             int idCliente = int.Parse(hIdCliente.Value);
             int idUsuarioIntra = Usuario.IdUsuario;
             int idtipoCobranza = int.Parse(raTipoPeriodo.Text);
-            idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
+            idTipoDocumentacion = 1; // int.Parse(tipoDocumentacion.Value);
             if (hNroRemito.Value != "")
                 nroRemito = int.Parse(hNroRemito.Value);
             
@@ -311,6 +322,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 PrecioUnitario = decimal.Parse(PrecioUnitario1, CultureInfo.InvariantCulture);
                 gp.agregarAdicionalRemito(idTipoDocumentacion, idRemito, idAdicional, Cantidad, PrecioUnitario);
             }
+
+            gp.setearMontoRemito(idRemito, idTipoDocumentacion, 1);
 
             return idRemito;
         }
@@ -439,6 +452,27 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 btnAceptar.Text = "Finalizar parte de entrega";
             }
         }
+
+
+
+        private void cargarCliente()
+        {
+            ClienteDal nCargarCliente = new ClienteDal();
+            hIdCliente.Value = Request.QueryString["idCliente"];
+            nCargarCliente.Cargar(int.Parse(hIdCliente.Value));
+            lblCliente.Text = nCargarCliente.NombreFantasia;
+            txtCliente.Text = nCargarCliente.NombreFantasia;
+            txtCliente.ReadOnly = true;
+            lblDireccion.Text = nCargarCliente.Calle + " " + nCargarCliente.Numero + ", " + CargarLocalidades(nCargarCliente.IdProvincia, nCargarCliente.IdLocalidad) + ".";
+            //txtCliente.ReadOnly = true;
+            if (nCargarCliente.TipoDocumento != null)
+                raTipoDocumento.SelectedIndex = nCargarCliente.TipoDocumento - 1;
+
+            if (nCargarCliente.TipoPeriodo != null)
+                raTipoPeriodo.SelectedIndex = nCargarCliente.TipoPeriodo - 1;
+        
+        }
+
 
         private String CargarLocalidades(int idProvincia, int IdLocalidad)
         {

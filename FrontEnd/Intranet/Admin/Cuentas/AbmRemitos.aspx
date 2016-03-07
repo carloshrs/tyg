@@ -182,7 +182,7 @@ function recalcular(tipo, campo) {
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp;Alta de <asp:Label ID="lblTipo" runat="server"></asp:Label>
+								<td class="title" height="38">&nbsp;Alta de remito / parte de entrega<asp:Label ID="lblTipo" runat="server"></asp:Label>
 									<HR>
 									<BR>
 								</td>
@@ -232,6 +232,45 @@ function recalcular(tipo, campo) {
                                     </fieldset>
 								</td>
 							</tr>
+                            <tr>
+								<td>
+                                    <asp:Panel ID="Panel1TipoDoc" runat="server">
+                                    </asp:Panel>
+                                <asp:Panel ID="pnlTipoDocumento" runat="server">
+                                    <fieldset>
+                                    <legend class="text">2 - Tipo de documento</legend>
+                                    <div style="width:180px; font-size:12px; ">
+                                        <table>
+                                            <tr><td><asp:RadioButtonList ID="raTipoDocumento" runat="server" CssClass="text" RepeatDirection="Horizontal" style="width:200px;">
+                                                <asp:ListItem Value="1"> Remito</asp:ListItem>
+                                                <asp:ListItem Value="2"> Parte de entrega</asp:ListItem>
+                                                </asp:RadioButtonList></td>
+                                                <td><asp:RequiredFieldValidator ID="valTipoDocumento" runat="server" ErrorMessage="Seleccione tipo de documento" ControlToValidate="raTipoDocumento" ValidationGroup="Final">*</asp:RequiredFieldValidator></td>
+                                             </tr>
+                                        </table>
+                                    </div>
+                                    </fieldset>
+                                </asp:Panel>
+                            </td>
+							</tr>
+                            <tr>
+								<td>
+                                <asp:Panel ID="pnlTipoPeriodo" runat="server">
+                                    <fieldset>
+                                    <legend class="text">3 - Tipo de período</legend>
+                                    <div style="width:180px; font-size:12px; ">
+                                        <table>
+                                            <tr><td><asp:RadioButtonList ID="raTipoPeriodo" runat="server" CssClass="text" RepeatDirection="Horizontal">
+                                                <asp:ListItem Value="1"> Diario</asp:ListItem>
+                                                <asp:ListItem Value="2"> Mensual</asp:ListItem>
+                                                </asp:RadioButtonList></td>
+                                                <td><asp:RequiredFieldValidator ID="valTipoPeriodo" runat="server" ErrorMessage="Seleccione periodo" ControlToValidate="raTipoPeriodo" ValidationGroup="Final">*</asp:RequiredFieldValidator></td>
+                                             </tr>
+                                        </table>
+                                    </div>
+                                    </fieldset>
+                                </asp:Panel>
+                            </td>
 							<tr>
 								<td class="text" height="38">
                                     <asp:Panel ID="pnCliente" runat="server">
@@ -246,22 +285,6 @@ function recalcular(tipo, campo) {
                                     </asp:Panel></td>
 							</tr>
                             <tr>
-								<td>
-                                <fieldset>
-                                <legend class="text">2 - Tipo de período</legend>
-                                <div style="width:180px; font-size:12px; ">
-                                    <table>
-                                        <tr><td><asp:RadioButtonList ID="raTipoPeriodo" runat="server" CssClass="text" RepeatDirection="Horizontal">
-                                            <asp:ListItem Value="1"> Diario</asp:ListItem>
-                                            <asp:ListItem Value="2"> Mensual</asp:ListItem>
-                                            </asp:RadioButtonList></td>
-                                            <td><asp:RequiredFieldValidator ID="valTipoPeriodo" runat="server" ErrorMessage="Seleccione periodo" ControlToValidate="raTipoPeriodo" ValidationGroup="Final">*</asp:RequiredFieldValidator></td>
-                                         </tr>
-                                    </table>
-                                </div>
-                                </fieldset>
-                            </td>
-							</tr>
 								<td>
                                     <asp:Panel ID="pnListadoInformes" runat="server">
                                     <div style="height:120px; overflow:auto"><asp:datagrid id="dgridEncabezados" 
@@ -353,7 +376,7 @@ function recalcular(tipo, campo) {
                                 <tr><td class="text"><br /><br />
                                     <asp:Panel ID="pnRemito" runat="server">
                                     <fieldset>
-                                    <legend>3 - Selección de informes y adicionales</legend>
+                                    <legend>4 - Selección de informes y adicionales</legend>
                                     <table class="generalTable text" cellspacing="0" cellpadding="3" border="0" id="Table1" style="border-collapse:collapse;">
 			                            <tr class="rowTop" style="font-weight: bold; color: #3756A6; background-color: #DFE7F4;">
 				                            <th scope="col" style="width:1%;white-space:nowrap;">&nbsp;</th>
@@ -381,9 +404,9 @@ function recalcular(tipo, campo) {
 									                        <tr class="headRow" style="font-weight: bold; color: #3756A6; background-color: #DFE7F4;">
 										                        <th scope="col" style="width:1%;"></th>
                                                                 <th scope="col" style="width:1%;">ID</th>
-                                                                <th scope="col" style="width:280px">Fecha</th>
-                                                                <th scope="col" style="width:65%">Descripción</th>
-                                                                <th scope="col" style="width:220px" align="center">Precio unitario</th>
+                                                                <th scope="col" style="width:15%">Fecha</th>
+                                                                <th scope="col">Descripción</th>
+                                                                <th scope="col" style="width:10%" align="center">Precio unitario</th>
                                                                 <th scope="col" style="width:80px; white-space:nowrap;">&nbsp;</th>
 									                        </tr>
                                                             <asp:ListView ID="lvInformes" runat="server">
@@ -466,7 +489,7 @@ function recalcular(tipo, campo) {
 							<tr>
 								<td align="right"><br /><br />
 									<asp:Button id="btnCerrar" runat="server" Text="Cerrar" CausesValidation="False" onclick="btnCerrar_Click"></asp:Button>
-								&nbsp;<asp:Button id="btnAceptar" runat="server" Text="Finalizar remito" CausesValidation="true" onclick="btnAceptar_Click" ValidationGroup="Final"></asp:Button>
+								&nbsp;<asp:Button id="btnAceptar" runat="server" Text="Finalizar" CausesValidation="true" onclick="btnAceptar_Click" ValidationGroup="Final"></asp:Button>
 								</td>
 							</tr>
 						</table>

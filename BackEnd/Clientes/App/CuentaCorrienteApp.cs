@@ -22,5 +22,17 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
 
 		}
 
+        public bool ValClienteCC(int lIdCliente)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.ValClienteCC(lIdCliente); ;
+        }
+
+
+        public float ObtenerSaldoClienteCC(int lIdCliente)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.ObtenerSaldoClienteCC(lIdCliente); ;
+        }
 	}
 }

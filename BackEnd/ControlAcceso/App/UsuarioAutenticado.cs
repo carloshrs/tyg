@@ -22,6 +22,7 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.App
 		private Usuario oDatosUsuario;
 		private Hashtable htTickets;
 		private int intVencimientoTicket;
+        private int intTipoPeriodo;
 
 		public UsuarioAutenticado(IIdentity lIdentity, Usuario lUsuario, int lVencTicket)
 		{
@@ -39,8 +40,7 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.App
 			oDatosUsuario = lUsuario;
 			htTickets = new Hashtable();
 			intVencimientoTicket = lVencTicket;
-
-
+            intTipoPeriodo = lUsuario.TipoPeriodo;
 		}
 
 		public int IdUsuario
@@ -71,6 +71,10 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.App
         public DateTime UltimoIngreso
         {
             get { return dtUltimoIngreso; }
+        }
+        
+        public int TipoPeriodo {
+            get { return intTipoPeriodo; }
         }
 
 		public Hashtable Roles

@@ -15,6 +15,14 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 	{
         private int intNroRemito;
         private int intTipoPeriodo;
+        private int intIdCaja;
+        private string strApertura;
+        private string strCierre;
+        private float floEfectivoInicial;
+        private float floChequeInicial;
+        private float floSaldoEfectivo;
+        private float floSaldoCheque;
+
 
 		public GestorPrecios() {}
 
@@ -43,6 +51,91 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 intTipoPeriodo = value;
             }
         }
+
+        public int IdCaja
+        {
+            get
+            {
+                return intIdCaja;
+            }
+            set
+            {
+                intIdCaja = value;
+            }
+        }
+
+        public string Apertura
+        {
+            get
+            {
+                return strApertura;
+            }
+            set
+            {
+                strApertura = value;
+            }
+        }
+
+        public string Cierre
+        {
+            get
+            {
+                return strCierre;
+            }
+            set
+            {
+                strCierre = value;
+            }
+        }
+
+        public float EfectivoInicial
+        {
+            get
+            {
+                return floEfectivoInicial;
+            }
+            set
+            {
+                floEfectivoInicial = value;
+            }
+        }
+
+        public float ChequeInicial
+        {
+            get
+            {
+                return floChequeInicial;
+            }
+            set
+            {
+                floChequeInicial = value;
+            }
+        }
+
+        public float SaldoEfectivo
+        {
+            get
+            {
+                return floSaldoEfectivo;
+            }
+            set
+            {
+                floSaldoEfectivo = value;
+            }
+        }
+
+        public float SaldoCheque
+        {
+            get
+            {
+                return floSaldoCheque;
+            }
+            set
+            {
+                floSaldoCheque = value;
+            }
+        }
+        
 
         #endregion
 
@@ -347,6 +440,147 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
         }
 
+
+        public static void CrearCaja(float lEfectivoInicial, float lChequeInicial, int lUsuario)
+        {
+            try
+            {
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery = new StringBuilder(512);
+                strQuery.Append("Insert Into CPCaja (efectivoInicial, chequeInicial, saldoEfectivo, saldoCheque, apertura, fechaUltimoMovimiento, idUsuario) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(lEfectivoInicial) + ", " + StaticDal.Traduce(lChequeInicial) + ", " + StaticDal.Traduce(lEfectivoInicial) + ", " + StaticDal.Traduce(lChequeInicial) + ", getdate(), getdate(), " + StaticDal.Traduce(lUsuario) + ")");
+
+
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
+
+        public static void ModificarCaja(int lId, float lEfectivoInicial, float lChequeInicial, float lSaldoEfectivo, float lSaldoCheque, int estado)
+        {
+            try
+            {
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery = new StringBuilder(512);
+                strQuery.Append("UPDATE CPCaja ");
+                strQuery.Append(" SET efectivoInicial=" + StaticDal.Traduce(lEfectivoInicial));
+                strQuery.Append(" , chequeInicial=" + StaticDal.Traduce(lChequeInicial));
+                if (estado == 1)
+                {
+                    strQuery.Append(" , saldoEfectivo=" + StaticDal.Traduce(lSaldoEfectivo));
+                    strQuery.Append(" , saldoCheque=" + StaticDal.Traduce(lSaldoCheque));
+                    strQuery.Append(" , cierre= getdate()");
+                }
+
+                strQuery.Append(" WHERE idCaja = " + lId);
+
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
+
+
+        public void CargarCaja(int idCaja)
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+
+            String strSQL = "Select idCaja, apertura, cierre, efectivoInicial, chequeInicial, saldoEfectivo, saldoCheque ";
+            strSQL = strSQL + " From CPCaja ";
+            strSQL = strSQL + " Where idCaja = " + idCaja.ToString();
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+                oConnection.Close();
+            }
+            catch { }
+
+            intIdCaja = int.Parse(ds.Tables[0].Rows[0]["idCaja"].ToString());
+            strApertura = ds.Tables[0].Rows[0]["apertura"].ToString();
+            strCierre = ds.Tables[0].Rows[0]["cierre"].ToString();
+            floEfectivoInicial = float.Parse(ds.Tables[0].Rows[0]["efectivoInicial"].ToString());
+            floChequeInicial = float.Parse(ds.Tables[0].Rows[0]["chequeInicial"].ToString());
+            floSaldoEfectivo = float.Parse(ds.Tables[0].Rows[0]["saldoEfectivo"].ToString());
+            floSaldoCheque = float.Parse(ds.Tables[0].Rows[0]["saldoCheque"].ToString());
+        }
+
+
+        public static DataTable ListarCajas(string lTexto)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select idCaja, apertura, cierre, efectivoInicial, chequeInicial, saldoEfectivo, saldoCheque ");
+            strQuery.Append(" From CPCaja ");
+            if (lTexto != "")
+                strQuery.Append(" Where idCaja = " + lTexto + " ");
+
+            strQuery.Append(" Order by apertura DESC");
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "Cajas").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
+
+        public static void EliminarCaja(int lId)
+        {
+            StringBuilder strSqlUpdate = new StringBuilder(128);
+            strSqlUpdate.Append(" DELETE FROM CPCaja ");
+            strSqlUpdate.Append(" WHERE idCaja=" + lId);
+            strSqlUpdate.Append(" AND NOT idCaja IN ( ");
+            strSqlUpdate.Append(" SELECT DISTINCT idCaja ");
+            strSqlUpdate.Append(" FROM CPCajaDetalle ");
+            strSqlUpdate.Append(" Where idCaja=" + lId + ")");
+            try
+            {
+                StaticDal.EjecutarComando(strSqlUpdate.ToString());
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        public static DataTable ListarCajasDetalle(string lTexto)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select idCajaDetalle, concepto, monto, entradasalida, fecha ");
+            strQuery.Append(" From CPCajaDetalle ");
+            if (lTexto != "")
+                strQuery.Append(" Where idCajaDetalle = " + lTexto + " ");
+
+            strQuery.Append(" Order by fecha DESC");
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "CajaDetalle").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
 
         public static void EliminarClienteCC(int lIdCliente)
         {
@@ -1210,6 +1444,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             return precioTotal;
         }
 
+
+        //public static decimal guardarPrecioRemitoParte(decimal )
+
         public static void AgregarClienteCuentaCorriente(int lIdCliente)
         {
             try
@@ -1539,6 +1776,43 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
+
+        public int ActualizarMontoMovimiento(int idTipoDocumentacion, int nroMovimiento, decimal monto)
+        {
+            int MaxID = 0;
+            OdbcConnection oConnection = this.OpenConnection();
+            string strSQL = "";
+            string strMaxID = "";
+
+            if (idTipoDocumentacion == 1)
+            {
+                strSQL = strSQL + "UPDATE CtaCteRemitos SET estado=1, monto= " + monto;
+                strSQL = strSQL + " WHERE nroMovimiento=" + nroMovimiento;
+
+            }
+
+            if (idTipoDocumentacion == 2)
+            {
+                strSQL = strSQL + "UPDATE CtaCtePartesEntrega SET estado=1, monto= " + monto;
+                strSQL = strSQL + " WHERE nroMovimiento=" + nroMovimiento;
+            }
+
+            try
+            {
+                OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                myCommand.ExecuteNonQuery();
+
+                MaxID = ObtenerMaxID(strMaxID, oConnection);
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return MaxID;
+            }
+
+            return MaxID;
+        }
+
         public void agregarRemitoParteEntregaMovimiento(int idTipoDocumentacion, int nroMovimiento, int idRemito)
         {
             //int MaxID = 0;
@@ -1601,6 +1875,37 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             //return MaxID;
 
         }
+
+
+        public void ActualizarMontosDocumentos(int idCliente, string FechaDesde, string FechaHasta)
+        {
+            //int MaxID = 0;
+            OdbcConnection oConnection = this.OpenConnection();
+            String strSQL = "";
+
+            strSQL = "setMontoDocumentosCliente " + idCliente + ", '" + FechaDesde + "', '" + FechaHasta + "'";
+
+            //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
+
+            try
+            {
+                OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                myCommand.ExecuteNonQuery();
+
+                //MaxID = ObtenerMaxID(strMaxID, oConnection);
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                //return MaxID;
+            }
+
+            //return MaxID;
+
+        }
+
+
+
 
         public static DataTable ListaDocumentosPendientesCobrar(int idCliente, string FechaDesde, string FechaHasta, int Estado)
         {

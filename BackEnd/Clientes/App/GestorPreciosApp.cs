@@ -341,7 +341,25 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             //return idRemito;
         }
 
-        
+        //Setea el monto al confeccionar el remito o parte de entrega (AbmRemitos)
+        public void setearMontoRemito(int idRemito, int idTipoDocumentacion, int tipoPeriodo)
+        {
+            GestorPrecios gp = new GestorPrecios();
+            gp.setearMontoRemito(idRemito, idTipoDocumentacion, tipoPeriodo);
+        }
 
+        public DataTable ListaDocumentosPendientesCobrar(int idCliente, string FechaDesde, string FechaHasta, int Estado)
+        {
+            DataTable Datos = GestorPrecios.ListaDocumentosPendientesCobrar(idCliente, FechaDesde, FechaHasta, Estado);
+            return Datos;
+        }
+
+        //Setea el valor del monto al realizar la cobranza si el monto es null
+        public void ActualizarMontosDocumentos(int idCliente, string FechaDesde, string FechaHasta)
+        {
+            GestorPrecios pre = new GestorPrecios();
+            pre.ActualizarMontosDocumentos(idCliente, FechaDesde, FechaHasta);
+        }
+        //public float obtenerTotalRemito
 	}
 }
