@@ -1855,7 +1855,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             OdbcConnection oConnection = this.OpenConnection();
             String strSQL = "";
 
-            strSQL = "setMontoDocumento " + idDocumento + ", " + idTipoDocumentacion + ", 1 ";
+            strSQL = "setMontoDocumento " + idDocumento + ", " + idTipoDocumentacion;
 
             //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
 

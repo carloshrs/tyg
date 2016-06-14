@@ -54,7 +54,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     //btnAceptar.Visible = false;
                     hNroRemito.Value = Request.QueryString["id"];
                     hIdCliente.Value = Request.QueryString["idCliente"];
-                    //tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                    if (Request.QueryString["idTipo"] != "")
+                        tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                    else
+                        tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
                     nroRemito = int.Parse(hNroRemito.Value);
                     ClienteDal oCargarCliente = new ClienteDal();
                     oCargarCliente.Cargar(int.Parse(hIdCliente.Value));
@@ -62,7 +65,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     txtCliente.ReadOnly = true;
 
                     GestorPrecios cargarRemito = new GestorPrecios();
-                    cargarRemito.cargarRemitoParte(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
+                    cargarRemito.cargarRemitoParte(int.Parse(tipoDocumentacion.Value), nroRemito);
+
+                    if (int.Parse(tipoDocumentacion.Value) != 0)
+                    {
+                        if (int.Parse(tipoDocumentacion.Value) == 1)
+                            raTipoDocumento.SelectedIndex = 0;
+                        else
+                            raTipoDocumento.SelectedIndex = 1;
+                    }
+
                     if (cargarRemito.TipoPeriodo != 0)
                     {
                         if (cargarRemito.TipoPeriodo == 1)
@@ -71,10 +83,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             raTipoPeriodo.SelectedIndex = 1;
                     }
 
-                    ActualizarListadoInformes(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
-                    CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text, 1, nroRemito);
+                    ActualizarListadoInformes(int.Parse(tipoDocumentacion.Value), nroRemito);
+                    CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text, int.Parse(tipoDocumentacion.Value), nroRemito);
                     InicializarTablaAdicionales();
-                    CargarAdicionales(int.Parse(raTipoDocumento.SelectedValue), nroRemito);
+                    CargarAdicionales(int.Parse(tipoDocumentacion.Value), nroRemito);
                 }
 
                 ListaAdicionales();
@@ -208,8 +220,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 ListView lvInformes = (ListView)e.Item.FindControl("lvInformes");
 
                 GestorPreciosApp gp = new GestorPreciosApp();
-                //int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
-                int idTipoDocumentacion = 1;
+                int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
+                //int idTipoDocumentacion = 1;
 
                 if (nroRemito != 0)
                     lvInformes.DataSource = gp.listarInformesRemitoParteEntrega(idTipoDocumentacion, nroRemito, idTipoInfo);
@@ -262,7 +274,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             int idCliente = int.Parse(hIdCliente.Value);
             int idUsuarioIntra = Usuario.IdUsuario;
             int idtipoCobranza = int.Parse(raTipoPeriodo.Text);
-            idTipoDocumentacion = 1; // int.Parse(tipoDocumentacion.Value);
+            idTipoDocumentacion = int.Parse(raTipoDocumento.Text); // int.Parse(tipoDocumentacion.Value);
             if (hNroRemito.Value != "")
                 nroRemito = int.Parse(hNroRemito.Value);
             

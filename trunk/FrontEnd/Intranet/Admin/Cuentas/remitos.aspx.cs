@@ -319,14 +319,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void dgridRemitos_ItemCommand(object source, DataGridCommandEventArgs e)
         {
+            int valTab = TabContainer1.ActiveTab.TabIndex;
+
             switch (((ImageButton)e.CommandSource).CommandName)
             {
                 case "Ver":
-                    Response.Redirect("VerRemitos.aspx?idTipo=1&nroRemito=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                    Response.Redirect("VerRemitos.aspx?idTipo=" + valTab + "&nroRemito=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
                     break;
 
                 case "Editar":
-                    Response.Redirect("AbmRemitos.aspx?idTipo=1&id=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
+                     Response.Redirect("AbmRemitos.aspx?idTipo=" + valTab + "&id=" + e.Item.Cells[0].Text + "&idCliente=" + hIdCliente.Value);
                     break;
             }
         }
