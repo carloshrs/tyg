@@ -76,8 +76,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             }
 
 
-
-
         }
         protected void WzPagosDocumentos_NextButtonClick(object sender, WizardNavigationEventArgs e)
         {

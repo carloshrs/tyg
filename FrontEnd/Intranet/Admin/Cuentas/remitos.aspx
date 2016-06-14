@@ -349,7 +349,7 @@ function recalcular(tipo, campo) {
                                                     </FooterStyle>
 
                                                     <Columns>
-                                                    <asp:BoundColumn DataField="nroParte" HeaderText="Partes E.">
+                                                    <asp:BoundColumn DataField="nroRemito" HeaderText="Partes E.">
                                                     <HeaderStyle HorizontalAlign="Center" Width="15px">
                                                     </HeaderStyle>
 
