@@ -32,6 +32,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 //idTipoDocumentacion = int.Parse(Request.QueryString["idTipo"]);
                 //tipoDocumentacion.Value = Request.QueryString["idTipo"];
                 //setTipoDocumentacion(idTipoDocumentacion);
+                if (Request.QueryString["idTipo"] != null && Request.QueryString["idTipo"] != "")
+                    tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                else
+                    tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
 
                 Session["ArrayAdicionales"] = new int[30];
                 //pnCliente.Visible = false;
@@ -54,10 +58,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     //btnAceptar.Visible = false;
                     hNroRemito.Value = Request.QueryString["id"];
                     hIdCliente.Value = Request.QueryString["idCliente"];
-                    if (Request.QueryString["idTipo"] != null || Request.QueryString["idTipo"] != "")
-                        tipoDocumentacion.Value = Request.QueryString["idTipo"];
-                    else
-                        tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
                     nroRemito = int.Parse(hNroRemito.Value);
                     ClienteDal oCargarCliente = new ClienteDal();
                     oCargarCliente.Cargar(int.Parse(hIdCliente.Value));
@@ -220,6 +220,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 ListView lvInformes = (ListView)e.Item.FindControl("lvInformes");
 
                 GestorPreciosApp gp = new GestorPreciosApp();
+                if (Request.QueryString["idTipo"] != null && Request.QueryString["idTipo"] != "")
+                    tipoDocumentacion.Value = Request.QueryString["idTipo"];
+                else
+                    tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
+
                 int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
                 //int idTipoDocumentacion = 1;
 
