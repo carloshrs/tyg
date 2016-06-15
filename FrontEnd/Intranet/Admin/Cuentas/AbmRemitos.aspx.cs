@@ -54,7 +54,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     //btnAceptar.Visible = false;
                     hNroRemito.Value = Request.QueryString["id"];
                     hIdCliente.Value = Request.QueryString["idCliente"];
-                    if (Request.QueryString["idTipo"] != "")
+                    if (Request.QueryString["idTipo"] != null || Request.QueryString["idTipo"] != "")
                         tipoDocumentacion.Value = Request.QueryString["idTipo"];
                     else
                         tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
