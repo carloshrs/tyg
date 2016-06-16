@@ -83,7 +83,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         }
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("remitos.aspx?idTipo=" + Request.QueryString["idTipo"] + "&idCliente=" + idCliente);
+            Response.Redirect("remitos.aspx?idTipo=" + Request.QueryString["idTipo"] + "&idCliente=" + Request.QueryString["idCliente"]);
         }
 
         private void setTipoCobranza(int idTipoDocumentacion)

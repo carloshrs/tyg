@@ -319,7 +319,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void dgridRemitos_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            int valTab = TabContainer1.ActiveTab.TabIndex;
+            int valTab = TabContainer1.ActiveTab.TabIndex + 1;
 
             switch (((ImageButton)e.CommandSource).CommandName)
             {
