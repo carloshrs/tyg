@@ -426,7 +426,7 @@ function recalcular(tipo, campo) {
 							</tr>
 							<tr>
 								<td align="right">
-								&nbsp;<asp:Button id="btnAceptar" runat="server" Text="Nuevo remito" 
+								&nbsp;<asp:Button id="btnAceptar" runat="server" Text="Nuevo" 
                                         CausesValidation="False" onclick="btnAceptar_Click1"></asp:Button>
 								</td>
 							</tr>
