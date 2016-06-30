@@ -103,7 +103,7 @@ function MM_swapImage() { //v3.0
       <br />
       
 						
-      <h1><strong>¿Cual es la responsabilidad de los garantes-fiadores?</strong></h1>
+      <h1 style="font-size:16px"><strong>¿Cual es la responsabilidad de los garantes-fiadores?</strong></h1>
 
 <em><strong>Las garantías en los contratos de alquiler son uno de los grandes temas de nuestra sociedad, sobre el que suele haber cierta desinformación, sumado a esto nos encontramos con el problema que nos sigue afectando que es el de las Garantías Compradas, ofrecidas todos los días tanto en inmuebles como con recibos de sueldos.</strong></em><br /><br />
 Vamos a intentar explicar en este informe la responsabilidad del garante, pero también sus derechos (que también los tienen). <br /><br />
@@ -130,7 +130,7 @@ Recién mencionamos uno de esos derechos (liberarse por continuación “de hech
  Finalmente, en caso de haber más de un garante, el que pagó puede reclamar su parte proporcional a los otros.<br /><br />
 
 
-<h1><strong>¿Cuales son algunos de los errores más comunes a la hora de pedir y rechazar una garantía?</strong></h1><br />
+<h1 style="font-size:16px"><strong>¿Cuales son algunos de los errores más comunes a la hora de pedir y rechazar una garantía?</strong></h1><br />
 
 Ahora en esta segunda respuesta analizaremos  algunos errores que a nuestro entender se cometen a la hora de solicitar y/o rechazar una garantías basados en situaciones o consultas reales, pero antes queremos mencionar que recomendamos solicitar un informe comercial que brinde un estado de situación crediticia de las personas y a nuestro criterio el informe ROL  de la empresa Riesgo OnLine es el más confiable y completo y cumple con los estándares de calidad.<br /><br />
 
