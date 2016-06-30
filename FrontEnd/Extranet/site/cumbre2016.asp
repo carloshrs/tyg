@@ -186,7 +186,7 @@ Esperamos que el material ayude a clarificar el tema sobre las garantías en los
 <br />
 <br />
 
-<div style="text-align:center; color:#903"><a href="res/documentos/cumbre2016_respuestas.pdf" style="text-align:center; text-decoration:none; color:#906; font-size:16px">DESCARGAR PDF</a></div>
+<div style="text-align:center; color:#903"><a href="res/documentos/cumbre2016_respuestas.pdf" target="_blank" style="text-align:center; text-decoration:none; color:#F00; font-size:16px">DESCARGAR PDF</a></div>
      
     </div>
 </div>
