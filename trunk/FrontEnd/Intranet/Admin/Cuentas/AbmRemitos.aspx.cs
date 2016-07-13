@@ -268,7 +268,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             }
             //idTipo=" + idTipoDocumentacion + "&
             gp.setearMontoRemito(nroRemito, idTipoDocumentacion, 1);
-            Response.Redirect("AbmRemitos.aspx?id=" + nroRemito + "&idCliente=" + hIdCliente.Value);
+            Response.Redirect("AbmRemitos.aspx?id=" + nroRemito + "&idTipo=" + idTipoDocumentacion + "&idCliente=" + hIdCliente.Value);
         }
 
         private int GenerarRemito()
