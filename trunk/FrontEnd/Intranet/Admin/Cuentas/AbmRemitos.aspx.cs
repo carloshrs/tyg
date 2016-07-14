@@ -101,8 +101,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             nroRemito = int.Parse(hNroRemito.Value);
                         else
                             nroRemito = 0;
-                        //int.Parse(tipoDocumentacion.Value)
-                        EliminarItemRemito(1, nroRemito, Request.Params["__EVENTARGUMENT"]);
+                        //
+                        EliminarItemRemito(int.Parse(tipoDocumentacion.Value), nroRemito, Request.Params["__EVENTARGUMENT"]);
                     }
                             
                 }
