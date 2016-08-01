@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Untitled</title>
+		<LINK href="../Health.css" type="text/css" rel="stylesheet">
+	</head>
+	<body leftmargin="0" topmargin="0">
+		<script language="JScript">
+<!-- Begin  
+
+var gdCtrl = new Object();
+var gcGray = "#cccccc";
+var gcToggle = "#77AEBE";
+var gcBG = "#cccccc";
+var gcBG = "#ffffff";
+var white = "#ffffff";
+
+var gdCurDate = new Date();
+var giYear = gdCurDate.getFullYear();
+var giMonth = gdCurDate.getMonth()+1;
+var giDay = gdCurDate.getDate();
+var VicPopCal = new Object();
+
+function fPopCalendar(popCtrl, dateCtrl, popCal){
+  parent.event.cancelBubble=true;
+  VicPopCal = popCal;
+  gdCtrl = dateCtrl;
+  if(gdCtrl.value != "")
+  {
+    var aux = gdCtrl.value.split('/');
+    fSetYearMon(aux[2], aux[1]);
+  }
+  else
+    fSetYearMon(giYear, giMonth);
+  var point = fGetXY(popCtrl);
+  with (VicPopCal.style) {
+  	left = point.x;
+	//top  = point.y+popCtrl.offsetHeight+1;
+	top  = point.y-50;
+	visibility = 'visible';
+  }
+  
+  VicPopCal.focus();
+
+  VicPopCal.all("popFrame").width=document.all("popTable").offsetWidth;
+  VicPopCal.all("popFrame").height=document.all("popTable").offsetHeight;
+}
+
+function fSetDate(iYear, iMonth, iDay){
+
+  var sMonth = "";
+  if( iMonth < 10 )
+    sMonth = "0"+iMonth;
+  else
+    sMonth = iMonth;
+  var sDay = "";
+  if( iDay < 10 )
+    sDay = "0"+iDay;
+  else
+    sDay = iDay;
+  gdCtrl.value = sDay+"/"+sMonth+"/"+iYear; 
+  VicPopCal.style.visibility = "hidden";
+  gdCtrl.fireEvent("onchange");
+}
+
+function fClose()
+{
+  VicPopCal.style.visibility = "hidden";
+  gdCtrl.fireEvent("onchange");
+}
+
+function fCloseEmpty()
+{
+    gdCtrl.value = '';
+    fClose();
+}
+
+
+function fSetSelected(aCell){
+  var iOffset = 0;
+  var iYear = parseInt(tbSelYear.value);
+  var iMonth = parseInt(tbSelMonth.value);
+
+  aCell.bgColor = gcBG;
+  with (aCell.children["cellText"]){
+  	var iDay = parseInt(innerText);
+  	if (color==gcGray)
+		iOffset = (Victor<10)?-1:1;
+	iMonth += iOffset;
+	if (iMonth<1) {
+		iYear--;
+		iMonth = 12;
+	}else if (iMonth>12){
+		iYear++;
+		iMonth = 1;
+	}
+  }
+  fSetDate(iYear, iMonth, iDay);
+}
+
+function Point(iX, iY){
+	this.x = iX;
+	this.y = iY;
+}
+
+function fBuildCal(iYear, iMonth) {
+  var aMonth=new Array();
+  for(i=1;i<7;i++)
+  	aMonth[i]=new Array(i);
+
+  var dCalDate=new Date(iYear, iMonth-1, 1);
+  var iDayOfFirst=dCalDate.getDay();
+  var iDaysInMonth=new Date(iYear, iMonth, 0).getDate();
+  var iOffsetLast=new Date(iYear, iMonth-1, 0).getDate()-iDayOfFirst+1;
+  var iDate = 1;
+  var iNext = 1;
+
+  for (d = 0; d < 7; d++)
+	aMonth[1][d] = (d<iDayOfFirst)?-(iOffsetLast+d):iDate++;
+  for (w = 2; w < 7; w++)
+  	for (d = 0; d < 7; d++)
+		aMonth[w][d] = (iDate<=iDaysInMonth)?iDate++:-(iNext++);
+  return aMonth;
+}
+
+function fDrawCal(iYear, iMonth, iCellWidth, iDateTextSize) {
+  var WeekDay = new Array("Do","Lu","Ma","Mi","Ju","Vi","Sa");
+  var styleTD = " bgcolor='"+gcBG+"' width='"+iCellWidth+"' bordercolor='"+gcBG+"' valign='middle' align='center'  style='font:bold "+iDateTextSize+" Verdana;";            //Coded by Liming Weng(Victor Won)  email:victorwon@netease.com
+
+  with (document) {
+	write("<tr>");
+	for(i=0; i<7; i++)
+		write("<td "+styleTD+"color:#1C7893' >" + WeekDay[i] + "</td>");
+	write("</tr>");
+
+  	for (w = 1; w < 7; w++) {
+		write("<tr>");
+		for (d = 0; d < 7; d++) {
+			write("<td id=calCell "+styleTD+"cursor:hand;' onMouseOver='this.bgColor=gcToggle' onMouseOut='this.bgColor=gcBG' onclick='fSetSelected(this)'>");
+			write("<font id=cellText Victor='Liming Weng'> </font>");
+			write("</td>")
+		}
+		write("</tr>");
+	}
+  }
+}
+
+function fUpdateCal(iYear, iMonth) {
+  myMonth = fBuildCal(iYear, iMonth);
+  var i = 0;
+  for (w = 0; w < 6; w++)
+	for (d = 0; d < 7; d++)
+		with (cellText[(7*w)+d]) {
+			Victor = i++;
+			if (myMonth[w+1][d]<0) {
+				color = gcGray;
+				innerText = -myMonth[w+1][d];
+			}else{
+				color = ((d==0)||(d==6))?"red":"black";
+				innerText = myMonth[w+1][d];
+			}
+		}
+}
+
+function fSetYearMon(iYear, iMon){
+  tbSelMonth.options[iMon-1].selected = true;
+  for (i = 0; i < tbSelYear.length; i++)
+	if (tbSelYear.options[i].value == iYear)
+		tbSelYear.options[i].selected = true;
+  fUpdateCal(iYear, iMon);
+}
+
+function fPrevMonth(){
+  var iMon = tbSelMonth.value;
+  var iYear = tbSelYear.value;
+
+  if (--iMon<1) {
+	  iMon = 12;
+	  iYear--;
+  }
+
+  fSetYearMon(iYear, iMon);
+}
+
+function fNextMonth(){
+  var iMon = tbSelMonth.value;
+  var iYear = tbSelYear.value;
+
+  if (++iMon>12) {
+	  iMon = 1;
+	  iYear++;
+  }
+
+  fSetYearMon(iYear, iMon);
+}
+
+function fGetXY(aTag){
+  var Wx = window.parent.document.body.clientWidth;
+  var Wy = window.parent.document.body.clientHeight;
+  var Dx = document.body.clientWidth;
+  var Dy = document.body.clientHeight;
+  var oTmp = aTag;
+  var pt = new Point(0,0);
+  do {
+  	pt.x += oTmp.offsetLeft;
+  	pt.y += oTmp.offsetTop;
+  	oTmp = oTmp.offsetParent;
+  } while(oTmp.tagName!="BODY");
+  /*if ((pt.x + Dx)> Wx)
+		pt.x = Wx-Dx;
+  if ((pt.y + Dy)> Wy)
+		pt.y = Wy-Dy;
+	*/
+  
+  return pt;
+}
+
+var gMonths = new Array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+
+with (document) {
+write("<table id='popTable' border='0' bgcolor='#1C7893'>");
+write("<TR>");
+write("<td valign='middle' align='center'><input type='button' class='buttonstandard' name='PrevMonth' value='<' style='FONT:8 Verdana' onClick='fPrevMonth()'>");
+write("&nbsp;<select style='font:10 Verdana;' name='tbSelMonth' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Victor='Won'>");
+for (i=0; i<12; i++)
+	write("<option value='"+(i+1)+"'>"+gMonths[i]+"</option>");
+write("</SELECT>");
+write("&nbsp;<input type='button' class='buttonstandard' name='PrevMonth' value='>' style='FONT:8 Verdana' onclick='fNextMonth()'>");
+write("&nbsp;<SELECT style='font:10 Verdana;' name='tbSelYear' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Victor='Won'>");
+for(i=1900;i<2050;i++)
+	write("<OPTION value='"+i+"'>"+i+"</OPTION>");
+write("</SELECT>");
+write("</td>");
+write("</TR><TR>");
+write("<td align='center'>");
+write("<DIV style='background-color:#77AEBE;'><table width='100%' border='0' cellpadding='2'>");
+fDrawCal(giYear, giMonth, 16, 10);
+write("</table></DIV>");
+write("</td>");
+write("</TR><TR><TD align='center'>");
+write("<font style='cursor:hand;font:10 Verdana;color:#ffffff;' onclick='fSetDate(giYear,giMonth,giDay)' onMouseOver='this.style.color=gcToggle' onMouseOut='this.style.color=white'>Hoy:&nbsp;&nbsp;"+gMonths[giMonth-1]+"&nbsp;"+giDay+",&nbsp;"+giYear+"</font>");
+write("</TD></TR>");
+write("</TR><TR><TD align='right'>");
+write("<input type='button' class='buttonstandard' name='eraser' value='Borrar' style='FONT:10 Verdana' onclick='fCloseEmpty()'>&nbsp;<input type='button' class='buttonstandard' name='closer' value='Cerrar' style='FONT:10 Verdana' onclick='fClose()'>");
+write("</TD></TR>");
+write("</TD></TR>");
+write("</TABLE>");
+}
+
+		</script>
+	</body>
+</html>
