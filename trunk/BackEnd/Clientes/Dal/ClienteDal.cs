@@ -494,14 +494,18 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 		#region bool Crear()
 
 		public bool Crear()
-		{			
-			OdbcConnection oConnection = this.OpenConnection();
+		{	
+            OdbcConnection oConnection = this.OpenConnection();
+            String strMaxID = "SELECT MAX(idCliente) as MaxId FROM Clientes";
+            //System.Console.Out.WriteLine(strSQL);
+            int MaxID = ObtenerMaxID(strMaxID, oConnection);
+
 			String strSQL = "INSERT INTO Clientes ";
 			strSQL+="(idCliente, RazonSocial, NombreFantasia, Sucursal, CUIT, NroIngBrutos, Telefono, Fax, Calle, ";
 			strSQL+="Numero, Piso, Office, Barrio, CodPos, IdLocalidad, ";
 			strSQL+="IdProvincia, Email, Encargado, Cargo, Observaciones) ";
 			strSQL+="VALUES ";
-            strSQL += "('" + intIdCliente + "'";
+            strSQL += "('" + MaxID + 1 + "'";
             strSQL += ",'" + strRazonSocial.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strNombreFantasia.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strSucursal.Trim().Replace("'", "''") + "'";
@@ -664,7 +668,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         
 		#endregion
 
-        /*
+        
         #region ObtenerMaxID(string strMaxID, OdbcConnection oConnection)
         private int ObtenerMaxID(string strMaxID, OdbcConnection oConnection)
         {
@@ -683,7 +687,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             return MaxID;
         }
         #endregion
-        */
+        
 
         #endregion
     }

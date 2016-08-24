@@ -199,7 +199,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 dalCliente.Encargado = txtEncargado.Text;
                 dalCliente.Cargo = txtCargo.Text;
                 dalCliente.Observaciones = txtObservaciones.Text;
-				//resultado=dalCliente.Crear();				
+
+                //Tipo de Documento
+                // 1- REMITO : 2- PARTE DE ENTREGA
+                //Tipo Periodo
+                // 1- DIARIO : 2- MENSUAL
+
+                int tipoDocumento = 0;
+                if (raTipoDocumento1.Checked)
+                    tipoDocumento = 1;
+                if (raTipoDocumento2.Checked)
+                    tipoDocumento = 2;
+                dalCliente.TipoDocumento = tipoDocumento;
+
+                int tipoPeriodo = 0;
+                if (raTipoPeriodo1.Checked)
+                    tipoPeriodo = 1;
+                if (raTipoPeriodo2.Checked)
+                    tipoPeriodo = 2;
+                dalCliente.TipoPeriodo = tipoPeriodo;
+				resultado=dalCliente.Crear();				
 			}
 			else
 			{
