@@ -206,3 +206,6 @@ h1.SaltoDePagina{
 #main TH A:hover {color: #28428B; text-decoration: none; color: #FFF; background: #507CB6}
 #main TH.centered {text-align: center}
 
+.next-bandeja {
+	float:left;
+}
