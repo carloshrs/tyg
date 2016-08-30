@@ -43,7 +43,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 pnRemito.Visible = false;
 
                 if (txtFechaInicio.Text == "")
-                    txtFechaInicio.Text = DateTime.Today.AddDays(-3).ToShortDateString();
+                    txtFechaInicio.Text = DateTime.Today.AddDays(-15).ToShortDateString();
                 if (txtFechaFinal.Text == "")
                     txtFechaFinal.Text = DateTime.Today.ToShortDateString();
 
@@ -88,7 +88,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     InicializarTablaAdicionales();
                     CargarAdicionales(int.Parse(tipoDocumentacion.Value), nroRemito);
                 }
-
+                resultadoBusqueda();
                 ListaAdicionales();
             }
             else
@@ -225,7 +225,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 else
                     tipoDocumentacion.Value = raTipoDocumento.SelectedValue;
 
-                int idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
+                int idTipoDocumentacion = 0;
+                if(tipoDocumentacion.Value != "")
+                    idTipoDocumentacion = int.Parse(tipoDocumentacion.Value);
                 //int idTipoDocumentacion = 1;
 
                 if (nroRemito != 0)
@@ -290,6 +292,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             decimal Precio = 0;
             decimal PrecioUnitario = 0;
             int Cantidad = 0;
+
+            //Si no tiene seteado el Tipo de documento (remito o parte) o periodo (diario o mensual)
+            ClienteDal oCargarCliente = new ClienteDal();
+            oCargarCliente.Cargar(int.Parse(hIdCliente.Value));
+            if (oCargarCliente.TipoDocumento == 0 || oCargarCliente.TipoPeriodo == 0)
+            {
+                oCargarCliente.TipoDocumento = idTipoDocumentacion;
+                oCargarCliente.TipoPeriodo = idtipoCobranza;
+                oCargarCliente.Modificar();
+            }
 
             if (nroRemito == 0)
                 idRemito = gp.crearRemitoParte(idTipoDocumentacion, idtipoCobranza, idCliente, idUsuarioIntra);
