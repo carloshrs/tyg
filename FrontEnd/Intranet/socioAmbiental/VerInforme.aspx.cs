@@ -100,6 +100,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.socioAmbiental
 			if (cargar)
 			{
 				lblNum.Text = Id.ToString();
+                lblTipoDocumentoPeriodo.Text = TipoDocumentoPeriodo(cliente.TipoDocumento, cliente.TipoPeriodo);
 				lblFec.Text = DateTime.Today.ToShortDateString();
                 string solicitante = "";
                 if (cliente.NombreFantasia != null && cliente.NombreFantasia != "")
@@ -489,6 +490,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.socioAmbiental
                 imgFoto2.ImageUrl = vImagen;
                 imgFoto2.ToolTip = imagen.Descripcion;
             }
+        }
+
+        private string TipoDocumentoPeriodo(int TipoDocumento, int TipoPeriodo)
+        {
+            string cadena = "";
+            if (TipoDocumento != 0 && TipoPeriodo != 0)
+            {
+                if (TipoDocumento == 1)
+                    cadena = "<br>R";
+                else
+                    cadena = "<br>PE";
+
+                if (TipoPeriodo == 1)
+                    cadena = cadena + "D";
+                else
+                    cadena = cadena + "M";
+
+            }
+            return cadena;
+
         }
 
 	}

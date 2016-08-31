@@ -76,6 +76,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.verifContrato
 			Usuario usuario = new Usuario();
 			usuario.Cargar(oEncabezado.IdUsuario);
 			lblNum.Text = Id.ToString();
+            lblTipoDocumentoPeriodo.Text = TipoDocumentoPeriodo(cliente.TipoDocumento, cliente.TipoPeriodo);
 			lblFec.Text = DateTime.Today.ToShortDateString();
 			lblSolicitante.Text = cliente.RazonSocial;
 			lblRef.Text = usuario.Apellido + ", " + usuario.Nombre;
@@ -179,6 +180,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.verifContrato
 			return Localidad;
 		}
 
+        private string TipoDocumentoPeriodo(int TipoDocumento, int TipoPeriodo)
+        {
+            string cadena = "";
+            if (TipoDocumento != 0 && TipoPeriodo != 0)
+            {
+                if (TipoDocumento == 1)
+                    cadena = "<br>R";
+                else
+                    cadena = "<br>PE";
 
+                if (TipoPeriodo == 1)
+                    cadena = cadena + "D";
+                else
+                    cadena = cadena + "M";
+
+            }
+            return cadena;
+
+        }
 	}
 }

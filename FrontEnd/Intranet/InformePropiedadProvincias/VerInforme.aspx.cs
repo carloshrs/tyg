@@ -80,6 +80,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedadOtrasProvincia
 			{
 				idReferencia.Value = (1).ToString();
 				lblNum.Text = Id.ToString();
+                lblTipoDocumentoPeriodo.Text = TipoDocumentoPeriodo(cliente.TipoDocumento, cliente.TipoPeriodo);
                 if (oEncabezado.FechaFin != "")
                     lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
 
@@ -400,5 +401,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedadOtrasProvincia
             }
         }
 
+        private string TipoDocumentoPeriodo(int TipoDocumento, int TipoPeriodo)
+        {
+            string cadena = "";
+            if (TipoDocumento != 0 && TipoPeriodo != 0)
+            {
+                if (TipoDocumento == 1)
+                    cadena = "<br>R";
+                else
+                    cadena = "<br>PE";
+
+                if (TipoPeriodo == 1)
+                    cadena = cadena + "D";
+                else
+                    cadena = cadena + "M";
+
+            }
+            return cadena;
+
+        }
 	}
 }

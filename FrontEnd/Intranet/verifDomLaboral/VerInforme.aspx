@@ -93,9 +93,7 @@
 										</tr>
 									</table>
 								</td>
-								<td class="text" align="left" width="15%" valign="top">
-									&nbsp;Numero:
-									<asp:label id="lblNum" runat="server" Font-Bold="True"></asp:label><br />
+								<td class="text" align="center" width="15%">&nbsp;Numero: <asp:label id="lblNum" runat="server" Font-Bold="True"></asp:label><asp:label id="lblTipoDocumentoPeriodo" runat="server"></asp:label><br />
                                     &nbsp; <asp:label id="lblNroPagina1" runat="server" style="text-transform: none;"></asp:label>
 								</td>
 							</tr>
