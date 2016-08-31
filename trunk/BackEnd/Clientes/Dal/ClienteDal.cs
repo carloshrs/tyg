@@ -569,9 +569,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 				strSQL+=",IdLocalidad="+intIdLocalidad;
 				strSQL+=",IdProvincia="+intIdProvincia;
 				strSQL+=",Email='"+strEmail.Trim()+"'";
-                strSQL+=",Encargado='" + strEncargado.Trim() + "'";
-                strSQL+=",Cargo='" + strCargo.Trim() + "'";
-                strSQL+=",Observaciones='" + strObservaciones.Trim() + "'";
+                if (strEncargado != null)
+                    strSQL+=",Encargado='" + strEncargado.Trim() + "'";
+                if (strCargo != null)
+                    strSQL+=",Cargo='" + strCargo.Trim() + "'";
+                if (strObservaciones != null)
+                    strSQL+=",Observaciones='" + strObservaciones.Trim() + "'";
                 strSQL += ",tipoDocumento=" + intTipoDocumento + "";
                 strSQL += ",tipoPeriodo=" + intTipoPeriodo + "";
 				strSQL+=" WHERE IdCliente="+intIdCliente;
