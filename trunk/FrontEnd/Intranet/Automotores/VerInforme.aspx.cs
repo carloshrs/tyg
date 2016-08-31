@@ -106,6 +106,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Automotores
 			if (cargar)
 			{
 				lblNum.Text = Id.ToString();
+                lblTipoDocumentoPeriodo.Text = TipoDocumentoPeriodo(cliente.TipoDocumento, cliente.TipoPeriodo);
 				//lblFec.Text = DateTime.Today.ToShortDateString();
                 if (oEncabezado.FechaFin != "")
                     lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
@@ -270,6 +271,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Automotores
                 }
             }
                 //((Label)e.Item.FindControl("lblFecha")).Text = ((DataRowView)e.Item.DataItem).Row.ItemArray[7].ToString();
+        }
+
+        private string TipoDocumentoPeriodo(int TipoDocumento, int TipoPeriodo)
+        {
+            string cadena = "";
+            if (TipoDocumento != 0 && TipoPeriodo != 0)
+            {
+                if (TipoDocumento == 1)
+                    cadena = "<br>R";
+                else
+                    cadena = "<br>PE";
+
+                if (TipoPeriodo == 1)
+                    cadena = cadena + "D";
+                else
+                    cadena = cadena + "M";
+
+            }
+            return cadena;
+
         }
 	}
 }

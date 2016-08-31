@@ -72,6 +72,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BienFamilia
 			Usuario usuario = new Usuario();
 			usuario.Cargar(oEncabezado.IdUsuario);
 			lblNum.Text = Id.ToString();
+            lblTipoDocumentoPeriodo.Text = TipoDocumentoPeriodo(cliente.TipoDocumento, cliente.TipoPeriodo);
 			//lblFec.Text = DateTime.Today.ToShortDateString();
             if (oEncabezado.FechaFin != "")
                 lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
@@ -121,6 +122,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BienFamilia
 		{
 			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=3");
 		}
+
+        private string TipoDocumentoPeriodo(int TipoDocumento, int TipoPeriodo)
+        {
+            string cadena = "";
+            if (TipoDocumento != 0 && TipoPeriodo != 0)
+            {
+                if (TipoDocumento == 1)
+                    cadena = "<br>R";
+                else
+                    cadena = "<br>PE";
+
+                if (TipoPeriodo == 1)
+                    cadena = cadena + "D";
+                else
+                    cadena = cadena + "M";
+
+            }
+            return cadena;
+
+        }
 
 	}
 }
