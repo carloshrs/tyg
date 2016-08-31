@@ -88,7 +88,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     InicializarTablaAdicionales();
                     CargarAdicionales(int.Parse(tipoDocumentacion.Value), nroRemito);
                 }
-                resultadoBusqueda();
+                else
+                    resultadoBusqueda();
                 ListaAdicionales();
             }
             else
