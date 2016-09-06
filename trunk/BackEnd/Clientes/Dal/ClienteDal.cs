@@ -496,7 +496,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 		public bool Crear()
 		{	
             OdbcConnection oConnection = this.OpenConnection();
-            String strMaxID = "SELECT MAX(idCliente) as MaxId FROM Clientes";
+            String strMaxID = "SELECT MAX(idCliente) + 1 as MaxId FROM Clientes";
             //System.Console.Out.WriteLine(strSQL);
             int MaxID = ObtenerMaxID(strMaxID, oConnection);
 
@@ -505,7 +505,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			strSQL+="Numero, Piso, Office, Barrio, CodPos, IdLocalidad, ";
 			strSQL+="IdProvincia, Email, Encargado, Cargo, Observaciones) ";
 			strSQL+="VALUES ";
-            strSQL += "('" + MaxID + 1 + "'";
+            strSQL += "('" + MaxID + "'";
             strSQL += ",'" + strRazonSocial.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strNombreFantasia.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strSucursal.Trim().Replace("'", "''") + "'";
