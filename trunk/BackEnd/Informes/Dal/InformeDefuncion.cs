@@ -253,10 +253,13 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
                 //dtFecIngEmpresa1 = "'" + fechai1[2] + "-" + fechai1[1] + "-" + fechai1[0] + "'";
                 dtFechaFallecido = strFechaFallecido;
             }
+
+            if (strCUIT == "")
+                strCUIT = "";
             
             OdbcConnection oConnection = this.OpenConnection();
             String strSQL = "INSERT INTO InformePartidaDefuncion (idInforme, Nombre, Apellido, NroDoc, Cuit, Sexo, Fallecido, FechaFallecido, Acta, Tomo, Folio, LugarFallecimiento,observaciones) ";
-            strSQL = strSQL + " VALUES (" + intIdEncabezado + ", '" + strNombre + "','" + strApellido + "', " + strDocumento + ", " + strCUIT + ", " + intSexo + ", " + intFallecido + ", '" + strFechaFallecido + "'";
+            strSQL = strSQL + " VALUES (" + intIdEncabezado + ", '" + strNombre + "','" + strApellido + "', " + strDocumento + ", '" + strCUIT + "', " + intSexo + ", " + intFallecido + ", '" + strFechaFallecido + "'";
             strSQL = strSQL + ",'" + strActa + "','" + strTomo + "','" + strFolio + "','" + strLugarFallecimiento + "','" + strObservaciones + "')";
 
             String strMaxID = "SELECT MAX(idInforme) as MaxId FROM InformePartidaDefuncion";
@@ -296,13 +299,18 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
                 //dtFecIngEmpresa1 = "'" + fechai1[2] + "-" + fechai1[1] + "-" + fechai1[0] + "'";
                 dtFechaFallecido = strFechaFallecido;
             }
+
+
             
             OdbcConnection oConnection = this.OpenConnection();
             String strSQL = "UPDATE InformePartidaDefuncion SET ";
             strSQL = strSQL + "Nombre = '" + strNombre + "',";
             strSQL = strSQL + "Apellido = '" + strApellido +"',";
             strSQL = strSQL + "NroDoc = " + strDocumento + ",";
-            strSQL = strSQL + "Cuit = " + strCUIT + ",";
+            if (strCUIT != "")
+                strSQL = strSQL + "Cuit = " + strCUIT + ",";
+            else
+                strSQL = strSQL + "Cuit = NULL,";
             strSQL = strSQL + "Sexo = " + intSexo +",";
             strSQL = strSQL + "Fallecido = " + intFallecido +",";
             if(dtFechaFallecido != "")
