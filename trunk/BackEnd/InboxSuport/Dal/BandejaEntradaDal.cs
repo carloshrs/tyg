@@ -461,6 +461,65 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 
         }
 
+        public DataTable ListarHistorialMasivos()
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "SELECT TOP 50 GCE.fecha, GCE.id, " +
+                "CAST(CASE " +
+                "WHEN GCE.tipoDocumento = 1 " +
+                "THEN 'Remito' " +
+                "ELSE 'Parte de entrega' " +
+                "END AS varchar) as documento, " +
+                "U.nombre, U.apellido, count(GCE.id) AS total " +
+                "FROM documentosGrupoCambioEstado GCE "+ 
+                "INNER JOIN documentosCambioEstado CE ON GCE.id=CE.idTipoGrupo " +
+                "INNER JOIN Usuarios U ON GCE.idUsuario=U.idUsuario " +
+                "GROUP BY GCE.fecha, GCE.id, GCE.tipoDocumento , U.nombre, U.apellido "+
+                 "ORDER BY GCE.fecha DESC";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
+
+        public DataTable ListarGruposClientesMasivos(int idGrupo)
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "select 2 as idTipo, ccr.nroMovimiento, c.idCliente, "+
+                "CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, count(ccmr.nroRemito) as total "+
+                "from clientes c "+
+                "inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente "+
+                "inner join CtaCteMovimientosRemitos ccmr on ccr.nroMovimiento=ccmr.nroMovimiento "+
+                "inner join CtaCteResumenCambioEstado ccrce on ccrce.nroMovimiento=ccr.nroMovimiento "+
+                "inner join CtaCteResumenGrupoCambioEstado ccrgce on ccrgce.id=ccrce.idTipoGrupo "+
+                "where ccrgce.id= " + idGrupo +
+                "group by ccr.nroMovimiento, c.idCliente, c.nombrefantasia, c.sucursal " +
+                "order by c.nombrefantasia";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
 		#endregion
 
 		#region Métodos Privados
