@@ -717,6 +717,23 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             return Datos;
         }
 
+        public DataTable ListarHistorialMasivos()
+        {
+
+            BandejaEntradaDal bandeja = new BandejaEntradaDal();
+            DataTable Datos = bandeja.ListarHistorialMasivos();
+            return Datos;
+        }
+
+
+        public DataTable ListarGruposClientesMasivos(int idTipo)
+        {
+
+            BandejaEntradaDal bandeja = new BandejaEntradaDal();
+            DataTable Datos = bandeja.ListarGruposClientesMasivos(idTipo);
+            return Datos;
+        }
+
         #endregion
 
         #region Métodos Privados
