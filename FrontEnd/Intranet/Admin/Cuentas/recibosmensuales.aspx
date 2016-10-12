@@ -1,4 +1,4 @@
-﻿<%@ Page language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.Admin_Cuentas_remitos" CodeFile="cuentascorrientes.aspx.cs" %>
+﻿<%@ Page language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.Admin_Cuentas_remitos" CodeFile="recibosmensuales.aspx.cs" %>
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,7 +7,7 @@
 
 <html>
 	<head runat="server">
-		<title>Administración de Precios</title>
+		<title>Recibos mensuales</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
         <link href="/CSS/ext-all.css" type="text/css" rel="stylesheet" />
         <link href="/CSS/ext-ux-wiz.css" type="text/css" rel="stylesheet" />
@@ -178,7 +178,7 @@ function recalcular(tipo, campo) {
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp;Cuenta corriente cliente
+								<td class="title" height="38">&nbsp;Recibos mensuales
 									<HR>
 									<BR>
 								</td>
@@ -408,8 +408,8 @@ function recalcular(tipo, campo) {
 							</tr>
 							<tr>
 								<td align="right">
-								&nbsp;<asp:Button id="btnAceptar" runat="server" Text="Nuevo movimiento" 
-                                        CausesValidation="False" onclick="btnAceptar_Click1"></asp:Button>
+								    <asp:Button id="btnMasivos" runat="server" Text="Generación de recibos masivos" CausesValidation="False" onclick="btnMasivos_Click1">&nbsp;
+                                    <asp:Button id="btnAceptar" runat="server" Text="Nuevo movimiento" CausesValidation="False" onclick="btnAceptar_Click1"></asp:Button>
 								</td>
 							</tr>
 						</table>
