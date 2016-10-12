@@ -37,7 +37,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
             strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/remitos.aspx' imageOut='/img/menu/ico-parteentrega.png' imageOver='/img/menu/ico-parteentrega.png' idImagenItem='menu3_icon_4' idMenuItem='menu3_item_17' text='Partes de entrega | Remitos' separar='1'/>";
             //strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/remitos.aspx?idTipo=1' imageOut='/img/menu/ico-remito.png' imageOver='/img/menu/ico-remito.png' idImagenItem='menu3_icon_3' idMenuItem='menu3_item_16' text='Remitos' separar='0'/>";
             //strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/abmClientesCuentaCorriente.aspx' imageOut='/img/menu/ico-remito.png' imageOver='/img/menu/ico-remito.png' idImagenItem='menu3_icon_4' idMenuItem='menu3_item_17' text='CC Clientes' separar='1'/>";
-            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/cuentascorrientes.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_5' idMenuItem='menu3_item_18' text='Cuenta corriente' separar='1'/>";
+            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/recibosmensuales.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_5' idMenuItem='menu3_item_18' text='Recibos mensuales' separar='1'/>";
 
             if (Usuario.IsInRole("Administrador"))
             {

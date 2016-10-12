@@ -119,6 +119,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             Response.Redirect("AbmMovimiento.aspx?idTipo=" + idTipoDocumento);
         }
 
+        protected void btnMasivos_Click1(object sender, EventArgs e)
+        {
+            int idTipoDocumento = setTipoDocumento(int.Parse(ViewState["ActiveTabIndex"].ToString()));
+            Response.Redirect("listadoGruposDocumentosMasivo.aspx?idTipo=" + idTipoDocumento);
+        }
+
         protected void dgridMovimientos_PreRender(object sender, EventArgs e)
         {
             idTipoDocumento = setTipoDocumento(int.Parse(ViewState["ActiveTabIndex"].ToString()));
