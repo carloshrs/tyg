@@ -271,6 +271,8 @@ function iPrint()
 								<td align="right">
 									<asp:Button id="btnCerrar" runat="server" Text="Cerrar" 
                                         CausesValidation="False" onclick="btnCerrar_Click" ></asp:Button>
+                                        <asp:Button id="btnVolver" runat="server" Text="Cerrar" 
+                                        CausesValidation="False" OnClientClick="history:back();"></asp:Button>
 								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="iPrint();" />
                                         <iframe id="idImprimir" runat="server" src="imprimirMovimientos.aspx" width="0" height="0" frameborder="0"></iframe>
 								</td>

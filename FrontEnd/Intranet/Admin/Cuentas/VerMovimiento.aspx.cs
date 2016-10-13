@@ -79,7 +79,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("cuentascorrientes.aspx?idCliente=" + hIdCliente.Value);
+            Response.Redirect("recibosmensuales.aspx?idCliente=" + hIdCliente.Value);
         }
 
         private void setTipoDocumentacion(int idTipoDocumentacion)
