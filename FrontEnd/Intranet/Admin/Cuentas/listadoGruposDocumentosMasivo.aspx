@@ -60,7 +60,8 @@
 
                         &nbsp;&nbsp;<br /><br />
                         <input type="button" value="Volver" onclick="history.back();" />
-                        
+                        &nbsp;
+                        <asp:Button id="btnGenerar" runat="server" Text="Generar recibos masivos" CausesValidation="False" onclick="btnGenerar_Click" ></asp:Button>
                         
                         
                     </TD>

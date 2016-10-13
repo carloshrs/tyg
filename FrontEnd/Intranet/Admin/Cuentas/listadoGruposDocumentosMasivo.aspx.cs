@@ -82,6 +82,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         }
 
 
+        protected void btnGenerar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AltaRecibosMasivos.aspx");
+        }
+
+
         /*
 
         protected void Item_Bound(Object sender, DataListItemEventArgs e)
