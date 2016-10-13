@@ -512,7 +512,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 "order by c.nombrefantasia";
             else
 
-            strSQL = "select 2, ccr.nroMovimiento, c.idCliente, "+
+            strSQL = "select 2 as idTipo, ccr.nroMovimiento, c.idCliente, "+
                 "CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, count(ccmr.nroParte) as total "+
                 "from clientes c "+
                 "inner join CtaCtePartesEntrega ccr on ccr.idCliente=c.IdCliente "+
