@@ -497,16 +497,32 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
-            String strSQL = "select 2 as idTipo, ccr.nroMovimiento, c.idCliente, "+
+            String strSQL = "";
+            
+            if(idGrupo ==1)
+            strSQL = "select 1 as idTipo, ccr.nroMovimiento, c.idCliente, "+
                 "CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, count(ccmr.nroRemito) as total "+
                 "from clientes c "+
                 "inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente "+
                 "inner join CtaCteMovimientosRemitos ccmr on ccr.nroMovimiento=ccmr.nroMovimiento "+
                 "inner join CtaCteResumenCambioEstado ccrce on ccrce.nroMovimiento=ccr.nroMovimiento "+
                 "inner join CtaCteResumenGrupoCambioEstado ccrgce on ccrgce.id=ccrce.idTipoGrupo "+
-                "where ccrgce.id= " + idGrupo +
+                "where ccrgce.tipoDocumento= " + idGrupo +
                 "group by ccr.nroMovimiento, c.idCliente, c.nombrefantasia, c.sucursal " +
                 "order by c.nombrefantasia";
+            else
+
+            strSQL = "select 2, ccr.nroMovimiento, c.idCliente, "+
+                "CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, count(ccmr.nroParte) as total "+
+                "from clientes c "+
+                "inner join CtaCtePartesEntrega ccr on ccr.idCliente=c.IdCliente "+
+                "inner join CtaCteMovimientosPartesEntrega ccmr on ccr.nroMovimiento=ccmr.nroMovimiento "+
+                "inner join CtaCteResumenCambioEstado ccrce on ccrce.nroMovimiento=ccr.nroMovimiento "+
+                "inner join CtaCteResumenGrupoCambioEstado ccrgce on ccrgce.id=ccrce.idTipoGrupo "+
+                "where ccrgce.tipoDocumento=" + idGrupo +
+                "group by ccr.nroMovimiento, c.idCliente, c.nombrefantasia, c.sucursal "+
+                "order by c.nombrefantasia ";
+
 
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
             myConsulta.Fill(ds);
