@@ -536,6 +536,36 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             return ds.Tables[0];
 
         }
+
+        public void generarRecibosMasivos(string fechaDesde, string fechaHasta)
+        {
+            //int MaxID = 0;
+            OdbcConnection oConnection = this.OpenConnection();
+            String strSQL1 = "";
+            String strSQL2 = "";
+
+            strSQL1 = "setRemitoMensualMasivo 13, " + fechaDesde + ", " + fechaHasta;
+
+            strSQL2 = "setParteEntregaMensualMasivo 13, " + fechaDesde + ", " + fechaHasta;
+
+            //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
+
+            try
+            {
+                OdbcCommand myCommand1 = new OdbcCommand(strSQL1, oConnection);
+                myCommand1.ExecuteNonQuery();
+
+                OdbcCommand myCommand2 = new OdbcCommand(strSQL2, oConnection);
+                myCommand2.ExecuteNonQuery();
+                //MaxID = ObtenerMaxID(strMaxID, oConnection);
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                //return MaxID;
+            }
+        }
+
 		#endregion
 
 		#region Métodos Privados

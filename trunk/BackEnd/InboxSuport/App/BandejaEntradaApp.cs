@@ -734,6 +734,13 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             return Datos;
         }
 
+
+        public void generarRecibosMasivos(string fechaDesde, string fechaHasta)
+        { 
+            BandejaEntradaDal grm = new BandejaEntradaDal();
+            grm.generarRecibosMasivos(fechaDesde, fechaHasta);
+        }
+
         #endregion
 
         #region Métodos Privados
