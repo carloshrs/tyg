@@ -44,7 +44,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             float vMontoaPagar=0;
             int idCliente = 0;
-            string vDoc="";
+            string[] arrDoc;
+            string[] separators = {"_"};
+            string vParam ="";
+            string concepto = "";
+            float montoDebe = 0;
+            int tipoDoc = 0;
+            int tipoPeriodo = 0;
+            float NroDoc = 0;
+  
 
             if ((txtMontoaPagar1.Text != "" && txtMontoaPagar1.Text != "0") || (txtMontoaPagar2.Text != "" && txtMontoaPagar2.Text != "0") || (txtMontoaPagar3.Text != "" && txtMontoaPagar3.Text != "0"))
             {
@@ -52,27 +60,48 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 idCliente = int.Parse(hIdCliente.Value);
 
                 // Begin Transaction
-
+                CuentaCorrienteApp ccCliente = new CuentaCorrienteApp();
+                ccCliente.ValClienteCC(idCliente);
+                int idCuentaCliente = ccCliente.ObtenerNroClienteCC(idCliente);
+                int idCajaDiaria = ccCliente.ObtenerNroCajaDiaria();
+                float SaldoCliente = ccCliente.ObtenerSaldoClienteCC(idCuentaCliente);
+                int entrada = 1;
+                bool bAddMovCC = false;
+                bool bAddMovCaja = false;
+                
                 foreach (GridViewRow myItem in GVlistaCobrar.Rows)
 			    {
                     if (((CheckBox)myItem.FindControl("chkItem")).Checked)
                     {
-                        vDoc = myItem.Cells[1].Text;
-                        ((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                        vParam = myItem.Cells[1].Text; // EJ: 1_1_74 //remito, diario, nro 74
+                        arrDoc = vParam.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                        tipoDoc = int.Parse(arrDoc[0]);
+                        tipoPeriodo = int.Parse(arrDoc[1]);
+                        NroDoc = int.Parse(arrDoc[2]);
+                        concepto = myItem.Cells[3].Text;
+                        montoDebe = float.Parse(myItem.Cells[5].Text); 
 
-                        // Verificar si existe
+                        // Agrega movimiento en CC
+                        bAddMovCC = AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
+
+                        bAddMovCaja = AgregarMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
+                        //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
+                        //{
+                          //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
+                        //}
+                        
+                        //((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+
+                        
                         // 2. Agregar a detalles de factura
                     }
                 }
 
-                // 1. Crear Nº de Factura
 
-                // 3. Agregar a CC detalle de cliente de tipo entrada
-                // 4. Calculo y actualizacion de Saldo en CC
-                // 5. Setear Estados "Cobrado" en R y PE
+                // Agregar movimiento en Caja ultima.
 
-                //verificarDocumentosSalida();
-                //setearEstadoDocumentos();
+                // 1. Crear Nº de Factura (NO va)
+                
             }
 
 
@@ -135,23 +164,37 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             int vIdCliente = int.Parse(hIdCliente.Value);
 
-            CuentaCorrienteApp appCliente = new CuentaCorrienteApp();
-
-            if (appCliente.ValClienteCC(vIdCliente))
-            {
+            CuentaCorrienteApp ccCliente = new CuentaCorrienteApp();
+            ccCliente.ValClienteCC(vIdCliente);
+            int idCuentaCliente = ccCliente.ObtenerNroClienteCC(vIdCliente);
+            float SaldoCliente = ccCliente.ObtenerSaldoClienteCC(idCuentaCliente);
+            //if (appCliente.ValClienteCC(vIdCliente))
+            //{
                 //Si tiene CC el cliente, puede realizar el pago y visualizar el saldo actual
-                lblSaldoActual.Text = appCliente.ObtenerSaldoClienteCC(vIdCliente).ToString();
+                lblSaldoActual.Text = SaldoCliente.ToString();
                 btnPagar.Enabled = true;
                 btnActualizarSaldo.Visible = false;
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //Si no tiene CC el cliente se debe poner un saldo inicial de acuerdo a los informes pendientes de cobro.
-                lblSaldoActual.Text = " ";
-                btnPagar.Enabled = false;
-                btnActualizarSaldo.Visible = true;
-            }
+            //    lblSaldoActual.Text = " ";
+            //    btnPagar.Enabled = false;
+            //    btnActualizarSaldo.Visible = true;
+            //}
         }
         
+
+        private bool AgregarMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            return ccMovimiento.AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        private bool AgregarMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
     }
 }

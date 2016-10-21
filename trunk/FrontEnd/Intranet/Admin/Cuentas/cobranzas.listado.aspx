@@ -108,8 +108,8 @@
 
             var calculo = 0;
             var tr = $(this).parent().parent();
-            var check = $("td:eq(0)", tr);
-            var precio = $("td:eq(3)", tr).html().replace(",", ".");
+            var check = $("td:eq(1)", tr);
+            var precio = $("td:eq(4)", tr).html().replace(",", ".");
             //alert($(this).val());
 
             if ($(this).is(':checked')) {
@@ -118,7 +118,7 @@
                 calculo = precio * 0;
             }
 
-            $("td:eq(4) span", tr).html(calculo);
+            $("td:eq(5) span", tr).html(calculo);
 
             CalcularTotal();
 
@@ -237,7 +237,7 @@
                                                 <asp:CheckBox ID="chkItem" runat="server" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="ID" HeaderText="Nro" Visible="false" />
+                                        <asp:BoundField DataField="ID" HeaderText="Nro" Visible="true" />
                                         <asp:BoundField DataField="Fecha" HeaderText="Fecha" HeaderStyle-Width="160"/>
                                         <asp:BoundField DataField="Documento" HeaderText="Concepto" />
                                         <asp:BoundField DataField="monto" HeaderText="Precio Unitario" HeaderStyle-Width="50"/>
@@ -278,41 +278,46 @@
 
                 <div style="float:left; width:95%; margin-top:30px; border-bottom: 1px solid #B5C7DE; margin-left:20px;"><h2>Forma de pago</h2></div> 
                 
-                <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                <asp:DropDownList ID="DDFormaPago1" runat="server">
-                    <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
-                    <asp:ListItem Value="2" Text="Cheque"/>
-                    <asp:ListItem Value="3" Text="Transferencia"/>
-                    <asp:ListItem Value="4" Text="Depósito"/>
-                    <asp:ListItem Value="5" Text="Rapipago"/>
-                    </asp:DropDownList>
+                <div style="float:left; width:100%;">
+                    <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
+                    <asp:DropDownList ID="DDFormaPago1" runat="server">
+                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="Rapipago"/>
+                        </asp:DropDownList>
+                    </div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
                 </div>
-                <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
 
-                <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                <asp:DropDownList ID="DDFormaPago2" runat="server">
-                    <asp:ListItem Selected="True" Value="" Text="Seleccione forma de pago" />
-                    <asp:ListItem Value="1" Text="Efectivo"/>
-                    <asp:ListItem Value="2" Text="Cheque"/>
-                    <asp:ListItem Value="3" Text="Transferencia"/>
-                    <asp:ListItem Value="4" Text="Depósito"/>
-                    <asp:ListItem Value="5" Text="Rapipago"/>
-                    </asp:DropDownList>
+                <div style="float:left; width:100%;">
+                    <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
+                    <asp:DropDownList ID="DDFormaPago2" runat="server">
+                        <asp:ListItem Selected="True" Value="" Text="Seleccione forma de pago" />
+                        <asp:ListItem Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="Rapipago"/>
+                        </asp:DropDownList>
+                    </div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
                 </div>
-                <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
 
-                <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                <asp:DropDownList ID="DDFormaPago3" runat="server">
-                    <asp:ListItem Selected="True" Value="" Text="Seleccione forma de pago" />
-                    <asp:ListItem Value="1" Text="Efectivo"/>
-                    <asp:ListItem Value="2" Text="Cheque"/>
-                    <asp:ListItem Value="3" Text="Transferencia"/>
-                    <asp:ListItem Value="4" Text="Depósito"/>
-                    <asp:ListItem Value="5" Text="Rapipago"/>
-                    </asp:DropDownList>
+                <div style="float:left; width:100%;">
+                    <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
+                    <asp:DropDownList ID="DDFormaPago3" runat="server">
+                        <asp:ListItem Selected="True" Value="" Text="Seleccione forma de pago" />
+                        <asp:ListItem Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="Rapipago"/>
+                        </asp:DropDownList>
+                    </div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
                 </div>
-                <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
-
                
                     
                 <!--<div style="float:left; width:100%;"><asp:Button ID="btnPagar" Text="PAGAR" runat="server" 

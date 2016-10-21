@@ -22,17 +22,40 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
 
 		}
 
-        public bool ValClienteCC(int lIdCliente)
+        public void ValClienteCC(int lIdCliente)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.ValClienteCC(lIdCliente); ;
+            gp.ValClienteCC(lIdCliente);
         }
 
-
-        public float ObtenerSaldoClienteCC(int lIdCliente)
+        public int ObtenerNroClienteCC(int lIdCliente)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.ObtenerSaldoClienteCC(lIdCliente); ;
+            return gp.ObtenerNroClienteCC(lIdCliente);
+        }
+
+        public float ObtenerSaldoClienteCC(int lIdCuentaCliente)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.ObtenerSaldoClienteCC(lIdCuentaCliente);
+        }
+
+        public int ObtenerNroCajaDiaria()
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.ObtenerNroCajaDiaria();
+        }
+
+        public bool AgregarMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar) 
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        public bool AgregarMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.AgregarMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
         }
 	}
 }
