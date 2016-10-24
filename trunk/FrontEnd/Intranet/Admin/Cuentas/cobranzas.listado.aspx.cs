@@ -61,43 +61,50 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                 // Begin Transaction
                 CuentaCorrienteApp ccCliente = new CuentaCorrienteApp();
-                ccCliente.ValClienteCC(idCliente);
+                 ccCliente.ValClienteCC(idCliente);
                 int idCuentaCliente = ccCliente.ObtenerNroClienteCC(idCliente);
                 int idCajaDiaria = ccCliente.ObtenerNroCajaDiaria();
                 float SaldoCliente = ccCliente.ObtenerSaldoClienteCC(idCuentaCliente);
                 int entrada = 1;
                 bool bAddMovCC = false;
                 bool bAddMovCaja = false;
-                
-                foreach (GridViewRow myItem in GVlistaCobrar.Rows)
-			    {
-                    if (((CheckBox)myItem.FindControl("chkItem")).Checked)
+
+                if (idCajaDiaria != 0)
+                {
+                    foreach (GridViewRow myItem in GVlistaCobrar.Rows)
                     {
-                        vParam = myItem.Cells[1].Text; // EJ: 1_1_74 //remito, diario, nro 74
-                        arrDoc = vParam.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-                        tipoDoc = int.Parse(arrDoc[0]);
-                        tipoPeriodo = int.Parse(arrDoc[1]);
-                        NroDoc = int.Parse(arrDoc[2]);
-                        concepto = myItem.Cells[3].Text;
-                        montoDebe = float.Parse(myItem.Cells[5].Text); 
+                        if (((CheckBox)myItem.FindControl("chkItem")).Checked)
+                        {
+                            vParam = myItem.Cells[1].Text; // EJ: 1_1_74 //remito, diario, nro 74
+                            arrDoc = vParam.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                            tipoDoc = int.Parse(arrDoc[0]);
+                            tipoPeriodo = int.Parse(arrDoc[1]);
+                            NroDoc = int.Parse(arrDoc[2]);
+                            concepto = myItem.Cells[3].Text;
+                            montoDebe = float.Parse(myItem.Cells[4].Text);
 
-                        // Agrega movimiento en CC
-                        bAddMovCC = AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
+                            // Agrega movimiento en CC
+                            bAddMovCC = AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
 
-                        bAddMovCaja = AgregarMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
-                        //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
-                        //{
-                          //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
-                        //}
-                        
-                        //((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                            bAddMovCaja = AgregarMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
+                            //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
+                            //{
+                            //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
+                            //}
 
-                        
-                        // 2. Agregar a detalles de factura
+                            //((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+
+
+                            // 2. Agregar a detalles de factura
+                        }
                     }
                 }
+                else
+                {
+                    lblMensaje.Text = "No hay apertura de caja en el dia " + DateTime.Now.Date.ToShortDateString();
+                }
 
-
+                Response.Redirect("/Admin/Cuentas/cobranzas.listado.aspx");
                 // Agregar movimiento en Caja ultima.
 
                 // 1. Crear Nº de Factura (NO va)

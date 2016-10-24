@@ -17,6 +17,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 			{
                 string idCaja = "";
                 idCaja = Request.QueryString["id"];
+                hdIdCaja.Value = idCaja;
                 pnlEncabezado.Visible = true;
                 CargarEncabezadoCaja(idCaja);
 				CargarCajas(idCaja);
@@ -100,5 +101,38 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             lblSaldoEfectivo.Text = CajaEncabezado.SaldoEfectivo.ToString();
             lblSaldoCheque.Text = CajaEncabezado.SaldoCheque.ToString();
         }
-	}
+
+
+        protected void dgCajaDiariaDetalle_PreRender(object sender, EventArgs e)
+        {
+            foreach (DataGridItem myItem in dgCajaDiariaDetalle.Items)
+            {
+                try
+                {
+                    if (myItem.Cells[4].Text == "1")  //Ingreso
+                    {
+                        ((Label)myItem.FindControl("lblEntrada")).Text = "Ingreso";
+                        ((Label)myItem.FindControl("lblEntrada")).ForeColor = System.Drawing.Color.BlueViolet;
+                        ((Label)myItem.FindControl("lblEntrada")).Font.Bold = true; 
+                        //myItem.Font.Bold = true;
+                        //myItem.Font.Name = "blue";
+                    }
+                    else    //salida
+                    {
+                        ((Label)myItem.FindControl("lblEntrada")).Text = "Egreso";
+                        ((Label)myItem.FindControl("lblEntrada")).ForeColor = System.Drawing.Color.Red;
+                        ((Label)myItem.FindControl("lblEntrada")).Font.Bold = true;
+                    }
+                }
+                catch (Exception exc)
+                { }
+
+            }
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AbmCajaDetalle.aspx?idCaja=" + hdIdCaja.Value);
+        }
+}
 }

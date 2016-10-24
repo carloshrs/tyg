@@ -47,7 +47,7 @@
 								<td>
 									<asp:datagrid id="dgCajaDiariaDetalle" runat="server" Font-Size="8pt" PageSize="20" CellPadding="3" BorderColor="#3657A6"
 										BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical" AutoGenerateColumns="False"
-										Width="100%">
+										Width="60%" OnPreRender="dgCajaDiariaDetalle_PreRender">
 										<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C"></SelectedItemStyle>
 										<AlternatingItemStyle BackColor="#FBFBFB"></AlternatingItemStyle>
 										<ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3"></ItemStyle>
@@ -56,6 +56,9 @@
 										<Columns>
 											<asp:BoundColumn Visible="False" DataField="idCajaDetalle">
 												<HeaderStyle HorizontalAlign="Left"></HeaderStyle>
+												<ItemStyle HorizontalAlign="Left"></ItemStyle>
+											</asp:BoundColumn>
+                                            <asp:BoundColumn DataField="fecha" HeaderText="Fecha">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
 											<asp:BoundColumn DataField="concepto" HeaderText="Concepto">
@@ -73,9 +76,7 @@
 													<asp:Label id="lblEntrada" runat="server"></asp:Label>
 												</ItemTemplate>
                                             </asp:TemplateColumn>
-                                            <asp:BoundColumn DataField="fecha" HeaderText="Fecha">
-												<ItemStyle HorizontalAlign="Left"></ItemStyle>
-											</asp:BoundColumn>
+                                            
 										</Columns>
 										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 											BackColor="#999999"></PagerStyle>
@@ -84,7 +85,10 @@
 							</tr>
 							<tr>
 								<td class="text" height="38" align="right">
-									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> <asp:Button id="btnNuevo" runat="server" Text="Nuevo concepto"></asp:Button>
+                                <asp:HiddenField ID="hdIdCaja" Value="" runat="server" />
+									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
+                                    <asp:Button id="btnNuevo" runat="server" Text="Nuevo concepto" 
+                                        onclick="btnNuevo_Click"></asp:Button>
 								</td>
 							</tr>
 						</table>

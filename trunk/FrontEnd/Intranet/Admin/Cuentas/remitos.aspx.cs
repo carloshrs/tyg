@@ -311,6 +311,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 try
                 {
                     ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+
+                    if (myItem.Cells[7].Text == "2")
+                        ((ImageButton)myItem.FindControl("Editar")).Visible = false;
                 }
                 catch (Exception exc)
                 { }
@@ -347,6 +350,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 try
                 {
                     ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+
+                    if (myItem.Cells[7].Text == "2")
+                        ((ImageButton)myItem.FindControl("Editar")).Visible = false;
                 }
                 catch (Exception exc)
                 { }
