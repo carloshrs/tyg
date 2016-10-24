@@ -65,7 +65,7 @@
 												<HeaderStyle Width="20px"></HeaderStyle>
 												<ItemTemplate>
 													<asp:ImageButton id="Borrar" runat="server" Width="16px" ToolTip="Editar" CommandName="Borrar" ImageUrl="/img/cruz.gif"
-														CausesValidation="False"></asp:ImageButton>
+														CausesValidation="False" OnClientClick="confirm('¿Realmente desea eliminar la caja del dia?')"></asp:ImageButton>
 												</ItemTemplate>
 											</asp:TemplateColumn>
                                             <asp:TemplateColumn>

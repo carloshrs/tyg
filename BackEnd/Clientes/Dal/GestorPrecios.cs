@@ -607,6 +607,32 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
+        public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, string concepto, float monto)
+        {
+            try
+            {
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery = new StringBuilder(512);
+                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, monto, entradasalida, fecha) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate())");
+                StaticDal.EjecutarComando(strQuery.ToString());
+
+                StringBuilder strQuery2 = new StringBuilder(512);
+                strQuery2 = new StringBuilder(512);
+                if(TipoIngreso ==1)
+                    strQuery2.Append("UPDATE CPCaja SET saldoEfectivo = saldoEfectivo + " + StaticDal.Traduce(monto) + " ");
+                else
+                    strQuery2.Append("UPDATE CPCaja SET saldoEfectivo = saldoEfectivo - " + StaticDal.Traduce(monto) + " ");
+                strQuery2.Append(" WHERE idCaja = " + StaticDal.Traduce(IdCaja));
+                StaticDal.EjecutarComando(strQuery2.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
+
         public static void EliminarClienteCC(int lIdCliente)
         {
             StringBuilder strSqlUpdate = new StringBuilder(128);
