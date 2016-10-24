@@ -319,6 +319,8 @@ function recalcular(tipo, campo) {
                                                     </ItemTemplate>
                                                     </asp:TemplateColumn>
 
+                                                    <asp:BoundColumn Visible="False" DataField="estado" HeaderText="estado"></asp:BoundColumn>
+
                                                </Columns>
                                             </asp:datagrid>
                                             </div>
@@ -403,6 +405,8 @@ function recalcular(tipo, campo) {
                                                         <asp:ImageButton id="Editar" runat="server" Width="16px" ToolTip="Editar" CommandName="Editar" ImageUrl="/img/modificar_general.gif" BorderWidth="0"></asp:ImageButton>
                                                     </ItemTemplate>
                                                     </asp:TemplateColumn>
+
+                                                    <asp:BoundColumn Visible="False" DataField="estado" HeaderText="estado"></asp:BoundColumn>
 
                                                </Columns>
                                             </asp:datagrid>

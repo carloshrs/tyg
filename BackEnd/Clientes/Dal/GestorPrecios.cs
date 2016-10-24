@@ -566,13 +566,38 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             strQuery.Append("Select idCajaDetalle, concepto, monto, entradasalida, fecha ");
             strQuery.Append(" From CPCajaDetalle ");
             if (lTexto != "")
-                strQuery.Append(" Where idCajaDetalle = " + lTexto + " ");
+                strQuery.Append(" Where idCaja = " + lTexto + " ");
 
             strQuery.Append(" Order by fecha DESC");
 
             try
             {
                 dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "CajaDetalle").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
+        public static DataTable ListarConceptos(string lTexto, int idTipo, int ES)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select idConcepto, descripcion ");
+            strQuery.Append(" From CPConcepto ");
+            strQuery.Append(" WHERE idTipo=" + idTipo);
+            strQuery.Append(" AND entrada=" + ES);
+            strQuery.Append(" AND estado=1");
+            if (lTexto != "")
+                strQuery.Append(" AND id = " + lTexto + " ");
+            strQuery.Append(" Order by descripcion");
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "Conceptos").Tables[0];
             }
             catch
             {
@@ -1181,7 +1206,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             if (idTipoDocumentacion == 1)
             {
-                strQuery.Append("select r.nroRemito, r.fecha, count(distinct(ri.idEncabezado)) as cantInformes, isnull(sum(distinct(ra.cantidad)),0) as cantAdicionales ");
+                strQuery.Append("select r.nroRemito, r.fecha, r.estado, count(distinct(ri.idEncabezado)) as cantInformes, isnull(sum(distinct(ra.cantidad)),0) as cantAdicionales ");
                 strQuery.Append("from remitos r ");
                 strQuery.Append("left outer join remitoinforme ri on r.nroRemito=ri.nroRemito ");
                 strQuery.Append("left outer join remitoadicionales ra on r.nroRemito=ra.nroRemito ");
@@ -1203,13 +1228,13 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                     strQuery.Append("AND ccm.fecha BETWEEN " + FechaDesde + " AND " + FechaHasta + " )");
                 }
 
-                strQuery.Append("group by r.nroRemito, r.fecha ");
+                strQuery.Append("group by r.nroRemito, r.fecha, r.estado ");
                 strQuery.Append("order by r.nroRemito Desc");
             }
 
             if (idTipoDocumentacion == 2)
             {
-                strQuery.Append("select r.nroParte as nroRemito, r.fecha, count(distinct(ri.idEncabezado)) as cantInformes, isnull(sum(distinct(ra.cantidad)),0) as cantAdicionales ");
+                strQuery.Append("select r.nroParte as nroRemito, r.fecha, r.estado, count(distinct(ri.idEncabezado)) as cantInformes, isnull(sum(distinct(ra.cantidad)),0) as cantAdicionales ");
                 strQuery.Append("from partesEntrega r ");
                 strQuery.Append("left outer join parteEntregaInforme ri on r.nroParte=ri.nroParte ");
                 strQuery.Append("left outer join parteEntregaAdicionales ra on r.nroParte=ra.nroParte ");
@@ -1231,7 +1256,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                     strQuery.Append("AND ccm.fecha BETWEEN " + FechaDesde + " AND " + FechaHasta + " )");
                 }
 
-                strQuery.Append("group by r.nroParte, r.fecha ");
+                strQuery.Append("group by r.nroParte, r.fecha, r.estado ");
                 strQuery.Append("order by r.nroParte Desc");
             }
 
