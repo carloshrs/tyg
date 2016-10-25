@@ -31,7 +31,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
 		protected void Session_Start(Object sender, EventArgs e)
 		{
 			HttpContext.Current.Session.Add("UsuarioAutenticado", null);
-
 		}
 
 		protected void Application_BeginRequest(Object sender, EventArgs e)
@@ -68,10 +67,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
 //						else
 //						{
 							authUser = CrearUsuarioAutenticado(authTicket);
-//							Context.Session.Add("UsuarioAutenticado",authUser);
+//							HttpContext.Current.Session.Add("UsuarioAutenticado",authUser);
+                            //Context.Session["UserPermisos"] = authUser;
 //						}
 //
-                            if (authUser.IsInRole("Administrador") || authUser.CheckAccess(strUrlKey))
+                        if (authUser.IsInRole("Administrador") || authUser.CheckAccess(strUrlKey))
 						{
 							Context.User = authUser;
 //							Context.Session["UsuarioAutenticado"] = authUser;

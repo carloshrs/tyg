@@ -447,6 +447,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                                     case "7": //Providencia cautelar
                                         Response.Redirect("/Gravamenes/ProvidenciaCautelar/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=3");
                                         break;
+                                    case "8": //Mandato
+                                        Response.Redirect("/Gravamenes/Mandato/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=3");
+                                        break;
 								}
 								break;
                             case "4": //Realizar Informe Ambiental

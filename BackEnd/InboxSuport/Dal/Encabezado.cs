@@ -1469,6 +1469,9 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                         case 7: // Providencia cautelar
                             Descripcion = "<B>Tipo: </B> Providencia cautelar - <B>Folio:</B> " + strFolio + " - <B>Tomo: </B>" + strTomo + " - <B>Año: </B>" + strAno;
                             break;
+                        case 8: // Mandato
+                            Descripcion = "<B>Tipo: </B> Mandato - <B>Folio:</B> " + strFolio + " - <B>Tomo: </B>" + strTomo + " - <B>Año: </B>" + strAno;
+                            break;
 					}
                     if (intCaracter == 1) Descripcion = Descripcion + " - <B>Carácter: </B> Normal";
                     if (intCaracter == 2) Descripcion = Descripcion + " - <B>Carácter: </B> Urgente";
