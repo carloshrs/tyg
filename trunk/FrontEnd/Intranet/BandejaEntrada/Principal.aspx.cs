@@ -282,6 +282,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                                 strRedir = "/Gravamenes/ProvidenciaCautelar/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=3";
                                 strRedirCalle = "/Gravamenes/ProvidenciaCautelar/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=3";
                                 break;
+                            case "8": //Mandato
+                                strRedir = "/Gravamenes/mandato/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=3";
+                                strRedirCalle = "/Gravamenes/mandato/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=3";
+                                break;
 
 
                         }

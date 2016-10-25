@@ -166,6 +166,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         case 7: //Providencia cautelar
                             path = "Gravamenes/ProvidenciaCautelar";
                             break;
+                        case 8: //Mandato
+                            path = "Gravamenes/Mandato";
+                            break;
                     }
                     break;
                 case "4": 

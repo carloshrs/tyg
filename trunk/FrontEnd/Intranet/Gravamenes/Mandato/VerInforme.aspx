@@ -1,4 +1,4 @@
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Gravamenes.ProvidenciaCautelar.verInforme" CodeFile="VerInforme.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Gravamenes.Mandato.verInforme" CodeFile="VerInforme.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
 	<HEAD>
@@ -95,7 +95,7 @@
 															<TABLE id="Table4" cellSpacing="0" cellPadding="0" width="100%" border="0">
 																<TR>
 																	<TD class="title" width="100%" bgColor="lightgrey" colSpan="3" height="10">&nbsp;&nbsp; 
-																		Datos Providencia Cautelar</TD>
+																		Datos del Mandato</TD>
 																</TR>
 															</TABLE>
 														</TD>
