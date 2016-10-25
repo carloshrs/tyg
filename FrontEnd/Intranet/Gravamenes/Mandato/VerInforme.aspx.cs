@@ -10,7 +10,7 @@ using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.Gravamenes.Dal;
 
-namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Gravamenes.ProvidenciaCautelar
+namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Gravamenes.Mandato
 {
 	/// <summary>
 	/// Summary description for altaInforme.
@@ -103,10 +103,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Gravamenes.ProvidenciaCautelar
                 lblRef.Text = oEncabezado.UsuarioCliente.ToUpper();
             else
                 lblRef.Text = usuario.Apellido.ToUpper() + ", " + usuario.Nombre.ToUpper();
-			
-			GravamenesDal oProvidenciaCautelar = new GravamenesDal();
-            oProvidenciaCautelar.Cargar(Id, "providenciacautelar");
-            CargarEncabezado(oProvidenciaCautelar);
+
+            GravamenesDal mandato = new GravamenesDal();
+            mandato.Cargar(Id, "mandato");
+            CargarEncabezado(mandato);
 		}
 
 
