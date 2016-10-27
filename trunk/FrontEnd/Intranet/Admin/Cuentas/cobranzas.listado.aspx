@@ -162,25 +162,26 @@
     <cc1:TabContainer ID="TabPagos" runat="server" ActiveTabIndex="0" Width="95%">
             <cc1:TabPanel runat="server" HeaderText="Por clientes" ID="tbPagosPendientes">
                 <ContentTemplate>
-
                 <asp:Wizard ID="WzPagosDocumentos" runat="server" BackColor="White" BorderColor="#B5C7DE"
                     BorderWidth="1px" Width="100%" ActiveStepIndex="0"
                         onfinishbuttonclick="WzPagosDocumentos_FinishButtonClick" 
                         onnextbuttonclick="WzPagosDocumentos_NextButtonClick" 
                         OnSideBarButtonClick="WzPagosDocumentos_SideBarButtonClick"
                         FinishCompleteButtonText="Finalizar cobro">
-                    <StepStyle Font-Size="0.8em" ForeColor="#333333" />
-                    <SideBarStyle BackColor="#EFF3FB" Font-Size="0.9em" 
-                    VerticalAlign="Bottom" Width="200px"
-                    Wrap="True" />
-                    <NavigationButtonStyle BackColor="White" 
+<NavigationButtonStyle BackColor="White" 
                     BorderColor="#507CD1" 
                     BorderStyle="Solid"
                     BorderWidth="1px" Font-Names="Verdana" 
                     Font-Size="0.8em" 
                     ForeColor="#284E98" />
-            <WizardSteps>
-                <asp:WizardStep ID="Paso1" runat="server" Title="Cobro de documentos" >
+
+<SideBarStyle BackColor="#EFF3FB" Font-Size="0.9em" 
+                    VerticalAlign="Bottom" Width="200px"
+                    Wrap="True" />
+
+<StepStyle Font-Size="0.8em" ForeColor="#333333" />
+<WizardSteps>
+<asp:WizardStep ID="Paso1" runat="server" Title="Cobro de documentos" >
                     <div style="width:94%; margin-bottom:20px; border:1px solid #ccc; background-color:#eee; margin:20px; padding:10px;" id="divBusqueda">
                         <TABLE class="text" cellSpacing="3"cellPadding="1" width="100%" border="0">
 				            <TR>
@@ -188,14 +189,10 @@
 
 
 
-
-
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
-
-
 
 
 
@@ -214,9 +211,7 @@
 
 
 
-
 <asp:HiddenField ID="hIdCliente" runat="server" />
-
 
 
 
@@ -225,10 +220,8 @@
 
 
 
-
                                     <cc1:CalendarExtender ID="txtFechaInicio_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaInicio" Enabled="True"></cc1:CalendarExtender>
-
 
 
 
@@ -237,10 +230,8 @@
 
 
 
-
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
-
 
 
 
@@ -249,23 +240,9 @@
 
 
 
+                                    &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
 
-&nbsp;
-						            <input id="hidFecha" runat="server" size="1" type="hidden"></input>
-</input>
-</input>
-</input>
-</input>
-</input>
-                                        </input>
-                                        </input>
-                                        </input></input>
-                                        </input>
-                                        </input>
-                                        </input>
-                                        </input>
-                                        </input>
-                                        </input>
+						            
                                 </TD>
 				            </TR>
 			            </TABLE>
@@ -279,100 +256,164 @@
                                     ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" 
                                      onpageindexchanging="GVlistaCobrar_PageIndexChanging" 
                                     ShowFooter="True"  AllowPaging="True" Width="98%" HorizontalAlign="Center">
-                                    <Columns>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
+<AlternatingRowStyle BackColor="#CCCCCC" />
+<Columns>
+<asp:TemplateField><ItemTemplate>
                                                 <asp:CheckBox ID="chkItem" runat="server" />
-                                            </ItemTemplate>
-                                            <HeaderStyle Width="20px" />
-                                            <ItemStyle HorizontalAlign="Center" />
-                                        </asp:TemplateField>
-                                        <asp:BoundField DataField="ID" HeaderText="Nro" />
-                                        <asp:BoundField DataField="Fecha" HeaderText="Fecha">
-                                        <HeaderStyle Width="160px" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Documento" HeaderText="Concepto" />
-                                        <asp:BoundField DataField="monto" HeaderText="Precio Unitario">
-                                        <HeaderStyle Width="50px" />
-                                        </asp:BoundField>
-                                        <asp:TemplateField HeaderText="Precio">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lblPrecio" runat="server" ></asp:Label>
-                                            </ItemTemplate>
-                                            <FooterTemplate>
+                                            
+</ItemTemplate>
+
+<HeaderStyle Width="20px" />
+
+<ItemStyle HorizontalAlign="Center" />
+</asp:TemplateField>
+<asp:BoundField DataField="ID" HeaderText="Nro" />
+<asp:BoundField DataField="Fecha" HeaderText="Fecha">
+<HeaderStyle Width="160px" />
+</asp:BoundField>
+<asp:BoundField DataField="Documento" HeaderText="Concepto" />
+<asp:BoundField DataField="monto" HeaderText="Precio Unitario">
+<HeaderStyle Width="50px" />
+</asp:BoundField>
+<asp:TemplateField HeaderText="Precio">
+    <FooterTemplate>
                                               <asp:Label ID="lblTotal" runat="server" ></asp:Label>
-                                          </FooterTemplate>
-                                            <HeaderStyle Width="90px" />
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#28428B" Font-Bold="True" ForeColor="White" />
-                                    <AlternatingRowStyle BackColor="#CCCCCC" />
-                                    <FooterStyle BackColor="#999999" Font-Size="16pt" Font-Bold="True" />
-                                </asp:GridView>
+                                          
+</FooterTemplate>
+<ItemTemplate>
+                                                <asp:Label ID="lblPrecio" runat="server" ></asp:Label>
+                                            
+</ItemTemplate>
+
+<HeaderStyle Width="90px" />
+</asp:TemplateField>
+</Columns>
+
+<FooterStyle BackColor="#999999" Font-Size="16pt" Font-Bold="True" />
+
+<HeaderStyle BackColor="#28428B" Font-Bold="True" ForeColor="White" />
+
+<PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+
+<SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+</asp:GridView>
+
+
+
+
                                 <asp:HiddenField ID="txtCobroSubTotal" runat="server" />
+
+
+
+
                             </asp:panel>
 
+
+
+
+
                             </asp:WizardStep>
-                <asp:WizardStep ID="Paso2" runat="server" Title="Formas de pago">
+<asp:WizardStep ID="Paso2" runat="server" Title="Formas de pago">
                 <div style="float:left; width:100%; padding-left:20px; padding-top:20px;">Cliente: 
                     <asp:Label ID="lblCliente" 
                         runat="server" Font-Bold="True"></asp:Label>
+
+
+
+
                         </div>
 
                 <div style="float:left;  width:200px; background-color:#dfdfdf; margin-left:20px; padding:5px; margin-top:10px;">
                     Monto a cobrar: 
                     <asp:Label ID="lblMonto" runat="server" 
                         Font-Size="18pt"></asp:Label>
+
+
+
+
                 </div>
                 <div style="float:left;  width:200px; background-color:#dfdfdf; margin-left:20px; padding:5px; margin-top:10px;">
                     Saldo actual: 
                     <asp:Label ID="lblSaldoActual" runat="server" 
-                        Font-Size="18pt"></asp:Label><asp:Button ID="btnActualizarSaldo" runat="server" Text="Actualizar" />
+                        Font-Size="18pt"></asp:Label>
+
+
+
+<asp:Button ID="btnActualizarSaldo" runat="server" Text="Actualizar" />
+
+
+
+
                 </div>
 
                 <div style="float:left; width:95%; margin-top:30px; border-bottom: 1px solid #B5C7DE; margin-left:20px;"><h2>Forma de pago</h2></div> 
                 
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="DDFormaPago1" runat="server">
+                    <asp:DropDownList ID="cmbFormaPago1" runat="server">
                         <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
-                        <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="Rapipago"/>
-                        </asp:DropDownList>
+<asp:ListItem Value="2" Text="Cheque"/>
+<asp:ListItem Value="3" Text="Transferencia"/>
+<asp:ListItem Value="4" Text="Depósito"/>
+<asp:ListItem Value="5" Text="CC $0,0"/>
+</asp:DropDownList>
+
+
+
+
                     </div>
-                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+
+
+
+</h3></div>
                 </div>
 
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="DDFormaPago2" runat="server">
+                    <asp:DropDownList ID="cmbFormaPago2" runat="server">
                         <asp:ListItem Selected="True" Text="Seleccione forma de pago" />
-                        <asp:ListItem Value="1" Text="Efectivo"/>
-                        <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="Rapipago"/>
-                        </asp:DropDownList>
+<asp:ListItem Value="1" Text="Efectivo"/>
+<asp:ListItem Value="2" Text="Cheque"/>
+<asp:ListItem Value="3" Text="Transferencia"/>
+<asp:ListItem Value="4" Text="Depósito"/>
+<asp:ListItem Value="5" Text="CC $0,0"/>
+</asp:DropDownList>
+
+
+
+
                     </div>
-                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+
+
+
+</h3></div>
                 </div>
 
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="DDFormaPago3" runat="server">
+                    <asp:DropDownList ID="cmbFormaPago3" runat="server">
                         <asp:ListItem Selected="True" Text="Seleccione forma de pago" />
-                        <asp:ListItem Value="1" Text="Efectivo"/>
-                        <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="Rapipago"/>
-                        </asp:DropDownList>
+<asp:ListItem Value="1" Text="Efectivo"/>
+<asp:ListItem Value="2" Text="Cheque"/>
+<asp:ListItem Value="3" Text="Transferencia"/>
+<asp:ListItem Value="4" Text="Depósito"/>
+<asp:ListItem Value="5" Text="CC $0,0"/>
+</asp:DropDownList>
+
+
+
+
                     </div>
-                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;"><span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox></h3></div>
+                    <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+
+
+
+</h3></div>
                 </div>
                
                     
@@ -380,20 +421,38 @@
                                     style="font-size:16px; font-weight: bold; padding:5px;" 
                                     onclick="btnPagar_Click" /> </div>-->    
                     
-                    <div style="float:left; margin-top:15px;"><asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="16px"></asp:Label></div>
-                </asp:WizardStep>
-            </WizardSteps>
-            
-        </asp:Wizard>
+                    <div style="float:left; margin-top:15px;">
+                        <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="16px"></asp:Label>
 
-        </ContentTemplate>
-            </cc1:TabPanel>
+
+
+</div>
+                </asp:WizardStep>
+</WizardSteps>
+</asp:Wizard>
+
+
+
+
+
+        
+</ContentTemplate>
+            
+
+
+
+</cc1:TabPanel>
 
             <cc1:TabPanel ID="tbCuentasCliente" runat="server" HeaderText="Por cobradores">
                 <ContentTemplate>
                     Grilla de remitos diarios
-                </ContentTemplate>
-            </cc1:TabPanel>
+                
+</ContentTemplate>
+            
+
+
+
+</cc1:TabPanel>
         </cc1:TabContainer>
     
     </div>

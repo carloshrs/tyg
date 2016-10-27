@@ -280,12 +280,76 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
-        public bool AgregarMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public int AgregarMovimientoCC(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
         {
             //int MaxID = 0;
             string strSQL = "";
-            float fSaldo = 0;
+            int idCuentaClienteDetalle = 0;
             
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "CCAddMovimientoCC " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                idCuentaClienteDetalle = int.Parse(myDataSet.Tables[0].Rows[0]["idCuentaClienteDetalle"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return idCuentaClienteDetalle;
+            }
+
+            return idCuentaClienteDetalle;
+        }
+
+
+        public int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            int idCajaDetalle = 0;
+
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "CCAddMovimientoCaja " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                idCajaDetalle = int.Parse(myDataSet.Tables[0].Rows[0]["idCajaDetalle"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return idCajaDetalle;
+            }
+
+            return idCajaDetalle;
+        }
+
+
+        public bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            
+
 
             OdbcConnection oConnection = this.OpenConnection();
 
@@ -312,7 +376,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
-        public bool AgregarMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -341,6 +405,37 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
 
             return true;
+        }
+
+        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0;
+
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "CCAddFormaPago " + idCajaDetalle + ", " + idFormaPago + ", " + MontoaPagar;
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                //fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldo"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                //return false;
+            }
+
+            //return true;
         }
 
         private static int ObtenerMaxID(string strMaxID, OdbcConnection oConnection)
