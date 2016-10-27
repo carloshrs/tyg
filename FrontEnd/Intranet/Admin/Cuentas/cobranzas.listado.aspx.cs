@@ -42,7 +42,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void WzPagosDocumentos_FinishButtonClick(object sender, WizardNavigationEventArgs e)
         {
-            float vMontoaPagar=0;
             int idCliente = 0;
             string[] arrDoc;
             string[] separators = {"_"};
@@ -56,7 +55,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             if ((txtMontoaPagar1.Text != "" && txtMontoaPagar1.Text != "0") || (txtMontoaPagar2.Text != "" && txtMontoaPagar2.Text != "0") || (txtMontoaPagar3.Text != "" && txtMontoaPagar3.Text != "0"))
             {
-                vMontoaPagar = float.Parse(txtMontoaPagar1.Text);
+                
                 idCliente = int.Parse(hIdCliente.Value);
 
                 // Begin Transaction
@@ -68,9 +67,53 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 int entrada = 1;
                 bool bAddMovCC = false;
                 bool bAddMovCaja = false;
+                int vIdCuentaClienteDetalle = 0;
+                int vIdCajaDetalle = 0;
+                float vMontoTotalPagar = 0;
 
                 if (idCajaDiaria != 0)
                 {
+
+                    foreach (GridViewRow myItem in GVlistaCobrar.Rows)
+                    {
+                        if (((CheckBox)myItem.FindControl("chkItem")).Checked)
+                        {
+                            vParam = myItem.Cells[1].Text; // EJ: 1_1_74 //remito, diario, nro 74
+                            arrDoc = vParam.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                            concepto = concepto + myItem.Cells[3].Text + ", ";
+                            montoDebe = float.Parse(myItem.Cells[4].Text);
+
+                            //Verificar y registrar en CC Cliente como salida, es decir, informes por cobrar
+                            vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, 0, myItem.Cells[3].Text, montoDebe, 0);
+                        }
+                    }
+
+                    if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                        vMontoTotalPagar = float.Parse(txtMontoaPagar1.Text);
+
+                    if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
+                        vMontoTotalPagar = vMontoTotalPagar + float.Parse(txtMontoaPagar2.Text);
+
+                    if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
+                        vMontoTotalPagar = vMontoTotalPagar + float.Parse(txtMontoaPagar3.Text);
+
+                    vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, vMontoTotalPagar);
+
+                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, vMontoTotalPagar);
+
+
+                    // Se agrega Forma de Pago
+                    if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text));
+
+                    if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text));
+
+                    if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text));
+
+                    // Cheques en Cartera
+
                     foreach (GridViewRow myItem in GVlistaCobrar.Rows)
                     {
                         if (((CheckBox)myItem.FindControl("chkItem")).Checked)
@@ -80,21 +123,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             tipoDoc = int.Parse(arrDoc[0]);
                             tipoPeriodo = int.Parse(arrDoc[1]);
                             NroDoc = int.Parse(arrDoc[2]);
-                            concepto = myItem.Cells[3].Text;
-                            montoDebe = float.Parse(myItem.Cells[4].Text);
+                            //concepto = myItem.Cells[3].Text;
+                            
 
-                            // Agrega movimiento en CC
-                            bAddMovCC = AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
+                            // Agrega documentos de movimientos en CC
+                            bAddMovCC = AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, 0);
+                            bAddMovCaja = AgregarDocumentosMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, 0);
 
-                            bAddMovCaja = AgregarMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, vMontoaPagar);
                             //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
-                            //{
                             //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
-                            //}
-
                             //((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
-
-
                             // 2. Agregar a detalles de factura
                         }
                     }
@@ -192,16 +230,34 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         }
         
 
-        private bool AgregarMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        private int AgregarMovimientoCC(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return ccMovimiento.AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
         }
 
-        private bool AgregarMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        private int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        private bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            return ccMovimiento.AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        private bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            return ccMovimiento.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar);
         }
     }
 }

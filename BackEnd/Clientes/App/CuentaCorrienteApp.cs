@@ -46,16 +46,34 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             return gp.ObtenerNroCajaDiaria();
         }
 
-        public bool AgregarMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar) 
+        public int AgregarMovimientoCC(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar) 
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return gp.AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
         }
 
-        public bool AgregarMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return gp.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        public bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        public bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            gp.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar);
         }
 	}
 }
