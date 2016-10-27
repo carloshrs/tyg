@@ -563,7 +563,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
-            strQuery.Append("Select idCajaDetalle, concepto, monto, entradasalida, fecha ");
+            strQuery.Append("Select idCajaDetalle, concepto, montoTotal, entradasalida, fecha ");
             strQuery.Append(" From CPCajaDetalle ");
             if (lTexto != "")
                 strQuery.Append(" Where idCaja = " + lTexto + " ");
