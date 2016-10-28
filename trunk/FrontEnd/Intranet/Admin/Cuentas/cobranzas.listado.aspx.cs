@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ar.com.TiempoyGestion.BackEnd.Clientes.App;
+using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
@@ -99,7 +100,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, vMontoTotalPagar);
 
-                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, vMontoTotalPagar);
+                    ClienteDal dalCliente = new ClienteDal();
+                    dalCliente.Cargar(idCliente);
+                    string NombreCliente = dalCliente.NombreFantasia;
+                    if(dalCliente.Sucursal != "")
+                        NombreCliente = NombreCliente +"( " + dalCliente.Sucursal + ")";
+                    NombreCliente = NombreCliente + ": ";
+
+                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, NombreCliente + concepto, montoDebe, vMontoTotalPagar);
 
 
                     // Se agrega Forma de Pago
