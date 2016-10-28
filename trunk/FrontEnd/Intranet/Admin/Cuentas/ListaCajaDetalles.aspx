@@ -64,7 +64,7 @@
 											<asp:BoundColumn DataField="concepto" HeaderText="Concepto">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
-                                            <asp:BoundColumn DataField="monto" HeaderText="Monto">
+                                            <asp:BoundColumn DataField="montoTotal" HeaderText="Monto">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
                                             <asp:BoundColumn DataField="entradasalida" HeaderText="Ingreso / Egreso" Visible="false">

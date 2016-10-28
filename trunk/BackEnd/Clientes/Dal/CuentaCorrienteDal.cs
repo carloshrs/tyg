@@ -289,7 +289,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCC " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddMovimientoCC " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", 0";
 
             try
             {
@@ -321,7 +321,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCaja " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddMovimientoCaja " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", 0";
 
             try
             {
@@ -353,7 +353,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCC " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddDocumentosMovimientoCC " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
 
             try
             {
@@ -385,7 +385,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCaja " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddDocumentosMovimientoCaja " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
 
             try
             {
