@@ -613,7 +613,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             {
                 StringBuilder strQuery = new StringBuilder(512);
                 strQuery = new StringBuilder(512);
-                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, monto, entradasalida, fecha) ");
+                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, montoTotal, entradasalida, fecha) ");
                 strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate())");
                 StaticDal.EjecutarComando(strQuery.ToString());
 
