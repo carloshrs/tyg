@@ -150,7 +150,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     lblMensaje.Text = "No hay apertura de caja en el dia " + DateTime.Now.Date.ToShortDateString();
                 }
 
-                Response.Redirect("/Admin/Cuentas/cobranzas.listado.aspx");
+                Response.Redirect("/Admin/Cuentas/ListaCobranzas.aspx");
                 // Agregar movimiento en Caja ultima.
 
                 // 1. Crear Nº de Factura (NO va)

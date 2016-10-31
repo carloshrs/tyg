@@ -111,6 +111,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
 							Response.Redirect("ListaUsuarios.aspx?IdCliente=" + e.Item.Cells[0].Text);
 							break;
 						}
+                        case "verCCCliente":
+                        {
+                            Session.Add("PaginaClienteActual", dgridClientes.CurrentPageIndex);
+                            Response.Redirect("../Cuentas/ListaCuentaCorrienteCliente.aspx?IdCliente=" + e.Item.Cells[0].Text);
+                            break;
+                        }
 					}
 				}
 			}	
