@@ -41,7 +41,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 
             if (Usuario.IsInRole("Administrador"))
             {
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/cobranzas.listado.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCuentaCorrienteCliente.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
                 strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCaja.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_7' idMenuItem='menu3_item_20' text='Caja' separar='1'/>";
             }
             strXmlMenu = strXmlMenu + "</menuPrincipal>";

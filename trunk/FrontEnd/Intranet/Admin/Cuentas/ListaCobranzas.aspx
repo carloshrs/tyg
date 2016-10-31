@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="cobranzas.listado.aspx.cs" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.facturacion_listaClientes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListaCobranzas.aspx.cs" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.facturacion_listaClientes" %>
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

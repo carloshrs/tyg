@@ -571,6 +571,46 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
         }
 
+
+        public DataTable ListaCuentaCorrienteCliente(String SQLWhere, int pagina, int registros)
+        {
+            String strSQLCount = "SELECT COUNT(CCD.idCuentaClienteDetalle) AS total FROM CPCuentaClienteDetalle CCD INNER JOIN CPCuentaCliente CC ON CCD.idCuentaCliente=CC.idCuentaCliente";
+            if (SQLWhere != "")
+            {
+                SQLWhere = SQLWhere.Replace("''", "'");
+                string SQLWhereC = " WHERE " + SQLWhere.Substring(SQLWhere.IndexOf("AND") + 3);
+                strSQLCount = strSQLCount + SQLWhereC;
+            }
+            IDataReader dr = EjecutarDataReader(strSQLCount);
+            if (dr.Read())
+            {
+                intTotalRegistros = dr.GetInt32(0);
+                int totPaginas = ((int)(intTotalRegistros / registros)) + 1;
+                if (pagina > totPaginas) pagina = totPaginas;
+            }
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "SELECT CCD.idCuentaClienteDetalle, CCD.idCuentaCliente, CCD.concepto, CCD.monto, CCD.saldo, CCD.entradasalida, CCD.fechaIngreso " +
+                "FROM CPCuentaClienteDetalle CCD " +
+                "INNER JOIN CPCuentaCliente CC ON CCD.idCuentaCliente=CC.idCuentaCliente ";
+            strSQL = strSQL + "WHERE 1=1 ";
+            if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'", "''");
+            int iniciopag = (pagina - 1) * registros;
+            String strSQLSP = "execute_query '" + strSQL + "', 'FechaIngreso ASC', " + pagina + ", " + registros + ", 10";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQLSP, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
+
 		#endregion
 
 		#region Métodos Privados

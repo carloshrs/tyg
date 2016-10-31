@@ -99,6 +99,13 @@
 											</asp:TemplateColumn>
                                             <asp:BoundColumn DataField="RazonSocialFox" Visible="false" >
 											</asp:BoundColumn>
+                                            <asp:TemplateColumn>
+												<HeaderStyle Width="20px"></HeaderStyle>
+												<ItemTemplate>
+													<asp:ImageButton id="idCuentaCliente" runat="server" Width="16px" ToolTip="Ver Cuenta Corriente Cliente" CommandName="verCCCliente"
+														ImageUrl="/Img/Precios.gif"></asp:ImageButton>
+												</ItemTemplate>
+											</asp:TemplateColumn>
 										</Columns>
 										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 											BackColor="#999999" PageButtonCount="8" Mode="NumericPages"></PagerStyle>

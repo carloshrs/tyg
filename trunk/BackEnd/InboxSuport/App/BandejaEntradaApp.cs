@@ -741,6 +741,44 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             grm.generarRecibosMasivos(fechaDesde, fechaHasta);
         }
 
+
+        public DataTable ListaCuentaCorrienteCliente(int idCliente, string FechaDesde, string FechaHasta, int vRegPorPagina)
+        {
+            String SQLWhere = "";
+
+
+            if (idCliente != -1)
+                SQLWhere = SQLWhere + " AND cc.idCliente = " + idCliente.ToString();
+
+
+            if (FechaDesde != "")
+                FechaDesde = "'" + FechaDesde + " 00:00:00.000'";
+            else
+            {
+                FechaDesde = DateTime.Today.AddMonths(-3).ToShortDateString();
+                FechaDesde = "'" + FechaDesde + " 00:00:00.000'";
+            }
+
+
+
+            if (FechaHasta != "")
+                FechaHasta = "'" + FechaHasta + " 23:59:59.999'";
+            else
+            {
+                FechaHasta = DateTime.Today.ToShortDateString();
+                FechaHasta = "'" + FechaHasta + " 23:59:59.999'";
+            }
+
+            if (vRegPorPagina != 0)
+                intRegPorPagina = vRegPorPagina;
+
+            SQLWhere = SQLWhere + " AND ccd.fechaIngreso BETWEEN '" + FechaDesde + "' AND '" + FechaHasta + "'";
+
+
+            BandejaEntradaDal bandeja = new BandejaEntradaDal();
+            DataTable Datos = bandeja.ListaCuentaCorrienteCliente(SQLWhere, Pagina, RegPorPagina);
+            return Datos;
+        }
         #endregion
 
         #region Métodos Privados
