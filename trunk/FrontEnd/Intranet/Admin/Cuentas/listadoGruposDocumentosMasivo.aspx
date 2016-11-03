@@ -41,7 +41,7 @@
                         <asp:Repeater ID="rpHistorial" runat="server">
                          <ItemTemplate>
                          <div style="margin:16px;"><div style="float:left;"><img src="/Img/left.jpg" width="14" height="14" border="0" /></div>
-                             <div style="width:700px; margin-top:5px;"><a href="listadoDocumentosMasivo.aspx?estado=-1&idGrupo=<%#Eval("id")%>" class="link">&nbsp;
+                             <div style="width:700px; margin-top:5px;"><a href="listadoDocumentosMasivo.aspx?estado=-1&idGrupo=<%#Eval("id")%>&idTipo=<%#Eval("tipoDocumento")%>" class="link">&nbsp;
                                <%#Eval("fecha")%> Grupos de <%#Eval("documento")%> generado por <%#Eval("nombre")%> <%#Eval("apellido")%> (total <%#Eval("total")%>)
                               </a></div>
                               </div>

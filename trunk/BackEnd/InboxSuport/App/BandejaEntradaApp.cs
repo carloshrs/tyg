@@ -726,11 +726,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
         }
 
 
-        public DataTable ListarGruposClientesMasivos(int idTipo)
+        public DataTable ListarGruposClientesMasivos(int idTipo, int idGrupo)
         {
 
             BandejaEntradaDal bandeja = new BandejaEntradaDal();
-            DataTable Datos = bandeja.ListarGruposClientesMasivos(idTipo);
+            DataTable Datos = bandeja.ListarGruposClientesMasivos(idTipo, idGrupo);
             return Datos;
         }
 
