@@ -473,8 +473,8 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 "ELSE 'Parte de entrega' " +
                 "END AS varchar) as documento, " +
                 "U.nombre, U.apellido, count(GCE.id) AS total " +
-                "FROM documentosGrupoCambioEstado GCE "+ 
-                "INNER JOIN documentosCambioEstado CE ON GCE.id=CE.idTipoGrupo " +
+                "FROM CtaCteResumenGrupoCambioEstado GCE " +
+                "INNER JOIN CtaCteResumenCambioEstado CE ON GCE.id=CE.idTipoGrupo " +
                 "INNER JOIN Usuarios U ON GCE.idUsuario=U.idUsuario " +
                 "GROUP BY GCE.fecha, GCE.id, GCE.tipoDocumento , U.nombre, U.apellido "+
                  "ORDER BY GCE.fecha DESC";
