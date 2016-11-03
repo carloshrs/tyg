@@ -24,7 +24,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             if (!Page.IsPostBack)
             {
                 int idGrupo = int.Parse(Request.QueryString["idGrupo"]);
-                ListarHistorial(idGrupo);
+                int idTipo = int.Parse(Request.QueryString["idTipo"]);
+                ListarHistorial(idTipo, idGrupo);
             }
         }
 
@@ -55,7 +56,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         #endregion
 
-        private void ListarHistorial(int idGrupo)
+        private void ListarHistorial(int idTipo, int idGrupo)
         {
 
             lblMensaje.Text = "";
@@ -63,7 +64,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             BandejaEntradaApp listado = new BandejaEntradaApp();
             //if (chkSoloMias.Checked) idUser = IdUsuario;
-            rpHistorial.DataSource = listado.ListarGruposClientesMasivos(idGrupo);
+            rpHistorial.DataSource = listado.ListarGruposClientesMasivos(idTipo, idGrupo);
             rpHistorial.DataBind();
 
 
