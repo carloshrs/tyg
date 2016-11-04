@@ -41,10 +41,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 
             if (Usuario.IsInRole("Administrador"))
             {
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCobranzas.aspx' imageOut='/img/menu/ico-cobranzas.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCaja.aspx' imageOut='/img/menu/ico-caja.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_7' idMenuItem='menu3_item_20' text='Caja' separar='1'/>";
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaFacturacion.aspx' imageOut='/img/menu/ico-facturacion.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_8' idMenuItem='menu3_item_20' text='Facturación' separar='1'/>";
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCheques.aspx' imageOut='/img/menu/ico-cheques.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_9' idMenuItem='menu3_item_20' text='Cheques en cartera' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCobranzas.aspx' imageOut='/img/menu/ico-cobranzas.png' imageOver='/img/menu/ico-cobranzas.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCaja.aspx' imageOut='/img/menu/ico-caja.png' imageOver='/img/menu/ico-caja.png' idImagenItem='menu3_icon_7' idMenuItem='menu3_item_20' text='Caja' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaFacturacion.aspx' imageOut='/img/menu/ico-facturacion.png' imageOver='/img/menu/ico-facturacion.png' idImagenItem='menu3_icon_8' idMenuItem='menu3_item_20' text='Facturación' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCheques.aspx' imageOut='/img/menu/ico-cheques.png' imageOver='/img/menu/ico-cheques.png' idImagenItem='menu3_icon_9' idMenuItem='menu3_item_20' text='Cheques en cartera' separar='1'/>";
             }
             strXmlMenu = strXmlMenu + "</menuPrincipal>";
 
