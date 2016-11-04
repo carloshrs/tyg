@@ -34,15 +34,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
             strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/listaAdicionales.aspx' imageOut='/img/menu/ico-adicional.png' imageOver='/img/menu/ico-adicional.png' idImagenItem='menu3_icon_1' idMenuItem='menu3_item_2' text='Servicios adicionales' separar='0'/>";
             strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/abmlPreciosAdicionales.aspx' imageOut='/img/menu/ico-adicional-precio.png' imageOver='/img/menu/ico-adicional-precio.png' idImagenItem='menu3_icon_2' idMenuItem='menu3_item_15' text='Precios serv. adicionales' separar='0'/>";
             strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/TipoInforme/abmlTipoInforme.aspx' imageOut='/img/menu/Precios.gif' imageOver='/img/menu/Precios.gif' idImagenItem='menu4_icon_4' idMenuItem='menu4_item_18' text='Precios' separar='1'/>";
-            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/remitos.aspx' imageOut='/img/menu/ico-parteentrega.png' imageOver='/img/menu/ico-parteentrega.png' idImagenItem='menu3_icon_4' idMenuItem='menu3_item_17' text='Facturación' separar='1'/>";
+            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/remitos.aspx' imageOut='/img/menu/ico-parteentrega.png' imageOver='/img/menu/ico-parteentrega.png' idImagenItem='menu3_icon_4' idMenuItem='menu3_item_17' text='Partes de entrega | Remitos' separar='1'/>";
             //strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/remitos.aspx?idTipo=1' imageOut='/img/menu/ico-remito.png' imageOver='/img/menu/ico-remito.png' idImagenItem='menu3_icon_3' idMenuItem='menu3_item_16' text='Remitos' separar='0'/>";
             //strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/abmClientesCuentaCorriente.aspx' imageOut='/img/menu/ico-remito.png' imageOver='/img/menu/ico-remito.png' idImagenItem='menu3_icon_4' idMenuItem='menu3_item_17' text='CC Clientes' separar='1'/>";
-            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/recibosmensuales.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_5' idMenuItem='menu3_item_18' text='Resúmenes mensuales' separar='1'/>";
+            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/recibosmensuales.aspx' imageOut='/img/menu/ico-resumen.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_5' idMenuItem='menu3_item_18' text='Resúmenes mensuales' separar='1'/>";
 
             if (Usuario.IsInRole("Administrador"))
             {
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCobranzas.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
-                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCaja.aspx' imageOut='/img/menu/ico-cuentacorriente.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_7' idMenuItem='menu3_item_20' text='Caja' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCobranzas.aspx' imageOut='/img/menu/ico-cobranzas.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_6' idMenuItem='menu3_item_19' text='Cobranzas' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCaja.aspx' imageOut='/img/menu/ico-caja.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_7' idMenuItem='menu3_item_20' text='Caja' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaFacturacion.aspx' imageOut='/img/menu/ico-facturacion.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_8' idMenuItem='menu3_item_20' text='Facturación' separar='1'/>";
+                strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Cuentas/ListaCheques.aspx' imageOut='/img/menu/ico-cheques.png' imageOver='/img/menu/ico-cuentacorriente.png' idImagenItem='menu3_icon_9' idMenuItem='menu3_item_20' text='Cheques en cartera' separar='1'/>";
             }
             strXmlMenu = strXmlMenu + "</menuPrincipal>";
 
