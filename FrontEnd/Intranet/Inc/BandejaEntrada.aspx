@@ -139,6 +139,10 @@
 													<td align="right" width="20"><img src="/img/treeArrow.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="AmbientalBancor"> Relevamiento ambiental BANCOR</asp:HyperLink></td>
 												</tr>
+                                                <tr>
+													<td align="right" width="20"><img src="/img/treeArrow.gif"></td>
+													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="InspeccionAmbientalBancor"> Inspección socio ambiental BANCOR</asp:HyperLink></td>
+												</tr>
 												<tr>
 													<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
 													<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="contractuales"> Contractuales</asp:HyperLink></td>
