@@ -36,12 +36,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.VerifDomParticular
 				{	
 					IdInforme = int.Parse(Request.QueryString["id"]);
 					LoadInforme(IdInforme);
-					CargarCampos(lblTipoVivienda,13);
-					CargarCampos(lblEstadoCons,18);
-					CargarCampos(lblTipoConstruccion,14);
-					CargarCampos(lblTipoZona,15);
-					CargarCampos(lblDestino,12);
-					CargarCampos(lblInteresado,16);
+					//CargarCampos(lblTipoVivienda,13);
+					//CargarCampos(lblEstadoCons,18);
+					//CargarCampos(lblTipoConstruccion,14);
+					//CargarCampos(lblTipoZona,15);
+					//CargarCampos(lblDestino,12);
+					//CargarCampos(lblInteresado,16);
 
 				}
 			}
