@@ -139,11 +139,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
             else
                 partidas.Text = "Partidas de defunción (" + registros[19].ToString() + ")";
 
-            partidas.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=21";
+            InspeccionAmbientalBancor.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=21";
             if (registros[20] > 0)
-                partidas.Text = "Inspección Ambiental Bancor <B>(" + registros[20].ToString() + ")</B>";
+                InspeccionAmbientalBancor.Text = "Inspección Ambiental Bancor <B>(" + registros[20].ToString() + ")</B>";
             else
-                partidas.Text = "Inspección Ambiental Bancor (" + registros[20].ToString() + ")";
+                InspeccionAmbientalBancor.Text = "Inspección Ambiental Bancor (" + registros[20].ToString() + ")";
             
 
 
