@@ -346,6 +346,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     case "20": //Realizar Informe de Partidas de Defunción
                         ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
                         break;
+                    case "21": //Realizar Inspeccion Socio Ambiental BANCOR
+                        strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
+                        strRedirCalle = "/InspeccionAmbientalBancor/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
+                        break;
 
 				}
 				if (myItem.Cells[12].Text == "3")
@@ -502,6 +506,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                             case "20": //Partidas de defunción
                                 ListaBandejaFiltro();
                                 break;
+                            case "21": //Realizar Inspeccion Socio Ambiental BANCOR
+                                Response.Redirect("/InspeccionAmbientalBancor/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=21");
+                                break;
 							default:
 								Response.Redirect("principal.aspx");
 								break;
@@ -630,7 +637,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     btnPropiedadRegistro.Text = "Importar / Imprimir";
                     break;
 
-                    
+                case 21: // Inspeccion Socio Ambiental
+                    lblTipo.Text = " - Inspección Socio Ambiental";
+                    //btnPropiedadRegistro.Text = "Importar / Imprimir";
+                    break;
 
 			}
 		}
