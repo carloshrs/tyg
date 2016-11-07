@@ -206,9 +206,36 @@
 										cellPadding="3" width="100%" border="1">
 										
 										<TR>
-											<TD class="text"><STRONG>Habita en lugar declarado: </STRONG>
-												<BR>
-												<asp:label id="lblHabitaLugarDeclarado" runat="server"></asp:label></TD>
+											<TD class="text"><STRONG>Habita el inmueble financiado por el Programa Tu Casa / Tu Hogar?: SI / NO (tachar lo que no corresponda)</STRONG>
+                                            <br />
+                                            Por SI<br />
+                                            - ¿Cuantas personas integran el grupo familiar?
+												<BR /><BR />
+                                                Por NO: <br />
+                                                - ¿Quien habita el inmueble?
+                                                <br /><br />
+                                                - ¿En calidad de qué? (alquila, vendió, etc)
+                                                <br /><br />
+                                                <STRONG>¿Han realizado ampliaciones o mejoras?: SI / NO (tachar lo que no corresponda)</STRONG>
+                                            <br />
+                                            Por SI<br />
+                                            - ¿Cuales?<br /><br /><br />
+                                            <STRONG>¿Trabaja de forma dependiente o independiente?: </STRONG>
+                                            <br />
+                                            Dependiente:<br />
+                                            - Lugar de trabajo:
+                                            <br />
+                                            - Empresa: <br />
+                                            <br />
+                                            - Dirección: <br />
+                                            - Ingresos netos mensuales: <br />
+                                            - Banco donde le acreditan los haberes: <br /><br />
+                                            Independiente:<br />
+                                            - ¿Que actividad tiene?:<br />
+                                            - ¿Donde la desarrolla?:<br /><br />
+                                            <STRONG>Indique la suma de ingresos netos familiares: </STRONG>
+                                            <br />
+                                            </TD>
 											
 										</TR>
 									</TABLE>
@@ -261,9 +288,28 @@
 												<asp:label id="lblConoceVecino2" runat="server"></asp:label></TD>
 										</TR>
 										<TR>
+											<TD class="text" width="100%" colSpan="2">Fuimos atendidos por:<br /><STRONG>Informante:</STRONG>
+												<BR>
+												<asp:label id="lblInformante" runat="server"></asp:label></TD>
+                                                <TD class="text" width="100%" colSpan="2"><STRONG>Relación:</STRONG>
+												<BR>
+												<asp:label id="lblRelacion" runat="server"></asp:label></TD>
+										</TR>
+                                        <TR>
 											<TD class="text" width="100%" colSpan="4"><STRONG>Observaciones:</STRONG>
 												<BR>
-												<asp:label id="lblObservaciones" runat="server"></asp:label></TD>
+												<asp:label id="Label2" runat="server"></asp:label></TD>
+										</TR>
+                                        <TR>
+											<TD class="text" width="50%" colSpan="4"><STRONG>Testimonial:</STRONG>
+												<BR>
+												
+                                                Firma:<br /><br />Aclaración: <br /><br />DNI:
+												<BR>
+												<asp:label id="Label3" runat="server"></asp:label>
+                                                
+                                                
+                                                </TD>
 										</TR>
 										<TR>
 											<TD class="text" colSpan="4">
