@@ -304,9 +304,12 @@
 											<TD class="text" width="50%" colSpan="4"><STRONG>Testimonial:</STRONG>
 												<BR>
 												
-                                                Firma:<br /><br />Aclaración: <br /><br />DNI:
+                                                Firma:<br />Aclaración: <br />DNI:
 												<BR>
 												<asp:label id="Label3" runat="server"></asp:label>
+                                                
+                                                
+                                                <br />
                                                 
                                                 
                                                 </TD>
