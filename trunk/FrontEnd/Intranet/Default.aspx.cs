@@ -181,6 +181,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                     case "17":
                         ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text + ")");
                         break;
+                    case "21": //Realizar Inspección Socio Ambiental BANCOR
+                        strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
+                        strRedirCalle = "/InspeccionAmbientalBancor/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
+                        break;
 
                 }
                 if (myItem.Cells[13].Text == "3")
@@ -386,6 +390,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                                 break;
                             case "17":
                                 ListaBandeja();
+                                break;
+                            case "21": //Realizar Inspección Socio Ambiental BANCOR
+                                Response.Redirect("/InspeccionAmbientalBancor/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=21");
                                 break;
 							default:
                                 Response.Redirect("/BandejaEntrada/principal.aspx");
