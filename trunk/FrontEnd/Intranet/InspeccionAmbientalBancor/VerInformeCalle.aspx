@@ -206,8 +206,8 @@
 										cellPadding="3" width="100%" border="1">
 										
 										<TR>
-											<TD class="text" style="font-size:14px"><STRONG>¿Habita el inmueble?: SI / NO (tachar lo que no corresponda)</STRONG>
-                                            <br />
+											<TD class="text" style="font-size:14px"><br /><STRONG>¿Habita el inmueble?: SI / NO (tachar lo que no corresponda)</STRONG>
+                                            <br /><br />
                                             Por SI<br />
                                             - ¿Cuantas personas integran el grupo familiar?
 												<BR />
@@ -243,11 +243,11 @@
                                                 <br />
                                             Independiente:<br />
                                             - ¿Que actividad tiene?:<br />
-                                            - ¿Donde la desarrolla?:<br /><br />
+                                            - ¿Donde la desarrolla?:<br /><br /><br /><br />
                                             <STRONG>Indique la suma de ingresos netos familiares: 
+                                                <br /><br />
                                                 <br />
-                                                <br />
-                                                ¿Servicios o impuestos a su nombre? (sacar foto)</STRONG><br />
+                                                ¿Servicios o impuestos a su nombre? (sacar foto)</STRONG><br /><br />
                                             </TD>
 											
 										</TR>
@@ -334,11 +334,11 @@
 											</TD>
 										</TR>
 										<TR>
-											<TD class="text" align="center">
-												<IMG height="110" src="/img/plano_chico.gif" width="110" border="1">
+											<TD class="text" align="center" width="240">
+												<IMG height="310" src="/img/plano_chico.gif" width="310" border="1">
 											</TD>
-											<TD vAlign="top" width="50%" colSpan="3">
-												<TABLE class="text" id="Table13" cellSpacing="1" cellPadding="2">
+											<TD vAlign="top" width="80%" colSpan="3">
+												<TABLE class="text" id="Table13" cellSpacing="1" cellPadding="2" width="80%">
 													<TR>
 														<TD>Ubicación <B>A:</B></TD>
 														<TD><asp:label id="lblPlanoA" runat="server"></asp:label></TD>
@@ -357,7 +357,7 @@
 													</TR>
 												</TABLE>
 												<P align="center">
-													<BR>
+													<BR><BR><BR><BR>
 													<asp:Label id="lblConFoto" runat="server" Font-Bold="True" Visible="False" Font-Italic="True">Sacar fotos a la propiedad</asp:Label></P>
 											</TD>
 										</TR>
