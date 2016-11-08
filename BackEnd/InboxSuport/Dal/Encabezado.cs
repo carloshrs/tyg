@@ -1579,6 +1579,9 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 case 20: // Informe de partida defunción
                     Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento + ", Fallecido: " + strFechaFallecido;
                     break;
+                case 21: // Inspección Socio Ambiental
+                    Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
+                    break;
 			}
 						
 			return Descripcion;

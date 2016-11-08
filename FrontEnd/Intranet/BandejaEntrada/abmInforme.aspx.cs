@@ -748,6 +748,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     cmbSexo.Visible = true;
                     pnlUrgencia.Visible = false;
                     break;
+                case 21: // Inspección Socio Ambiental BANCOR
+                    //pnlTipoPersona.Visible = true;
+                    pnlFoto.Visible = true;
+                    pnlDomicilioParticular.Visible = true;
+                    pnlParticulares.Visible = true;
+                    //lblDatosParticulares.Text = "Relevamiento ambiental BANCOR";
+                    pnlFoto.Visible = true;
+                    break;
 			}
 		}
 
