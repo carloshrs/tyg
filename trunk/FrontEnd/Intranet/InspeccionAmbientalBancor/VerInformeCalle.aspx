@@ -206,20 +206,29 @@
 										cellPadding="3" width="100%" border="1">
 										
 										<TR>
-											<TD class="text"><STRONG>Habita el inmueble financiado por el Programa Tu Casa / Tu Hogar?: SI / NO (tachar lo que no corresponda)</STRONG>
+											<TD class="text" style="font-size:14px"><STRONG>¿Habita el inmueble?: SI / NO (tachar lo que no corresponda)</STRONG>
                                             <br />
                                             Por SI<br />
                                             - ¿Cuantas personas integran el grupo familiar?
-												<BR /><BR />
+												<BR />
+                                                <br />
+                                                <BR />
                                                 Por NO: <br />
                                                 - ¿Quien habita el inmueble?
-                                                <br /><br />
+                                                <br />
+                                                <br />
+                                                <br />
                                                 - ¿En calidad de qué? (alquila, vendió, etc)
-                                                <br /><br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
                                                 <STRONG>¿Han realizado ampliaciones o mejoras?: SI / NO (tachar lo que no corresponda)</STRONG>
                                             <br />
                                             Por SI<br />
-                                            - ¿Cuales?<br /><br /><br />
+                                            - ¿Cuales?<br /><br />
+                                                <br />
+                                                <br />
                                             <STRONG>¿Trabaja de forma dependiente o independiente?: </STRONG>
                                             <br />
                                             Dependiente:<br />
@@ -229,12 +238,16 @@
                                             <br />
                                             - Dirección: <br />
                                             - Ingresos netos mensuales: <br />
-                                            - Banco donde le acreditan los haberes: <br /><br />
+                                            - Banco donde le acreditan los haberes: <br />
+                                                <br />
+                                                <br />
                                             Independiente:<br />
                                             - ¿Que actividad tiene?:<br />
                                             - ¿Donde la desarrolla?:<br /><br />
-                                            <STRONG>Indique la suma de ingresos netos familiares: </STRONG>
-                                            <br />
+                                            <STRONG>Indique la suma de ingresos netos familiares: 
+                                                <br />
+                                                <br />
+                                                ¿Servicios o impuestos a su nombre? (sacar foto)</STRONG><br />
                                             </TD>
 											
 										</TR>
