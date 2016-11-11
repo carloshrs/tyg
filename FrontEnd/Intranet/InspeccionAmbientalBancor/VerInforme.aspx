@@ -1,4 +1,4 @@
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor.verInforme" CodeFile="VerInforme.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.inspeccionAmbientalBancor.verInforme" CodeFile="VerInforme.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
   <HEAD>
@@ -200,7 +200,7 @@
 								<TABLE id="Table6" cellSpacing="0" cellPadding="0" width="100%" border="0" style="border-left:1px; border-left-color:#111111; border-left-style:solid; border-right:1px; border-right-color:#111111; border-right-style:solid;">
 										<TR>
 											<TD class="title" width="100%" colSpan="3" height="30" style="text-align: center">&nbsp;&nbsp; 
-												GESTIÓN SOBRE LA VERIFICACIÓN</TD>
+                                                GESTIÓN SOBRE LA INSPECCIÓN</TD>
 										</TR>
 									</TABLE>
 									<TABLE class="text" style="BORDER-COLLAPSE: collapse" borderColor="#111111" cellSpacing="0"
@@ -212,20 +212,87 @@
 											<TD class="text" width="157"><STRONG>Habita en lugar declarado:</STRONG>
 												<BR>
 												<asp:label id="lblHabita" runat="server"></asp:label></TD>
-											<TD class="text" width="190"><STRONG>Antiguedad:</STRONG>
+											<TD class="text" width="190"><STRONG>Cantidad de personas que integran el grupo 
+                                                familiar:</STRONG>
 												<BR>
-												<asp:label id="lblAntiguedad" runat="server"></asp:label></TD>
-											<TD class="text" width="25%"><STRONG>E-mail:</STRONG>
+												<asp:label id="lblCantidad" runat="server"></asp:label></TD>
+											<TD class="text" width="25%"><STRONG>Habita el inmueble:</STRONG>
 												<BR>
-												<asp:label id="lblEmail" runat="server" Style="text-transform: lowercase;"></asp:label></TD>
+												<asp:label id="lblQuienHabita" runat="server" Style="text-transform: lowercase;"></asp:label></TD>
 										</TR>
-										<TR>
-											<TD class="text" colspan="2"><STRONG>Tel. alternativo:</STRONG>
+
+                                        <TR>
+											<TD class="text" width="89"><STRONG>En calidad de:</STRONG>
 												<BR>
-												<asp:label id="lblTelefonoAlt" runat="server"></asp:label></TD>
-											<TD class="text" colspan="2"><STRONG>Relación c/titular:</STRONG>
+												<asp:label id="lblCalidadDe" runat="server"></asp:label></TD>
+											<TD class="text" width="157"><STRONG>Ampliaciones o mejoras:</STRONG>
 												<BR>
-												<asp:label id="lblRelacionTitular" runat="server"></asp:label></TD>
+												<asp:label id="lblAmpliaciones" runat="server"></asp:label></TD>
+											<TD class="text" width="190"><STRONG>Cuales?:</STRONG>
+												<BR>
+												<asp:label id="lblCualesAmpliaciones" runat="server"></asp:label></TD>
+											<TD class="text" width="25%">
+												<BR>
+												</TD>
+										</TR>
+
+                                        <TR>
+											<TD class="text" width="50%" colspan="2"><STRONG>Forma de trabajo:</STRONG>
+												<BR>
+												<asp:label id="lblDepeIndepe" runat="server"></asp:label></TD>
+											
+											<TD class="text" width="190" colspan="2">
+                                                
+                                                </TD>
+											
+										</TR>
+
+                                        <TR>
+
+                                            <TD class="text" width="25%"><STRONG>Empresa:</STRONG>
+												<BR>
+												<asp:label id="lblEmpresa" runat="server"></asp:label>
+												
+												</TD>
+											<TD class="text" width="89"><STRONG>Dirección:</STRONG>
+												<BR>
+												<asp:label id="lblDireccion" runat="server"></asp:label>
+                                                
+                                                </TD>
+											<TD class="text" width="157"><STRONG>Ingresos mensuales:</STRONG>
+												<BR>
+												<asp:label id="lblIngresosMensuales" runat="server"></asp:label></TD>
+											<TD class="text" width="190"><STRONG>Banco donde acreditan:</STRONG>
+												<BR>
+												<asp:label id="lblBanco" runat="server"></asp:label>
+                                                </TD>
+											
+										</TR>
+
+                                         <TR>
+											<TD class="text" width="50%" colspan="2"><STRONG>Actividad independiente:</STRONG>
+												<BR>
+												<asp:label id="lblActividad" runat="server"></asp:label></TD>
+											
+											<TD class="text" width="190" colspan="2">
+                                                <STRONG>Desarrolla en:</STRONG>
+												<BR>
+												<asp:label id="lblDesarrolla" runat="server"></asp:label>
+                                                </TD>
+											
+										</TR>
+										
+                                        <TR>
+											<TD class="text" width="50%" colspan="2"><STRONG>Ingresos netos familiares:</STRONG>
+												<BR>
+												<asp:label id="lblIngresosFamiliares" runat="server"></asp:label></TD>
+											
+											<TD class="text" width="190" colspan="2">
+                                                <STRONG>Impuestos a su nombre:</STRONG>
+												<BR>
+												<asp:label id="lblImpuestos" runat="server"></asp:label>
+                                                </TD>
+											
 										</TR>
 									</TABLE>
 								</TD>
@@ -234,28 +301,8 @@
 								<TD class="text" width="100%" colSpan="4">
 									<TABLE class="text" style="BORDER-COLLAPSE: collapse" borderColor="#111111" cellSpacing="0"
 										cellPadding="3" width="100%" border="1">
-										<TR>
-											<TD width="33%"><STRONG>Tipo de vivienda:</STRONG>
-												<BR>
-												<asp:label id="lblTipoVivienda" runat="server"></asp:label></TD>
-											<TD height="33%"><STRONG>Destino del inmueble:</STRONG>
-												<BR>
-												<asp:label id="lblDestino" runat="server"></asp:label></TD>
-											<TD width="33%" colSpan="2"><STRONG>Tipo de construcción:</STRONG>
-												<BR>
-												<asp:label id="lblTipoConstruccion" runat="server"></asp:label></TD>
-										</TR>
-										<TR>
-											<TD height="14"><STRONG>Tipo de Zona:</STRONG>
-												<BR>
-												<asp:label id="lblTipoZona" runat="server"></asp:label></TD>
-											<TD width="33%"><STRONG>Estado de conservación:</STRONG>
-												<BR>
-												<asp:label id="lblEstadoConservacion" runat="server"></asp:label></TD>
-											<TD colSpan="2" height="14"><STRONG>Vive en caracter de:</STRONG>
-												<BR>
-												<asp:label id="lblInteresado" runat="server"></asp:label></TD>
-										</TR>
+										
+										
                                         <tr>
                                             <td colspan="4">
                                                 <TABLE class="text" style="BORDER-COLLAPSE: collapse" borderColor="#111111" cellSpacing="0"
@@ -346,10 +393,7 @@
 												</TABLE>
 											</TD>
 										</TR>
-										<tr><td colspan="4">
-										<STRONG>Resultado:</STRONG> 
-												<asp:label id="lblResultado" runat="server" Font-Size="8"></asp:label>
-										</td></tr>
+										
 										   <tr>
                                                         <td class="text" width="100%" colspan="4">
                                                             <table width="260" align="right">

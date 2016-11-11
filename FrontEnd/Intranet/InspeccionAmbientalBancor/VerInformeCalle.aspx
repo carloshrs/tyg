@@ -232,8 +232,7 @@
                                             <STRONG>¿Trabaja de forma dependiente o independiente?: </STRONG>
                                             <br />
                                             Dependiente:<br />
-                                            - Lugar de trabajo:
-                                            <br />
+                                            
                                             - Empresa: <br />
                                             <br />
                                             - Dirección: <br />
