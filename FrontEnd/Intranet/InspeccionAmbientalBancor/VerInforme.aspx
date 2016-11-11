@@ -57,7 +57,7 @@
 
 <tr>
 <td style="background-image: url('/Img/back4.gif');"><img src="/Img/shim.gif" width="16" height="1" border="0" /></td>
-<td class="title" width="100%" align="center">Entrevista de Relevamiento Habitacional</td>
+<td class="title" width="100%" align="center">Inspección Socio Ambiental</td>
 <td style="background-image: url('/Img/back2.gif');"><img src="/Img/shim.gif" width="16" height="1" border="0"/></td>
 </tr>
 
@@ -362,37 +362,7 @@
 											<TD class="text" width="100%" colSpan="4" valign="top"><STRONG>Observaciones:</STRONG> <BR>
 												<asp:label id="lblObservaciones" runat="server"></asp:label></TD>
 										</TR>
-										<TR>
-											<TD class="text" colSpan="4">&nbsp;<BR>
-												<STRONG>Plano de&nbsp;ubicación:</STRONG></TD>
-										</TR>
-										<TR>
-											<TD class="text" align="center">
-												<P align="center"><IMG height=140 
-                  src="/img/plano_chico.gif" width=140 border=1>&nbsp;
-												</P>
-											</TD>
-											<TD vAlign="top" colSpan="3">
-												<TABLE class="text" id="Table13" cellSpacing="1" cellPadding="2">
-													<TR>
-														<TD>Ubicación <B>A:</B></TD>
-														<TD><asp:label id="lblPlanoA" runat="server"></asp:label></TD>
-													</TR>
-													<TR>
-														<TD>Ubicación <B>B:</B></TD>
-														<TD><asp:label id="lblPlanoB" runat="server"></asp:label></TD>
-													</TR>
-													<TR>
-														<TD>Ubicación <B>C:</B></TD>
-														<TD><asp:label id="lblPlanoC" runat="server"></asp:label></TD>
-													</TR>
-													<TR>
-														<TD>Ubicación <B>D:</B></TD>
-														<TD><asp:label id="lblPlanoD" runat="server"></asp:label></TD>
-													</TR>
-												</TABLE>
-											</TD>
-										</TR>
+										
 										
 										   <tr>
                                                         <td class="text" width="100%" colspan="4">
@@ -490,6 +460,42 @@
                                     &nbsp; <asp:label id="lblNroPagina2" runat="server" style="text-transform: none;"></asp:label>
 								</td>
 							</tr>
+                            <tr><td colspan="4">
+                            <table>
+                            <TR>
+											<TD class="text" colSpan="4">&nbsp;<BR>
+												<STRONG>Plano de&nbsp;ubicación:</STRONG></TD>
+										</TR>
+										<TR>
+											<TD class="text" align="center">
+												<P align="center"><IMG height=140 
+                  src="/img/plano_chico.gif" width=140 border=1>&nbsp;
+												</P>
+											</TD>
+											<TD vAlign="top" colSpan="3">
+												<TABLE class="text" id="Table13" cellSpacing="1" cellPadding="2">
+													<TR>
+														<TD>Ubicación <B>A:</B></TD>
+														<TD><asp:label id="lblPlanoA" runat="server"></asp:label></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>B:</B></TD>
+														<TD><asp:label id="lblPlanoB" runat="server"></asp:label></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>C:</B></TD>
+														<TD><asp:label id="lblPlanoC" runat="server"></asp:label></TD>
+													</TR>
+													<TR>
+														<TD>Ubicación <B>D:</B></TD>
+														<TD><asp:label id="lblPlanoD" runat="server"></asp:label></TD>
+													</TR>
+												</TABLE>
+											</TD>
+										</TR>
+                            </table>
+                            </td></tr>
+                            
                             <tr><td colspan="2">
             <table width="100%" cellpadding="0" cellspacing="0">
         							<tr>
@@ -501,7 +507,9 @@
             </table></td></tr>
 						</TABLE>
 					</td>
+
 				</tr>
+                
                 
 							<TR>
 								<TD width="100%" colspan="3" ><div style="font-size:9px; margin-top:10px; line-height:1.5">
