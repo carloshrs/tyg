@@ -539,6 +539,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     //cmbSexo.Visible = true;
                     pnlUrgencia.Visible = false;
                     break;
+                case 21: // Inspección Socio Ambiental BANCOR
+                    pnlParticulares.Visible = true;
+                    pnlDomicilioParticular.Visible = true;
+                    pnlFoto.Visible = true;
+                    break;
 			}
 		}
 
