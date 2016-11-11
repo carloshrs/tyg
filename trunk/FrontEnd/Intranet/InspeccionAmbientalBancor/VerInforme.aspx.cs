@@ -452,11 +452,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.inspeccionAmbientalBancor
             {
                 imgFoto.ImageUrl = vImagen;
                 imgFoto.ToolTip = imagen.Descripcion;
+                if (vImagen == "/img/shim.gif")
+                    imgFoto.Visible = false;
             }
             if (lNroImagen == 2)
             {
                 imgFoto2.ImageUrl = vImagen;
                 imgFoto2.ToolTip = imagen.Descripcion;
+                if (vImagen == "/img/shim.gif")
+                    imgFoto2.Visible = false;
             }
         }
 
