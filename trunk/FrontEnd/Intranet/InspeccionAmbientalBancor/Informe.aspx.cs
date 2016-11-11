@@ -11,7 +11,7 @@ using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.Verificaciones.Dal;
 
-namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
+namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InspeccionAmbientalBancor
 {
 	/// <summary>
 	/// Summary description for altaInforme.
@@ -38,14 +38,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 			{
 				if(Request.QueryString["id"] != null)
 				{	
-					CargarCampos(raTipoVivienda,13,-1);
-					CargarCampos(raEstadoCons,18,-1);
-					CargarCampos(raTipoConstruccion,14,-1);
-					CargarCampos(raTipoZona,15,-1);
-					CargarCampos(raDestino,12,-1);
-					CargarCampos(raInteresado,16,-1);
-                    CargarCampos(raResultado, 17, -1);
-					LoadAmbientalBancor(int.Parse(idInforme.Value));
+					
+					LoadInspeccionAmbientalBancor(int.Parse(idInforme.Value));
 				}
                 txtBarrio_AutoCompleteExtender.ContextKey = cmbLocalidad.SelectedValue;
 
@@ -76,9 +70,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 		}
 		#endregion
 
-		private void LoadAmbientalBancor(int Id)
+        private void LoadInspeccionAmbientalBancor(int Id)
 		{
-			AmbientalBancorApp oAmbientalBancor = new AmbientalBancorApp();
+            InspeccionAmbientalBancorApp oInspeccionAmbientalBancor = new InspeccionAmbientalBancorApp();
 			EncabezadoApp oEncabezado = new EncabezadoApp();
 			oEncabezado.cargarEncabezado(Id);
             CargarDatosContacto(oEncabezado);
@@ -91,12 +85,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 			}
 			else
 				pnlImagenes.Visible = false;
-			bool cargar = oAmbientalBancor.cargarAmbientalBancor(Id);
+            bool cargar = oInspeccionAmbientalBancor.cargarInspeccionAmbientalBancor(Id);
 			if (cargar)
 			{
 				idReferencia.Value = (1).ToString();
 				CargarTipoDocumento(-1);
-				CargarForm(oAmbientalBancor);
+                CargarForm(oInspeccionAmbientalBancor);
 			}
 			else
 			{
@@ -113,7 +107,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 
 		private void CargarMasFotos(int idInforme)
 		{
-			hypMasFotos.Attributes.Add("onClick", "window.open('/imagenes/lista.aspx?Tipo=ambientalbancor&idInforme=" + idInforme + "','','width=500,height=400')");
+			hypMasFotos.Attributes.Add("onClick", "window.open('/imagenes/lista.aspx?Tipo=inspeccionAmbientalbancor&idInforme=" + idInforme + "','','width=500,height=400')");
 		}
 
 		
@@ -145,56 +139,80 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 		}
 
 
-		private void CargarForm(AmbientalBancorApp oAmbientalBancor)
+		private void CargarForm(InspeccionAmbientalBancorApp oInspeccionAmbientalBancor)
 		{
 			CultureInfo myInfo = new CultureInfo("es-AR");
 
-			idInforme.Value= oAmbientalBancor.IdInforme.ToString();
-			idTipoPersona.Value = oAmbientalBancor.IdTipoPersona.ToString();
-			txtNombre.Text= oAmbientalBancor.Nombre;
-			txtApellido.Text = oAmbientalBancor.Apellido;
-			CargarTipoDocumento(oAmbientalBancor.TipoDocumento);
-			txtDocumento.Text = oAmbientalBancor.Documento;
-			txtCalle.Text= oAmbientalBancor.Calle;
-			txtBarrio.Text= oAmbientalBancor.Barrio;
-			txtNro.Text= oAmbientalBancor.Nro;
-			txtPiso.Text= oAmbientalBancor.Piso;
-			txtDepto.Text= oAmbientalBancor.Depto;
-            txtLote.Text = oAmbientalBancor.Lote;
-			txtCP.Text= oAmbientalBancor.CP;
-            txtComplejo.Text = oAmbientalBancor.Complejo;
-            txtTorre.Text = oAmbientalBancor.Torre;
-			txtTelefono.Text= oAmbientalBancor.Telefono;
-			CargarComboProvincias(cmbProvincia, oAmbientalBancor.IdProvincia);
-			CargarComboLocalidades(cmbProvincia, cmbLocalidad, oAmbientalBancor.IdLocalidad.ToString());
-			if (oAmbientalBancor.Fecha != "")
-				txtFecha.Text= DateTime.Parse(oAmbientalBancor.Fecha).ToString("dd/MM/yyyy",DateTimeFormatInfo.InvariantInfo);
-			txtHabita.Text = oAmbientalBancor.Habita;
-			txtAntiguedad.Text = oAmbientalBancor.Antiguedad;
-			txtTelAlternativo.Text = oAmbientalBancor.TelAlternativo;
-            txtEmail.Text = oAmbientalBancor.Email;
-            txtRelacionTitular.Text = oAmbientalBancor.RelacionTitular;
-			CargarCampos(raTipoVivienda,13,oAmbientalBancor.TipoVivienda);
-			CargarCampos(raEstadoCons,18,oAmbientalBancor.EstadoCons);
-			CargarCampos(raTipoConstruccion,14,oAmbientalBancor.TipoConstruccion);
-			CargarCampos(raTipoZona,15,oAmbientalBancor.TipoZona);
-			CargarCampos(raDestino,12,oAmbientalBancor.Destino);
-			CargarCampos(raInteresado,16,oAmbientalBancor.Interesado);
-            CargarCampos(raResultado, 17, oAmbientalBancor.Resultado);
-			//txtAccesoDomicilio.Text = oAmbientalBancor.AccesoDomicilio;
-			txtInformo.Text = oAmbientalBancor.Informo;
-			txtRelacion.Text = oAmbientalBancor.Relacion;
-			txtNombreVecino.Text = oAmbientalBancor.NombreVecino;
-			txtDomicilioVecino.Text = oAmbientalBancor.DomicilioVecino;
-			txtConoceVecino.Text = oAmbientalBancor.ConoceVecino;
-            txtNombreVecino2.Text = oAmbientalBancor.NombreVecino2;
-            txtDomicilioVecino2.Text = oAmbientalBancor.DomicilioVecino2;
-            txtConoceVecino2.Text = oAmbientalBancor.ConoceVecino2;
-			txtObservaciones.Text = oAmbientalBancor.Observaciones;
-			txtPlanoA.Text = oAmbientalBancor.PlanoA;
-			txtPlanoB.Text = oAmbientalBancor.PlanoB;
-			txtPlanoC.Text = oAmbientalBancor.PlanoC;
-			txtPlanoD.Text = oAmbientalBancor.PlanoD;
+			idInforme.Value= oInspeccionAmbientalBancor.IdInforme.ToString();
+			idTipoPersona.Value = oInspeccionAmbientalBancor.IdTipoPersona.ToString();
+			txtNombre.Text= oInspeccionAmbientalBancor.Nombre;
+			txtApellido.Text = oInspeccionAmbientalBancor.Apellido;
+			CargarTipoDocumento(oInspeccionAmbientalBancor.TipoDocumento);
+			txtDocumento.Text = oInspeccionAmbientalBancor.Documento;
+			txtCalle.Text= oInspeccionAmbientalBancor.Calle;
+			txtBarrio.Text= oInspeccionAmbientalBancor.Barrio;
+			txtNro.Text= oInspeccionAmbientalBancor.Nro;
+			txtPiso.Text= oInspeccionAmbientalBancor.Piso;
+			txtDepto.Text= oInspeccionAmbientalBancor.Depto;
+            txtLote.Text = oInspeccionAmbientalBancor.Lote;
+			txtCP.Text= oInspeccionAmbientalBancor.CP;
+            txtComplejo.Text = oInspeccionAmbientalBancor.Complejo;
+            txtTorre.Text = oInspeccionAmbientalBancor.Torre;
+			txtTelefono.Text= oInspeccionAmbientalBancor.Telefono;
+			CargarComboProvincias(cmbProvincia, oInspeccionAmbientalBancor.IdProvincia);
+			CargarComboLocalidades(cmbProvincia, cmbLocalidad, oInspeccionAmbientalBancor.IdLocalidad.ToString());
+			if (oInspeccionAmbientalBancor.Fecha != "")
+				txtFecha.Text= DateTime.Parse(oInspeccionAmbientalBancor.Fecha).ToString("dd/MM/yyyy",DateTimeFormatInfo.InvariantInfo);
+
+            if (oInspeccionAmbientalBancor.IdHabita == 1)
+                raHabitaSI.Checked = true;
+            else
+                raHabitaNO.Checked = true;
+
+			txtCalidadDe.Text = oInspeccionAmbientalBancor.SICantidadIntegranGrupo;
+			txtQuienHabita.Text = oInspeccionAmbientalBancor.NOQuienHabita;
+			txtCalidadDe.Text = oInspeccionAmbientalBancor.NOCalidadDe;
+
+            if (oInspeccionAmbientalBancor.IdAmpliaciones == 1)
+                raAmpliacionesSI.Checked = true;
+            else
+                raAmpliacionesNO.Checked = true;
+
+            txtAmpliacionesCuales.Text = oInspeccionAmbientalBancor.SICuales;
+
+            if (oInspeccionAmbientalBancor.IdDepIndep == 1)
+                raIndependiente.Checked = true;
+            else
+                raDependiente.Checked = true;
+
+            txtEmpresa.Text = oInspeccionAmbientalBancor.DEPEmpresa;
+            txtDireccion.Text = oInspeccionAmbientalBancor.DEPDireccion;
+            txtIngresosMensuales.Text = oInspeccionAmbientalBancor.DEPIngresosMensuales;
+            txtBanco.Text = oInspeccionAmbientalBancor.DEPBanco;
+            txtActividad.Text = oInspeccionAmbientalBancor.INDEPActividad;
+            txtDondeDesarrolla.Text = oInspeccionAmbientalBancor.INDEPDesarrolla;
+            txtIngresosNetosFamiliares.Text = oInspeccionAmbientalBancor.Ingresos;
+			
+            if (oInspeccionAmbientalBancor.IdServicios == 1)
+                raImpuestosSI.Checked = true;
+            else
+                raImpuestosNO.Checked = true;
+
+            //CargarCampos(raResultado, 17, oInspeccionAmbientalBancor.Resultado);
+			//txtAccesoDomicilio.Text = oInspeccionAmbientalBancor.AccesoDomicilio;
+			txtInformo.Text = oInspeccionAmbientalBancor.Informo;
+			txtRelacion.Text = oInspeccionAmbientalBancor.Relacion;
+			txtNombreVecino.Text = oInspeccionAmbientalBancor.NombreVecino;
+			txtDomicilioVecino.Text = oInspeccionAmbientalBancor.DomicilioVecino;
+			txtConoceVecino.Text = oInspeccionAmbientalBancor.ConoceVecino;
+            txtNombreVecino2.Text = oInspeccionAmbientalBancor.NombreVecino2;
+            txtDomicilioVecino2.Text = oInspeccionAmbientalBancor.DomicilioVecino2;
+            txtConoceVecino2.Text = oInspeccionAmbientalBancor.ConoceVecino2;
+			txtObservaciones.Text = oInspeccionAmbientalBancor.Observaciones;
+			txtPlanoA.Text = oInspeccionAmbientalBancor.PlanoA;
+			txtPlanoB.Text = oInspeccionAmbientalBancor.PlanoB;
+			txtPlanoC.Text = oInspeccionAmbientalBancor.PlanoC;
+			txtPlanoD.Text = oInspeccionAmbientalBancor.PlanoD;
 			//mostrarFoto(oAmbientalBancor.ConFoto);
 			//hidConFoto.Value = oAmbientalBancor.ConFoto.ToString();
 
@@ -241,13 +259,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 		{
 			ActualizarInforme();
 			
-			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=15");
+			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=21");
 
 		}
 
 		protected void Cancelar_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=15");
+			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=21");
 		}
 
 		protected void cmbProvincia_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -348,8 +366,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 			{
 				string strScript;
 				strScript = "<script languaje=\"Javascript\">";
-                strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=15&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
-				strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=15'";
+                strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=21&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
+				strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=21'";
 				strScript += "</script>";
 
 				ActualizarInforme();
@@ -359,77 +377,97 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor
 
 		private void ActualizarInforme()
 		{
-			AmbientalBancorApp oAmbientalBancor = new AmbientalBancorApp();
-			bool cargar = oAmbientalBancor.cargarAmbientalBancor(int.Parse(idInforme.Value));
+            InspeccionAmbientalBancorApp oInspeccionAmbientalBancor = new InspeccionAmbientalBancorApp();
+            bool cargar = oInspeccionAmbientalBancor.cargarInspeccionAmbientalBancor(int.Parse(idInforme.Value));
 			// Usuario Logueado
 			UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
-			oAmbientalBancor.IdCliente = Usuario.IdCliente;
-			oAmbientalBancor.IdUsuario = Usuario.IdUsuario;
+			oInspeccionAmbientalBancor.IdCliente = Usuario.IdCliente;
+			oInspeccionAmbientalBancor.IdUsuario = Usuario.IdUsuario;
 			
-			oAmbientalBancor.IdInforme = int.Parse(idInforme.Value);
-			oAmbientalBancor.IdTipoPersona = int.Parse(idTipoPersona.Value);
-			oAmbientalBancor.Nombre = txtNombre.Text;
-			oAmbientalBancor.Apellido = txtApellido.Text;
-			oAmbientalBancor.TipoDocumento = int.Parse(cmbTipoDocumento.SelectedItem.Value);
-			oAmbientalBancor.Documento = txtDocumento.Text;
-			oAmbientalBancor.Calle = txtCalle.Text;
-			oAmbientalBancor.Barrio = txtBarrio.Text;
-			oAmbientalBancor.Nro = txtNro.Text;
-			oAmbientalBancor.Piso = txtPiso.Text;
-			oAmbientalBancor.Depto = txtDepto.Text;
-			oAmbientalBancor.CP = txtCP.Text;
-            oAmbientalBancor.Lote = txtLote.Text;
-            oAmbientalBancor.Manzana = txtManzana.Text;
-            oAmbientalBancor.Complejo = txtComplejo.Text;
-            oAmbientalBancor.Torre = txtTorre.Text;
-            oAmbientalBancor.Email = txtEmail.Text;
-			oAmbientalBancor.Telefono = txtTelefono.Text;
-			if (oAmbientalBancor.IdTipoPersona == 1)
+			oInspeccionAmbientalBancor.IdInforme = int.Parse(idInforme.Value);
+			oInspeccionAmbientalBancor.IdTipoPersona = int.Parse(idTipoPersona.Value);
+			oInspeccionAmbientalBancor.Nombre = txtNombre.Text;
+			oInspeccionAmbientalBancor.Apellido = txtApellido.Text;
+			oInspeccionAmbientalBancor.TipoDocumento = int.Parse(cmbTipoDocumento.SelectedItem.Value);
+			oInspeccionAmbientalBancor.Documento = txtDocumento.Text;
+			oInspeccionAmbientalBancor.Calle = txtCalle.Text;
+			oInspeccionAmbientalBancor.Barrio = txtBarrio.Text;
+			oInspeccionAmbientalBancor.Nro = txtNro.Text;
+			oInspeccionAmbientalBancor.Piso = txtPiso.Text;
+			oInspeccionAmbientalBancor.Depto = txtDepto.Text;
+			oInspeccionAmbientalBancor.CP = txtCP.Text;
+            oInspeccionAmbientalBancor.Lote = txtLote.Text;
+            oInspeccionAmbientalBancor.Manzana = txtManzana.Text;
+            oInspeccionAmbientalBancor.Complejo = txtComplejo.Text;
+            oInspeccionAmbientalBancor.Torre = txtTorre.Text;
+            
+			oInspeccionAmbientalBancor.Telefono = txtTelefono.Text;
+			if (oInspeccionAmbientalBancor.IdTipoPersona == 1)
 			{
-				oAmbientalBancor.IdProvincia = int.Parse(cmbProvincia.SelectedValue);
-				oAmbientalBancor.IdLocalidad = int.Parse(cmbLocalidad.SelectedValue);
+				oInspeccionAmbientalBancor.IdProvincia = int.Parse(cmbProvincia.SelectedValue);
+				oInspeccionAmbientalBancor.IdLocalidad = int.Parse(cmbLocalidad.SelectedValue);
 			}
-			oAmbientalBancor.Fecha = txtFecha.Text;
-			oAmbientalBancor.Habita = txtHabita.Text;
-			oAmbientalBancor.Antiguedad = txtAntiguedad.Text;
-			oAmbientalBancor.TelAlternativo = txtTelAlternativo.Text;
-            oAmbientalBancor.RelacionTitular = txtRelacionTitular.Text;
-			if (raTipoVivienda.SelectedValue != "")
-			oAmbientalBancor.TipoVivienda = int.Parse(raTipoVivienda.SelectedValue);
-			if (raEstadoCons.SelectedValue != "")
-			oAmbientalBancor.EstadoCons = int.Parse(raEstadoCons.SelectedValue);
-			if (raTipoConstruccion.SelectedValue != "")
-			oAmbientalBancor.TipoConstruccion = int.Parse(raTipoConstruccion.SelectedValue);
-			if (raTipoZona.SelectedValue != "")
-			oAmbientalBancor.TipoZona = int.Parse(raTipoZona.SelectedValue);
-			if (raDestino.SelectedValue != "")
-			oAmbientalBancor.Destino = int.Parse(raDestino.SelectedValue);
-			if (raInteresado.SelectedValue != "")
-			oAmbientalBancor.Interesado = int.Parse(raInteresado.SelectedValue);
-            oAmbientalBancor.AccesoDomicilio = ""; // txtAccesoDomicilio.Text;
-			oAmbientalBancor.Informo = txtInformo.Text;
-			oAmbientalBancor.Relacion = txtRelacion.Text;
-			oAmbientalBancor.NombreVecino = txtNombreVecino.Text;
-			oAmbientalBancor.DomicilioVecino = txtDomicilioVecino.Text;
-			oAmbientalBancor.ConoceVecino = txtConoceVecino.Text;
-            oAmbientalBancor.NombreVecino2 = txtNombreVecino2.Text;
-            oAmbientalBancor.DomicilioVecino2 = txtDomicilioVecino2.Text;
-            oAmbientalBancor.ConoceVecino2 = txtConoceVecino2.Text;
-			oAmbientalBancor.Observaciones = txtObservaciones.Text;
-			oAmbientalBancor.PlanoA = txtPlanoA.Text;
-			oAmbientalBancor.PlanoB = txtPlanoB.Text;
-			oAmbientalBancor.PlanoC = txtPlanoC.Text;
-			oAmbientalBancor.PlanoD = txtPlanoD.Text;
-			oAmbientalBancor.ConFoto = ((bool)ViewState["ConFoto"])? 1: 0;
-            oAmbientalBancor.Resultado = int.Parse(raResultado.SelectedValue);
+			oInspeccionAmbientalBancor.Fecha = txtFecha.Text;
+
+
+            if (raHabitaSI.Checked)
+                oInspeccionAmbientalBancor.IdHabita = 1;
+            else
+                oInspeccionAmbientalBancor.IdHabita = 0;
+
+            oInspeccionAmbientalBancor.SICantidadIntegranGrupo = txtCantidadIntegran.Text;
+            oInspeccionAmbientalBancor.NOQuienHabita = txtQuienHabita.Text;
+            oInspeccionAmbientalBancor.NOCalidadDe = txtCalidadDe.Text;
+
+            if (raAmpliacionesSI.Checked)
+                oInspeccionAmbientalBancor.IdAmpliaciones = 1;
+            else
+                oInspeccionAmbientalBancor.IdAmpliaciones = 0;
+
+            oInspeccionAmbientalBancor.SICuales = txtAmpliacionesCuales.Text;
+
+            if (raIndependiente.Checked)
+                oInspeccionAmbientalBancor.IdDepIndep = 1;
+            else
+                oInspeccionAmbientalBancor.IdDepIndep = 2;
+
+            oInspeccionAmbientalBancor.DEPEmpresa = txtEmpresa.Text;
+            oInspeccionAmbientalBancor.DEPDireccion = txtDireccion.Text;
+            oInspeccionAmbientalBancor.DEPIngresosMensuales = txtIngresosMensuales.Text;
+            oInspeccionAmbientalBancor.DEPBanco = txtBanco.Text;
+            oInspeccionAmbientalBancor.INDEPActividad = txtActividad.Text;
+            oInspeccionAmbientalBancor.INDEPDesarrolla = txtDondeDesarrolla.Text;
+            oInspeccionAmbientalBancor.Ingresos = txtIngresosNetosFamiliares.Text;
+
+            if (raImpuestosSI.Checked)
+                oInspeccionAmbientalBancor.IdServicios = 1;
+            else
+                oInspeccionAmbientalBancor.IdServicios = 0;
+
+
+			oInspeccionAmbientalBancor.Informo = txtInformo.Text;
+			oInspeccionAmbientalBancor.Relacion = txtRelacion.Text;
+			oInspeccionAmbientalBancor.NombreVecino = txtNombreVecino.Text;
+			oInspeccionAmbientalBancor.DomicilioVecino = txtDomicilioVecino.Text;
+			oInspeccionAmbientalBancor.ConoceVecino = txtConoceVecino.Text;
+            oInspeccionAmbientalBancor.NombreVecino2 = txtNombreVecino2.Text;
+            oInspeccionAmbientalBancor.DomicilioVecino2 = txtDomicilioVecino2.Text;
+            oInspeccionAmbientalBancor.ConoceVecino2 = txtConoceVecino2.Text;
+			oInspeccionAmbientalBancor.Observaciones = txtObservaciones.Text;
+			oInspeccionAmbientalBancor.PlanoA = txtPlanoA.Text;
+			oInspeccionAmbientalBancor.PlanoB = txtPlanoB.Text;
+			oInspeccionAmbientalBancor.PlanoC = txtPlanoC.Text;
+			oInspeccionAmbientalBancor.PlanoD = txtPlanoD.Text;
+			oInspeccionAmbientalBancor.ConFoto = ((bool)ViewState["ConFoto"])? 1: 0;
+            //oInspeccionAmbientalBancor.Resultado = int.Parse(raResultado.SelectedValue);
 
 			if(int.Parse(idReferencia.Value) == 0)
-				oAmbientalBancor.Crear();
+				oInspeccionAmbientalBancor.Crear();
 			else
-				oAmbientalBancor.Modificar(int.Parse(idInforme.Value));
+				oInspeccionAmbientalBancor.Modificar(int.Parse(idInforme.Value));
 
 
-            if (oAmbientalBancor.IdTipoPersona == 1)
+            if (oInspeccionAmbientalBancor.IdTipoPersona == 1)
             {
                 PersonasAPP persona = new PersonasAPP();
                 persona.Nombre = txtNombre.Text;

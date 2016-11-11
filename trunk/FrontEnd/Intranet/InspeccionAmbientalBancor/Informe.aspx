@@ -1,4 +1,4 @@
-<%@ Page Language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.ambientalBancor.Informe" CodeFile="Informe.aspx.cs" %>
+<%@ Page Language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.InspeccionAmbientalBancor.Informe" CodeFile="Informe.aspx.cs" %>
 
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../Inc/menu.ascx" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
-<head>
+<HEAD id="HEAD1" runat="server">
     <title>Alta de Informe</title>
     <link href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 
@@ -434,7 +434,7 @@
                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                 <tr>
                                                     <td class="title" width="100%" bgcolor="lightgrey" colspan="3" height="10">
-                                                        &nbsp;&nbsp; Gestión sobre la verificación</td>
+                                                        &nbsp;&nbsp; Gestión sobre la inspección</td>
                                                 </tr>
                                             </table>
                                             &nbsp;
@@ -449,95 +449,166 @@
                                                     <td class="text" width="30%">
                                                         Habita en lugar declarado</td>
                                                     <td class="text" width="25%">
-                                                        Antiguedad</td>
+                                                        &nbsp;</td>
                                                     <td class="text" width="25%">
-                                                        E-mail</td>
+                                                        &nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtFecha" runat="server" Width="80px" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;<img
-                                                            id="imgFecha" style="cursor: hand" onclick="popFrame.fPopCalendar(imgFecha, txtFecha, divDateControl);"
+                                                        <asp:TextBox ID="txtFecha" runat="server" Width="80px" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;
+                                                        <cc1:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtFecha"
+                                                    PopupButtonID="imgFecha" 
+                                                    PopupPosition="BottomRight"
+                                                    Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                        <img
+                                                            id="imgFecha" style="CURSOR: hand" 
                                                             alt="Abrir Calendario" src="/img/fecha.gif"></td>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtHabita" runat="server" Width="100px" MaxLength="10" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                        <asp:RadioButton ID="raHabitaSI" runat="server" GroupName="habita" Text="SI" />
+                                                        <asp:RadioButton ID="raHabitaNO" runat="server" GroupName="habita" Text="NO" />
+                                                    </td>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtAntiguedad" runat="server" Width="100px" MaxLength="100" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                        &nbsp;</td>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtEmail" runat="server" Width="100px" MaxLength="100" Style="text-transform: lowercase;"></asp:TextBox></td>
+                                                        &nbsp;</td>
                                                 </tr>
                                             </table>
                                         </td>
-                                    </tr>
+                                    </tr><tr><td><strong>
+                                        <br />
+                                        Por Si</strong></td></tr>
                                                 <tr>
                                                     <td class="text" width="50%" colspan="2">
-                                                        Tel. alternativo&nbsp;
-                                                    </td>
+                                                        ¿Cuantas personas integran el grupo famiilar?</td>
                                                     <td class="text" width="50%" colspan="2">
-                                                        Relación c/titular&nbsp;
+                                                        &nbsp;</td>
+                                                </tr>
+                                                <TR>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCantidadIntegran" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
+                                                    <TD class=text width="50%" colSpan=2></TD></TR>
+                                                    
+                                                    
+                                                    <tr><td><strong>
+                                                        <br />
+                                                        Por No</strong></td></tr>
+                                                     <tr>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        ¿Quien habita el inmueble?</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        ¿En calidad de qué? (alquila, vendió)&nbsp;
                                                     </td>
                                                 </tr>
                                                 <TR>
-                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtTelAlternativo" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
-                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtRelacionTitular" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtQuienHabita" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCalidadDe" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox>
                                                     </TD></TR>
+                                                    <tr><td></td></tr>
+
+                                                    <tr><td colspan="2"><strong>
+                                                        <br />
+                                                        ¿Han realizado ampliaciones o mejoras?</strong></td><td class="text">
+                                                        <asp:RadioButton ID="raAmpliacionesSI" runat="server" GroupName="ampliaciones" Text="SI" />
+                                                        <asp:RadioButton ID="raAmpliacionesNO" runat="server" GroupName="ampliaciones" Text="NO" />
+                                                    </td></tr>
+                                                     <tr>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        <br />
+                                                        ¿Cuales?</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                    </td>
+                                                </tr>
+
+                                                <TR>
+                                                    <TD class=text width="50%" colSpan=4><asp:TextBox ID="txtAmpliacionesCuales" runat="server" Width="450px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
+                                                    </TR>
+
+
+                                                <tr><td>&nbsp;</td></tr>
+
+                                                    <tr><td colspan="2"><strong>¿Trabaja de forma dependiente o independiente?</strong></td><td class="text">
+                                                        <asp:RadioButton ID="raDependiente" runat="server" GroupName="dependiente" Text="Dependiente" />
+                                                        <asp:RadioButton ID="raIndependiente" runat="server" GroupName="dependiente" Text="Independiente" />
+                                                    </td></tr>
+                                                    <tr>
+                                                    <td class="text" width="50%" colspan="2"><br />
+                                                        Dependiente:&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                    <tr>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        Empresa&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        Dirección&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtEmpresa" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtDireccion" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                </tr>
+
+                                                <tr><td colspan="4">&nbsp;</td></tr>
+                                                <tr>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        Ingresos netos mensuales&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        Banco donde le acreditan los haberes&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtIngresosMensuales" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtBanco" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text" width="50%" colspan="2"><br />
+                                                        Independiente:&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                
+                                                    <td class="text" width="50%" colspan="2"><br />
+                                                        Dependiente:&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        &nbsp;
+                                                    </td>
+                                                <tr>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        ¿Que actividad tiene?&nbsp;</td>
+                                                    <td class="text" width="50%" colspan="2">
+                                                        ¿Donde la desarrolla?&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtActividad" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                    <td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtDondeDesarrolla" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                </tr>
+
+                                                <tr><td>&nbsp;</td></tr>
+
+                                                    <tr><td colspan="2"><strong>Indique la suma de ingresos netos familiares:</strong></td><td class="text" colspan="2">
+                                                        <asp:TextBox ID="txtIngresosNetosFamiliares" runat="server" Width="150px" MaxLength="250" Style="text-transform: uppercase;"></asp:TextBox>
+                                                    </td></tr>
+                                                    <tr><td>&nbsp;</td></tr>
+
+                                                    <tr><td colspan="2"><strong>¿Servicios o impuestos a su nombre?</strong></td><td class="text">
+                                                        <asp:RadioButton ID="raImpuestosSI" runat="server" GroupName="impuestos" Text="SI" />
+                                                        <asp:RadioButton ID="raImpuestosNO" runat="server" GroupName="impuestos" Text="NO" />
+                                                    </td></tr>
+
+                                                </tr>
                                     <tr>
                                         <td class="text" colspan="4">
-                                            <table class="text" cellspacing="0" cellpadding="0" width="100%" border="0">
-                                                <tr>
-                                                    <td width="33%">
-                                                        &nbsp;</td>
-                                                    <td width="33%">
-                                                    </td>
-                                                    <td width="33%">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Tipo de vivienda</td>
-                                                    <td height="14">
-                                                        Destino del inmueble</td>
-                                                    <td>
-                                                        Tipo de construcción</td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raTipoVivienda" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raDestino" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raTipoConstruccion" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="14">
-                                                    </td>
-                                                    <td height="14">
-                                                    </td>
-                                                    <td height="14">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="14">
-                                                        Tipo de Zona</td>
-                                                    <td>
-                                                        Estado de conservación</td>
-                                                    <td height="14">
-                                                        Vive en caracter de</td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raTipoZona" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raEstadoCons" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                    <td valign="top">
-                                                        <asp:RadioButtonList ID="raInteresado" runat="server" CssClass="text">
-                                                        </asp:RadioButtonList></td>
-                                                </tr>
-                                            </table>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
@@ -561,7 +632,7 @@
                                     </tr>
                                     <tr>
                                         <td class="text" width="261" colspan="2">
-                                            &nbsp;</td>
+                                            &nbsp;&nbsp;</td>
                                         <td class="text" width="50%" colspan="2">
                                         </td>
                                     </tr>
@@ -600,7 +671,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4">
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td colspan="4">
@@ -637,6 +708,7 @@
                                     </tr>
                                     <tr>
                                         <td class="text" width="175" colspan="4">
+                                            <br />
                                             <asp:Label ID="Label5" runat="server">Observaciones</asp:Label>&nbsp;</td>
                                     </tr>
                                     <tr>
@@ -700,13 +772,7 @@
                                         </td>
                                     </tr>
                                     <tr><td colspan="5">
-                                    <div style="text-align:left">Resultado:</div>
-                                    <div style="text-align:center; background-color:#EEEEEE; padding:5px; border:solid 1px #DDDDDD;">
-                                    <asp:RadioButtonList ID="raResultado" runat="server" CssClass="text" RepeatDirection="Horizontal"></asp:RadioButtonList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
-                                            ControlToValidate="raResultado" ErrorMessage="Seleccione un resultado">*</asp:RequiredFieldValidator>
-                                    </div>
-                                    </td></tr>
+                                    
                                     <tr>
                                         <td width="535" colspan="4">
                                             <hr>
