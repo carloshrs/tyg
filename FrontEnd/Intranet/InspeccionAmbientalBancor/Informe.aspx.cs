@@ -365,13 +365,29 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InspeccionAmbientalBancor
 			else
 			{
 				string strScript;
-				strScript = "<script languaje=\"Javascript\">";
+                strScript = "<script  type=\"text/javascript\">";
                 strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=21&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
 				strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=21'";
 				strScript += "</script>";
 
 				ActualizarInforme();
-				Page.RegisterStartupScript("CambiarEstado", strScript);
+				//Page.RegisterStartupScript("CambiarEstado", strScript);
+                // Define the name and type of the client script on the page.
+                String csName = "ButtonClickScript";
+                Type csType = this.GetType();
+
+                // Get a ClientScriptManager reference from the Page class.
+                ClientScriptManager cs = Page.ClientScript;
+
+                // Check to see if the client script is already registered.
+                if (!cs.IsClientScriptBlockRegistered(csType, csName))
+                {
+                    //StringBuilder csText = new StringBuilder();
+                    //csText.Append("<script type=\"text/javascript\"> function DoClick() {");
+                    //csText.Append("Form1.Message.value='Text from client script.'} </");
+                    //csText.Append("script>");
+                    cs.RegisterClientScriptBlock(csType, csName, strScript);
+                }
 			}
 		}
 
