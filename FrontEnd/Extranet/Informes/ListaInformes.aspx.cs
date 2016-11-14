@@ -161,7 +161,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     // Se habilita la opcion de imprimir informe si reune 2 condiciones:
                     // 1- Es cliente mensual; 2- Es cliente diarios y está abonado el informe.
                     if (strRedir != "" && blObtenerClienteMensual)
-                        ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
+                        if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
+                            ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
 
                 }
             }
