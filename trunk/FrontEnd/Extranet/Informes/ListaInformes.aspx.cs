@@ -152,6 +152,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         case "15": //Realizar Relevamiento Ambiental BANCOR
                             strRedir = "/ambientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=15";
                             break;
+                        case "21": //Realizar Relevamiento Ambiental BANCOR
+                            strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
+                            break;
 
                     }
 
