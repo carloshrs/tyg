@@ -92,6 +92,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 
         private void CargarEncabezadoCaja(string idCaja)
         {
+            btnNuevo.Enabled = true;
             GestorPrecios CajaEncabezado = new GestorPrecios();
             CajaEncabezado.CargarCaja(int.Parse(idCaja));
             lblFechaApertura.Text = CajaEncabezado.Apertura;
@@ -100,6 +101,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             lblChequeInicial.Text = CajaEncabezado.ChequeInicial.ToString();
             lblSaldoEfectivo.Text = CajaEncabezado.SaldoEfectivo.ToString();
             lblSaldoCheque.Text = CajaEncabezado.SaldoCheque.ToString();
+
+            if (CajaEncabezado.Cierre != "")
+                btnNuevo.Enabled = false;
         }
 
 
