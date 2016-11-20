@@ -17,6 +17,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Net;
 using System.Collections;
+using System.Diagnostics;
 //using System.Drawing;
 //using System.Drawing.Imaging;
 
@@ -41,7 +42,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.inspeccionAmbientalBancor
 	
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            GenerarPDF.Visible = false;
+            //GenerarPDF.Visible = false;
 			if (!Page.IsPostBack)
 			{
 				if(Request.QueryString["id"] != null)
@@ -467,13 +468,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.inspeccionAmbientalBancor
 
         protected void GenerarPDF_Click(object sender, ImageClickEventArgs e)
         {
+            SendToPrinter();
             //ASPXToPDF1.RenderAsPDF();
-            
+            /*
             string urlOrHtmlFile;
             string outputFileName;
             urlOrHtmlFile = Request.Url.AbsoluteUri;
             outputFileName = Server.MapPath("~/res/pdf/") + "br" + Request.QueryString["id"] + ".pdf";
-
+            */
 
             /*
             HtmlToPdf.ConvertUrl(urlOrHtmlFile, outputFileName);
@@ -569,6 +571,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.inspeccionAmbientalBancor
         }
 
 
+        private void SendToPrinter()
+        {
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.Verb = "print";
+            info.FileName = @"c:\output.pdf";
+            info.CreateNoWindow = true;
+            info.WindowStyle = ProcessWindowStyle.Hidden;
+
+            Process p = new Process();
+            p.StartInfo = info;
+            p.Start();
+
+            p.WaitForInputIdle();
+            System.Threading.Thread.Sleep(3000);
+            if (false == p.CloseMainWindow())
+                p.Kill();
+        }
       
 
 

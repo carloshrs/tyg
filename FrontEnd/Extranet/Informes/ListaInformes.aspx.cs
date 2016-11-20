@@ -77,8 +77,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
         protected void dgridEncabezados_PreRender(object sender, EventArgs e)
         {
             string strRedir = "";
+            DateTime FechaLimite = DateTime.Today.AddMonths(-1);
             foreach (DataGridItem myItem in dgridEncabezados.Items)
             {
+                ((ImageButton)myItem.FindControl("Pdf")).Visible = false;
                 ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
                 //((ImageButton)myItem.FindControl("Editar")).Attributes.Add("src",@"/img/modificar_general.gif");
                 //((ImageButton)myItem.FindControl("Editar")).ToolTip = "Modificar Informe";
@@ -97,6 +99,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                 }
                 if (myItem.Cells[10].Text == "3")
                 {
+                    ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("src", @"/img/printer.gif");
+
                     switch (myItem.Cells[12].Text)
                     {
                         case "1": //Realizar Informe de Propiedad
@@ -161,9 +165,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     // Se habilita la opcion de imprimir informe si reune 2 condiciones:
                     // 1- Es cliente mensual; 2- Es cliente diarios y está abonado el informe.
                     if (strRedir != "" && blObtenerClienteMensual)
+                    {
                         if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
                             ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
 
+
+                        //Se filtran los informes de propiedad y morosidad (pdf), en estado finalizado, fecha limite 1 mes a la fecha actual
+                        if ((myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "17") && myItem.Cells[10].Text == "3" && (DateTime.Parse(myItem.Cells[1].Text) >= FechaLimite))
+                        {
+                            ((ImageButton)myItem.FindControl("Pdf")).Visible = true;
+                            ((ImageButton)myItem.FindControl("Pdf")).Attributes.Add("onclick", "javascript: window.open('" + myItem.Cells[15].Text + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
+                        }
+                    }
                 }
             }
         }

@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Dal\ControlVerifLaboralDal.cs" />
     <Compile Include="Dal\ControlInformeTransferidoDal.cs" />
+    <Compile Include="Dal\ArchivoDal.cs" />
     <Compile Include="Dal\Empresas.cs">
       <SubType>Code</SubType>
     </Compile>

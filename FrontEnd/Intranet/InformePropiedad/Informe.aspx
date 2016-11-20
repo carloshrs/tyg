@@ -504,6 +504,22 @@
                                         <td class="text" width="100%">
                                             <asp:TextBox ID="txtResultado" runat="server" MaxLength="255" Width="100%"></asp:TextBox></td>
                                     </tr>
+
+                                    <TR>
+											<TD class="text" align="left" colSpan="2">
+                                                <br />
+                                                Adjuntar PDF de Registro de la Propiedad (matricula, folio, legajo)<br />
+                                                <asp:FileUpload ID="txtArchivo" runat="server" />
+                                                <br /><br />
+                                                <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                                <br /><br />
+                                            </TD></TR>
+										<TR>
+											<td width="100%" colSpan="4">
+												<hr SIZE="2">
+											</td>
+										</TR>
+
                                     <tr>
                                         <td width="535">
                                             <hr>
@@ -526,11 +542,11 @@
                                                         <asp:Button ID="btnImprimir" runat="server" OnClick="btnImprimir_Click" Text="Imprimir vista previa" />&nbsp;
 														<asp:button id="Rechazar" runat="server" Width="96px" Text="Rechazar" 
                                                             onclick="Rechazar_Click"></asp:button>&nbsp;
-                                                        <asp:Button ID="Aceptar" runat="server" Width="56px" Text="Aceptar" OnClick="Aceptar_Click">
+                                                        <asp:Button ID="Aceptar" runat="server" Width="96px" Text="Revisión" OnClick="Aceptar_Click">
                                                         </asp:Button>&nbsp;&nbsp;
-                                                        <asp:Button ID="AceptarFinalizar" runat="server" Width="96px" Text="Aceptar y Finalizar"
+                                                        <asp:Button ID="AceptarFinalizar" runat="server" Width="" Text="Aceptar y Finalizar"
                                                             OnClick="AceptarFinalizar_Click"></asp:Button>&nbsp;&nbsp;
-                                                        <asp:Button ID="Cancelar" runat="server" CausesValidation="False" Width="56px" Text="Cancelar"
+                                                        <asp:Button ID="Cancelar" runat="server" CausesValidation="False" Width="" Text="Cancelar"
                                                             OnClick="Cancelar_Click"></asp:Button></td>
                                                 </tr>
                                             </table>

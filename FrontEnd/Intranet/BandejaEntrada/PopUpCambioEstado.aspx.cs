@@ -24,6 +24,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					ListaEstados(3);
 					cmbEstados.Enabled = false;
 				}
+                else if (Request.QueryString["Revision"] != null && Request.QueryString["Revision"] == "1")
+                {
+                    ListaEstados(7);
+                    cmbEstados.Enabled = false;
+                }
                 else if (Request.QueryString["Rechazar"] != null && Request.QueryString["Rechazar"] == "1")
                 {
                     ListaEstados(8);

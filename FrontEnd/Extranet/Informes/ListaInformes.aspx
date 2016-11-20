@@ -288,6 +288,15 @@
 														</asp:TemplateColumn>
 														<asp:BoundColumn Visible="False" DataField="idTipoInforme"></asp:BoundColumn>
 														<asp:BoundColumn Visible="False" DataField="GRAVidTipoGravamen"></asp:BoundColumn>
+                                                        <asp:TemplateColumn>
+															<HeaderStyle Width="22px"></HeaderStyle>
+															<ItemStyle HorizontalAlign="Center"></ItemStyle>
+															<ItemTemplate>
+																<asp:ImageButton id="pdf" runat="server" Width="16px" ImageUrl="/Img/pdf.png" CommandName="Pdf"
+																	ToolTip="Descargar PDF" BorderWidth="0"></asp:ImageButton>
+															</ItemTemplate>
+														</asp:TemplateColumn>
+                                                        <asp:BoundColumn Visible="False" DataField="pathfilepdf"></asp:BoundColumn>
 													</Columns>
 													<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 														BackColor="#999999"></PagerStyle>
