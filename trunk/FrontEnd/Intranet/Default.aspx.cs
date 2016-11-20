@@ -196,12 +196,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                     ((ImageButton)myItem.FindControl("Borrar")).Visible = false;
                     ((ImageButton)myItem.FindControl("Editar")).Visible = false;
 
-                    // Informe de morosidad no tiene vista de impresion
-                    if (myItem.Cells[15].Text == "17")
+                    // Informe de morosidad y registro publico de comercio no tiene vista de impresion
+                    if (myItem.Cells[15].Text == "9")
                     {
                         ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
                         ((ImageButton)myItem.FindControl("realizar")).Visible = false;
                     }
+                    // Informe de morosidad no tiene vista de impresion
+                    // if (myItem.Cells[14].Text == "9" || myItem.Cells[14].Text == "17")
+                    //{
+                    //    ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
+                    //    ((ImageButton)myItem.FindControl("realizar")).Visible = false;
+                    //}
+                    // se anula lo anterior para agregar la funcionalidad de confeccion de morosidad con PDF
 
                 }
                 else

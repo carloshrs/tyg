@@ -8,6 +8,9 @@ using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.Informes.Dal;
+using System.IO;
+using System.Configuration;
+using System.Web;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
 {
@@ -110,6 +113,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
             oInformePropiedad.PropiedadDe = txtPropiedadDe.Text;
             oInformePropiedad.UbicadaEn = txtUbicadaEn.Text;
             oInformePropiedad.DominioAntecedente = txtDominioAntecedente.Text;
+
+            SubirArchivo();
 
 			if(int.Parse(idReferencia.Value) == 0)
 				ret = oInformePropiedad.Crear();
@@ -341,6 +346,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
             oEncabezado.Leido = 1;
             oEncabezado.CambiarLeido(oInformePropiedad.IdInforme);
 
+            ArchivoDal vArchivo = new ArchivoDal();
+            vArchivo.Cargar(oInformePropiedad.IdInforme);
+            hlArchivo.Text = "<b>Descargar archivo</b>";
+            hlArchivo.NavigateUrl = vArchivo.Path;
+            if (vArchivo.Extension == ".pdf")
+                imgArchivo.ImageUrl = "/img/menu/pdf.png";
+
 		}
 
 		#endregion
@@ -501,6 +513,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
 
         protected void Aceptar_Click(object sender, EventArgs e)
 		{
+
+            string strScript;
+            strScript = "<script languaje=\"Javascript\">";
+            strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=1&idInforme=" + idInformePropiedad.Value + "&Revision=1','','dialogWidth:400px;dialogHeight:250px');";
+            strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=1'";
+            strScript += "</script>";
+
+            String csname2 = "CambiarEstado";
+            Type cstype = this.GetType();
+            ClientScriptManager cs = Page.ClientScript;
+            cs.RegisterClientScriptBlock(cstype, csname2, strScript, false);
+
+
 			ActualizarInforme();
             CambiarEstado(7);		
 			//Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=1");
@@ -512,14 +537,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
 			
 		protected void AceptarFinalizar_Click(object sender, System.EventArgs e)
 		{
-			string strScript;
-			strScript = "<script languaje=\"Javascript\">";
+            string strScript;
+            strScript = "<script languaje=\"Javascript\">";
             strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=1&idInforme=" + idInformePropiedad.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
-			strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=1'";
-			strScript += "</script>";
+            strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=1'";
+            strScript += "</script>";
 
+            String csname2 = "CambiarEstado";
+            Type cstype = this.GetType();
+            ClientScriptManager cs = Page.ClientScript;
+            cs.RegisterClientScriptBlock(cstype, csname2, strScript, false);
 			ActualizarInforme();
-			Page.RegisterStartupScript("CambiarEstado", strScript);
 		}
 
 		#endregion
@@ -625,5 +653,89 @@ protected void Rechazar_Click(object sender, EventArgs e)
 
     Page.RegisterStartupScript("CambiarEstado", strScript);
 }
+
+private string SubirArchivo()
+{
+    string strFileName = "";
+    try
+    {
+        if (txtArchivo.PostedFile != null)
+        {
+            // subo el Archivo
+            UploadFile(ref strFileName);
+        }
+    }
+    catch { }
+
+    return strFileName;
+}
+
+private void UploadFile(ref string strFileName)
+{
+    if (txtArchivo.PostedFile != null)
+    {
+        string strPath = ConfigurationManager.AppSettings["PATH"] + "Informes/Propiedad/" + DateTime.Today.Year + "/";
+        HttpPostedFile myFile = txtArchivo.PostedFile;
+
+        // Obtengo el tamaño del archivo
+        int nFileLen = myFile.ContentLength;
+
+        // Me aseguro que el tamaño del archivo sea > 0
+        if (nFileLen > 0)
+        {
+            // Coloco la Info en un Buffer y para luego leerla
+            byte[] myData = new byte[nFileLen];
+
+            // La Info a Subir
+            myFile.InputStream.Read(myData, 0, nFileLen);
+
+            // Nombre del Archivo a Subir
+            strFileName = idInformePropiedad.Value + "_" + DateTime.Today.Year + DateTime.Today.Month + DateTime.Today.Day + Path.GetExtension(myFile.FileName);
+            strPath = ChequearCarpeta(strPath);
+            strFileName = strPath + "/" + strFileName;
+
+            ArchivoDal vArchivo = new ArchivoDal();
+            vArchivo.Crear(int.Parse(idInformePropiedad.Value), strFileName, Path.GetExtension(myFile.FileName));
+
+            // Escribo en disco
+            WriteToFile(Server.MapPath(strFileName), ref myData);
+            /*
+            Image imgPhotoVert = Image.FromFile(Server.MapPath(strFileName));
+            Image imgPhoto = null;
+
+            imgPhoto = FixedSize(imgPhotoVert, 200, 200);
+            imgPhoto.Save(Server.MapPath(strFileName) + @"\imageresize_3.jpg", ImageFormat.Jpeg);
+            imgPhoto.Dispose();
+            */
+        }
+    }
+}
+
+private string ChequearCarpeta(string lPath)
+{
+    string strFinalPath = lPath + idInformePropiedad.Value;
+    try
+    {
+        if (!Directory.Exists(Server.MapPath(strFinalPath)))
+            Directory.CreateDirectory(Server.MapPath(strFinalPath));
+    }
+    catch
+    { }
+
+    return strFinalPath;
+}
+
+private void WriteToFile(string strPath, ref byte[] Buffer)
+{
+    // Creo el Archivo
+    FileStream newFile = new FileStream(strPath, FileMode.Create);
+
+    // Escribo la Info en el Archivo
+    newFile.Write(Buffer, 0, Buffer.Length);
+
+    // Cierro
+    newFile.Close();
+}
+
 }
 }

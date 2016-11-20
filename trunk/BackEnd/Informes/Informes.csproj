@@ -120,6 +120,7 @@
     <Compile Include="Dal\InformePropiedad.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Dal\InformeMorosidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -335,7 +335,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         strRedir = "/Inhibicion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=16";
                         break;
                     case "17":
-                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text  + ")");
+                        //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text  + ")");
+                        strRedir = "/Morosidad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=17";
                         break;
                     case "18": //Realizar Informe de Gravámenes DIR
                         strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
@@ -362,11 +363,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					((ImageButton) myItem.FindControl("Editar")).Visible = false;
                     
                     // Informe de morosidad y registro publico de comercio no tiene vista de impresion
-                    if (myItem.Cells[14].Text == "9" || myItem.Cells[14].Text == "17")
+                    if (myItem.Cells[14].Text == "9")
                     { 
                         ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
                         ((ImageButton)myItem.FindControl("realizar")).Visible = false;
                     }
+                    // Informe de morosidad no tiene vista de impresion
+                    // if (myItem.Cells[14].Text == "9" || myItem.Cells[14].Text == "17")
+                    //{
+                    //    ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
+                    //    ((ImageButton)myItem.FindControl("realizar")).Visible = false;
+                    //}
+                    // se anula lo anterior para agregar la funcionalidad de confeccion de morosidad con PDF
 
 				} else {
 					((ImageButton) myItem.FindControl("VerEncabezado")).Attributes.Add("onclick", "javascript: window.open('" + strRedirCalle + "','','tools=no,width=720,menus=no,scrollbars=yes');return false;");
@@ -494,8 +502,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                                 Response.Redirect("/Inhibicion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=16");
                                 break;
                             case "17":
+                                Response.Redirect("/Morosidad/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=17");
                                 //Response.Redirect("Principal.aspx?idTipo=17");
-                                ListaBandejaFiltro();
+                                //ListaBandejaFiltro();
                                 break;
                             case "18": //Gravámenes DIR
                                 Response.Redirect("/gravamenesDIR/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=18");

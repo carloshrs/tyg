@@ -94,11 +94,12 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 "B.DescripcionInf, B.FechaCarga, C.RazonSocial as RazonSocial1, B.Comentarios, " +
                 "E.idEstado, E.NombreEstado, E.NombreEstadoExtra, B.GRAVidTipoGravamen, B.leido, T.descripcion, B.estado, " +
                 "B.PROPTipo, B.PROPMatricula, B.PROPFolio, B.PROPtomo, B.PROPano, E.DescripcionEstado, B.FechaCondicional, " +
-                "B.EstadoCondicional, C.NombreFantasia, C.sucursal " +
+                "B.EstadoCondicional, C.NombreFantasia, C.sucursal, A.path AS pathfilepdf " +
                 "FROM BandejaEntrada B " +
                 "INNER JOIN tiposInformes T ON B.idTipoInforme = T.idTipoInforme " +
                 "INNER JOIN EstadoInformes E ON B.Estado = E.idEstado " +
-                "INNER JOIN Clientes C ON B.idCliente = C.idCliente ";
+                "INNER JOIN Clientes C ON B.idCliente = C.idCliente " +
+                "LEFT OUTER JOIN Archivos A ON B.idEncabezado = A.idInforme ";
 			strSQL = strSQL + "WHERE 1=1 ";
 			if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'","''");
             int iniciopag = (pagina-1) * registros;
