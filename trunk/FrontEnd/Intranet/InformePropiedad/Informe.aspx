@@ -510,7 +510,7 @@
                                                 <br />
                                                 Adjuntar PDF de Registro de la Propiedad (matricula, folio, legajo)<br />
                                                 <asp:FileUpload ID="txtArchivo" runat="server" /><br />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Adjuntar PDF de Registro de Propiedad" ValidationGroup="principal" ControlToValidate="txtArchivo" Text="*"></asp:RequiredFieldValidator>
                                                 <br /><br />
                                                 <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
                                                 <br /><br />
@@ -532,7 +532,7 @@
                                     <tr>
                                         <td width="535" colspan="4">
                                             <asp:ValidationSummary ID="VSVerifDomParticular" runat="server" CssClass="text" ShowMessageBox="True"
-                                                ShowSummary="False"></asp:ValidationSummary>
+                                                ShowSummary="False" ValidationGroup="principal"></asp:ValidationSummary>
                                         </td>
                                     </tr>
                                     <tr>
