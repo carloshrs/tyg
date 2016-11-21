@@ -156,6 +156,22 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         case "15": //Realizar Relevamiento Ambiental BANCOR
                             strRedir = "/ambientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=15";
                             break;
+                        case "16": //Realizar Informe de Inhibición
+                            strRedir = "/Inhibicion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=16";
+                            break;
+                        case "17":
+                            //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text  + ")");
+                            strRedir = "/Morosidad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=17";
+                            break;
+                        case "18": //Realizar Informe de Gravámenes DIR
+                            strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
+                            break;
+                        case "19": //Realizar Verificacion de Defunción
+                            strRedir = "/verifDefuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
+                            break;
+                        case "20": //Realizar Informe de Partidas de Defunción
+                            //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
+                            break;
                         case "21": //Realizar Relevamiento Ambiental BANCOR
                             strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
                             break;
