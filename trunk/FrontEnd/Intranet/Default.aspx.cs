@@ -179,7 +179,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                         strRedir = "/Inhibicion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=16";
                         break;
                     case "17":
-                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text + ")");
+                        //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text + ")");
+                        strRedir = "/Morosidad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=17";
                         break;
                     case "21": //Realizar Inspección Socio Ambiental BANCOR
                         strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
@@ -396,7 +397,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                                 Response.Redirect("/Inhibicion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=16");
                                 break;
                             case "17":
-                                ListaBandeja();
+                                //ListaBandeja();
+                                Response.Redirect("/Morosidad/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=17");
                                 break;
                             case "21": //Realizar Inspección Socio Ambiental BANCOR
                                 Response.Redirect("/InspeccionAmbientalBancor/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=21");
