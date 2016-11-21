@@ -214,7 +214,10 @@ border=0>
                                                 <br />
                                                 Adjuntar PDF<br />
                                                 <asp:FileUpload ID="txtArchivo" runat="server" />
-                                                <br /><br />
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                                                    ErrorMessage="*" Text="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <br />
                                                 <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
                                                 <br /><br />
                                             </TD></TR>
@@ -245,6 +248,8 @@ border=0>
 					</form>
 				</td>
 			</tr>
-		</table><!--</TD></TR></TBODY></TABLE>-->
+		</table>
+                    </form>
+                    <!--</TD></TR></TBODY></TABLE>-->
 	</body>
 </HTML>
