@@ -342,10 +342,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
                         break;
                     case "19": //Realizar Verificacion de Defunción
-                        strRedir = "/defuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
+                        strRedir = "/verifDefuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
                         break;
                     case "20": //Realizar Informe de Partidas de Defunción
-                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
+                        //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
                         break;
                     case "21": //Realizar Inspeccion Socio Ambiental BANCOR
                         strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";

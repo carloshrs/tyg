@@ -638,7 +638,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 {
                     strSQL += " AND (C.RazonSocial like '%" + filtro + "%' ";
                     strSQL += " OR C.RazonSocialFox like '%" + filtro + "%' ";
-                    strSQL += " OR C.nombrefantasia like '%" + filtro + "%') ";
+                    strSQL += " OR C.nombrefantasia like '%" + filtro + "%' ";
+                    strSQL += " OR C.calle like '%" + filtro + "%') ";
                 }
 			}
 
