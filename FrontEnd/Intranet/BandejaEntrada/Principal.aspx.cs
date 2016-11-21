@@ -510,10 +510,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                                 Response.Redirect("/gravamenesDIR/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=18");
                                 break;
                             case "19": //verificacion de defunción
-                                Response.Redirect("/defuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=19");
+                                Response.Redirect("/verifDefuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=19");
                                 break;
                             case "20": //Partidas de defunción
-                                ListaBandejaFiltro();
+                                //ListaBandejaFiltro();
+                                Response.Redirect("/InformePartidasDefuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=20");
                                 break;
                             case "21": //Realizar Inspeccion Socio Ambiental BANCOR
                                 Response.Redirect("/InspeccionAmbientalBancor/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=21");

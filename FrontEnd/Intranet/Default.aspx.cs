@@ -153,9 +153,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                         strRedir = "/verifDomComercial/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=7";
                         strRedirCalle = "/verifDomComercial/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=7";
                         break;
+                    case "9":
+                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(9, " + myItem.Cells[0].Text + ")");
+                        break;
                     case "10": //Busqueda Automotor
                         strRedir = "/BusquedaAutomotor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=10";
-                        strRedirCalle = "/BusquedaAutomotor/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=10";
+                        //strRedirCalle = "/BusquedaAutomotor/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=10";
                         break;
                     case "11": //Realizar Informe de Propiedad otras Provincias
                         strRedir = "/InformePropiedadProvincias/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=11";
@@ -166,7 +169,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                         break;
                     case "13": //Busqueda Propiedad
                         strRedir = "/BusquedaPropiedad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=13";
-                        strRedirCalle = "/BusquedaPropiedad/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=13";
+                        //strRedirCalle = "/BusquedaPropiedad/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=13";
                         break;
                     case "14": //Realizar Verificacion de Contrato
                         strRedir = "/verifContrato/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=14";
@@ -181,6 +184,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                     case "17":
                         //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(17, " + myItem.Cells[0].Text + ")");
                         strRedir = "/Morosidad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=17";
+                        break;
+                    case "18": //Realizar Informe de Gravámenes DIR
+                        strRedir = "/gravamenesDIR/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=18";
+                        break;
+                    case "19": //Realizar Verificacion de Defunción
+                        strRedir = "/verifDefuncion/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=19";
+                        break;
+                    case "20": //Realizar Informe de Partidas de Defunción
+                        //((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(20, " + myItem.Cells[0].Text  + ")");
                         break;
                     case "21": //Realizar Inspección Socio Ambiental BANCOR
                         strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
@@ -399,6 +411,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                             case "17":
                                 //ListaBandeja();
                                 Response.Redirect("/Morosidad/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=17");
+                                break;
+                            case "18": //Gravámenes DIR
+                                Response.Redirect("/gravamenesDIR/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=18");
+                                break;
+                            case "19": //verificacion de defunción
+                                Response.Redirect("/verifDefuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=19");
+                                break;
+                            case "20": //Partidas de defunción
+                                //ListaBandejaFiltro();
+                                Response.Redirect("/InformePartidasDefuncion/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=20");
                                 break;
                             case "21": //Realizar Inspección Socio Ambiental BANCOR
                                 Response.Redirect("/InspeccionAmbientalBancor/Informe.aspx?id=" + e.Item.Cells[0].Text + "&IdTipo=21");
