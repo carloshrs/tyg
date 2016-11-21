@@ -171,7 +171,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
 
                         //Se filtran los informes de propiedad y morosidad (pdf), en estado finalizado, fecha limite 1 mes a la fecha actual
-                        if ((myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "17") && myItem.Cells[10].Text == "3" && (DateTime.Parse(myItem.Cells[1].Text) >= FechaLimite) && myItem.Cells[15].Text != null)
+                        if ((myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "17") && myItem.Cells[10].Text == "3" && (DateTime.Parse(myItem.Cells[1].Text) >= FechaLimite) && myItem.Cells[15].Text != "&nbsp;")
                         {
                             ((ImageButton)myItem.FindControl("Pdf")).Visible = true;
                             ((ImageButton)myItem.FindControl("Pdf")).Attributes.Add("onclick", "javascript: window.open('" + myItem.Cells[15].Text + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
