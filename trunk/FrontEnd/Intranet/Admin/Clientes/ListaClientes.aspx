@@ -27,7 +27,7 @@
 								<td>&nbsp;</td>
 								<td><cf:webfiltroalfabetico id="FiltroClientes" runat="server" MensajeAyuda="Clientes cuya Razón social" Arriba="0"
 										Izquierda="5" MostrarOtros="False" Estilo="title"></cf:webfiltroalfabetico></td>
-								<td class="text">&nbsp;Filtrar Por Raón Social:
+								<td class="text">&nbsp;Filtrar Por razón social o dirección:
 									<asp:textbox id="TxtFiltro" runat="server" onKeyPress="return validarString(event);" CssClass="planotext" Width="150px" MaxLength="100"></asp:textbox>&nbsp;
 									<asp:button id="btnBuscar" title="Realizar Búsqueda" style="CURSOR: hand" runat="server" Width="58px"
 										Text="Buscar" onclick="btnBuscar_Click"></asp:button></td>
