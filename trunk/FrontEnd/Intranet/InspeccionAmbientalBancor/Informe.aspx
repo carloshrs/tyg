@@ -394,7 +394,7 @@
                                                                         </cc1:AutoCompleteExtender>
                                                                             </td>
                                                                     <td class="text" width="50%" colspan="2">
-                                                                        <asp:TextBox ID="txtTelefono" runat="server" Width="230px" MaxLength="18" Style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                        <asp:TextBox ID="txtTelefono" runat="server" Width="230px" MaxLength="50" Style="text-transform: uppercase;"></asp:TextBox></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text" width="50%" colspan="2">
@@ -486,7 +486,7 @@
                                                         &nbsp;</td>
                                                 </tr>
                                                 <TR>
-                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCantidadIntegran" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCantidadIntegran" runat="server" Width="230px" MaxLength="100" Style="text-transform: uppercase;"></asp:TextBox></TD>
                                                     <TD class=text width="50%" colSpan=2></TD></TR>
                                                     
                                                     
@@ -501,8 +501,8 @@
                                                     </td>
                                                 </tr>
                                                 <TR>
-                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtQuienHabita" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox></TD>
-                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCalidadDe" runat="server" Width="230px" MaxLength="20" Style="text-transform: uppercase;"></asp:TextBox>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtQuienHabita" runat="server" Width="230px" MaxLength="150" Style="text-transform: uppercase;"></asp:TextBox></TD>
+                                                    <TD class=text width="50%" colSpan=2><asp:TextBox ID="txtCalidadDe" runat="server" Width="230px" MaxLength="100" Style="text-transform: uppercase;"></asp:TextBox>
                                                     </TD></TR>
                                                     <tr><td></td></tr>
 
