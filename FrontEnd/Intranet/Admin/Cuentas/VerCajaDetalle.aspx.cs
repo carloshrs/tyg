@@ -16,14 +16,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 		{
 			if (!Page.IsPostBack)
 			{
-                string idCaja = "";
-                idCaja = Request.QueryString["idCaja"];
-                hdIdCaja.Value = idCaja;
-
-                ListaConceptos(0);
-                    
+                string idCajaDetalle = "";
+                idCajaDetalle = Request.QueryString["idCajaDetalle"];
+                hdIdCajaDetalle.Value = idCajaDetalle;
+                 
                 pnlEncabezado.Visible = true;
-                CargarEncabezadoCaja(idCaja);
+                CargarEncabezadoCaja(idCajaDetalle);
 			}
 
 		}
@@ -56,43 +54,33 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
 
 
-        private void CargarEncabezadoCaja(string idCaja)
+        private void CargarEncabezadoCaja(string idCajaDetalle)
         {
+
+            GestorPrecios CajaEncabezadoDetalle = new GestorPrecios();
+            CajaEncabezadoDetalle.CargarCajaDetalle(int.Parse(Request.QueryString["idCajaDetalle"]));
+            lblConcepto.Text = CajaEncabezadoDetalle.Concepto;
+            lblMonto.Text = CajaEncabezadoDetalle.MontoTotal.ToString();
+            if (CajaEncabezadoDetalle.Entradasalida == 0)
+                lblTipo.Text = "Egreso";
+            else
+                lblTipo.Text = "Ingreso";
+            lblFecha.Text = CajaEncabezadoDetalle.Fecha;
+            lblObservaciones.Text = CajaEncabezadoDetalle.Observaciones;
+
+
             GestorPrecios CajaEncabezado = new GestorPrecios();
-            CajaEncabezado.CargarCaja(int.Parse(idCaja));
+            CajaEncabezado.CargarCaja(CajaEncabezadoDetalle.IdCaja);
             lblFechaApertura.Text = CajaEncabezado.Apertura;
             lblFechaCierre.Text = CajaEncabezado.Cierre;
             lblEfectivoInicial.Text = CajaEncabezado.EfectivoInicial.ToString();
             lblChequeInicial.Text = CajaEncabezado.ChequeInicial.ToString();
             lblSaldoEfectivo.Text = CajaEncabezado.SaldoEfectivo.ToString();
             lblSaldoCheque.Text = CajaEncabezado.SaldoCheque.ToString();
+
+            
         }
 
-
-        private void ListaConceptos(int idTipoIngreso)
-        {
-            cmbConcepto.Items.Clear();
-            DataTable myTb;
-            myTb = GestorPrecios.ListarConceptos("", 1, idTipoIngreso);
-            ListItem myItem;
-            foreach (DataRow myRow in myTb.Rows)
-            {
-                myItem = new ListItem(myRow[1].ToString(), myRow[0].ToString());
-                cmbConcepto.Items.Add(myItem);
-            }
-        }
-
-        protected void cmbTipoIngreso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ListaConceptos(int.Parse(cmbTipoIngreso.SelectedValue));
-        }
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-            //GestorPrecios CajaEncabezado = new GestorPrecios();
-
-            GestorPrecios.CrearCajaDetalle(int.Parse(hdIdCaja.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
-            Response.Redirect("ListaCajaDetalles.aspx?id=" + hdIdCaja.Value);
-        }
-}
+        
+    }
 }

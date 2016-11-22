@@ -22,7 +22,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private float floChequeInicial;
         private float floSaldoEfectivo;
         private float floSaldoCheque;
-
+        private int intIdCajaDetalle;
+        private string strConcepto;
+        private float floMontoTotal;
+        private int intEntradasalida;
+        private string strFecha;
+        private string strObservaciones;
 
 		public GestorPrecios() {}
 
@@ -133,6 +138,66 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             set
             {
                 floSaldoCheque = value;
+            }
+        }
+
+        public string Concepto
+        {
+            get
+            {
+                return strConcepto;
+            }
+            set
+            {
+                strConcepto = value;
+            }
+        }
+
+        public float MontoTotal
+        {
+            get
+            {
+                return floMontoTotal;
+            }
+            set
+            {
+                floMontoTotal = value;
+            }
+        }
+
+        public int Entradasalida
+        {
+            get
+            {
+                return intEntradasalida;
+            }
+            set
+            {
+                intEntradasalida = value;
+            }
+        }
+
+        public string Fecha
+        {
+            get
+            {
+                return strFecha;
+            }
+            set
+            {
+                strFecha = value;
+            }
+        }
+
+        public string Observaciones
+        {
+            get
+            {
+                return strObservaciones;
+            }
+            set
+            {
+                strObservaciones = value;
             }
         }
         
@@ -563,7 +628,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
-            strQuery.Append("Select idCajaDetalle, concepto, montoTotal, entradasalida, fecha ");
+            strQuery.Append("Select idCajaDetalle, concepto, montoTotal, entradasalida, fecha, observaciones ");
             strQuery.Append(" From CPCajaDetalle ");
             if (lTexto != "")
                 strQuery.Append(" Where idCaja = " + lTexto + " ");
@@ -580,6 +645,32 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
             return dtSalida;
 
+        }
+
+        public void CargarCajaDetalle(int idCajaDetalle)
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+
+            String strSQL = "Select idCajaDetalle, idCaja, concepto, montoTotal, entradasalida, fecha, observaciones ";
+            strSQL = strSQL + " From CPCajaDetalle ";
+            strSQL = strSQL + " Where idCajaDetalle = " + idCajaDetalle.ToString();
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+                oConnection.Close();
+            }
+            catch { }
+
+            intIdCajaDetalle = int.Parse(ds.Tables[0].Rows[0]["idCajaDetalle"].ToString());
+            intIdCaja = int.Parse(ds.Tables[0].Rows[0]["idCaja"].ToString());
+            strConcepto = ds.Tables[0].Rows[0]["concepto"].ToString();
+            floMontoTotal = float.Parse(ds.Tables[0].Rows[0]["montoTotal"].ToString());
+            intEntradasalida = int.Parse(ds.Tables[0].Rows[0]["entradasalida"].ToString());
+            strFecha = ds.Tables[0].Rows[0]["fecha"].ToString();
+            strObservaciones = ds.Tables[0].Rows[0]["observaciones"].ToString();
         }
 
         public static DataTable ListarConceptos(string lTexto, int idTipo, int ES)
@@ -607,14 +698,14 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
-        public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, string concepto, float monto)
+        public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, string concepto, float monto, string observaciones)
         {
             try
             {
                 StringBuilder strQuery = new StringBuilder(512);
                 strQuery = new StringBuilder(512);
-                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, montoTotal, entradasalida, fecha) ");
-                strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate())");
+                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, montoTotal, entradasalida, fecha, observaciones) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), " + StaticDal.Traduce(observaciones) + ")");
                 StaticDal.EjecutarComando(strQuery.ToString());
 
                 StringBuilder strQuery2 = new StringBuilder(512);

@@ -45,9 +45,10 @@
                             </tr>
 							<tr style="margin-top:30px;">
 								<td>
-									<asp:datagrid id="dgCajaDiariaDetalle" runat="server" Font-Size="8pt" PageSize="20" CellPadding="3" BorderColor="#3657A6"
+									<asp:datagrid id="dgCajaDiariaDetalle" runat="server" Font-Size="8pt" 
+                                        PageSize="20" CellPadding="3" BorderColor="#3657A6"
 										BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical" AutoGenerateColumns="False"
-										Width="60%" OnPreRender="dgCajaDiariaDetalle_PreRender">
+										Width="70%" OnPreRender="dgCajaDiariaDetalle_PreRender" onitemcommand="dgCajaDiariaDetalle_ItemCommand">
 										<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C"></SelectedItemStyle>
 										<AlternatingItemStyle BackColor="#FBFBFB"></AlternatingItemStyle>
 										<ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3"></ItemStyle>
@@ -76,7 +77,13 @@
 													<asp:Label id="lblEntrada" runat="server"></asp:Label>
 												</ItemTemplate>
                                             </asp:TemplateColumn>
-                                            
+                                            <asp:TemplateColumn>
+												<HeaderStyle Width="20px"></HeaderStyle>
+												<ItemTemplate>
+													<asp:ImageButton id="Detalle" runat="server" Width="16px" ToolTip="Detalle" CommandName="Detalle" ImageUrl="/img/ico-detalles.gif"
+														CausesValidation="False"></asp:ImageButton>
+												</ItemTemplate>
+											</asp:TemplateColumn>
 										</Columns>
 										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 											BackColor="#999999"></PagerStyle>

@@ -1,9 +1,9 @@
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.ListaCajaDetalles" CodeFile="ABMCajaDetalle.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.ABMCuentaClienteDetalle" CodeFile="ABMCuentaClienteDetalle.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
 	<HEAD>
-		<title>Lista de Caja</title>
+		<title>Lista de cuenta cliente</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 	</HEAD>
 	<body leftmargin="0" topmargin="0">
@@ -15,7 +15,7 @@
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp; <STRONG>AGREGAR CONCEPTO A CAJA DIARIA</STRONG>
+								<td class="title" height="38">&nbsp; <STRONG>AGREGAR CONCEPTO A CUENTA CLIENTE</STRONG>
 									<HR>
 									<BR>
 								</td>
@@ -24,20 +24,16 @@
                             <td>
                                 <asp:Panel ID="pnlEncabezado" runat="server">
                                     <table cellSpacing="0" cellPadding="0" width="100%" border="0">
-							            <tr>
-								            <td class="title" style="width:200px;">Fecha apertura: </td><td class="title"> <asp:Label ID="lblFechaApertura" runat="server" Text="" Font-Size="10"></asp:Label></td>
-                                            <td class="title">Fecha cierre: </td><td class="title"> <asp:Label ID="lblFechaCierre" runat="server" Text="" Font-Size="10"></asp:Label></td>
-                                        </tr>
-                                        <tr>
-								            <td class="title">Saldo efectivo: </td><td class="title">$ <asp:Label ID="lblSaldoEfectivo" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-                                            <td class="title" style="background:#EEE;">Monto efectivo inicial: </td><td class="title" style="background:#EEE;">$ <asp:Label ID="lblEfectivoInicial" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-                                        </tr>
-                                        <tr>
-                                        <td class="title">Saldo cheque: </td><td class="title">$ <asp:Label ID="lblSaldoCheque" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-								            
-                                            <td class="title" style="background:#EEE;">Monto cheque inicial: </td><td class="title" style="background:#EEE;">$ <asp:Label ID="lblChequeInicial" runat="server" Text="" Font-Bold="true"></asp:Label></td>
-                                        </tr>
-                                    </table>
+										<tr>
+											<TD class="text" align="left" width="100%">&nbsp;&nbsp; <asp:Label ID="lblCliente" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											</TD></tr>
+                                            <tr>
+											<TD class="text" align="left" width="100%">&nbsp;Saldo actual:&nbsp;<asp:Label ID="lblSaldo" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											</TD>
+                                            <td></td>
+										</tr>
+										
+									</TABLE>
                                 </asp:Panel>
                             
                             </td>
@@ -65,10 +61,32 @@
                                     </table>
 								</td>
 							</tr>
-                            tr><td>
-                                <br />
-                                Observaciones</td><td>&nbsp;</td></tr>
-                            <tr><td> <asp:TextBox ID="txtObservaciones" runat="server" Rows="3" TextMode="MultiLine" Width="500"></asp:TextBox></td></tr>
+                            <tr style="margin-top:30px;">
+								<td style="background-color:#DDD">
+									<table>
+                                    
+                                        
+                                        <tr><td>
+                                            <br />
+                                            <strong>Caja Diaria</strong><br />
+                                            Ingresar monto en caja diaria:</td><td>
+
+                                                <br />
+                                                <br />
+
+                                            <asp:CheckBox ID="chkCaja" runat="server" />
+                                            
+
+                                            </td></tr>
+                                            <tr><td colspan="2">
+                                                <br />
+                                                Observaciones para la caja<br />
+                                            
+                                            <asp:TextBox ID="txtObservaciones" runat="server" Rows="3" TextMode="MultiLine" Width="500"></asp:TextBox>
+                                            </td></tr>
+                                    </table>
+								</td>
+							</tr>
 							<tr>
 								<td class="text" height="38" align="right">
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
