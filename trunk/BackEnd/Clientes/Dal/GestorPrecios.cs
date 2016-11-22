@@ -580,6 +580,29 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
+
+        public void CargarMontosCajaAnterior()
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+
+            String strSQL = "Select top 1 saldoEfectivo, saldoCheque ";
+            strSQL = strSQL + " From CPCaja ";
+            strSQL = strSQL + " Order By idCaja Desc ";
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+                oConnection.Close();
+            }
+            catch { }
+
+            floEfectivoInicial = float.Parse(ds.Tables[0].Rows[0]["saldoEfectivo"].ToString());
+            floChequeInicial = float.Parse(ds.Tables[0].Rows[0]["saldoCheque"].ToString());
+        }
+
+
         public static DataTable ListarCajas(string lTexto)
         {
             StringBuilder strQuery = new StringBuilder(512);
