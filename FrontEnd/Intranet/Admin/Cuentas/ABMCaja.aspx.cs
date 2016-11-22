@@ -23,6 +23,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 				catch
 				{
                     intId = -1;
+                    CargarMontosCajaAnterior();
 				}
                 ViewState["Id"] = intId.ToString();
 			}
@@ -95,6 +96,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 			
 		}
 
+        private void CargarMontosCajaAnterior()
+        {
+            //string strDescr = "";
+            GestorPrecios gCarga = new GestorPrecios();
+            gCarga.CargarMontosCajaAnterior();
 
+            txtEfectivoInicial.Text = gCarga.EfectivoInicial.ToString();
+            txtChequeInicial.Text = gCarga.ChequeInicial.ToString();
+       
+        }
 	}
 }
