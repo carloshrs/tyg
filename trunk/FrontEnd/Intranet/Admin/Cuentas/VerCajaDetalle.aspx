@@ -1,5 +1,5 @@
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.ListaCajaDetalles" CodeFile="ABMCajaDetalle.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.ListaCajaDetalles" CodeFile="VerCajaDetalle.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
 	<HEAD>
@@ -40,42 +40,33 @@
                                     </table>
                                 </asp:Panel>
                             
-                            </td>
+                            </td></tr>
                             <tr><td>&nbsp;</td></tr>
-                            </tr>
+
+                            <tr><td>&nbsp;</td></tr>
 							<tr style="margin-top:30px;">
 								<td>
 									<table>
-                                    <tr><td>Tipo:</td><td><asp:DropDownList ID="cmbTipoIngreso" runat="server" 
-                                            onselectedindexchanged="cmbTipoIngreso_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem Text="ENTRADA" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="SALIDA" Value="0" Selected></asp:ListItem>
-                                            </asp:DropDownList></td>
-                                        </tr>
-                                        <tr><td>Concepto:</td><td><asp:DropDownList ID="cmbConcepto" runat="server">
-                                            </asp:DropDownList></td>
+                                    <tr><td><strong>Fecha:</strong></td><td> <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td><strong>Tipo:</strong></td><td> <asp:Label ID="lblTipo" runat="server" Text=""></asp:Label></td></tr>
+                                        <tr><td><strong>Concepto:</strong></td><td> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td>
                                         </tr>
                                         <tr><td></td><td>&nbsp;</td></tr>
-                                        <tr><td>Monto $:</td><td>
-                                            <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
-                                            <asp:CompareValidator ID="valMonto" runat="server" ControlToValidate="txtMonto" 
-                                                ErrorMessage="Monto debe ser numérico" Type="Currency" 
-                                                Operator="DataTypeCheck">*</asp:CompareValidator>
+                                        <tr><td><strong>Monto:</strong></td><td>
+                                             $<asp:Label ID="lblMonto" runat="server" Text=""></asp:Label>
                                             </td></tr>
                                     </table>
 								</td>
 							</tr>
-                            tr><td>
+                            <tr><td>
                                 <br />
-                                Observaciones</td><td>&nbsp;</td></tr>
-                            <tr><td> <asp:TextBox ID="txtObservaciones" runat="server" Rows="3" TextMode="MultiLine" Width="500"></asp:TextBox></td></tr>
+                                <strong>Observaciones</strong></td><td>&nbsp;</td></tr>
+                            <tr><td>  <asp:Label ID="lblObservaciones" runat="server" Text=""></asp:Label></td></tr>
 							<tr>
 								<td class="text" height="38" align="right">
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-                                <asp:HiddenField ID="hdIdCaja" Value="" runat="server" />
+                                <asp:HiddenField ID="hdIdCajaDetalle" Value="" runat="server" />
 									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
-                                    <asp:Button id="btnAgregar" runat="server" Text="Agregar concepto" 
-                                        onclick="btnAgregar_Click"></asp:Button>
 								</td>
 							</tr>
 						</table>

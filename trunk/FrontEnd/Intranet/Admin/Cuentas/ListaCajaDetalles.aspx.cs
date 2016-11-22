@@ -138,5 +138,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
         {
             Response.Redirect("AbmCajaDetalle.aspx?idCaja=" + hdIdCaja.Value);
         }
+
+
+        protected void dgCajaDiariaDetalle_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            if (e.Item.Cells[0].Text != "")
+            {
+                switch (((ImageButton)e.CommandSource).CommandName)
+                {
+                    case "Detalle":
+                        Response.Redirect("VerCajaDetalle.aspx?idCajaDetalle=" + e.Item.Cells[0].Text);
+                        break;
+
+                }
+            }
+
+        }
 }
 }

@@ -9,21 +9,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 	/// <summary>
 	/// Summary description for ListaFunciones.
 	/// </summary>
-    public partial class ListaCajaDetalles : Page
+    public partial class ABMCuentaClienteDetalle : Page
 	{
 	
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-                string idCaja = "";
-                idCaja = Request.QueryString["idCaja"];
-                hdIdCaja.Value = idCaja;
+                string idCuentaCliente = "";
+                idCuentaCliente = Request.QueryString["idCuentaCliente"];
+                hdIdCaja.Value = idCuentaCliente;
 
                 ListaConceptos(0);
                     
                 pnlEncabezado.Visible = true;
-                CargarEncabezadoCaja(idCaja);
+                CargarEncabezadoCaja(idCuentaCliente);
 			}
 
 		}
@@ -49,7 +49,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void btnNuevaApertura_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("AbmCaja.aspx");
+            Response.Redirect("ABMCuentaClienteDetalle.aspx");
 		}
 
 
@@ -60,12 +60,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             GestorPrecios CajaEncabezado = new GestorPrecios();
             CajaEncabezado.CargarCaja(int.Parse(idCaja));
-            lblFechaApertura.Text = CajaEncabezado.Apertura;
-            lblFechaCierre.Text = CajaEncabezado.Cierre;
-            lblEfectivoInicial.Text = CajaEncabezado.EfectivoInicial.ToString();
-            lblChequeInicial.Text = CajaEncabezado.ChequeInicial.ToString();
-            lblSaldoEfectivo.Text = CajaEncabezado.SaldoEfectivo.ToString();
-            lblSaldoCheque.Text = CajaEncabezado.SaldoCheque.ToString();
+            //lblFechaApertura.Text = CajaEncabezado.Apertura;
+            //lblFechaCierre.Text = CajaEncabezado.Cierre;
+            //lblEfectivoInicial.Text = CajaEncabezado.EfectivoInicial.ToString();
+            //lblChequeInicial.Text = CajaEncabezado.ChequeInicial.ToString();
+            //lblSaldoEfectivo.Text = CajaEncabezado.SaldoEfectivo.ToString();
+            //lblSaldoCheque.Text = CajaEncabezado.SaldoCheque.ToString();
         }
 
 
@@ -73,7 +73,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             cmbConcepto.Items.Clear();
             DataTable myTb;
-            myTb = GestorPrecios.ListarConceptos("", 1, idTipoIngreso);
+            myTb = GestorPrecios.ListarConceptos("", 2, idTipoIngreso);
             ListItem myItem;
             foreach (DataRow myRow in myTb.Rows)
             {
@@ -92,7 +92,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             //GestorPrecios CajaEncabezado = new GestorPrecios();
 
             GestorPrecios.CrearCajaDetalle(int.Parse(hdIdCaja.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
-            Response.Redirect("ListaCajaDetalles.aspx?id=" + hdIdCaja.Value);
+            Response.Redirect("ListaCuentaCorrienteCliente.aspx?id=" + hdIdCaja.Value);
         }
 }
 }
