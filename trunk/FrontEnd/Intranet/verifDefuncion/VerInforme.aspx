@@ -31,7 +31,7 @@
 
 <tr>
 <td style="background-image: url('/Img/back4.gif');"><img src="/Img/shim.gif" width="16" height="1" border="0" /></td>
-<td class="title" width="100%" align="center"><FONT color="#32528e">Informe de Partida de Defunción</FONT></td>
+<td class="title" width="100%" align="center"><FONT color="#32528e">Verificación de Defunción</FONT></td>
 <td style="background-image: url('/Img/back2.gif');"><img src="/Img/shim.gif" width="16" height="1" border="0"/></td>
 </tr>
 

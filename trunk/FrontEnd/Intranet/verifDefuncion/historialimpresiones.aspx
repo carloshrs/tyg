@@ -34,7 +34,7 @@
 				<tr>
 					<TD width="2%">&nbsp;</TD>
 					<td class="title" width="100%">
-                        Historial de Informes de Partidas de Defunción enviados a Tribunales Federales
+                        Historial de verificaciones de defunción enviados a Tribunales Federales
 						<BR>
 						<HR>
 						<BR>
