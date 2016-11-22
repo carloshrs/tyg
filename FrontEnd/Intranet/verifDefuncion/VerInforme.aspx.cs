@@ -8,8 +8,8 @@ using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
-using ar.com.TiempoyGestion.BackEnd.Informes.Dal;
 using System.Globalization;
+using ar.com.TiempoyGestion.BackEnd.Verificaciones.Dal;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
 {
@@ -94,13 +94,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
             else
                 lblRef.Text = usuario.Apellido.ToUpper() + ", " + usuario.Nombre.ToUpper();
 
-            InformeDefuncion oDef = new InformeDefuncion();
+            verifDefuncion oDef = new verifDefuncion();
             oDef.Cargar(Id);
             CargarEncabezado(oDef);
 		}
 
 
-        private void CargarEncabezado(InformeDefuncion oInfDefuncion)
+        private void CargarEncabezado(verifDefuncion oInfDefuncion)
 		{
             lblFolio.Text = oInfDefuncion.Folio;
             lblNombre.Text = oInfDefuncion.Nombre;

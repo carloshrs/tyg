@@ -1,5 +1,5 @@
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../Inc/menu.ascx" %>
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Morosidad.Informe" CodeFile="Informe.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion.Informe" CodeFile="Informe.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
   <HEAD>
@@ -197,7 +197,7 @@ border=0>
 											</td>
 										</TR>
 									</table>
-<asp:ValidationSummary id=VSInhibicion runat="server" CssClass="text" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>
+<asp:ValidationSummary id="VSPartidaDefuncion" runat="server" CssClass="text" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>
 								</td>
 							</tr>
 						</TABLE>

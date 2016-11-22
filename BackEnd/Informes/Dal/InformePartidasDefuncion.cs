@@ -8,7 +8,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 	/// <summary>
 	/// Summary description for ClienteDal.
 	/// </summary>
-	public class MorosidadDal : GenericDal
+	public class InformePartidasDefuncionDal : GenericDal
 	{
 		#region Atributos y Contructores
 			
@@ -16,21 +16,16 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 		private int intIdUsuario;
         private int intEstado;
 		private int intIdInforme;
-        private int intIdResultado;
 		private string strNombre;
 		private string strApellido;
 		private int intTipoDocumento;
 		private string strDocumento;
-
-		private int intIdTipoPersona;
-
-		//EMPRESAS
-		private string strRazonSocial;
 		private string strCuit;
 		private string strObservaciones;
 
 
-		public MorosidadDal() : base()
+        public InformePartidasDefuncionDal()
+            : base()
 		{		}
 
 		#endregion
@@ -49,17 +44,6 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 			}
 		}
 
-        public int IdResultado
-        {
-            get
-            {
-                return intIdResultado;
-            }
-            set
-            {
-                intIdResultado = value;
-            }
-        }
 
 		public int IdCliente
 		{
@@ -95,18 +79,6 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
                 intEstado = value;
             }
         }
-
-		public int IdTipoPersona
-		{
-			get
-			{
-				return intIdTipoPersona;
-			}
-			set
-			{
-				intIdTipoPersona = value;
-			}
-		}
 
 
 		public string Nombre
@@ -158,21 +130,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 		}
 
 
-
-		// EMPRESA
-		public String RazonSocial
-		{
-			get
-			{
-				return strRazonSocial;
-			}
-			set
-			{
-				strRazonSocial = value;
-			}
-		}
-
-		public String Cuit
+		public string Cuit
 		{
 			get
 			{
@@ -205,11 +163,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 		public bool Crear()
 		{
 			OdbcConnection oConnection = this.OpenConnection();
-            String strSQL = "Insert into informemorosidad (IdInforme, IdTipoPersona, Nombre, Apellido, idTipoDoc, NroDoc, Observaciones, " +
-			"RazonSocial, Cuit) values (" + intIdInforme + ", " + intIdTipoPersona + ", '" + strNombre + "', '" + strApellido + "', " + intTipoDocumento + ", '" + strDocumento + "', '" + strObservaciones + "', '" + 
-			strRazonSocial + "','" +	strCuit + "')";
+            String strSQL = "Insert into informepartidadefuncion (IdInforme, Nombre, Apellido, idTipoDoc, NroDoc, Observaciones, Cuit) " +
+			" values (" + intIdInforme + ", '" + strNombre + "', '" + strApellido + "', " + intTipoDocumento + ", '" + strDocumento + "', '" + strObservaciones + "', '" +	strCuit + "')";
 
-            String strMaxID = "SELECT MAX(idInforme) as MaxId FROM informemorosidad";
+            String strMaxID = "SELECT MAX(idInforme) as MaxId FROM informepartidadefuncion";
 
 			try
 			{
@@ -219,7 +176,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 				int MaxID = ObtenerMaxID(strMaxID, oConnection); 
 
 				String strAuditoria = "INSERT INTO HistoricoAcciones (idCliente, idUsuario, Instante, Evento, Observaciones, idTipoObjeto, idEstado, idReferencia) VALUES (";
-                strAuditoria = strAuditoria + intIdCliente + "," + intIdUsuario + ", getdate(), 'Crear Morosidad', 'Crear Morosidad: " + strApellido + " " + strNombre + "- DNI: " + strDocumento + " ', 1" + ", 2," + MaxID.ToString() + ")";
+                strAuditoria = strAuditoria + intIdCliente + "," + intIdUsuario + ", getdate(), 'Crear Informe Partida Defunción', 'Crear Informe Partida Defunción', 1" + ", 2," + MaxID.ToString() + ")";
 
 				myCommand = new OdbcCommand(strAuditoria, oConnection);
 				myCommand.ExecuteNonQuery();
@@ -235,11 +192,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 
 		public bool Modificar(int idInforme){
 			OdbcConnection oConnection = this.OpenConnection();
-            String strSQL = "UPDATE informemorosidad SET ";
+            String strSQL = "UPDATE informepartidadefuncion SET ";
 			strSQL = strSQL  + " Nombre = '" + strNombre + "', Apellido = '" + strApellido + "', idTipoDoc = " + intTipoDocumento + ", NroDoc = '" + strDocumento;
 			strSQL = strSQL  + "', Observaciones = '" + strObservaciones ;
-			strSQL = strSQL  + "', RazonSocial = '" + strRazonSocial + "', Cuit = '" + strCuit;
-			strSQL = strSQL  + "', IdTipoPersona = " + IdTipoPersona; 
+			strSQL = strSQL  + "', Cuit = '" + strCuit;
 			strSQL = strSQL  + " WHERE idInforme =  " + idInforme.ToString();
 			try
 			{
@@ -249,7 +205,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 				int MaxID = idInforme; 
 
 				String strAuditoria = "INSERT INTO HistoricoAcciones (idCliente, idUsuario, Instante, Evento, Observaciones, idTipoObjeto, idEstado, idReferencia) VALUES (";
-                strAuditoria = strAuditoria + intIdCliente + "," + intIdUsuario + ", getdate(), 'Modificación Morosidad', 'Modificación Morosidad: " + strApellido + " " + strNombre + "- DNI: " + strDocumento + "', 1" + ", 5," + MaxID.ToString() + ")";
+                strAuditoria = strAuditoria + intIdCliente + "," + intIdUsuario + ", getdate(), 'Modificación Informe Partida Defunción', 'Modificación Informe Partida Defunción', 1" + ", 5," + MaxID.ToString() + ")";
 
 				myCommand = new OdbcCommand(strAuditoria, oConnection);
 				myCommand.ExecuteNonQuery();
@@ -285,14 +241,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 				return false;
 
 			intIdInforme = int.Parse(ds.Tables[0].Rows[0]["IdInforme"].ToString()); 
-			intIdTipoPersona = int.Parse(ds.Tables[0].Rows[0]["IdTipoPersona"].ToString()); 
-
 			strNombre = ds.Tables[0].Rows[0]["Nombre"].ToString();
 			strApellido = ds.Tables[0].Rows[0]["Apellido"].ToString();
 			intTipoDocumento = int.Parse(ds.Tables[0].Rows[0]["idTipoDoc"].ToString());
 			strDocumento = ds.Tables[0].Rows[0]["NroDoc"].ToString();
-			//EMPRESAS
-			strRazonSocial= ds.Tables[0].Rows[0]["RazonSocial"].ToString();
 			strCuit= ds.Tables[0].Rows[0]["Cuit"].ToString();
 			strObservaciones = ds.Tables[0].Rows[0]["Observaciones"].ToString();
 			
