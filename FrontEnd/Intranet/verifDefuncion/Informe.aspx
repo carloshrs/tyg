@@ -19,7 +19,7 @@
                     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
 						<TABLE cellSpacing="0" cellPadding="0" width="640" border="0">
 							<tr>
-								<td class="title" width="100%">Informe de Partida de Defunción</td>
+								<td class="title" width="100%">Verificación de Defunción</td>
 							</tr>
 							<tr>
 								<td width="100%">

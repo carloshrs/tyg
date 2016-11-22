@@ -322,7 +322,7 @@ function OnSucceeded(result) {
                             
                          <asp:MultiView ID="contenedor" runat="server" ActiveViewIndex="0">
                          <asp:View ID="vwExaminar" runat="server">   
-						    <div style="margin-top:10px;">Importar partidas de defunción desde excel.</div>
+						    <div style="margin-top:10px;">Importar verificaciones de defunción desde excel.</div>
 						                                        
                                     
                                     <asp:Panel runat="server" ID="pnExaminar" Visible="true">
@@ -425,7 +425,7 @@ function OnSucceeded(result) {
 						</asp:View>
 
                         <asp:View ID="vwEspera" runat="server">   
-                              <div style="margin-top:10px;">Partidas de defunción <b>En Espera</b> en codiciones para solicitar en tribunales federales.</div>
+                              <div style="margin-top:10px;">Verificaciones de defunción <b>En Espera</b> en codiciones para solicitar en tribunales federales.</div>
                                     <asp:Panel ID="pnEnEspera" runat="server" style="margin-top:20px;">
                                         <br />
                                         <asp:datagrid id="dgridEnEspera" runat="server" Width="50%" Font-Size="8pt" PageSize="20"
@@ -480,7 +480,7 @@ function OnSucceeded(result) {
 						
 						<asp:View ID="vwFinalizados" runat="server">   
                                     <asp:Panel ID="Panel1" runat="server" style="margin-top:20px;">
-                                        Historial de Informes de Partidas de Defunción <b>finalizadas</b> para imprimir
+                                        Historial de verificaciones de defunción <b>finalizadas</b> para imprimir.
 						<BR>
 						<HR>
 						<BR>

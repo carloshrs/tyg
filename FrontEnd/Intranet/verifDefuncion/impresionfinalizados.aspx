@@ -32,7 +32,7 @@ function imprimir() {
         <div style="float:right;"><asp:Label ID="lblFechaActual" runat="server" Font-Bold="True" Text="06/01/2011"></asp:Label></div>
         <div style="width:100%; float:left; margin-bottom:20px; font-size:14px;" 
             class="style1">
-            GESTIÓN DE PARTIDAS DE DEFUNCIÓN</div>
+            GESTIÓN DE VERIFICACIONES DE DEFUNCIÓN</div>
         <div style="width:100%; float:left; margin-bottom:10px;">
             <asp:datagrid id="gvFinalizados" runat="server" Width="100%" 
                                         Font-Size="8pt" PageSize="15"
