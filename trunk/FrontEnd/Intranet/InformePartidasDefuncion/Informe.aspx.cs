@@ -39,8 +39,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 			if (!Page.IsPostBack)
 			{
 				if(Request.QueryString["id"] != null)
-				{	
-					CargarMorosidad(int.Parse(idInforme.Value));
+				{
+                    CargarInformePartidasDefuncion(int.Parse(idInforme.Value));
                     //ListarResultados(int.Parse(idInforme.Value));
 				}
 			}
@@ -68,14 +68,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 		}
 		#endregion
 
-        private void CargarMorosidad(int Id)
+        private void CargarInformePartidasDefuncion(int Id)
 		{
-            MorosidadDal oMorosidad = new MorosidadDal();
-			bool cargar = oMorosidad.Cargar(Id);
+            InformePartidasDefuncionDal oPartidasDefuncion = new InformePartidasDefuncionDal();
+            bool cargar = oPartidasDefuncion.Cargar(Id);
 			if (cargar)
 			{
 				idReferencia.Value = (1).ToString();
-                CargarForm(oMorosidad);
+                CargarForm(oPartidasDefuncion);
 			}
 			else
 			{
@@ -90,8 +90,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 
 		private void CargarEncabezado(EncabezadoApp oEncabezado)
 		{
-			cmbTipoPersona.SelectedValue = oEncabezado.IdTipoPersona.ToString();
-			SelectTipoPersona(oEncabezado.IdTipoPersona);
+			
 
 			txtNombre.Text = oEncabezado.Nombre;
 			txtApellido.Text = oEncabezado.Apellido;
@@ -99,32 +98,25 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 			txtDocumento.Text = oEncabezado.Documento;
 
 			//EMPRESA
-			RazonSocial.Text = oEncabezado.RazonSocial;
-			Cuit.Text = oEncabezado.Cuit;
+			
 			//txtObservaciones.Text = oEncabezado.Comentarios;
 		}
 
 
-		private void CargarForm(MorosidadDal oMorosidad)
+        private void CargarForm(InformePartidasDefuncionDal oPartidasDefuncion)
 		{
 			CultureInfo myInfo = new CultureInfo("es-AR");
 
-            idInforme.Value = oMorosidad.IdInforme.ToString();
+            idInforme.Value = oPartidasDefuncion.IdInforme.ToString();
 
-            cmbTipoPersona.SelectedValue = oMorosidad.IdTipoPersona.ToString();
-            SelectTipoPersona(oMorosidad.IdTipoPersona);
-
-            txtNombre.Text = oMorosidad.Nombre;
-            txtApellido.Text = oMorosidad.Apellido;
-            CargarTipoDocumento(oMorosidad.TipoDocumento);
-            txtDocumento.Text = oMorosidad.Documento;
-			//EMPRESA
-            RazonSocial.Text = oMorosidad.RazonSocial;
-            Cuit.Text = oMorosidad.Cuit;
-            txtObservaciones.Text = oMorosidad.Observaciones;
+            txtNombre.Text = oPartidasDefuncion.Nombre;
+            txtApellido.Text = oPartidasDefuncion.Apellido;
+            CargarTipoDocumento(oPartidasDefuncion.TipoDocumento);
+            txtDocumento.Text = oPartidasDefuncion.Documento;
+            txtObservaciones.Text = oPartidasDefuncion.Observaciones;
 
             ArchivoDal vArchivo = new ArchivoDal();
-            vArchivo.Cargar(oMorosidad.IdInforme);
+            vArchivo.Cargar(oPartidasDefuncion.IdInforme);
             hlArchivo.Text = "<b>Descargar archivo</b>";
             hlArchivo.NavigateUrl = vArchivo.Path;
             if (vArchivo.Extension == ".pdf")
@@ -135,7 +127,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 
 		protected void Cancelar_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=17");
+			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=20");
 		}
 
 
@@ -165,8 +157,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 		{
 			string strScript;
 			strScript = "<script languaje=\"Javascript\">";
-            strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=17&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
-			strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=17'";
+            strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=20&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
+			strScript += "document.location.href = '/BandejaEntrada/Principal.aspx?idTipo=20'";
 			strScript += "</script>";
 			ActualizarInforme();
 
@@ -183,38 +175,33 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
 		{
 			ActualizarInforme();
 			
-			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=17");
+			Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=20");
 		}
 
 		private void ActualizarInforme()
 		{
-            MorosidadDal oMorosidad = new MorosidadDal();
-            bool cargar = oMorosidad.Cargar(int.Parse(idInforme.Value));
+            InformePartidasDefuncionDal oPartidasDefuncion = new InformePartidasDefuncionDal();
+            bool cargar = oPartidasDefuncion.Cargar(int.Parse(idInforme.Value));
 			// Usuario Logueado
 			UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
-            oMorosidad.IdCliente = Usuario.IdCliente;
-            oMorosidad.IdUsuario = Usuario.IdUsuario;
+            oPartidasDefuncion.IdCliente = Usuario.IdCliente;
+            oPartidasDefuncion.IdUsuario = Usuario.IdUsuario;
 
-            oMorosidad.IdInforme = int.Parse(idInforme.Value);
+            oPartidasDefuncion.IdInforme = int.Parse(idInforme.Value);
 
-            oMorosidad.IdTipoPersona = int.Parse(cmbTipoPersona.SelectedValue);
+            oPartidasDefuncion.Nombre = txtNombre.Text;
+            oPartidasDefuncion.Apellido = txtApellido.Text;
+            oPartidasDefuncion.TipoDocumento = int.Parse(cmbTipoDocumento.SelectedItem.Value);
+            oPartidasDefuncion.Documento = txtDocumento.Text;
 
-            oMorosidad.Nombre = txtNombre.Text;
-            oMorosidad.Apellido = txtApellido.Text;
-            oMorosidad.TipoDocumento = int.Parse(cmbTipoDocumento.SelectedItem.Value);
-            oMorosidad.Documento = txtDocumento.Text;
-			//EMPRESA
-            oMorosidad.RazonSocial = RazonSocial.Text;
-            oMorosidad.Cuit = Cuit.Text;
-
-            oMorosidad.Observaciones = txtObservaciones.Text.ToUpper();
+            oPartidasDefuncion.Observaciones = txtObservaciones.Text.ToUpper();
 
             SubirArchivo();
 
 			if(int.Parse(idReferencia.Value) == 0)
-                oMorosidad.Crear();
+                oPartidasDefuncion.Crear();
 			else
-                oMorosidad.Modificar(int.Parse(idInforme.Value));
+                oPartidasDefuncion.Modificar(int.Parse(idInforme.Value));
 		
 		}
 
@@ -243,25 +230,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
         #endregion
 
 
-		protected void cmbTipoPersona_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			SelectTipoPersona(int.Parse(cmbTipoPersona.SelectedValue)); 
-		}
-
-		private void SelectTipoPersona(int idTipo)
-		{
-			if (idTipo == 1) 
-			{
-				pnlDomComercial.Visible = false;
-				pnlParticulares.Visible = true;
-			} 
-			else 
-			{
-				pnlDomComercial.Visible = true;
-				pnlParticulares.Visible = false;
-			}
-		}
-
 
         private string SubirArchivo()
         {
@@ -283,7 +251,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePartidasDefuncion
         {
             if (txtArchivo.PostedFile != null)
             {
-                string strPath = ConfigurationManager.AppSettings["PATH"] + "Informes/Morosidad/" + DateTime.Today.Year + "/";
+                string strPath = ConfigurationManager.AppSettings["PATH"] + "Informes/InformesPartidasDefuncion/" + DateTime.Today.Year + "/";
                 HttpPostedFile myFile = txtArchivo.PostedFile;
 
                 // Obtengo el tamaño del archivo

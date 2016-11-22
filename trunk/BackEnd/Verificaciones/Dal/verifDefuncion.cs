@@ -3,9 +3,9 @@ using System.Data;
 using System.Data.Odbc;
 using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
 
-namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
+namespace ar.com.TiempoyGestion.BackEnd.Verificaciones.Dal
 {
-    public class InformeDefuncion : GenericDal
+    public class verifDefuncion : GenericDal
     {
         #region Atributos y Contructores
 
@@ -258,11 +258,11 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
                 strCUIT = "";
             
             OdbcConnection oConnection = this.OpenConnection();
-            String strSQL = "INSERT INTO InformePartidaDefuncion (idInforme, Nombre, Apellido, NroDoc, Cuit, Sexo, Fallecido, FechaFallecido, Acta, Tomo, Folio, LugarFallecimiento,observaciones) ";
+            String strSQL = "INSERT INTO verifDefuncion (idInforme, Nombre, Apellido, NroDoc, Cuit, Sexo, Fallecido, FechaFallecido, Acta, Tomo, Folio, LugarFallecimiento,observaciones) ";
             strSQL = strSQL + " VALUES (" + intIdEncabezado + ", '" + strNombre + "','" + strApellido + "', " + strDocumento + ", '" + strCUIT + "', " + intSexo + ", " + intFallecido + ", '" + strFechaFallecido + "'";
             strSQL = strSQL + ",'" + strActa + "','" + strTomo + "','" + strFolio + "','" + strLugarFallecimiento + "','" + strObservaciones + "')";
 
-            String strMaxID = "SELECT MAX(idInforme) as MaxId FROM InformePartidaDefuncion";
+            String strMaxID = "SELECT MAX(idInforme) as MaxId FROM verifDefuncion";
             //System.Console.Out.WriteLine(strSQL);
             try
             {
@@ -303,7 +303,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 
             
             OdbcConnection oConnection = this.OpenConnection();
-            String strSQL = "UPDATE InformePartidaDefuncion SET ";
+            String strSQL = "UPDATE verifDefuncion SET ";
             strSQL = strSQL + "Nombre = '" + strNombre + "',";
             strSQL = strSQL + "Apellido = '" + strApellido +"',";
             strSQL = strSQL + "NroDoc = " + strDocumento + ",";
@@ -355,7 +355,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Informes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
-            String strSQL = "SELECT * FROM InformePartidaDefuncion ";
+            String strSQL = "SELECT * FROM verifDefuncion ";
             strSQL = strSQL + "WHERE idInforme = " + idInforme.ToString();
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
             myConsulta.Fill(ds);

@@ -7,8 +7,8 @@ using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
-using ar.com.TiempoyGestion.BackEnd.Informes.Dal;
 using System.Globalization;
+using ar.com.TiempoyGestion.BackEnd.Verificaciones.Dal;
 //using System.Globalization;
 //using System.IO;
 
@@ -33,7 +33,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
             {
                 if (Request.QueryString["id"] != null)
                 {
-                    LoadPartidaDefuncion(int.Parse(idInforme.Value));
+                    LoadDefuncion(int.Parse(idInforme.Value));
                 }
 
             }
@@ -68,9 +68,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
         }
         #endregion
 
-        private void LoadPartidaDefuncion(int Id)
+        private void LoadDefuncion(int Id)
         {
-            InformeDefuncion oInfDefuncion = new InformeDefuncion();
+            verifDefuncion oInfDefuncion = new verifDefuncion();
             EncabezadoApp oEncabezado = new EncabezadoApp();
             oEncabezado.cargarEncabezado(Id);
 
@@ -101,7 +101,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
         }
 
 
-        private void CargarForm(InformeDefuncion oInfDefuncion)
+        private void CargarForm(verifDefuncion oInfDefuncion)
         {
             CultureInfo myInfo = new CultureInfo("es-AR");
 
@@ -135,7 +135,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
 
         protected void Cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=4");
+            Response.Redirect("/BandejaEntrada/Principal.aspx?idTipo=19");
         }
 
         
@@ -160,7 +160,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.defuncion
         private void ActualizarInforme()
         {
             bool estado = false;
-            InformeDefuncion oInfDef = new InformeDefuncion();
+            verifDefuncion oInfDef = new verifDefuncion();
             bool cargar = oInfDef.Cargar(int.Parse(idInforme.Value));
             // Usuario Logueado
             UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];

@@ -114,6 +114,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dal\ambientalBancor.cs" />
+    <Compile Include="Dal\verifDefuncion.cs" />
     <Compile Include="Dal\inspeccionAmbientalBancor.cs" />
     <Compile Include="Dal\verifContrato.cs">
       <SubType>Code</SubType>
