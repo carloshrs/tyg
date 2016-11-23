@@ -71,7 +71,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 			idReferencia.Value= "0";
 			if(Encabezado.idReferencia.ToString() != null) idReferencia.Value= Encabezado.idReferencia.ToString();
 			//IdTipo = Encabezado.IdTipoInforme;
-			lblObservaciones.Text= Encabezado.Comentarios;
+			lblObservaciones.Text= Encabezado.Observaciones;
 
 			cmbTipoPersona.SelectedValue = Encabezado.IdTipoPersona.ToString();
 			//SelectTipoPersona(Encabezado.IdTipoPersona);
@@ -169,12 +169,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
 		protected void Cancelar_Click(object sender, System.EventArgs e)
 		{
-			if(idReferencia.Value != null) 
-			{
-				if (int.Parse(idReferencia.Value) > 0) Response.Redirect("/Referencias/altaReferencia.aspx?IdReferencia=" + idReferencia.Value);
-				else Response.Redirect("ListaInformes.aspx");
-			} 				
-			else Response.Redirect("ListaInformes.aspx");
+			//if(idReferencia.Value != null) 
+			//{
+			//	if (int.Parse(idReferencia.Value) > 0) Response.Redirect("/Referencias/altaReferencia.aspx?IdReferencia=" + idReferencia.Value);
+			//	else Response.Redirect("ListaInformes.aspx");
+			//} 				
+			//else Response.Redirect("ListaInformes.aspx");
+
+            Response.Redirect("ListaInformes.aspx");
 		}
 
 		private void CargarComboTipoInforme(int IdTipoInforme)
