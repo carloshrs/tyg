@@ -41,7 +41,7 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal
 		private Hashtable htRoles;
 		private string strStringRoles;
         private int intTipoPeriodo;
-
+        private int intHabilitarFinalizados;
 
 		public Usuario() : base()
 		{
@@ -72,6 +72,7 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal
 			strStringRoles = "";
             bolActivo = false;
             intTipoPeriodo = 0;
+            intHabilitarFinalizados = 0;
 		}
 
 		#endregion
@@ -218,7 +219,11 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal
 		{
             get { return intTipoPeriodo; }
 		}
-        
+
+        public int HabilitarFinalizados
+        {
+            get { return intHabilitarFinalizados; }
+        }
 
 		public Hashtable Roles
 		{
@@ -491,7 +496,7 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal
 			if (lId != 0 || lLogin != "")
 			{
 				StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select U.IdUsuario, U.LoginName, U.Nombre, U.Apellido, U.Telefono, U.Celular, U.Calle, U.Numero, U.Piso, U.Office, U.Barrio, U.CodPos, U.IdLocalidad, U.IdProvincia, U.Email, U.Password, U.FecCreacion, U.UltimoIngreso, U.Intranet, C.RazonSocial, U.IdCliente, U.estado, C.tipoPeriodo");
+                strSqlGet.Append("Select U.IdUsuario, U.LoginName, U.Nombre, U.Apellido, U.Telefono, U.Celular, U.Calle, U.Numero, U.Piso, U.Office, U.Barrio, U.CodPos, U.IdLocalidad, U.IdProvincia, U.Email, U.Password, U.FecCreacion, U.UltimoIngreso, U.Intranet, C.RazonSocial, U.IdCliente, U.estado, C.tipoPeriodo, C.habilitarInformeFinalizado");
                 strSqlGet.Append(" From Usuarios U LEFT OUTER JOIN Clientes C ON U.IdCliente=C.IdCliente ");
 				if (lId != -1)
 					strSqlGet.Append(" Where U.IdUsuario = " + Traduce(lId));
@@ -540,6 +545,8 @@ namespace ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal
                         bolActivo = Convert.ToBoolean(drUsuario.GetByte(21));
                         if (!drUsuario.IsDBNull(22))
                             intTipoPeriodo = drUsuario.GetByte(22);
+                        if (!drUsuario.IsDBNull(23))
+                            intHabilitarFinalizados = drUsuario.GetByte(23);
 					}
 					drUsuario.Close();
 				}

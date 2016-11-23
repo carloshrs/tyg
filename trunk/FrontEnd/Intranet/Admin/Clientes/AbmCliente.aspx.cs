@@ -218,6 +218,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 if (raTipoPeriodo2.Checked)
                     tipoPeriodo = 2;
                 dalCliente.TipoPeriodo = tipoPeriodo;
+
+                int habilitarInformeFinalizado = 0;
+                if (raHabilitarFinalizadoSI.Checked)
+                    habilitarInformeFinalizado = 1;
+                if (raHabilitarFinalizadoNO.Checked)
+                    habilitarInformeFinalizado = 0;
+                dalCliente.HabilitarFinalizados = habilitarInformeFinalizado;
+
 				resultado=dalCliente.Crear();				
 			}
 			else
@@ -262,6 +270,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                     tipoPeriodo = 2;
                 dalCliente.TipoPeriodo = tipoPeriodo;
 
+                int habilitarInformeFinalizado = 0;
+                if (raHabilitarFinalizadoSI.Checked)
+                    habilitarInformeFinalizado = 1;
+                if (raHabilitarFinalizadoNO.Checked)
+                    habilitarInformeFinalizado = 0;
+                dalCliente.HabilitarFinalizados = habilitarInformeFinalizado;
 
 				resultado=dalCliente.Modificar();
 			}
