@@ -102,6 +102,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
             raTipoDocumento2.Checked = (dalCliente.TipoDocumento == 2) ? true : false;
             raTipoPeriodo1.Checked = (dalCliente.TipoPeriodo == 1) ? true : false;
             raTipoPeriodo2.Checked = (dalCliente.TipoPeriodo == 2) ? true : false;
+            raHabilitarFinalizadoSI.Checked = (dalCliente.HabilitarFinalizados == 1) ? true : false;
+            raHabilitarFinalizadoNO.Checked = (dalCliente.HabilitarFinalizados == 0) ? true : false;
 
 			Session.Add("Cliente",dalCliente);
 		}
