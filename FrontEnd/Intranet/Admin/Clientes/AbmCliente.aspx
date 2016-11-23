@@ -205,6 +205,22 @@
                                                         </TD>
 													</TR>
                                                     <TR>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Habilitar informes finalizados</TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4">
+                                                            <table cellSpacing="2" cellPadding="4" width="100%" border="0">
+																<TR style="background-color:#eee;">
+																	<TD class="text" width="30%" >Habilitar finalizados</TD>
+                                                                    <TD class="text" width="100%">
+                                                                        <asp:RadioButton ID="raHabilitarFinalizadoSI" runat="server" Text="SI" GroupName="habilitarFinalizados" />&nbsp;&nbsp;&nbsp;
+                                                                        <asp:RadioButton ID="raHabilitarFinalizadoNO" runat="server" Text="NO" GroupName="habilitarFinalizados" /></TD>
+                                                                </TR>
+                                                                 
+                                                            </table>
+                                                        </TD>
+													</TR>
+                                                    <TR>
 														<TD class="text" colSpan="4" height="10"></TD>
 													</TR>
 													<TR>
