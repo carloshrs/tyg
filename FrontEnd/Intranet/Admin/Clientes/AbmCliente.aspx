@@ -201,11 +201,13 @@
                                                                         <asp:RadioButton ID="raTipoPeriodo1" runat="server" Text="Diario" GroupName="TipoPeriodo" />&nbsp;&nbsp;&nbsp;
                                                                         <asp:RadioButton ID="raTipoPeriodo2" runat="server" Text="Mensual" GroupName="TipoPeriodo" /></TD>
                                                                 </TR>
+                                                                
                                                             </table>
                                                         </TD>
 													</TR>
                                                     <TR>
-														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Habilitar informes finalizados</TD>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Habilitar informes finalizados para
+                                                            clientes diarios</TD>
 													</TR>
                                                     <TR>
 														<TD class="text" colSpan="4">
@@ -216,7 +218,7 @@
                                                                         <asp:RadioButton ID="raHabilitarFinalizadoSI" runat="server" Text="SI" GroupName="habilitarFinalizados" />&nbsp;&nbsp;&nbsp;
                                                                         <asp:RadioButton ID="raHabilitarFinalizadoNO" runat="server" Text="NO" GroupName="habilitarFinalizados" /></TD>
                                                                 </TR>
-                                                                 
+                                                                 <tr style="background-color:#eee;"><td colspan="2" class="text"><strong>Aclaración</strong>: los clientes mensuales visualizan SIEMPRE los informes finalizados</td></tr>
                                                             </table>
                                                         </TD>
 													</TR>
