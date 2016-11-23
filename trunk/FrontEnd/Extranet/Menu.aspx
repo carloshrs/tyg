@@ -35,7 +35,7 @@
 										<tr>
 											<td bgcolor="#d4d0c8">&nbsp;<IMG src="/img/ico_user.gif" border="0" width="16" height="16" id="imgUsuario" Runat="server"></td>
 											<td class="Titlesmall" bgcolor="#d4d0c8" width="100%" height="23">&nbsp;&nbsp;&nbsp;<asp:Label id="lblNombre" runat="server"></asp:Label></td>
-											<td bgcolor="#d4d0c8">&nbsp;<a href="/" target="_top"><IMG src="/img/cerrar.gif" border="0" width="16" height="16" id="Img3" Runat="server" alt="Cerrar Sesión"></a></td>
+											<td bgcolor="#d4d0c8">&nbsp;<a href="Logoff.aspx" target="_top"><IMG src="/img/cerrar.gif" border="0" width="16" height="16" id="Img3" Runat="server" alt="Cerrar Sesión"></a></td>
 										</tr>
 									</table>
 								</td>
