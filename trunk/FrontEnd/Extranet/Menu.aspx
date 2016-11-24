@@ -160,13 +160,17 @@
 								<TR>
 									<TD align="right" width="20"><IMG src="/img/treeArrow.gif"></TD>
 									<TD>
-										<asp:HyperLink id="Hyperlink4" Runat="server" CssClass="link" Target="Main" NavigateUrl="Admin/Clientes/AbmUsuario.aspx"> Info. del Usuario</asp:HyperLink></TD>
+										<asp:HyperLink id="Hyperlink4" Runat="server" CssClass="link" Target="Main" NavigateUrl="Admin/Clientes/AbmUsuario.aspx"> Datos del Usuario</asp:HyperLink></TD>
 								</TR>
 								<TR>
 									<TD align="right" width="20"><IMG src="/img/arrowLast.gif"></TD>
 									<TD>
-										<asp:HyperLink id="BusquedaPropiedadAutomotor" Runat="server" NavigateUrl="Admin/Clientes/AbmCliente.aspx"
-											CssClass="link" Target="Main"> Info. de la Empresa</asp:HyperLink></TD>
+										<asp:HyperLink id="BusquedaPropiedadAutomotor" Runat="server" NavigateUrl="Admin/Clientes/AbmCliente.aspx" CssClass="link" Target="Main"> Datos de la Empresa</asp:HyperLink></TD>
+								</TR>
+                                <TR>
+									<TD align="right" width="20"><IMG src="/img/treeArrow.gif"></TD>
+									<TD>
+										<asp:HyperLink id="hylCambioClave" Runat="server" CssClass="link" Target="Main" NavigateUrl="Admin/Clientes/CambioClave.aspx"> Cambio de clave</asp:HyperLink></TD>
 								</TR>
 							</TABLE>
 						</DIV>
