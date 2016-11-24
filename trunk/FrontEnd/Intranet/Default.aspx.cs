@@ -242,7 +242,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
                 if (myItem.Cells[17].Text == "0")  //no leida
                 {
                     myItem.Font.Bold = true;
-                    myItem.Font.Name = "blue";
+                    myItem.Font.Name = "Arial";
                 }
 
                 if (myItem.Cells[21].Text != "&nbsp;")  //Nombre de Fantasia o Razon Social?

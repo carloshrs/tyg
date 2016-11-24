@@ -288,6 +288,7 @@
 														</asp:TemplateColumn>
 														<asp:BoundColumn Visible="False" DataField="idTipoInforme"></asp:BoundColumn>
 														<asp:BoundColumn Visible="False" DataField="GRAVidTipoGravamen"></asp:BoundColumn>
+                                                        <asp:BoundColumn Visible="False" DataField="pagado"></asp:BoundColumn>
                                                         <asp:TemplateColumn>
 															<HeaderStyle Width="22px"></HeaderStyle>
 															<ItemStyle HorizontalAlign="Center"></ItemStyle>
