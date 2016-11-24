@@ -182,7 +182,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     }
 
                     //Verifica si el informe esta pagado o no
-                    if (myItem.Cells[16].Text == "1")
+                    if (myItem.Cells[14].Text == "1")
                         blInformePagado = true;
                     else
                         blInformePagado = false;
