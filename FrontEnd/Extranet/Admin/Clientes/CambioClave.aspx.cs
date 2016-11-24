@@ -109,7 +109,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Admin.Clientes
 		private void Salir()
 		{
 			Session.Remove("UsuarioUpdate");
-			Response.Redirect("/Admin/Clientes/CambioClave.aspx");
+			Response.Redirect("/");
 		}
 
 		protected void btnAceptar_Click(object sender, EventArgs e)
