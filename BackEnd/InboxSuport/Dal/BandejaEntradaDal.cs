@@ -94,7 +94,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 "B.DescripcionInf, B.FechaCarga, C.RazonSocial as RazonSocial1, B.Comentarios, " +
                 "E.idEstado, E.NombreEstado, E.NombreEstadoExtra, B.GRAVidTipoGravamen, B.leido, T.descripcion, B.estado, " +
                 "B.PROPTipo, B.PROPMatricula, B.PROPFolio, B.PROPtomo, B.PROPano, E.DescripcionEstado, B.FechaCondicional, " +
-                "B.EstadoCondicional, C.NombreFantasia, C.sucursal, A.path AS pathfilepdf " +
+                "B.EstadoCondicional, C.NombreFantasia, C.sucursal, A.path AS pathfilepdf, B.pagado " +
                 "FROM BandejaEntrada B " +
                 "INNER JOIN tiposInformes T ON B.idTipoInforme = T.idTipoInforme " +
                 "INNER JOIN EstadoInformes E ON B.Estado = E.idEstado " +
