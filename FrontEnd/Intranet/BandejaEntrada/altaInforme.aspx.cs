@@ -399,6 +399,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			pnlGravamenes.Visible = false;
 			pnlPropiedad.Visible = false;
 			pnlAmbiental.Visible = false;
+            pnlAmbientalExtra.Visible = false;
 			pnlDomComercial.Visible = false;
 			pnlDomicilioParticular.Visible = false;
 			pnlParticulares.Visible = false;
@@ -584,6 +585,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     pnlFoto.Visible = true;
                     pnlDomicilioParticular.Visible = true;
                     pnlParticulares.Visible = true;
+                    pnlAmbientalExtra.Visible = true;
                     //lblDatosParticulares.Text = "Relevamiento ambiental BANCOR";
                     pnlFoto.Visible = true;
                     break;
