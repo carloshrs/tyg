@@ -114,7 +114,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.VerifDomParticular
             lblManzana.Text = oVerifDom.Manzana;
             lblComplejo.Text = oVerifDom.Complejo;
             lblTorre.Text = oVerifDom.Torre;
-            lblTelefono.Text = oVerifDom.TelefonoEmpresa;
+            lblTelefono.Text = oVerifDom.AMBTelefono;
 			lblProvincia.Text = CargarProvincias(oVerifDom.Provincia);
 			lblLocalidad.Text = CargarLocalidades(oVerifDom.Provincia, oVerifDom.Localidad);
 			if(oVerifDom.ConFoto == 1) lblConFoto.Visible = true;
