@@ -360,10 +360,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InspeccionAmbientalBancor
 		{
 			EncabezadoApp oEncabezado = new EncabezadoApp();
 			oEncabezado.cargarEncabezado(int.Parse(idInforme.Value));
-			if (oEncabezado.ConFoto == 1 && ImagenDal.NextImage(int.Parse(idInforme.Value)) == 1)
-				lblMessage.Visible = true;
-			else
-			{
+			//if (oEncabezado.ConFoto == 1 && ImagenDal.NextImage(int.Parse(idInforme.Value)) == 1)
+				//lblMessage.Visible = true;
+			//else
+			//{
 				string strScript;
                 strScript = "<script  type=\"text/javascript\">";
                 strScript += "window.showModalDialog('/BandejaEntrada/PopUpCambioEstado.aspx?idTipo=21&idInforme=" + idInforme.Value + "&Finalizar=1','','dialogWidth:400px;dialogHeight:250px');";
@@ -387,7 +387,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InspeccionAmbientalBancor
                     //csText.Append("Form1.Message.value='Text from client script.'} </");
                     //csText.Append("script>");
                     cs.RegisterClientScriptBlock(csType, csName, strScript);
-                }
+                //}
 			}
 		}
 
