@@ -130,6 +130,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Morosidad
             if (vArchivo.Extension == ".pdf")
                 imgArchivo.ImageUrl = "/img/menu/pdf.png";
 
+            if (vArchivo.Path != "")
+                reqArchivo.Enabled = false;
 		}
 
 
