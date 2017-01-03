@@ -596,7 +596,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 					ValtxtFolio.Visible = true;
 					ValMatricula.Visible = true;
 					pnlDominioLegEspecial.Visible = true;
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
 					break;
                 case 4:
                     pnlDominioLegEspecial.Visible = false;
