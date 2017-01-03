@@ -518,7 +518,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					ValMatricula.Visible = true;
                     RequiredFieldValidator10.Enabled = false;
 					pnlDominioLegEspecial.Visible = true;
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
 					break;
                 case 4:
                     pnlDominioLegEspecial.Visible = false;

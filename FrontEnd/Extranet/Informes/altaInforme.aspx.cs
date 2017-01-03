@@ -578,7 +578,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 					pnlDominioLegEspecial.Visible = true;
                     //ValMatricula.ErrorMessage = "Ingrese Nro de legajo especial";
                     RequiredFieldValidatortxtAno.Enabled = false;
-                    pnlUrgencia.Visible = true;
+                    pnlUrgencia.Visible = false;
 					break;
                 case 4:
                     pnlDominioLegEspecial.Visible = false;
