@@ -105,7 +105,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Automotores
 				lblNum.Text = Id.ToString();
 				lblFec.Text = DateTime.Today.ToShortDateString();
 				lblSolicitante.Text = cliente.RazonSocial;
-				lblRef.Text = usuario.Apellido + ", " + usuario.Nombre;
+				//lblRef.Text = usuario.Apellido + ", " + usuario.Nombre;
+                if (oEncabezado.idReferencia != 0)
+                    lblRef.Text = oEncabezado.NombreReferencia.ToUpper();
+                else if (oEncabezado.UsuarioCliente != "")
+                    lblRef.Text = oEncabezado.UsuarioCliente.ToUpper();
+                else
+                    lblRef.Text = usuario.Apellido.ToUpper() + ", " + usuario.Nombre.ToUpper();
+
 				CargarForm(oAuto);
 			}
 			else
