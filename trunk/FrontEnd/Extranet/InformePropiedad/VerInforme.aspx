@@ -11,18 +11,17 @@
 				name.alt = alt
 			}
 
-			function mostrarFiltro(First, name)
-			{
-				if (masInfo.style.display == "none") 
-				{
-					masInfo.style.display = "list-item";
-					ToggleImg(name, 'Cerrar.gif', 'Cerrar Más Info');
-				} 
-				else 
-				{
-					masInfo.style.display = "none";
-					ToggleImg(name, 'Arrow.gif', 'Más Info');
-				}
+			function mostrarFiltro(First, name) {
+			    if (masInfo.style.display == "none") {
+			        masInfo.style.display = "list-item";
+			        ToggleImg(name, 'Cerrar.gif', 'Cerrar Más Info');
+			    }
+			    else {
+			        masInfo.style.display = "none";
+			        ToggleImg(name, 'Arrow.gif', 'Más Info');
+			    }
+			}
+
 
             function imprimir() {
                 panel.style.visibility = 'hidden';
