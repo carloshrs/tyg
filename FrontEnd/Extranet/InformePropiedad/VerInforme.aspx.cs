@@ -76,11 +76,31 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.InformePropiedad
 			bool cargar = oInformePropiedad.cargarInformePropiedad(Id);
 			if (cargar)
 			{
-				idReferencia.Value = (1).ToString();
-				lblNum.Text = Id.ToString();
-				lblFec.Text = DateTime.Today.ToShortDateString();
-				lblSolicitante.Text = cliente.RazonSocial;
-				//lblRef.Text = usuario.Apellido + ", " + usuario.Nombre;
+                idReferencia.Value = (1).ToString();
+                lblNum.Text = Id.ToString();
+                if (oEncabezado.FechaFin != "")
+                    lblFec.Text = Convert.ToDateTime(oEncabezado.FechaFin).ToShortDateString();
+
+                string solicitante = "";
+                if (cliente.NombreFantasia != null && cliente.NombreFantasia != "")
+                    solicitante = cliente.NombreFantasia;
+                else
+                    solicitante = cliente.RazonSocial;
+                if (cliente.Sucursal != null && cliente.Sucursal != "")
+                    solicitante = solicitante + " (" + cliente.Sucursal + ")";
+                lblSolicitante.Text = solicitante;
+
+                string direccion = "";
+                direccion = cliente.Calle + " " + cliente.Numero;
+                if (cliente.Piso != "")
+                {
+                    direccion = direccion + " Piso: " + cliente.Piso;
+                    direccion = direccion + " Dpto/Of: " + cliente.Departamento;
+                }
+                direccion = direccion + ". " + cliente.Barrio;
+                lblDireccionSolicitante.Text = direccion;
+
+
                 if (oEncabezado.idReferencia != 0)
                     lblRef.Text = oEncabezado.NombreReferencia.ToUpper();
                 else if (oEncabezado.UsuarioCliente != "")
@@ -129,10 +149,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.InformePropiedad
 			lblManzana.Text = oInformePropiedad.Manzana;
 			lblSuperficie.Text = oInformePropiedad.Superficie;
 			lblProporcion.Text = oInformePropiedad.Proporcion;
-			lblGravamenes.Text = oInformePropiedad.Gravamenes;
-			lblObservaciones.Text = oInformePropiedad.Observaciones;
-			lblMorosidad.Text = oInformePropiedad.Morosidad;
-			lblResultado.Text = oInformePropiedad.Resultado;
+            lblGravamenes.Text = Server.HtmlEncode(oInformePropiedad.Gravamenes.Trim().ToUpper()).Replace("\n", "<br>");
+            lbInformesAnteriores.Text = Server.HtmlEncode(oInformePropiedad.InformesAnteriores.Trim().ToUpper()).Replace("\n", "<br>");
+            lblObservaciones.Text = Server.HtmlEncode(oInformePropiedad.Observaciones.Trim().ToUpper()).Replace("\n", "<br>");
+            //lblMorosidad.Text = Server.HtmlEncode(oInformePropiedad.Morosidad.Trim().ToUpper()).Replace("\n", "<br>");
+            lblResultado.Text = Server.HtmlEncode(oInformePropiedad.Resultado.Trim().ToUpper()).Replace("\n", "<br>");
+            lblPropiedadDe.Text = oInformePropiedad.PropiedadDe;
+            lblUbicadaEn.Text = oInformePropiedad.UbicadaEn;
+            lblDominioAntecedente.Text = oInformePropiedad.DominioAntecedente;
 		}
 
 		private void Cancelar_Click(object sender, EventArgs e)
