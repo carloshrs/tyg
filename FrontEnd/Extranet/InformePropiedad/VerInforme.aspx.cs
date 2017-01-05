@@ -357,6 +357,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.InformePropiedad
 			dgTitulares.DataBind();
 		}
 
+        /*
 		protected void dgTitulares_PreRender(object sender, System.EventArgs e)
 		{
 			foreach(DataGridItem myItem in dgTitulares.Items)
@@ -375,6 +376,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.InformePropiedad
 				myItem.Cells[6].Text = myItem.Cells[6].Text + " %";
 			}
 		}
+        */
+
+
+        protected void dgTitulares_PreRender(object sender, System.EventArgs e)
+        {
+            foreach (DataGridItem myItem in dgTitulares.Items)
+            {
+                if (int.Parse(myItem.Cells[1].Text) == 2)
+                {
+                    myItem.Cells[2].Text = myItem.Cells[8].Text;
+                    myItem.Cells[3].Text = myItem.Cells[10].Text;
+                }
+            }
+        }
 
 	}
 }
