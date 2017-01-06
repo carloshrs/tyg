@@ -272,7 +272,7 @@
 														</TD>
 													</TR>
 													<TR>
-														<TD class="text" width="100%" height="120" valign="top"><asp:label id="lblGravamenes" runat="server"></asp:label></TD>
+														<TD class="text" width="100%" height="70" valign="top"><asp:label id="lblGravamenes" runat="server"></asp:label></TD>
 													</TR>
 													</table>
 													</asp:Panel>
@@ -290,7 +290,7 @@
 														</TD>
 													</TR>
 													<TR>
-														<TD class="text" width="100%" height="120" valign="top"><asp:label id="lbInformesAnteriores" runat="server"></asp:label></TD>
+														<TD class="text" width="100%" height="70" valign="top"><asp:label id="lbInformesAnteriores" runat="server"></asp:label></TD>
 													</TR>
 													</table>
                                                     </asp:Panel>
