@@ -139,7 +139,7 @@ function MM_swapImage() { //v3.0
 
   <div class="contenido">
     <div style="float:left;">
-      <div style="float:left; margin-top:20px; margin-left:20px;"> <a href="cumbre2016.asp"><img src="img/cumbre-banner-tyg-web.png" width="622" height="311" /></a></div>
+      <!--<div style="float:left; margin-top:20px; margin-left:20px;"> <a href="cumbre2016.asp"><img src="img/cumbre-banner-tyg-web.png" width="622" height="311" /></a></div>-->
 <div class="coda-slider-wrapper">
   <div class="coda-slider preload" id="coda-slider-1">
     <%
