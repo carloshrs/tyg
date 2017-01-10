@@ -135,10 +135,9 @@ Persona:</TD></TR>
 											<td width="100%" colSpan="4">
 												<table cellSpacing="0" cellPadding="0" width="100%" border="0" height="176">
 													<TR>
-														<TD class="text" width="50%">
+														<TD class="text" width="100%">
 															<asp:panel id="pnlParticulares" runat="server">
-                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
-border=0>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                           <TR>
                             <TD width="100%" colSpan=2>
                               <TABLE height=18 cellSpacing=0 cellPadding=0 
