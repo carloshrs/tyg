@@ -70,10 +70,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             return gp.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
         }
 
-        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            gp.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar);
+            gp.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
 	}
 }

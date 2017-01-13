@@ -112,13 +112,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     // Se agrega Forma de Pago
                     if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text));
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text), entrada);
 
                     if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text));
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text), entrada);
 
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text));
+                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text), entrada);
 
                     // Cheques en Cartera
 
@@ -262,10 +262,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
         }
 
-        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar);
+            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
     }
 }

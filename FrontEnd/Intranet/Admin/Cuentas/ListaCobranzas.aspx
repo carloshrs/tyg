@@ -189,10 +189,12 @@
 
 
 
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
 
 
 
@@ -211,7 +213,9 @@
 
 
 
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
 
 
 
@@ -220,8 +224,10 @@
 
 
 
+
                                     <cc1:CalendarExtender ID="txtFechaInicio_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaInicio" Enabled="True"></cc1:CalendarExtender>
+
 
 
 
@@ -230,8 +236,10 @@
 
 
 
+
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
+
 
 
 
@@ -240,7 +248,9 @@
 
 
 
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
 
 						            
                                 </TD>
@@ -318,9 +328,6 @@
                     <asp:Label ID="lblCliente" 
                         runat="server" Font-Bold="True"></asp:Label>
 
-
-
-
                         </div>
 
                 <div style="float:left;  width:200px; background-color:#dfdfdf; margin-left:20px; padding:5px; margin-top:10px;">
@@ -328,21 +335,13 @@
                     <asp:Label ID="lblMonto" runat="server" 
                         Font-Size="18pt"></asp:Label>
 
-
-
-
                 </div>
                 <div style="float:left;  width:200px; background-color:#dfdfdf; margin-left:20px; padding:5px; margin-top:10px;">
                     Saldo actual: 
                     <asp:Label ID="lblSaldoActual" runat="server" 
                         Font-Size="18pt"></asp:Label>
 
-
-
 <asp:Button ID="btnActualizarSaldo" runat="server" Text="Actualizar" />
-
-
-
 
                 </div>
 
@@ -352,14 +351,11 @@
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
                     <asp:DropDownList ID="cmbFormaPago1" runat="server">
                         <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
-<asp:ListItem Value="2" Text="Cheque"/>
-<asp:ListItem Value="3" Text="Transferencia"/>
-<asp:ListItem Value="4" Text="Depósito"/>
-<asp:ListItem Value="5" Text="CC $0,0"/>
-</asp:DropDownList>
-
-
-
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="CC $0,0"/>
+                    </asp:DropDownList>
 
                     </div>
                     <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
@@ -373,13 +369,12 @@
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
                     <asp:DropDownList ID="cmbFormaPago2" runat="server">
-                        <asp:ListItem Selected="True" Text="Seleccione forma de pago" />
-<asp:ListItem Value="1" Text="Efectivo"/>
-<asp:ListItem Value="2" Text="Cheque"/>
-<asp:ListItem Value="3" Text="Transferencia"/>
-<asp:ListItem Value="4" Text="Depósito"/>
-<asp:ListItem Value="5" Text="CC $0,0"/>
-</asp:DropDownList>
+                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="CC $0,0"/>
+                    </asp:DropDownList>
 
 
 
@@ -396,13 +391,12 @@
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
                     <asp:DropDownList ID="cmbFormaPago3" runat="server">
-                        <asp:ListItem Selected="True" Text="Seleccione forma de pago" />
-<asp:ListItem Value="1" Text="Efectivo"/>
-<asp:ListItem Value="2" Text="Cheque"/>
-<asp:ListItem Value="3" Text="Transferencia"/>
-<asp:ListItem Value="4" Text="Depósito"/>
-<asp:ListItem Value="5" Text="CC $0,0"/>
-</asp:DropDownList>
+                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="CC $0,0"/>
+                    </asp:DropDownList>
 
 
 
