@@ -303,7 +303,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             }
             catch (Exception e)
-            {
+               {
                 string p = e.Message;
                 return idCuentaClienteDetalle;
             }
@@ -407,7 +407,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             return true;
         }
 
-        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar)
+        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -416,7 +416,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddFormaPago " + idCajaDetalle + ", " + idFormaPago + ", " + MontoaPagar;
+            strSQL = "CCAddFormaPago " + idCajaDetalle + ", " + idFormaPago + ", " + MontoaPagar + ", " + entradasalida;
 
             try
             {
