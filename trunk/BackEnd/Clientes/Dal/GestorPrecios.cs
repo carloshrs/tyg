@@ -24,6 +24,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private float floSaldoCheque;
         private int intIdCajaDetalle;
         private string strConcepto;
+        private string strFormaPago;
         private float floMontoTotal;
         private int intEntradasalida;
         private string strFecha;
@@ -150,6 +151,18 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             set
             {
                 strConcepto = value;
+            }
+        }
+
+        public string FormaPago
+        {
+            get
+            {
+                return strFormaPago;
+            }
+            set
+            {
+                strFormaPago = value;
             }
         }
 
@@ -676,9 +689,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
 
-            String strSQL = "Select idCajaDetalle, idCaja, concepto, montoTotal, entradasalida, fecha, observaciones ";
-            strSQL = strSQL + " From CPCajaDetalle ";
-            strSQL = strSQL + " Where idCajaDetalle = " + idCajaDetalle.ToString();
+            String strSQL = "Select CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.montoTotal, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, CPFP.descripcion AS FormaPago ";
+            strSQL = strSQL + " From CPCajaDetalle CPCD INNER JOIN CPCajaDetalleFormaPago CPCDFP ON CPCD.idCajaDetalle = CPCDFP.idCajaDetalle INNER JOIN CPFormasPago CPFP ON CPCDFP.idFormaPago= CPFP.idFormaPago ";
+            strSQL = strSQL + " Where CPCD.idCajaDetalle = " + idCajaDetalle.ToString();
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
             myConsulta.Fill(ds);
             try
@@ -690,6 +703,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             intIdCajaDetalle = int.Parse(ds.Tables[0].Rows[0]["idCajaDetalle"].ToString());
             intIdCaja = int.Parse(ds.Tables[0].Rows[0]["idCaja"].ToString());
             strConcepto = ds.Tables[0].Rows[0]["concepto"].ToString();
+            strFormaPago = ds.Tables[0].Rows[0]["FormaPago"].ToString();
             floMontoTotal = float.Parse(ds.Tables[0].Rows[0]["montoTotal"].ToString());
             intEntradasalida = int.Parse(ds.Tables[0].Rows[0]["entradasalida"].ToString());
             strFecha = ds.Tables[0].Rows[0]["fecha"].ToString();
