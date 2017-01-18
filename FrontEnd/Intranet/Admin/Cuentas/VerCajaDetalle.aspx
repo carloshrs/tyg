@@ -50,12 +50,11 @@
                                     <tr><td><strong>Fecha:</strong></td><td> <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td><strong>Tipo:</strong></td><td> <asp:Label ID="lblTipo" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td><strong>Forma de pago:</strong></td><td> <asp:Label ID="lblFormaPago" runat="server" Text=""></asp:Label></td></tr>
-                                        <tr><td><strong>Concepto:</strong></td><td> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td>
-                                        </tr>
-                                        <tr><td></td><td>&nbsp;</td></tr>
-                                        <tr><td><strong>Monto:</strong></td><td>
-                                             $<asp:Label ID="lblMonto" runat="server" Text=""></asp:Label>
-                                            </td></tr>
+                                    <tr><td><strong>Monto:</strong></td><td>$<asp:Label ID="lblMonto" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td></td><td>&nbsp;</td></tr>
+                                    <tr><td><strong>Concepto:</strong></td><td> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td></tr>
+                                    
+                                        
                                     </table>
 								</td>
 							</tr>
