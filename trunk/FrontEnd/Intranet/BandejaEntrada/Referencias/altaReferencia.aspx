@@ -1,11 +1,65 @@
 <%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia.altaReferencia" CodeFile="altaReferencia.aspx.cs" %>
 <%@ Register TagPrefix="uc1" TagName="menu" Src="../../Inc/menu.ascx" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+<%@ Register assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI" tagprefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <HTML>
 	<HEAD>
 		<title>Alta de Informe</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
-		<script>
+
+        <link rel="stylesheet" href="../../jquery/themes/base/jquery.ui.all.css"/>
+	    <script src="../../jquery/jquery-1.4.4.js" type="text/javascript"></script>
+	    <script src="../../jquery/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.core.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.widget.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.mouse.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.draggable.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.position.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.resizable.js" type="text/javascript"></script>
+	    <script src="../../jquery/ui/jquery.ui.dialog.js" type="text/javascript"></script>
+
+		<link href="../../CSS/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+    <script src="../../jquery/jquery.autocomplete.js" type="text/javascript"></script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             //alert(document.getElementById("txtCliente").value)
+             $("#<%=txtCliente.ClientID%>").autocomplete("../../services/Search.ashx", {
+                 width: 480,
+                 formatItem: function (data, i, n, value) {
+                     //alert(value)
+                     vRetorno = "<span style=\"font-size:15px;\">" + value.split(",")[1] + "</span><br>" + value.split(",")[2];
+                     //alert(value.split(",")[3]);
+                     if (value.split(",")[3] != '' && value.split(",")[3] != '.') {
+                         var strMail = value.split(",")[3];
+                         vRetorno += " &nbsp;<img src=\"../../Img/mail.gif\" border=\"0\" title=\"" + strMail + "\">";
+                     }
+                     if (value.split(",")[4] != 0) {
+                         var str = value.split(",")[4];
+                         var n = replaceAll(str, "-", "\n");
+                         vRetorno += " &nbsp;<img src=\"../../Img/ico_user.gif\" border=\"0\" title=\"" + n + "\">";
+                     }
+                     return vRetorno;
+
+                 },
+                 formatResult: function (data, value) {
+                     //alert(value.split(",")[0]);
+                     //alert(value.split(",")[1]);
+                     document.getElementById("hdIdCliente").value = value.split(",")[1];
+                     return value.split(",")[1];
+                 }
+             });
+         });
+
+
+         function replaceAll(text, busca, reemplaza) {
+             while (text.toString().indexOf(busca) != -1)
+                 text = text.toString().replace(busca, reemplaza);
+             return text;
+         }
+
+
 		function Archivo()
 		{
 			if (chkFile.checked) 
@@ -63,14 +117,13 @@
 							<tr>
                                 <td class="text" width="535" colspan="4">
                                     Cliente&nbsp;
-                                    <asp:CompareValidator ID="CompareValidator1" runat="server" Operator="NotEqual" ValueToCompare="Seleccione un Cliente"
-                                        ControlToValidate="cmbClientes" ErrorMessage="Seleccione un cliente">*</asp:CompareValidator></td>
+                                    <asp:RequiredFieldValidator ID="rqValCliente" runat="server" ControlToValidate="txtCliente"></asp:RequiredFieldValidator>
+                                    </td>
                             </tr>
                             <tr>
                                 <td class="text" width="535" colspan="4" style="height: 8px">
-                                    <asp:DropDownList ID="cmbClientes" runat="server" AutoPostBack="True" Width="479px"
-                                        OnSelectedIndexChanged="cmbClientes_SelectedIndexChanged">
-                                    </asp:DropDownList></td>
+                                <asp:TextBox ID="txtCliente" runat="server" Style="text-transform: uppercase; font-size:16px; font-weight:300;" Width="100%" onClick="this.value='';"></asp:TextBox><asp:HiddenField ID="hdIdCliente" runat="server" />
+                                    <asp:Label id="txtDireccion" runat="server" class="text"></asp:Label>
                             </tr>
                             <tr>
                                 <td class="text" width="535" colspan="4">
