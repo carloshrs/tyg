@@ -65,6 +65,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 lblTipo.Text = "Egreso";
             else
                 lblTipo.Text = "Ingreso";
+            lblFormaPago.Text = CajaEncabezadoDetalle.FormaPago;
             lblFecha.Text = CajaEncabezadoDetalle.Fecha;
             lblObservaciones.Text = CajaEncabezadoDetalle.Observaciones;
 
