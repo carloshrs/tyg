@@ -58,11 +58,25 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 						txtDescripcion.Text = Referencia.Descripcion;
 						txtObservaciones.Text = Referencia.Observaciones;
 						ListaEncabezados(IdReferencia);
-                        ListaClientes(Referencia.IdCliente);
+                        //ListaClientes(Referencia.IdCliente);
                         ListaUsuarios(Referencia.IdCliente, Referencia.IdUsuario);
                         txtPersona.Text = Referencia.UsuarioCliente;
                         setValidaPersona();
+
+                        ClienteDal Clientes = new ClienteDal();
+                        Clientes.Cargar(Referencia.IdCliente);
+                        string nombreEmpresa = "";
+                        //string direccionEmpresa = "";
+
+                        if (Clientes.Sucursal != null && Clientes.Sucursal != "")
+                            nombreEmpresa = Clientes.NombreFantasia + " (" + Clientes.Sucursal + ")";
+                        else
+                            nombreEmpresa = Clientes.NombreFantasia;
+
+                        txtCliente.Text = nombreEmpresa;
+                        txtCliente.ReadOnly = true;
 					}
+
 				}
 			}
 			else
@@ -72,7 +86,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 				{
 					txtArchivo.Visible = false;
 					Aceptar.Text = "Siguiente >>";
-                    ListaClientes(-1);    
+                    //ListaClientes(-1);    
 				}
 				else
 				{
@@ -88,6 +102,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 					}
 				}
 			}
+
+            if (Request.Form["__EVENTTARGET"] == "SelectCliente")
+            {
+                //call your button click function, and pass the button to it (can pass null as the EventArgs)
+                //Button1_Click(Button1, null);
+                //SelectCliente
+                SubcmbClientes(hdIdCliente.Value);
+            }
 		}
 
 		#region Web Form Designer generated code
@@ -158,7 +180,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 			{
                 if (cmbUsuarios.SelectedValue != "")
                     Referencia.IdUsuario = int.Parse(cmbUsuarios.SelectedValue);
-                Referencia.IdCliente = int.Parse(cmbClientes.SelectedValue);
+                Referencia.IdCliente = int.Parse(hdIdCliente.Value);
                 if (cmbUsuarios.SelectedValue != "") Referencia.UsuarioCliente = cmbUsuarios.SelectedValue.ToString();
                 else Referencia.UsuarioCliente = txtPersona.Text.ToUpper();
 				Referencia.Estado = 5;
@@ -309,7 +331,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 				}
 			}
         }
-
+        /*
         #region ListaClientes(int idCliente)
 
         private void ListaClientes(int idCliente)
@@ -344,6 +366,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
         }
 
         #endregion
+         
 
         #region cmbClientes_SelectedIndexChanged
 
@@ -355,6 +378,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
         }
 
         #endregion
+        */
+
 
         #region ListaUsuarios(int idCliente, int idUsuario)
 
@@ -462,5 +487,34 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 
         #endregion
 
+
+
+        #region SubcmbClientes
+        protected void SubcmbClientes(string IdCliente)
+        {
+            if (IdCliente != "")
+            {
+                if (cmbUsuarios.SelectedValue != "")
+                    ListaUsuarios(int.Parse(IdCliente), int.Parse(cmbUsuarios.SelectedValue));
+                else
+                    ListaUsuarios(int.Parse(IdCliente), 0);
+            }
+            //cmbClientes.Focus();
+            string direccion = "";
+            ClienteDal dCliente = new ClienteDal();
+            dCliente.Cargar(int.Parse(IdCliente));
+            direccion = dCliente.Calle + " " + dCliente.Numero;
+            if (dCliente.Piso != "")
+                direccion = direccion + " Piso:" + dCliente.Piso;
+            if (dCliente.Departamento != "")
+                direccion = direccion + " Dpto:" + dCliente.Departamento;
+            txtDireccion.Text = direccion;
+
+
+            //VisualizarRecomendado();
+
+        }
+
+        #endregion
     }
 }
