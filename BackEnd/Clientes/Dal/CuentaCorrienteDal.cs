@@ -254,7 +254,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             strSQL = "SELECT TOP 1 idcaja FROM CPCaja " +
              "WHERE cierre IS NULL "+
-			 "AND apertura BETWEEN CONVERT(VARCHAR(10), GETDATE(), 103) + ' 00:00:00' AND CONVERT(VARCHAR(10), GETDATE(), 103) + ' 23:59:59' " +
+			 //"AND apertura BETWEEN CONVERT(VARCHAR(10), GETDATE(), 103) + ' 00:00:00' AND CONVERT(VARCHAR(10), GETDATE(), 103) + ' 23:59:59' " +
              "ORDER BY idCaja DESC";
  
 
