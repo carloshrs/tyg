@@ -389,6 +389,18 @@ border=0>
 												<P align="right"><INPUT onclick="NuevaMatricula();" type="button" value="Nuevo"></P>
 											</TD>
 										</TR>
+                                        <TR>
+											<TD class="text" align="left" colSpan="2">
+                                                <br />
+                                                Adjuntar PDF<br />
+                                                <asp:FileUpload ID="txtArchivo" runat="server" />
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="reqArchivo" runat="server" 
+                                                    ErrorMessage="Adjuntar archivo de Busqueda de propiedad" Text="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <br />
+                                                <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                                <br /><br />
+                                            </TD></TR>
 										<TR>
 											<TD class="text" width="535" colSpan="4">
 												<hr SIZE="2">
