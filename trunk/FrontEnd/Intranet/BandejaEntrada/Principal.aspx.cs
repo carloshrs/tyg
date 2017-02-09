@@ -95,14 +95,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             }
 
             BandejaEntradaApp bandeja = new BandejaEntradaApp();
-            bandeja.RegPorPagina = 10;
+            bandeja.RegPorPagina = 30;
             bandeja.Pagina = paginaActual;
             if (!bsqRapida)
             {
                 dgridEncabezados.DataSource = bandeja.ListaEncabezados(IdTipo, pFiltro, -1, idUser, "-1", -1, FechaDesde, FechaHasta, 0, false);
                 dgridEncabezados.DataBind();
 
-                litPaginador.Text = bandeja.GetPaginador(10);
+                litPaginador.Text = bandeja.GetPaginador(30);
             }
             else
                 litPaginador.Text = "<b><i>Ingrese criterio de búsqueda</i></b>";
@@ -202,11 +202,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 FechaHasta = txtFechaFinal.Text;
             }
             BandejaEntradaApp bandeja = new BandejaEntradaApp();
-            bandeja.RegPorPagina = 10;
+            bandeja.RegPorPagina = 30;
             bandeja.Pagina = paginaActual;
             dgridEncabezados.DataSource = bandeja.ListaEncabezados(IdTipoInforme, pFiltro, idCliente, idUser, Estado, Caracter, FechaDesde, FechaHasta, 0, false);
             dgridEncabezados.DataBind();
-            litPaginador.Text = bandeja.GetPaginador(10);
+            litPaginador.Text = bandeja.GetPaginador(30);
         }
 
 		protected void dgridEncabezados_PreRender(object sender, EventArgs e)
