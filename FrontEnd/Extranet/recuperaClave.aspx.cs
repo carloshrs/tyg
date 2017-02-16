@@ -107,11 +107,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet
             correo.Subject = "Tiempo & Gestión: solicitud de cambio de clave";
             //texto = "\n\nFecha: " + DateTime.Now.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss");
 
-            string texto = "Hola " + nombre + ", hemos recibido una solicitd de cambio de contraseña del usuario <b>" + usuario + "</b>.<br>" +
-                "Por lo tanto, generamos una nueva clave para que pueda acceder a nuestro sistema: <b>" + newPass + "</b><br>" +
-                "Por seguridad, le solicitamos que ingrese a nuestro sistema y modifique su contraseña.<br>" + 
+            string texto = "<div style='font-family: Tahoma, Geneva, sans-serif; font-size:10px;'>Hola " + nombre + ", hemos recibido una solicitud de cambio de contraseña del usuario <b>" + usuario + "</b>.<br>" +
+                "Por lo tanto, generamos una nueva <u>clave temporal</u> para que pueda acceder a nuestro sistema: <b>" + newPass + "</b><br>" +
+                "Por seguridad, le solicitamos que ingrese a nuestro sistema y modifique nuevamente su contraseña por alguna que pueda recordar con facilidad.<br>" + 
                 "Gracias por contactarnos.<br>" +
-                "Saluda atte. <br><br>Gestión de Desarrollo de Software de Tiempo & Gestión";
+                "Saluda atte. <br><br>Carlos Rodríguez<br>Desarrollo de Software Tiempo & Gestión</div>";
             correo.Body = texto;
             correo.IsBodyHtml = true;
             correo.Priority = System.Net.Mail.MailPriority.Normal;
