@@ -108,7 +108,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet
             //texto = "\n\nFecha: " + DateTime.Now.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss");
 
             string texto = "<div style='font-family: Tahoma, Geneva, sans-serif; font-size:12px;'>Hola " + nombre + ", hemos recibido una solicitud de cambio de contraseña del usuario <b>" + usuario + "</b>.<br>" +
-                "Por lo tanto, generamos una nueva <u>clave temporal</u> para que pueda acceder a nuestro sistema: <b>" + newPass + "</b><br>" +
+                "Por lo tanto, generamos una nueva <u>clave temporal</u> para que pueda acceder a nuestro sistema.<br><br>Nueva clave: <b>" + newPass + "</b><br><br>" +
                 "Por seguridad, le solicitamos que ingrese a nuestro sistema y modifique nuevamente su contraseña por alguna que pueda recordar con facilidad.<br>" + 
                 "Gracias por contactarnos.<br>" +
                 "Saluda atte. <br><br>Carlos Rodríguez<br>Desarrollo de Software Tiempo & Gestión</div>";
