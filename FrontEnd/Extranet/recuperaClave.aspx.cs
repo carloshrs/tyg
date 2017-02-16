@@ -96,8 +96,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet
 
         private void enviarMail(string usuario, string nombre, string newPass, string email)
         {
+            string strMailServer = ConfigurationManager.AppSettings["MailServer"];
+            string strMailUser = ConfigurationManager.AppSettings["MailUser"];
+            string strMailPass = ConfigurationManager.AppSettings["MailPass"];
+
             System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
-            correo.From = new System.Net.Mail.MailAddress("informes@tiempoygestion.com.ar");
+            correo.From = new System.Net.Mail.MailAddress(strMailUser);
             //correo.To.Add("carlosrodriguez@tiempoygestion.com.ar");
             correo.To.Add(email);
             correo.Subject = "Tiempo & Gestión: solicitud de cambio de clave";
@@ -117,8 +121,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet
             //---------------------------------------------
             // Estos datos debes rellanarlos correctamente
             //---------------------------------------------
-            smtp.Host = "smtp.tiempoygestion.com.ar";
-            smtp.Credentials = new System.Net.NetworkCredential("informes@tiempoygestion.com.ar", "Info123456");
+            smtp.Host = strMailServer;
+            smtp.Credentials = new System.Net.NetworkCredential(strMailUser, strMailPass);
             //smtp.EnableSsl = false;
 
             try
