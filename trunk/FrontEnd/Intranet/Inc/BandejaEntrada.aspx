@@ -248,7 +248,7 @@
 										<table width="150" cellpadding="0" cellspacing="0">
 											<tr>
 												<td align="right" width="20"><img src="/img/arrowLast.gif"></td>
-												<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="HyperLink11" NavigateUrl="/Inc/Admin/Clientes/AbmUsuario.aspx"> Info. del Usuario</asp:HyperLink></td>
+												<td><asp:HyperLink Runat="server" CssClass="link" Target="Main" ID="HyperLink11" NavigateUrl="/Admin/Clientes/AbmUsuario.aspx"> Info. del Usuario</asp:HyperLink></td>
 											</tr>
 										</table>
 									</div>
