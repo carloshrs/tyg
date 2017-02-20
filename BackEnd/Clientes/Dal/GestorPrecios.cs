@@ -8,11 +8,11 @@ using System.Data.SqlClient;
 
 namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 {
-	/// <summary>
-	/// Summary description for GestorPrecios.
-	/// </summary>
-	public class GestorPrecios : GenericDal
-	{
+    /// <summary>
+    /// Summary description for GestorPrecios.
+    /// </summary>
+    public class GestorPrecios : GenericDal
+    {
         private int intNroRemito;
         private int intTipoPeriodo;
         private int intIdCaja;
@@ -29,8 +29,14 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private int intEntradasalida;
         private string strFecha;
         private string strObservaciones;
+        private int intIdChequeCartera;
+        private float floCHMonto;
+        private string strCHBanco;
+        private string strCHNumero;
+        private string strCHFechaCobro;
+        private string strCHFechaEmision;
 
-		public GestorPrecios() {}
+        public GestorPrecios() { }
 
         #region Propiedades
 
@@ -213,31 +219,102 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strObservaciones = value;
             }
         }
-        
+
+        public int IdChequeCartera
+        {
+            get
+            {
+                return intIdChequeCartera;
+            }
+            set
+            {
+                intIdChequeCartera = value;
+            }
+        }
+
+        public float CHMonto
+        {
+            get
+            {
+                return floCHMonto;
+            }
+            set
+            {
+                floCHMonto = value;
+            }
+        }
+
+        public string CHBanco
+        {
+            get
+            {
+                return strCHBanco;
+            }
+            set
+            {
+                strCHBanco = value;
+            }
+        }
+
+        public string CHNumero
+        {
+            get
+            {
+                return strCHNumero;
+            }
+            set
+            {
+                strCHNumero = value;
+            }
+        }
+
+        public string CHFechaCobro
+        {
+            get
+            {
+                return strCHFechaCobro;
+            }
+            set
+            {
+                strCHFechaCobro = value;
+            }
+        }
+
+        public string CHFechaEmision
+        {
+            get
+            {
+                return strCHFechaEmision;
+            }
+            set
+            {
+                strCHFechaEmision = value;
+            }
+        }
 
         #endregion
 
-		public static DataTable TraerPrecios(int lIdTipoInforme)
-		{
-			StringBuilder strQuery = new StringBuilder(512);
-			DataTable dtSalida = null;
-			strQuery.Append("Select FecDesde, TipoPrecio, Precio, Actual ");
-			strQuery.Append(" From Precios ");
-			strQuery.Append(" Where IdTipoInforme = " + lIdTipoInforme.ToString());
-			strQuery.Append(" Order by FecDesde Desc");
-			
-			try
-			{
+        public static DataTable TraerPrecios(int lIdTipoInforme)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select FecDesde, TipoPrecio, Precio, Actual ");
+            strQuery.Append(" From Precios ");
+            strQuery.Append(" Where IdTipoInforme = " + lIdTipoInforme.ToString());
+            strQuery.Append(" Order by FecDesde Desc");
 
-				dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(),"Precios").Tables[0];
-			}
-			catch
-			{
-				throw;
-			}
+            try
+            {
 
-			return dtSalida;
-		}
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "Precios").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+
+            return dtSalida;
+        }
 
         public static DataTable TraerPreciosPropiedad(int lIdTipoPropiedad)
         {
@@ -283,33 +360,33 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             return dtSalida;
         }
 
-		public static float TraerPrecioActual(int lIdTipoInforme, byte lTipoPrecio)
-		{
-			StringBuilder strQuery = new StringBuilder(512);
-			IDataReader drPrecio = null;
-			float flSalida = 0;
-			strQuery.Append("Select Precio ");
-			strQuery.Append(" From Precios ");
-			strQuery.Append(" Where IdTipoInforme = " + lIdTipoInforme.ToString());
-			strQuery.Append(" And TipoPrecio = " + lTipoPrecio.ToString());
-			strQuery.Append(" And Actual = 1");
-			
-			try
-			{
-				drPrecio = StaticDal.EjecutarDataReader(strQuery.ToString());
-				if(drPrecio.Read())
-				{
-					flSalida = drPrecio.GetFloat(0);
-				}
-			}
-			catch
-			{
-				flSalida = 0;
-			}
+        public static float TraerPrecioActual(int lIdTipoInforme, byte lTipoPrecio)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            IDataReader drPrecio = null;
+            float flSalida = 0;
+            strQuery.Append("Select Precio ");
+            strQuery.Append(" From Precios ");
+            strQuery.Append(" Where IdTipoInforme = " + lIdTipoInforme.ToString());
+            strQuery.Append(" And TipoPrecio = " + lTipoPrecio.ToString());
+            strQuery.Append(" And Actual = 1");
 
-			return flSalida;
+            try
+            {
+                drPrecio = StaticDal.EjecutarDataReader(strQuery.ToString());
+                if (drPrecio.Read())
+                {
+                    flSalida = drPrecio.GetFloat(0);
+                }
+            }
+            catch
+            {
+                flSalida = 0;
+            }
 
-		}
+            return flSalida;
+
+        }
 
         public static float TraerPrecioActualPropiedad(int lIdTipoPropiedad, byte lTipoPrecio)
         {
@@ -339,32 +416,32 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
-		public static void AgregarPrecio(float lPrecio, int lIdTipoInforme, byte lTipoPrecio)
-		{
-			try
-			{
-				StringBuilder strQuery = new StringBuilder(512);
-				strQuery.Append("Update Precios Set Actual = 0 Where ");
-				strQuery.Append(" IdTipoInforme = " + StaticDal.Traduce(lIdTipoInforme));
-				strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
-				StaticDal.EjecutarComando(strQuery.ToString());
+        public static void AgregarPrecio(float lPrecio, int lIdTipoInforme, byte lTipoPrecio)
+        {
+            try
+            {
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery.Append("Update Precios Set Actual = 0 Where ");
+                strQuery.Append(" IdTipoInforme = " + StaticDal.Traduce(lIdTipoInforme));
+                strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
+                StaticDal.EjecutarComando(strQuery.ToString());
 
-				strQuery = new StringBuilder(512);
-				strQuery.Append("Insert Into Precios (IdTipoInforme, FecDesde, TipoPrecio, Precio) ");
-				strQuery.Append(" Values (" + StaticDal.Traduce(lIdTipoInforme));
-				strQuery.Append(", getdate() ");
-				strQuery.Append(", " + StaticDal.Traduce(lTipoPrecio));
-				strQuery.Append(", " + StaticDal.Traduce(lPrecio) + ")");
-			
+                strQuery = new StringBuilder(512);
+                strQuery.Append("Insert Into Precios (IdTipoInforme, FecDesde, TipoPrecio, Precio) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(lIdTipoInforme));
+                strQuery.Append(", getdate() ");
+                strQuery.Append(", " + StaticDal.Traduce(lTipoPrecio));
+                strQuery.Append(", " + StaticDal.Traduce(lPrecio) + ")");
 
-				StaticDal.EjecutarComando(strQuery.ToString());
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
-			}
 
-		}
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
 
         public static void AgregarPrecioPropiedad(float lPrecio, int lIdTipoPropiedad, byte lTipoPrecio)
         {
@@ -418,26 +495,26 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
-		public static void ModificarPrecio(DateTime lFecha, byte lTipoPrecio, int lIdTipoInforme, float lPrecio)
-		{
-			StringBuilder strQuery = new StringBuilder(512);
-			strQuery.Append("Update Precios ");
-			strQuery.Append(" Set Precio = " + StaticDal.Traduce(lPrecio));
-			strQuery.Append(" Where IdTipoInforme = " + StaticDal.Traduce(lIdTipoInforme));
-			strQuery.Append(" And FecDesde = " + StaticDal.Traduce(lFecha));
-			strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
-			
-			try
-			{
+        public static void ModificarPrecio(DateTime lFecha, byte lTipoPrecio, int lIdTipoInforme, float lPrecio)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            strQuery.Append("Update Precios ");
+            strQuery.Append(" Set Precio = " + StaticDal.Traduce(lPrecio));
+            strQuery.Append(" Where IdTipoInforme = " + StaticDal.Traduce(lIdTipoInforme));
+            strQuery.Append(" And FecDesde = " + StaticDal.Traduce(lFecha));
+            strQuery.Append(" And TipoPrecio = " + StaticDal.Traduce(lTipoPrecio));
 
-				StaticDal.EjecutarComando(strQuery.ToString());
-			}
-			catch
-			{
-				throw;
-			}
+            try
+            {
 
-		}
+                StaticDal.EjecutarComando(strQuery.ToString());
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
 
         public static void ModificarPrecioPropiedad(DateTime lFecha, byte lTipoPrecio, int lIdTipoPropiedad, float lPrecio)
         {
@@ -593,6 +670,31 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
+        public void CargarChequeCartera(int idChequeCartera)
+        {
+
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+
+            String strSQL = "Select  idChequeCartera, monto, ch_banco, ch_numero, ch_fechaCobro, ch_fechaEmision ";
+            strSQL = strSQL + " From CPChequesCartera ";
+            strSQL = strSQL + " Where idChequeCartera = " + idChequeCartera.ToString();
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+                oConnection.Close();
+            }
+            catch { }
+
+            intIdChequeCartera = int.Parse(ds.Tables[0].Rows[0]["idChequeCartera"].ToString());
+            floCHMonto = float.Parse(ds.Tables[0].Rows[0]["monto"].ToString());
+            strCHBanco = ds.Tables[0].Rows[0]["ch_banco"].ToString();
+            strCHNumero = ds.Tables[0].Rows[0]["ch_numero"].ToString();
+            strCHFechaCobro = ds.Tables[0].Rows[0]["ch_fechaCobro"].ToString();
+            strCHFechaEmision = ds.Tables[0].Rows[0]["ch_fechaEmision"].ToString();
+        }
+
 
         public void CargarMontosCajaAnterior()
         {
@@ -683,6 +785,24 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
+        public static DataTable ListarChequesCartera()
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("select idChequeCartera, ch_fechaCobro, monto, ch_banco, ch_numero from CPChequesCartera where idestadocheque=1 order by ch_fechaCobro ASC");
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "ChequesCartera").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
         public void CargarCajaDetalle(int idCajaDetalle)
         {
 
@@ -735,6 +855,28 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
+        public static DataTable ListarEstadosCheques(string lTexto)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select idEstadoCheque, descripcion ");
+            strQuery.Append("From CPEstadosCheque ");
+            strQuery.Append("WHERE idEstadoCheque<>1 ");
+            strQuery.Append("AND activo=1");
+           
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "EstadosCheques").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
         public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, string concepto, float monto, string observaciones)
         {
             try
@@ -747,12 +889,104 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
                 StringBuilder strQuery2 = new StringBuilder(512);
                 strQuery2 = new StringBuilder(512);
-                if(TipoIngreso ==1)
+                if (TipoIngreso == 1)
                     strQuery2.Append("UPDATE CPCaja SET saldoEfectivo = saldoEfectivo + " + StaticDal.Traduce(monto) + " ");
                 else
                     strQuery2.Append("UPDATE CPCaja SET saldoEfectivo = saldoEfectivo - " + StaticDal.Traduce(monto) + " ");
                 strQuery2.Append(" WHERE idCaja = " + StaticDal.Traduce(IdCaja));
                 StaticDal.EjecutarComando(strQuery2.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
+
+        public static void CambiarEstadoCheque(int IdChequeCartera, float Monto, int Estado)
+        {
+            try
+            {
+                // Se selecciona ultima caja abierta para actualizar saldo
+                StringBuilder strQuery1 = new StringBuilder(512);
+                DataTable dtSalida = null;
+                strQuery1.Append("Select top 1 idCaja FROM CPCaja ");
+                strQuery1.Append("WHERE cierre is null");
+
+
+                try
+                {
+                    dtSalida = StaticDal.EjecutarDataSet(strQuery1.ToString(), "idCaja").Tables[0];
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+                }
+
+                if (dtSalida.Rows.Count != 0)
+                {
+                    StringBuilder strQuery = new StringBuilder(512);
+                    strQuery = new StringBuilder(512);
+                    strQuery.Append("UPDATE CPChequesCartera ");
+                    strQuery.Append(" SET idEstadoCheque = " + StaticDal.Traduce(Estado) + "");
+                    strQuery.Append(" WHERE idChequeCartera = " + StaticDal.Traduce(IdChequeCartera) + "");
+                    StaticDal.EjecutarComando(strQuery.ToString());
+
+                    if (Estado == 2 || Estado == 4)
+                    {
+
+                        StringBuilder strQuery2 = new StringBuilder(512);
+                        strQuery2 = new StringBuilder(512);
+                        strQuery2.Append("UPDATE CPCaja SET saldoEfectivo = saldoEfectivo + " + StaticDal.Traduce(Monto) + ", saldoCheque = saldoCheque - " + StaticDal.Traduce(Monto) + " ");
+                        strQuery2.Append(" WHERE idCaja = " + StaticDal.Traduce(dtSalida.Rows[0]["idCaja"].ToString()));
+                        StaticDal.EjecutarComando(strQuery2.ToString());
+
+
+                        StringBuilder strQuery3  = new StringBuilder(512);
+                        strQuery3 = new StringBuilder(512);
+                        strQuery3.Append("INSERT CPCajaDetalle (idCaja, Concepto, montoTotal, entradasalida, fecha) VALUES ");
+                        strQuery3.Append("(" + StaticDal.Traduce(dtSalida.Rows[0]["idCaja"].ToString()) + ", 'INGRESO DE CHEQUE EN CARTERA', " + StaticDal.Traduce(Monto) + ", 1, getdate())");
+                        StaticDal.EjecutarComando(strQuery3.ToString());
+                        
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.StackTrace);
+            }
+
+        }
+
+        public static void CrearCuentaClienteDetalle(int IdCuentaCliente, int TipoIngreso, string concepto, int FormaPago, float monto, string observaciones)
+        {
+            try
+            {
+
+                StringBuilder strQuerySel = new StringBuilder(512);
+                DataTable dtSaldo = null;
+                float saldo = 0;
+                strQuerySel.Append("select top 1 saldo from CPCuentaClienteDetalle ");
+                strQuerySel.Append(" where idCuentaCliente=" + IdCuentaCliente);
+                strQuerySel.Append(" order by idCuentaClienteDetalle DESC");
+
+                dtSaldo = StaticDal.EjecutarDataSet(strQuerySel.ToString(), "saldo").Tables[0];
+
+                if (TipoIngreso == 1)
+                    saldo = float.Parse(dtSaldo.ToString()) + monto;
+                else
+                    saldo = float.Parse(dtSaldo.ToString()) - monto;
+
+
+
+                StringBuilder strQuery = new StringBuilder(512);
+                strQuery = new StringBuilder(512);
+                strQuery.Append("Insert Into CPCuentaClienteDetalle (idCuentaCliente, concepto, monto, saldo, entradasalida, fecha, observaciones) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(IdCuentaCliente) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(saldo) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), " + StaticDal.Traduce(observaciones) + ")");
+                StaticDal.EjecutarComando(strQuery.ToString());
+
+
             }
             catch (Exception e)
             {
@@ -895,7 +1129,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             strQuery.Append("ORDER BY idTipoInforme ");
             strQuery.Append("DROP table #temp ");
             //strQuery.Append("GO");
-            
+
             /*
             strQuery.Append("WHERE b.FechaCarga BETWEEN " + FechaDesde + " AND " + FechaHasta + " ");
             strQuery.Append("AND b.idCliente = " + lCliente + " ");
@@ -926,11 +1160,11 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         public static DataTable RemitoParteEntregaListarInformes(int idTipoDocumento, int TipoInforme, int nroRemito, string strSQL)
         {
-            
+
 
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
-            
+
             if (nroRemito == 0)
             {
                 strQuery.Append("SELECT b.idEncabezado, b.fechaCarga, b.descripcioninf, p.precio ");
@@ -953,7 +1187,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                     strQuery.Append("INNER JOIN remitoinforme ri on b.idEncabezado=ri.idEncabezado ");
                 }
                 if (idTipoDocumento == 2)
-                { 
+                {
                     strQuery.Append("SELECT b.idEncabezado, b.fechaCarga, b.descripcioninf, ri.precio ");
                     strQuery.Append("FROM bandejaentrada b ");
                     strQuery.Append("INNER JOIN parteEntregaInforme ri on b.idEncabezado=ri.idEncabezado ");
@@ -1024,7 +1258,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             if (idTipoDocumentacion == 1)
             {
                 strSQL = "UPDATE remitos SET periodoCobranza = " + idtipoCobranza +
-                " WHERE nroRemito = "+ nroRemito;
+                " WHERE nroRemito = " + nroRemito;
 
             }
             if (idTipoDocumentacion == 2)
@@ -1054,9 +1288,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = OpenConnection();
             string strSql = "";
-            if(lidTipoDocumento == 1)
+            if (lidTipoDocumento == 1)
                 strSql = "select * from remitos where nroRemito=" + lnroRemito.ToString();
-            
+
             if (lidTipoDocumento == 2)
                 strSql = "select nroParte as nroRemito, periodoCobranza from partesEntrega where nroParte=" + lnroRemito.ToString();
             //try
@@ -1146,12 +1380,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         {
             OdbcConnection oConnection = this.OpenConnection();
             string strSQL = "";
-            if(tipoDocumentacion == 1) 
+            if (tipoDocumentacion == 1)
             {
-            strSQL = "DELETE remitoinforme " +
-                 " WHERE idEncabezado = " + idEncabezado +
-                 " AND nroRemito=" + nroRemito +
-                 " AND facturado=0";
+                strSQL = "DELETE remitoinforme " +
+                     " WHERE idEncabezado = " + idEncabezado +
+                     " AND nroRemito=" + nroRemito +
+                     " AND facturado=0";
             }
 
             if (tipoDocumentacion == 2)
@@ -1216,7 +1450,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             return true;
         }
-        
+
 
         public bool eliminarAdicionalRemito(int tipoDocumentacion, int nroRemito, int idAdicional)
         {
@@ -1863,7 +2097,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strQuery.Append("where nroMovimiento= " + nroMovimiento + " ");
                 strQuery.Append("order by nroParte");
             }
-            
+
 
             try
             {
@@ -2144,5 +2378,5 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             return dtSalida;
         }
 
-	}
+    }
 }
