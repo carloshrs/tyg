@@ -267,5 +267,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
             ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
-    }
+        protected void btnPendientes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/Cuentas/ListaCobranzasPendientes.aspx");
+        }
+}
 }

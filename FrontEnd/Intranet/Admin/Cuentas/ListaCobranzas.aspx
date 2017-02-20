@@ -190,10 +190,12 @@
 
 
 
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
 
 
 
@@ -214,7 +216,9 @@
 
 
 
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
 
 
 
@@ -225,8 +229,10 @@
 
 
 
+
                                     <cc1:CalendarExtender ID="txtFechaInicio_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaInicio" Enabled="True"></cc1:CalendarExtender>
+
 
 
 
@@ -237,8 +243,10 @@
 
 
 
+
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
+
 
 
 
@@ -249,7 +257,9 @@
 
 
 
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
 
 
 						            
@@ -448,8 +458,12 @@
 
 </cc1:TabPanel>
         </cc1:TabContainer>
-    
+    <div style="text-align:right; width:95%;"><br />
+        <asp:Button ID="btnPendientes" runat="server" Text="Pendientes por clientes" 
+            onclick="btnPendientes_Click" />
+        </div>
     </div>
+    
     </form>
 </body>
 </html>
