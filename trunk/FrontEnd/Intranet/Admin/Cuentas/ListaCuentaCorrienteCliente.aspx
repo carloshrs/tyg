@@ -263,6 +263,18 @@
                         </asp:UpdatePanel>
 					</TD>
 				</TR>
+                <TR>
+					<td colspan="4">
+						<table cellSpacing="2" cellPadding="5" width="100%" border="0">
+							<TR>
+								<TD class="text" align="right" width="100%">
+									&nbsp;&nbsp;
+                                    <asp:button id="btnAceptar" runat="server" Text="Nuevo concepto" onclick="btnAceptar_Click"></asp:button>&nbsp;&nbsp;
+								</TD>
+							</TR>
+						</table>
+					</td>
+				</TR>
 			</TABLE>
 		</form>
 	</BODY>

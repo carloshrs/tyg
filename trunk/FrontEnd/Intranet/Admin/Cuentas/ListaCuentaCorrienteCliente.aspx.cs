@@ -186,5 +186,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
 
 
-    }
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/Cuentas/ABMCuentaClienteDetalle.aspx?id=" + hIdCliente.Value);
+        }
+}
 }

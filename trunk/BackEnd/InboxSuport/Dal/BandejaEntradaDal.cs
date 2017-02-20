@@ -591,13 +591,22 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
-            String strSQL = "SELECT CCD.idCuentaClienteDetalle, CCD.idCuentaCliente, CCD.concepto, CCD.monto, CCD.saldo, CCD.entradasalida, CCD.fechaIngreso " +
-                "FROM CPCuentaClienteDetalle CCD " +
-                "INNER JOIN CPCuentaCliente CC ON CCD.idCuentaCliente=CC.idCuentaCliente ";
-            strSQL = strSQL + "WHERE 1=1 ";
+            //String strSQL = "SELECT CCD.idCuentaClienteDetalle, CCD.idCuentaCliente, CCD.concepto, CCD.monto, CCD.saldo, CCD.entradasalida, CCD.fechaIngreso " +
+            //    "FROM CPCuentaClienteDetalle CCD " +
+            //    "INNER JOIN CPCuentaCliente CC ON CCD.idCuentaCliente=CC.idCuentaCliente ";
+            //strSQL = strSQL + "WHERE 1=1 ";
+
+            string strSQL = "WITH bottom AS(  " +
+                "SELECT top 30 * " +
+                "FROM CPCaja " +
+                "ORDER BY idCaja DESC) " +
+                "SELECT * " +
+                "FROM bottom " +
+                "ORDER BY idcaja";
+
             if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'", "''");
             int iniciopag = (pagina - 1) * registros;
-            String strSQLSP = "execute_query '" + strSQL + "', 'FechaIngreso ASC', " + pagina + ", " + registros + ", 10";
+            String strSQLSP = "execute_query '" + strSQL + "', 'FechaIngreso ASC', " + pagina + ", " + registros + ", 40";
 
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQLSP, oConnection);
             myConsulta.Fill(ds);

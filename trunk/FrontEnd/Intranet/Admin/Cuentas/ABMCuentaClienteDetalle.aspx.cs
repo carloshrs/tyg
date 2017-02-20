@@ -3,6 +3,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 using System.Data;
+using ar.com.TiempoyGestion.BackEnd.Clientes.App;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 {
@@ -18,7 +19,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 			{
                 string idCuentaCliente = "";
                 idCuentaCliente = Request.QueryString["idCuentaCliente"];
-                hdIdCaja.Value = idCuentaCliente;
+                hdIdCuentaCliente.Value = idCuentaCliente;
 
                 ListaConceptos(0);
                     
@@ -86,13 +87,48 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             ListaConceptos(int.Parse(cmbTipoIngreso.SelectedValue));
         }
+
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            int vIdCajaDetalle = 0;
+            CuentaCorrienteApp ccCliente = new CuentaCorrienteApp();
+            //ccCliente.ValClienteCC(hdIdCuentaCliente);
+            int idCuentaCliente = int.Parse(hdIdCuentaCliente.Value);
+            int idCajaDiaria = ccCliente.ObtenerNroCajaDiaria();
 
             //GestorPrecios CajaEncabezado = new GestorPrecios();
 
-            GestorPrecios.CrearCajaDetalle(int.Parse(hdIdCaja.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
-            Response.Redirect("ListaCuentaCorrienteCliente.aspx?id=" + hdIdCaja.Value);
+            GestorPrecios.CrearCuentaClienteDetalle(int.Parse(hdIdCuentaCliente.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), int.Parse(cmbFormaPago.SelectedValue), float.Parse(txtMonto.Text), txtObservaciones.Text);
+
+            ClienteDal dalCliente = new ClienteDal();
+            dalCliente.Cargar(hdIdCuentaCliente.Value);
+            string NombreCliente = dalCliente.NombreFantasia;
+            if (dalCliente.Sucursal != "")
+                NombreCliente = NombreCliente + "( " + dalCliente.Sucursal + ")";
+            NombreCliente = NombreCliente + ": ";
+
+            vIdCajaDetalle = AgregarMovimientoCaja(idCuentaCliente, int.Parse(cmbTipoIngreso.SelectedValue), NombreCliente + cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), float.Parse(txtMonto.Text));
+
+
+            // Se agrega Forma de Pago
+            if (txtMonto.Text != "" && int.Parse(txtMonto.Text) != 0)
+                AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago.SelectedValue), float.Parse(txtMonto.Text), int.Parse(cmbTipoIngreso.SelectedValue));
+
+
+            Response.Redirect("ListaCuentaCorrienteCliente.aspx?id=" + hdIdCuentaCliente.Value);
+        }
+
+        private int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
+        }
+
+        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
 }
 }

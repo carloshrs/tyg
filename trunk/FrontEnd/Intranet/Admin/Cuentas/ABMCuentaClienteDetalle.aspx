@@ -15,7 +15,7 @@
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp; <STRONG>AGREGAR CONCEPTO A CUENTA CLIENTE</STRONG>
+								<td class="title" height="38">&nbsp; <STRONG>AGREGAR CONCEPTO A CUENTA CORRIENTE DE CLIENTE</STRONG>
 									<HR>
 									<BR>
 								</td>
@@ -44,20 +44,31 @@
 									<table>
                                     <tr><td>Tipo:</td><td><asp:DropDownList ID="cmbTipoIngreso" runat="server" 
                                             onselectedindexchanged="cmbTipoIngreso_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem Text="ENTRADA" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="SALIDA" Value="0" Selected></asp:ListItem>
+                                            <asp:ListItem Text="ENTRADA" Value="1" Selected></asp:ListItem>
+                                            <asp:ListItem Text="SALIDA" Value="0" ></asp:ListItem>
                                             </asp:DropDownList></td>
                                         </tr>
                                         <tr><td>Concepto:</td><td><asp:DropDownList ID="cmbConcepto" runat="server">
                                             </asp:DropDownList></td>
                                         </tr>
-                                        <tr><td></td><td>&nbsp;</td></tr>
+                                        <tr><td>Forma de pago:</td><td>&nbsp;
+                    <asp:DropDownList ID="cmbFormaPago" runat="server">
+                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="5" Text="CC $0,0"/>
+                    </asp:DropDownList>
+
+                    </td></tr>
                                         <tr><td>Monto $:</td><td>
                                             <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
                                             <asp:CompareValidator ID="valMonto" runat="server" ControlToValidate="txtMonto" 
                                                 ErrorMessage="Monto debe ser numérico" Type="Currency" 
                                                 Operator="DataTypeCheck">*</asp:CompareValidator>
                                             </td></tr>
+                                        <tr><td>&nbsp;</td><td>
+                                            &nbsp;</td></tr>
                                     </table>
 								</td>
 							</tr>
@@ -90,7 +101,7 @@
 							<tr>
 								<td class="text" height="38" align="right">
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-                                <asp:HiddenField ID="hdIdCaja" Value="" runat="server" />
+                                <asp:HiddenField ID="hdIdCuentaCliente" Value="" runat="server" />
 									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
                                     <asp:Button id="btnAgregar" runat="server" Text="Agregar concepto" 
                                         onclick="btnAgregar_Click"></asp:Button>
