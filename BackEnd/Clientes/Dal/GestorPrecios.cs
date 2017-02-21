@@ -809,6 +809,25 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
 
+            if (fechaDesde != "")
+                fechaDesde = "'" + fechaDesde + " 00:00:00.000'";
+            else
+            {
+                fechaDesde = DateTime.Today.AddMonths(-2).ToShortDateString();
+                fechaDesde = "'" + fechaDesde + " 00:00:00.000'";
+            }
+
+
+
+            if (fechaHasta != "")
+                fechaHasta = "'" + fechaHasta + " 23:59:59.999'";
+            else
+            {
+                fechaHasta = DateTime.Today.ToShortDateString();
+                fechaHasta = "'" + fechaHasta + " 23:59:59.999'";
+            }
+
+
             if (tipoDocumento == 1 && tipoPeriodo == 2)
             {
                 strQuery.Append("select 1 as idTipo, 2 as tipoperiodo, c.idCliente, ");

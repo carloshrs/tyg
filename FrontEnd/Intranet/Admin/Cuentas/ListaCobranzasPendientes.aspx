@@ -7,6 +7,15 @@
 		<title>Lista de Cheques en Cartera</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 	</HEAD>
+
+    <script type="text/javascript">
+        function imprimir() {
+            document.getElementById("divBotones").style.display = 'none';
+            window.print();
+            document.getElementById("divBotones").style.display = 'block';
+        }
+    </script>
+
 	<body leftmargin="0" topmargin="0">
 		<mnu:menu id="Menu" runat="server"></mnu:menu>
 		<form method="post" runat="server">
@@ -90,8 +99,10 @@
 							<tr>
 								<td class="text" height="38" align="right">
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                                    <div id="divBotones" style="text-align:right">
+                                    <input id="Button1" type="button" value="Imprimir" onclick="imprimir();" />&nbsp; 
 									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
-                                    
+                                    </div>
 								</td>
 							</tr>
 						</table>
