@@ -248,7 +248,7 @@
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
 
 
-                                    <asp:CheckBox ID="chBorrador" runat="server" Checked="false" />
+                                    <asp:CheckBox ID="chBorrador" runat="server" Checked="false" Text="Borrador" />
 
 
 						            <asp:button id="btnBuscar" runat="server" Width="80px" Text="Buscar" 
