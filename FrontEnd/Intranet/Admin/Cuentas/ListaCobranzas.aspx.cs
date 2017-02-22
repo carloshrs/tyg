@@ -191,6 +191,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         private void ListadoDocumentosPendientesCobroClientes()
         {
+            int vEstado = 1;
+            if (chBorrador.Checked) vEstado = 3;
             int idCliente = int.Parse(hIdCliente.Value);
             if (txtFechaInicio.Text == "")
                 txtFechaInicio.Text = DateTime.Today.AddDays(-60).ToShortDateString();
@@ -202,7 +204,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             GestorPreciosApp documentos = new GestorPreciosApp();
             documentos.ActualizarMontosDocumentos(idCliente, FechaDesde, FechaHasta);
-            GVlistaCobrar.DataSource = documentos.ListaDocumentosPendientesCobrar(idCliente, FechaDesde, FechaHasta, 1);
+            GVlistaCobrar.DataSource = documentos.ListaDocumentosPendientesCobrar(idCliente, FechaDesde, FechaHasta, vEstado);
             //GVlistaCobrar.DataSource = NorthwindData.GetAllProduct();
             GVlistaCobrar.DataBind();
         }
