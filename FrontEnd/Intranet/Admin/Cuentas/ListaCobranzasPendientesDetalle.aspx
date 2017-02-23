@@ -38,9 +38,9 @@
 				            <TR>
 					            <TD>&nbsp;&nbsp;
                                 Cliente: <asp:Label runat="server" ID="lblCliente" Font-Bold="true"></asp:Label><br />
-						            Fecha desde&nbsp;<asp:Label id="lblFechaInicio" runat="server"  Font-Bold="true"></asp:Label>
+						            &nbsp;&nbsp;Fecha desde:&nbsp;<asp:Label id="lblFechaInicio" runat="server"  Font-Bold="true"></asp:Label>
                                     &nbsp; 
-                                    Fecha hasta <asp:Label id="lblFechaFinal" runat="server"  Font-Bold="true"></asp:Label>
+                                    Fecha hasta: <asp:Label id="lblFechaFinal" runat="server"  Font-Bold="true"></asp:Label>
                                    
 
                                     &nbsp;</TD>
