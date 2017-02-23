@@ -96,7 +96,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 				{
 
                     case "Detalle":
-                        Response.Redirect("ListaCobranzasPendientesDetalles.aspx?idCliente=" + e.Item.Cells[0].Text + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
+                        Response.Redirect("ListaCobranzasPendientesDetalle.aspx?idCliente=" + e.Item.Cells[0].Text + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
                         break;
 
 				}
