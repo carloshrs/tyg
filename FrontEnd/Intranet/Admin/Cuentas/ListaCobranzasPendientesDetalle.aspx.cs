@@ -23,12 +23,15 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
                 int idCliente = int.Parse(Request.QueryString["idCliente"]);
                 string FechaDesde = Request.QueryString["fechaDesde"];
                 string FechaHasta = Request.QueryString["fechaHasta"];
+
                 int vEstado = 1;
                     //FechaDesde = txtFechaInicio.Text;
                 
                 ClienteDal vCargar = new ClienteDal();
                 vCargar.Cargar(idCliente);
                 lblCliente.Text = vCargar.NombreFantasia;
+                lblFechaInicio.Text = FechaDesde;
+                lblFechaFinal.Text = FechaHasta;
 
                 GestorPreciosApp documentos = new GestorPreciosApp();
                 dgPendientesCobrosClienteDetalle.DataSource = documentos.ListaDocumentosPendientesCobrar(idCliente, FechaDesde, FechaHasta, vEstado);
