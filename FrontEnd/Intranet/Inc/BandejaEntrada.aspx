@@ -62,6 +62,12 @@
 					<td valign="top">
                         <asp:Panel ID="pnReferencias" runat="server">
                             <table>
+                                <tr>
+								    <td width="16"><img ID="Img5" Runat="server" src="/Img/Nuevo.gif" height="16"></td>
+								    <td><asp:hyperlink Runat="server" CssClass="linkt" NavigateUrl="/BandejaEntrada/altaInforme.aspx?IdTipo=1"
+										    Target="Main" ID="Hyperlink28">Nuevo informe</asp:hyperlink></td>
+							    </tr>
+
 							    <tr>
 								    <td width="16"><img ID="Img1" Runat="server" src="/Img/Referencia.gif" height="16"></td>
 								    <td><asp:hyperlink Runat="server" CssClass="linkt" NavigateUrl="/BandejaEntrada/Referencias/ListaReferencias.aspx"
