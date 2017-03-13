@@ -37,7 +37,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td class="text"><img src="/Img/tit_usuario.gif" border="0"></td>
+											<td class="text"><img src="/Img/tit.usuario.png" border="0"></td>
 										</tr>
 										<tr>
 											<td class="text">
@@ -47,7 +47,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td class="text"><img src="/Img/tit_password.gif" border="0"></td>
+											<td class="text"><img src="/Img/tit.clave.png" border="0"></td>
 										</tr>
 										<tr>
 											<td class="text">
@@ -58,7 +58,7 @@
 										<tr>
 											<td align="right" style="height:40px;">
 												<br />
-												<asp:Button id="btnLogin" runat="server" Text="Login" Width="70px" onclick="btnLogin_Click" PostBackUrl="/LoginExtra.aspx"></asp:Button>&nbsp;&nbsp;
+												<asp:Button id="btnLogin" runat="server" Text="Ingresar" Width="70px" onclick="btnLogin_Click" PostBackUrl="/LoginExtra.aspx"></asp:Button>&nbsp;&nbsp;
 												<asp:Button id="btnCancelar" runat="server" Text="Cancelar" Width="70px" onclick="btnCancelar_Click" CausesValidation="false"  PostBackUrl="/Login.aspx"></asp:Button>
 											</td>
 										</tr>
