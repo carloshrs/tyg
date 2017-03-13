@@ -43,7 +43,7 @@
 										</tr>
 										<tr>
 											<td width="110">&nbsp;</td>
-											<td class="text" colspan="2"><img src="/Img/tit_usuario.gif" border="0"></td>
+											<td class="text" colspan="2"><img src="/Img/tit.usuario.png" border="0"></td>
 										</tr>
 										<tr>
 											<td width="110">&nbsp;</td>
@@ -55,7 +55,7 @@
 										</tr>
 										<tr>
 											<td width="110">&nbsp;</td>
-											<td class="text" colspan="2"><img src="/Img/tit_password.gif" border="0"></td>
+											<td class="text" colspan="2"><img src="/Img/tit.clave.png" border="0"></td>
 										</tr>
 										<tr>
 											<td width="110">&nbsp;</td>
@@ -67,8 +67,9 @@
 										<tr>
 											<td width="110">&nbsp;</td>
 											<td align="right" width="245">
-												<asp:Button id="btnLogin" runat="server" Text="Login" Width="70px" onclick="btnLogin_Click"></asp:Button>&nbsp;&nbsp;
-												<asp:Button id="btnCancelar" runat="server" Text="Cancelar" Width="70px" onclick="btnCancelar_Click"></asp:Button>
+												
+												<asp:Button id="btnCancelar" runat="server" Text="Cancelar" Width="70px" onclick="btnCancelar_Click"></asp:Button>&nbsp;&nbsp;
+                                                <asp:Button id="btnLogin" runat="server" Text="Ingresar" Width="70px" onclick="btnLogin_Click"></asp:Button>
 											</td>
 											<td width="90">&nbsp;</td>
 										</tr>
