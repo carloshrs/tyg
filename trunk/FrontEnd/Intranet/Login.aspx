@@ -67,9 +67,9 @@
 										<tr>
 											<td width="110">&nbsp;</td>
 											<td align="right" width="245">
-												
-												<asp:Button id="btnCancelar" runat="server" Text="Cancelar" Width="70px" onclick="btnCancelar_Click"></asp:Button>&nbsp;&nbsp;
-                                                <asp:Button id="btnLogin" runat="server" Text="Ingresar" Width="70px" onclick="btnLogin_Click"></asp:Button>
+												<asp:Button id="btnLogin" runat="server" Text="Ingresar" Width="70px" onclick="btnLogin_Click"></asp:Button>&nbsp;&nbsp;
+												<asp:Button id="btnCancelar" runat="server" Text="Cancelar" Width="70px" onclick="btnCancelar_Click"></asp:Button>
+                                                
 											</td>
 											<td width="90">&nbsp;</td>
 										</tr>
