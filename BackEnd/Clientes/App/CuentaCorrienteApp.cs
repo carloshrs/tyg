@@ -40,6 +40,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             return gp.ObtenerSaldoClienteCC(lIdCuentaCliente);
         }
 
+        public float ObtenerSaldoInformesCliente(int lIdCliente)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            return gp.ObtenerSaldoInformesCliente(lIdCliente);
+        }
+
         public int ObtenerNroCajaDiaria()
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
@@ -52,10 +58,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.App
             return gp.AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
         }
 
-        public int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
+        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
+            return gp.AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, montoPagar, observaciones);
         }
 
         public bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)

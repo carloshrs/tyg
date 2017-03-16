@@ -48,8 +48,7 @@
                                             <asp:ListItem Text="SALIDA" Value="0" ></asp:ListItem>
                                             </asp:DropDownList></td>
                                         </tr>
-                                        <tr><td>Concepto:</td><td><asp:DropDownList ID="cmbConcepto" runat="server">
-                                            </asp:DropDownList></td>
+                                        <tr><td>Concepto:</td><td><asp:DropDownList ID="cmbConcepto" runat="server"></asp:DropDownList> &nbsp;&nbsp;&nbsp;Concepto adicional: <asp:TextBox ID="txtConceptoAdicional" style="text-transform:uppercase;"  runat="server" Width="300"></asp:TextBox></td>
                                         </tr>
                                         <tr><td>Forma de pago:</td><td>&nbsp;
                     <asp:DropDownList ID="cmbFormaPago" runat="server">
@@ -63,7 +62,8 @@
                     </td></tr>
                                         <tr><td>Monto $:</td><td>
                                             <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
-                                            <asp:CompareValidator ID="valMonto" runat="server" ControlToValidate="txtMonto" 
+                                            <asp:RequiredFieldValidator ID="valReqMonto" runat="server" ControlToValidate="txtMonto" Text="*" ErrorMessage="Ingrese monto"></asp:RequiredFieldValidator>
+                                            <asp:CompareValidator ID="valComMonto" runat="server" ControlToValidate="txtMonto" 
                                                 ErrorMessage="Monto debe ser numérico" Type="Currency" 
                                                 Operator="DataTypeCheck">*</asp:CompareValidator>
                                             </td></tr>
@@ -73,19 +73,22 @@
 								</td>
 							</tr>
                             <tr style="margin-top:30px;">
-								<td style="background-color:#DDD">
+								<td style="background-color:#EEE">
 									<table>
                                     
                                         
                                         <tr><td>
                                             <br />
                                             <strong>Caja Diaria</strong><br />
-                                            Ingresar monto en caja diaria:</td><td>
-
+                                            Ingresar monto en caja diaria: <asp:RadioButtonList ID="raIngresaCaja" runat="server" RepeatDirection="Horizontal">
+                                            <asp:ListItem Text="SI" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="NO" Value="0"></asp:ListItem>
+                                            </asp:RadioButtonList>&nbsp; &nbsp;</td><td>
+                                            <asp:RequiredFieldValidator ID="valIngresoCaja" runat="server" ControlToValidate="raIngresaCaja" Text="*" ErrorMessage="¿Ingresa a caja?"></asp:RequiredFieldValidator>
                                                 <br />
                                                 <br />
 
-                                            <asp:CheckBox ID="chkCaja" runat="server" />
+                                            
                                             
 
                                             </td></tr>
@@ -100,7 +103,7 @@
 							</tr>
 							<tr>
 								<td class="text" height="38" align="right">
-                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" />
                                 <asp:HiddenField ID="hdIdCuentaCliente" Value="" runat="server" />
 									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
                                     <asp:Button id="btnAgregar" runat="server" Text="Agregar concepto" 
