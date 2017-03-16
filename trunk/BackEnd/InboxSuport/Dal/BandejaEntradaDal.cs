@@ -594,7 +594,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             String strSQL = "SELECT TOP 25 CCD.idCuentaClienteDetalle, CCD.idCuentaCliente, CCD.concepto, CCD.monto, CCD.saldo, CCD.entradasalida, CCD.fechaIngreso " +
                 "FROM CPCuentaClienteDetalle CCD " +
                 "INNER JOIN CPCuentaCliente CC ON CCD.idCuentaCliente=CC.idCuentaCliente ";
-            strSQL = strSQL + "WHERE 1=1 ";
+            strSQL = strSQL + "WHERE 1=1 " + SQLWhere;
  
             string strSQL2 = "WITH bottom AS(  " + strSQL +
                 " ORDER BY idCuentaClienteDetalle DESC) SELECT * " +
