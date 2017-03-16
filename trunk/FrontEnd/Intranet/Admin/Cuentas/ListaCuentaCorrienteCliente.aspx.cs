@@ -18,7 +18,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         protected bool bsqRapida = false;
 		protected void Page_Load(object sender, EventArgs e)
 		{
-           
+
+            float vTotalDeuda = 0;
+            float vSaldoAnterior = 0;
+            float vSaldoInformes = 0;
+
             if (txtFechaInicio.Text == "")
                 txtFechaInicio.Text = DateTime.Today.AddMonths(-3).ToShortDateString();
 
@@ -42,10 +46,37 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                 CuentaCorrienteApp vCCCliente = new CuentaCorrienteApp();
                 int idCuentaCliente = vCCCliente.ObtenerNroClienteCC(int.Parse(hIdCliente.Value));
-                if (vCCCliente.ObtenerSaldoClienteCC(idCuentaCliente) != -1)
-                    lblSaldo.Text = "$ " + vCCCliente.ObtenerSaldoClienteCC(idCuentaCliente).ToString();
+                vSaldoAnterior = vCCCliente.ObtenerSaldoClienteCC(idCuentaCliente);
+                if (vSaldoAnterior != -1)
+                {
+
+                    lblSaldoAnterior.Text = "$ " + vSaldoAnterior.ToString();
+                    if (vSaldoAnterior > 0)
+                    {
+                        lblSaldoAnterior.ForeColor = System.Drawing.ColorTranslator.FromHtml("#0072ff");
+                        lblPendienteFavor.Text = "a favor";
+                    }
+                    else
+                    {
+                        lblSaldoAnterior.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
+                        lblPendienteFavor.Text = "pendiente";
+                    }
+                }
                 else
-                    lblSaldo.Text = "$ 0,00";
+                    lblSaldoAnterior.Text = "$ 0,00";
+
+                vSaldoInformes = vCCCliente.ObtenerSaldoInformesCliente(int.Parse(hIdCliente.Value));
+                if (vSaldoInformes != -1)
+                {
+                    lblSaldoPendienteCobro.Text = "$ -" + vSaldoInformes.ToString();
+                    lblSaldoPendienteCobro.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
+                }
+                else
+                    lblSaldoPendienteCobro.Text = "$ 0,00";
+
+
+                vTotalDeuda = vSaldoAnterior - vSaldoInformes;
+                lblTotal.Text = "$ " + vTotalDeuda;
                 //txtFechaInicio.Text = DateTime.Today.AddMonths(-3).ToShortDateString();
                 //txtFechaFinal.Text = DateTime.Today.ToShortDateString();
                 ListaBandeja();

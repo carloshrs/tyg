@@ -1045,31 +1045,36 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
         }
 
-        public static void CrearCuentaClienteDetalle(int IdCuentaCliente, int TipoIngreso, string concepto, int FormaPago, float monto, string observaciones)
+        public static void CrearCuentaClienteDetalle(int IdCuentaCliente, int TipoIngreso, string concepto, int FormaPago, float monto)
         {
             try
             {
 
                 StringBuilder strQuerySel = new StringBuilder(512);
+                IDataReader drSaldo = null;
                 DataTable dtSaldo = null;
-                float saldo = 0;
+                double saldo = 0;
                 strQuerySel.Append("select top 1 saldo from CPCuentaClienteDetalle ");
                 strQuerySel.Append(" where idCuentaCliente=" + IdCuentaCliente);
                 strQuerySel.Append(" order by idCuentaClienteDetalle DESC");
 
-                dtSaldo = StaticDal.EjecutarDataSet(strQuerySel.ToString(), "saldo").Tables[0];
+                drSaldo = StaticDal.EjecutarDataReader(strQuerySel.ToString());
+                if (drSaldo.Read())
+                {
+                    saldo = drSaldo.GetFloat(0);
+                }
 
                 if (TipoIngreso == 1)
-                    saldo = float.Parse(dtSaldo.ToString()) + monto;
+                    saldo = saldo + monto;
                 else
-                    saldo = float.Parse(dtSaldo.ToString()) - monto;
+                    saldo = saldo - monto;
 
 
 
                 StringBuilder strQuery = new StringBuilder(512);
                 strQuery = new StringBuilder(512);
-                strQuery.Append("Insert Into CPCuentaClienteDetalle (idCuentaCliente, concepto, monto, saldo, entradasalida, fecha, observaciones) ");
-                strQuery.Append(" Values (" + StaticDal.Traduce(IdCuentaCliente) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(saldo) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), " + StaticDal.Traduce(observaciones) + ")");
+                strQuery.Append("Insert Into CPCuentaClienteDetalle (idCuentaCliente, concepto, monto, saldo, entradasalida, fechaIngreso, fecha) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(IdCuentaCliente) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(saldo) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), getdate())");
                 StaticDal.EjecutarComando(strQuery.ToString());
 
 

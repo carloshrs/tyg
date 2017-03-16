@@ -244,6 +244,59 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
+        public float ObtenerSaldoInformesCliente(int lIdCliente)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0;
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "WITH CTE " +
+                "AS " +
+                "( " +
+                "SELECT isnull(monto,0) as saldo  " +
+                "FROM remitos  " +
+                "WHERE idCliente=" + lIdCliente + 
+                " and estado=1 and periodoCobranza=1 " +
+                "union  " +
+                "SELECT isnull(monto,0) as saldo  " +
+                "FROM partesEntrega  " +
+                "WHERE idCliente=" + lIdCliente + 
+                " and estado=1 and periodoCobranza=1 " +
+                "union " +
+                "SELECT sum(monto) as saldo  " +
+                "FROM CtaCteRemitos  " +
+                " WHERE idCliente=" + lIdCliente + 
+                " and estado=1 " +
+                "union " +
+                "SELECT isnull(monto,0) as saldo  " +
+                "FROM CtaCtePartesEntrega  " +
+                "WHERE idCliente=" + lIdCliente + 
+                " and estado=1 " +
+                ") " +
+                "SELECT SUM(saldo) as saldo " +
+                "FROM CTE";
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldo"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+                return -1;
+            }
+
+            return fSaldo;
+        }
+
         public int ObtenerNroCajaDiaria()
         {
             //int MaxID = 0;
@@ -312,7 +365,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
-        public int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar)
+        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -321,7 +374,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCaja " + idCuentaCliente + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", 0";
+            strSQL = "CCAddMovimientoCaja " + idCajaDiaria + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", '" + observaciones + "', 0";
 
             try
             {

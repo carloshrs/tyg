@@ -72,6 +72,11 @@
 		font-size:12px;
 	}
 	
+	    .style1
+        {
+            text-align: left;
+        }
+	
 	</style>
 
 	<script type="text/javascript">
@@ -129,27 +134,54 @@
 				</TR>
 				<TR>
 					<TD width="100%" class="text" colspan="2" align="center" height="400">&nbsp;
-					<table class="text" width="500px">
+					<table class="text" width="700px">
                     <tr><td>
-                        <table cellSpacing="0" cellPadding="0" width="100%" border="0">
+                        <table cellSpacing="0" cellPadding="0" width="100%" border="0" >
+                        <tr><td align="center" style="background-color:#EEE; font-size:22px;"><b>ESTADO DE CUENTA DE CLIENTE</b></td></tr>
 										<tr>
-											<TD class="text" align="left" width="100%">&nbsp;&nbsp; <asp:Label ID="lblCliente" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											<TD class="text" align="left" width="100%">
+                                                <br />
+                                                <asp:Label ID="lblCliente" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
 											</TD></tr>
                                             <tr>
-											<TD class="text" align="left" width="100%">&nbsp;Saldo actual:&nbsp;<asp:Label ID="lblSaldo" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
-											</TD>
+											<TD class="text" align="left" width="100%" style="font-size:16px;">
+                                                <br />
+                                                Saldo <asp:Label runat="server" ID="lblPendienteFavor" Text="pendiente"></asp:Label>&nbsp;anterior
+                                                :&nbsp;<asp:Label ID="lblSaldoAnterior" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											    <br />
+                                                Informes pendientes de cobro:&nbsp;<asp:Label ID="lblSaldoPendienteCobro" runat="server" Text="" 
+                                                    Font-Bold="true" Font-Size="16px"></asp:Label>
+											    <br />
+                                                Total: <asp:Label ID="lblTotal" runat="server" Text="" 
+                                                    Font-Bold="true" Font-Size="20px"></asp:Label></TD>
                                             <td></td>
 										</tr>
 										
 									</TABLE>
                         
-                         
-					    &nbsp;
                             <asp:HiddenField ID="HiddenField1" runat="server" />
                              
                             </td></tr>
 						<tr><td>
-                        <table cellSpacing="0" cellPadding="0" width="100%" border="0">
+                       
+					    &nbsp;
+                            <asp:HiddenField ID="hIdCliente" runat="server" />
+                             
+                            </td></tr>
+                        </table>
+					   
+                        <div class="style1">
+					   
+                        &nbsp;&nbsp;<br />
+                            
+                        <br />
+                        </div>
+
+                        <table class="text" width="75%">
+                        <tr><td colspan="4"><div style="padding:10px; background-color:#eee;"><strong>ULTIMOS MOVIMIENTOS</strong></div></td></tr>
+						<tr><td>
+                        <table cellSpacing="0" cellPadding="0" width="50%" border="0">
+                        
 										<tr>
 											<TD class="text" align="left" width="30%">&nbsp;Fecha Desde:&nbsp;
 											</TD>
@@ -183,13 +215,9 @@
                         
                          
 					    &nbsp;
-                            <asp:HiddenField ID="hIdCliente" runat="server" />
-                             
+                                                         
                             </td></tr>
                         </table>
-					   
-                        &nbsp;&nbsp;<br />
-                        <br />
                         <asp:UpdatePanel ID="upListadoInformes" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                 <fieldset style="border:0px">
