@@ -1258,8 +1258,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 
             if (nroRemito == 0)
             {
-                strQuery.Append("SELECT b.idEncabezado, b.fechaCarga, b.descripcioninf, p.precio ");
+                strQuery.Append("SELECT b.idEncabezado, b.fechaCarga, b.descripcioninf + ', REF: '+  r.Descripcion, p.precio ");
                 strQuery.Append("FROM bandejaentrada b ");
+                strQuery.Append("INNER JOIN referencias r on b.idReferencia=r.idReferencia ");
                 strQuery.Append("INNER JOIN tiposinformes ti on b.idTipoInforme=ti.idTipoInforme ");
                 if (TipoInforme == 1) //Informes de propiedad
                 {
