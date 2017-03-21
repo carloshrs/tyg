@@ -174,6 +174,19 @@ function iPrint() {
 }
 
 
+function printIframe() {
+    if (document.getElementById("chkImprimirDetalle").checked) 
+        id = 'idImprimirDetalleRef';
+    else
+        id = 'idImprimirDetalle';
+
+    var iframe = document.frames ? document.frames[id] : document.getElementById(id);
+    var ifWin = iframe.contentWindow || iframe;
+    iframe.focus();
+    ifWin.printPage();
+    return false;
+}
+
 
     </script>
 	<body leftMargin="0" topMargin="0">
@@ -282,7 +295,7 @@ function iPrint() {
                                     <asp:CheckBox ID="chkImprimirDetalle" runat="server" Text="Imprimir referencia " TextAlign="Left" CssClass="text" />&nbsp;&nbsp;&nbsp;  
 									<asp:Button id="btnCerrar" runat="server" Text="Cerrar" 
                                         CausesValidation="False" onclick="btnCerrar_Click" ></asp:Button>
-								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="iPrint();" />
+								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="printIframe();" />
                                         <!---<iframe id="idImprimir" runat="server" src="imprimirRemito.aspx" width="0" height="0" frameborder="0"></iframe>--->
                                         <iframe id="idImprimirDetalle" runat="server" src="imprimirRemitoDetalle.aspx" width="0" height="0" frameborder="0" scrolling="auto"></iframe>
                                         <iframe id="idImprimirDetalleRef" runat="server" src="imprimirRemitoDetalleRef.aspx" width="0" height="0" frameborder="0" scrolling="auto"></iframe>
