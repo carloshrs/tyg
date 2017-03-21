@@ -225,11 +225,12 @@ function printIframe() {
 							<tr>
 								<td>
                                     <asp:Panel ID="pnListadoInformes" runat="server">
-                                    <div style="overflow:auto"><asp:datagrid id="dgridRemitoServicios" 
+                                    <div style="overflow:auto">
+                                        <asp:datagrid id="dgridRemitoServicios" 
                                         runat="server" Width="100%" 
                                         Font-Size="8pt" PageSize="15" CellPadding="3" BorderColor="#3657A6" 
                                         BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical"
-										AutoGenerateColumns="False" >
+										AutoGenerateColumns="False" onprerender="dgridRemitoServicios_PreRender" >
                                         <SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C">
                                         </SelectedItemStyle>
 
@@ -277,7 +278,8 @@ function printIframe() {
                                         </asp:BoundColumn>
                                    </Columns>
                                 </asp:datagrid>
-                                <div style="text-align:right"><asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
+                                <div style="text-align:right; margin-top:10px; font-weight:bold;">TOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
+                                </div>
                                 </div>
                                 </asp:Panel>
                                 </td>

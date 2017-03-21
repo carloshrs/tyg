@@ -93,5 +93,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             else
                 lblDocumento.Text = "PARTE DE ENTREGA";
         }
+
+
+        protected void dgridRemitoServicios_PreRender(object sender, EventArgs e)
+        {
+            float vTotal = 0;
+
+            foreach (DataGridItem myItem in dgridRemitoServicios.Items)
+            {
+                try
+                {
+                    vTotal = vTotal + float.Parse(myItem.Cells[3].Text);
+                }
+                catch (Exception exc)
+                { }
+            }
+
+            lblTotal.Text = "$ " + vTotal;
+        }
 }
 }
