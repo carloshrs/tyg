@@ -91,16 +91,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void dgridRemitosMovimiento_PreRender(object sender, EventArgs e)
         {
+            float vTotal = 0;
+            
             foreach (DataGridItem myItem in dgridRemitosMovimiento.Items)
             {
                 try
                 {
                     ((Label)myItem.FindControl("lblPrecioUnitario")).Text = "$ " + System.Math.Round(decimal.Parse(myItem.Cells[2].Text), 2).ToString();
                     ((Label)myItem.FindControl("lblPrecioTotal")).Text = "$ " + System.Math.Round(decimal.Parse(myItem.Cells[4].Text), 2).ToString();
+                    vTotal = vTotal + float.Parse(myItem.Cells[4].Text);
                 }
                 catch (Exception exc)
                 { }
             }
+
+            lblTotal.Text = "$ " + vTotal;
         }
 
         protected string listarResumenes(int idTipoDocumentacion, int nroMovimiento)

@@ -95,5 +95,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 //btnAceptar.Text = "Finalizar parte de entrega";
             }
         }
-    }
+        protected void dgridRemitosMovimiento_PreRender(object sender, EventArgs e)
+        {
+            float vTotal = 0;
+
+            foreach (DataGridItem myItem in dgridRemitosMovimiento.Items)
+            {
+                try
+                {
+                    vTotal = vTotal + float.Parse(myItem.Cells[3].Text);
+                }
+                catch (Exception exc)
+                { }
+            }
+
+            lblTotal.Text = "$ " + vTotal;
+        }
+}
 }
