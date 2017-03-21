@@ -161,8 +161,8 @@ function recalcular(tipo, campo) {
 
 function iPrint()
 {
-    window.idImprimir.focus();
-    window.idImprimir.print();
+    window.frmImprimir.focus();
+    window.frmImprimir.print();
 }
 
 
@@ -273,7 +273,7 @@ function iPrint()
                                         CausesValidation="False" onclick="btnCerrar_Click" ></asp:Button>
                                         <input type="button" name="idVolver" value="Volver" onclick="history.back();" />
 								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="iPrint();" />
-                                        <iframe id="idImprimir" runat="server" src="imprimirMovimientos.aspx" width="0" height="0" frameborder="0"></iframe>
+                                        <iframe id="frmImprimir" runat="server" src="imprimirMovimientos.aspx" width="0" height="0" frameborder="0"></iframe>
 								</td>
 							</tr>
 						</table>
