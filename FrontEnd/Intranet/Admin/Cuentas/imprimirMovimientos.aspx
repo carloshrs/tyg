@@ -159,7 +159,7 @@
 
         }
 
-
+        function printPage() { print(); }
     </script>
 	<body leftMargin="0" topMargin="0">
 		<form id="Form1" method="post" runat="server">

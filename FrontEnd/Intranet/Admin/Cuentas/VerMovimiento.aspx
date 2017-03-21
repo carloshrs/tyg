@@ -161,10 +161,17 @@ function recalcular(tipo, campo) {
 
 function iPrint()
 {
-    window.frmImprimir.focus();
-    window.frmImprimir.print();
+    //window.frmImprimir.focus();
+    //window.frmImprimir.print();
 }
 
+function printIframe(id) {
+    var iframe = document.frames ? document.frames[id] : document.getElementById(id);
+    var ifWin = iframe.contentWindow || iframe;
+    iframe.focus();
+    ifWin.printPage();
+    return false;
+}
 
 
     </script>
@@ -268,11 +275,11 @@ function iPrint()
                                 </td>
 							</tr>
 							<tr>
-								<td align="right">
+								<td align="right"><!---iPrint();--->
 									<asp:Button id="btnCerrar" runat="server" Text="Cerrar" 
                                         CausesValidation="False" onclick="btnCerrar_Click" ></asp:Button>
                                         <input type="button" name="idVolver" value="Volver" onclick="history.back();" />
-								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="iPrint();" />
+								&nbsp;<input type="button" name="idImprimir" value="Imprimir" onclick="printIframe('frmImprimir');" />
                                         <iframe id="frmImprimir" runat="server" src="imprimirMovimientos.aspx" width="0" height="0" frameborder="0"></iframe>
 								</td>
 							</tr>

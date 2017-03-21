@@ -127,6 +127,7 @@
 
         }
 
+        function printPage() { print(); }
 
     </script>
 	<body leftMargin="0" topMargin="0">
