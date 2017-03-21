@@ -39,7 +39,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             idCliente = int.Parse(Request.QueryString["idCliente"]);
             hIdCliente.Value = idCliente.ToString();
             nroMovimiento = int.Parse(Request.QueryString["nroMovimiento"]);
-            HtmlControl frImprimir = (HtmlControl)this.FindControl("idImprimir");
+            HtmlControl frImprimir = (HtmlControl)this.FindControl("frmImprimir");
             frImprimir.Attributes["src"] = "imprimirMovimientos.aspx?idTipo=" + idTipoDocumentacion + "&nroMovimiento=" + nroMovimiento + "&idCliente=" + idCliente;
 
             ClienteDal oCliente = new ClienteDal();
