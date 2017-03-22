@@ -43,8 +43,7 @@
                                     Fecha hasta <asp:textbox id="txtFechaFinal" runat="server" Width="78px"></asp:textbox>
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
 
-                                     <asp:RadioButton ID="raRemito" runat="server" GroupName="raTipoDocumento" Text="Remito" />
-                                    <asp:RadioButton ID="raParte" runat="server" GroupName="raTipoDocumento" Text="Parte de entrega" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <asp:RadioButton ID="raDiario" runat="server" GroupName="raTipoPeriodo" Text="Diario" />
                                     <asp:RadioButton ID="raMensual" runat="server" GroupName="raTipoPeriodo" Text="Mensual" />&nbsp;
 

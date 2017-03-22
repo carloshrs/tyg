@@ -60,7 +60,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 
         private void ListarCobrosPendientesClientes()
 		{
-            int tipoDocumento = 0;
             int tipoPeriodo = 0;
             string fechaDesde = "";
             string fechaHasta = "";
@@ -68,9 +67,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             if (raDiario.Checked) tipoPeriodo = 1;
             if (raMensual.Checked) tipoPeriodo = 2;
 
-            if (raRemito.Checked) tipoDocumento = 1;
-            if (raParte.Checked) tipoDocumento = 2;
-
+           
             if (txtFechaInicio.Text != "")
                 fechaDesde = txtFechaInicio.Text;
 
@@ -78,9 +75,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
                 fechaHasta = txtFechaFinal.Text;
 
 			//GestorPrecios Adicionales = new GestorPrecios();
-            if (tipoDocumento != 0 && tipoPeriodo != 0)
+            if (tipoPeriodo != 0)
             {
-                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoDocumento, tipoPeriodo, fechaDesde, fechaHasta).DefaultView;
+                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta).DefaultView;
                 dgPendientesCobrosClientes.DataBind();
             }
 
