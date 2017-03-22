@@ -8,8 +8,8 @@
     <ProjectGuid>{C42A6844-A4E4-4982-B12F-9F0A5EBBD52E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Facturacion</RootNamespace>
-    <AssemblyName>Facturacion</AssemblyName>
+    <RootNamespace>Cobranzas</RootNamespace>
+    <AssemblyName>Cobranzas</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
