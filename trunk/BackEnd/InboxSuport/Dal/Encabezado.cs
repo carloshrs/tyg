@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.Data.Odbc;
 using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
-using ar.com.TiempoyGestion.BackEnd.Clientes.App;
+//using ar.com.TiempoyGestion.BackEnd.Clientes.App;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 
 namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal

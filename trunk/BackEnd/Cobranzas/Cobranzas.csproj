@@ -37,9 +37,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\CuentaCorrienteApp.cs" />
     <Compile Include="App\FacturacionApp.cs" />
+    <Compile Include="App\GestorPreciosApp.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Dal\CuentaCorrienteDal.cs" />
     <Compile Include="Dal\FacturacionDal.cs" />
+    <Compile Include="Dal\GestorPrecios.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
-using ar.com.TiempoyGestion.BackEnd.Clientes.App;
+using ar.com.TiempoyGestion.BackEnd.Cobranzas.App;
 using System.Data;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
