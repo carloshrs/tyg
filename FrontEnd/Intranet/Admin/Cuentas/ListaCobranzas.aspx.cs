@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ar.com.TiempoyGestion.BackEnd.Clientes.App;
+using ar.com.TiempoyGestion.BackEnd.Cobranzas.App;
 using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 
 
@@ -212,6 +212,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         protected void GVlistaCobrar_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             //GridView1.PageIndex = e.NewPageIndex;
+            //ListadoDocumentosPendientesCobroClientes();
+            //pnlListadoPendiente.Visible = true;
+            GVlistaCobrar.PageIndex = e.NewPageIndex;
+            //GVlistaCobrar.DataBind();
+            pnlListadoPendiente.Visible = true;
             ListadoDocumentosPendientesCobroClientes();
         }
 

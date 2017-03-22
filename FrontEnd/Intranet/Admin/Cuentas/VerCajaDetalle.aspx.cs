@@ -3,6 +3,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 using System.Data;
+using ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 {

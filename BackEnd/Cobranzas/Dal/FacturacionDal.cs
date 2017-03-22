@@ -4,7 +4,7 @@ using System.Text;
 using ar.com.TiempoyGestion.BackEnd.BackServices.Dal;
 using System.Data.Odbc;
 
-namespace ar.com.TiempoyGestion.BackEnd.Facturacion.Dal
+namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 {
     /// <summary>
     /// Summary description for CuentaCorrienteDal.

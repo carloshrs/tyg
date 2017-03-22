@@ -5,7 +5,7 @@ using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
-using ar.com.TiempoyGestion.BackEnd.Clientes.App;
+using ar.com.TiempoyGestion.BackEnd.Cobranzas.App;
 
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas

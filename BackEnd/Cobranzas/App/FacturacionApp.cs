@@ -1,6 +1,6 @@
-﻿using ar.com.TiempoyGestion.BackEnd.Facturacion.Dal;
+﻿using ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal;
 
-namespace ar.com.TiempoyGestion.BackEnd.Facturacion.App
+namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.App
 {
     /// <summary>
     /// Summary description for CuentaCorrienteApp.
