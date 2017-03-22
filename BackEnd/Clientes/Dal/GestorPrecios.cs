@@ -804,7 +804,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         }
 
 
-        public static DataTable ListaPendientesCobrosClientes(int tipoDocumento, int tipoPeriodo, string fechaDesde, string fechaHasta)
+        public static DataTable ListaPendientesCobrosClientes(int tipoPeriodo, string fechaDesde, string fechaHasta)
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
@@ -828,53 +828,48 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
 
 
-            if (tipoDocumento == 1 && tipoPeriodo == 2)
+            if (tipoPeriodo == 2)
             {
-                strQuery.Append("select 1 as idTipo, 2 as tipoperiodo, c.idCliente, ");
-                strQuery.Append("CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto  ");
+                strQuery.Append("select tipoperiodo, IdCliente, cliente, sum(monto) as monto from (select 1 as idTipo, 2 as tipoperiodo, c.idCliente, ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto  ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccr.estado=1 ");
                 strQuery.Append("and ccr.fecha between "+fechaDesde+" and "+fechaHasta+" ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
-                strQuery.Append("order by c.nombrefantasia");
-            }
-
-            if (tipoDocumento == 2 && tipoPeriodo == 2)
-            { 
+                strQuery.Append("UNION ");
                 strQuery.Append("select 2 as idTipo, 2 as tipoperiodo, c.idCliente,  ");
-                strQuery.Append("CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccpe.monto) as monto  ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccpe.monto) as monto  ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCtePartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccpe.estado=1 ");
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
-                strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
-                strQuery.Append("order by c.nombrefantasia ");
+                strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal) T ");
+                strQuery.Append("group by tipoperiodo, IdCliente, cliente ");
+                strQuery.Append("order by cliente ");
             }
 
-            if (tipoDocumento == 1 && tipoPeriodo == 1)
-            { 
-                strQuery.Append("select 1 as idTipo, 1 as tipoperiodo, c.idCliente,  ");
-                strQuery.Append("CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto ");
+            if (tipoPeriodo == 1)
+            {
+                strQuery.Append("select tipoperiodo, IdCliente, cliente, sum(monto) as monto from (select 1 as idTipo, 1 as tipoperiodo, c.idCliente,  ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join remitos ccr on ccr.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccr.estado=1 ");
                 strQuery.Append("and ccr.periodoCobranza=1 ");
                 strQuery.Append("and ccr.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
-                strQuery.Append("order by c.nombrefantasia ");
-            }
-
-            if (tipoDocumento == 2 && tipoPeriodo == 1)
-            {
+                strQuery.Append("UNION ");
                 strQuery.Append("select 2 as idTipo, 1 as tipoperiodo, ccpe.fecha, ccpe.nroParte, c.idCliente,  ");
-                strQuery.Append("CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, ccpe.monto ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, ccpe.monto ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join PartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccpe.estado=1 ");
                 strQuery.Append("and ccpe.periodoCobranza=1 ");
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
-                strQuery.Append("order by c.nombrefantasia ");
+                strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal) T  ");
+                strQuery.Append("group by tipoperiodo, IdCliente, cliente ");
+                strQuery.Append("order by cliente ");
             }
 
             try
