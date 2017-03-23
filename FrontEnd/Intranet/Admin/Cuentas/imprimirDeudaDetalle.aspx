@@ -156,18 +156,18 @@
                                     <div style="overflow:auto"><table class="generalTable text" cellspacing="0" cellpadding="3" border="0" id="Table1" style="border-collapse:collapse;">
 			                            <tr class="rowTop" style="font-weight: bold; color: #3756A6; background-color: #DFE7F4;">
 				                            <th scope="col" style="width:1%;white-space:nowrap;">&nbsp;</th>
-                                            <th scope="col" style="white-space:nowrap; width:60px; font-weight:bold;">Cantidad</th>
-                                            <th scope="col" style="width:80%; font-weight:bold;">Cliente</th>
-                                            <th scope="col" style="width:160px; font-weight:bold;" align="right">Subtotal</th>
+                                            <th scope="col" style="white-space:nowrap; width:60px; font-weight:bold; font-size:14px;">Cantidad</th>
+                                            <th scope="col" style="width:80%; font-weight:bold; font-size:14px;">Cliente</th>
+                                            <th scope="col" style="width:160px; font-weight:bold; font-size:14px;" align="right">Subtotal</th>
 			                            </tr>
 
                                         <asp:ListView ID="lvListadoClientes" runat="server" OnItemDataBound="InformeDataBound" OnPreRender="lvListadoClientes_PreRender">
                                             <ItemTemplate>
                                             <tr>
 				                                <td><asp:HiddenField ID="hdIdCliente" runat="server" Value='<%# Eval("idCliente") %>'></asp:HiddenField></td>
-                                                <td class="big" align="center"><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label></td>
-                                                <td><asp:Label ID="lblCliente" runat="server" Text='<%# Eval("cliente") %>'></asp:Label></td>
-                                                <td><asp:Label ID="lblSubtotal" runat="server" Font-Bold="true" Text='<%# Eval("monto") %>'></asp:Label></td>
+                                                <td class="big" align="center" style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label></td>
+                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCliente" runat="server" Text='<%# Eval("cliente") %>'></asp:Label></td>
+                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblSubtotal" runat="server" Font-Bold="true" Text='$ <%# Eval("monto") %>'></asp:Label></td>
 			                                </tr>
                                         
                                         <tr >
@@ -187,7 +187,7 @@
                                                                 <td style="color:#888888;" style="border-bottom: solid 1px #D5D5D5"><asp:HiddenField ID="hdNroMovimiento" runat="server" Value='<%# Eval("NroMovimiento") %>'></asp:HiddenField></td>
                                                                 <td style="border-bottom: solid 1px #D5D5D5"><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("fecha") %>'></asp:Label></td>
                                                                 <td style="border-bottom: solid 1px #D5D5D5"><asp:Label ID="lblConcepto" runat="server" Text='<%# Eval("concepto") %>'></asp:Label></td>
-                                                                <td style="border-bottom: solid 1px #D5D5D5" align="center"><asp:Label ID="lblMonto" runat="server" Text='<%# Eval("monto") %>'></asp:Label></td>
+                                                                <td style="border-bottom: solid 1px #D5D5D5" align="center"><asp:Label ID="lblMonto" runat="server" Text='$ <%# Eval("monto") %>'></asp:Label></td>
 									                        </tr>
                                                             </ItemTemplate>
                                                             </asp:ListView>
