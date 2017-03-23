@@ -830,7 +830,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             if (tipoPeriodo == 2)
             {
-                strQuery.Append("select tipoperiodo, IdCliente, cliente, sum(monto) as monto from (select 1 as idTipo, 2 as tipoperiodo, c.idCliente, ");
+                strQuery.Append("select tipoperiodo, sum(cantidad) as cantidad, IdCliente, cliente, sum(monto) as monto from ( ");
+                strQuery.Append("select 1 as idTipo, 2 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente, ");
                 strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto  ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente  ");
@@ -838,7 +839,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("and ccr.fecha between "+fechaDesde+" and "+fechaHasta+" ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
                 strQuery.Append("UNION ");
-                strQuery.Append("select 2 as idTipo, 2 as tipoperiodo, c.idCliente,  ");
+                strQuery.Append("select 2 as idTipo, 2 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente,  ");
                 strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccpe.monto) as monto  ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCtePartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
@@ -851,7 +852,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             if (tipoPeriodo == 1)
             {
-                strQuery.Append("select tipoperiodo, IdCliente, cliente, sum(monto) as monto from (select 1 as idTipo, 1 as tipoperiodo, c.idCliente,  ");
+                strQuery.Append("select tipoperiodo, sum(cantidad) as cantidad, IdCliente, cliente, sum(monto) as monto from ( ");
+                strQuery.Append("select 1 as idTipo, 1 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente,  ");
                 strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join remitos ccr on ccr.idCliente=c.IdCliente  ");
@@ -860,7 +862,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("and ccr.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
                 strQuery.Append("UNION ");
-                strQuery.Append("select 2 as idTipo, 1 as tipoperiodo, ccpe.fecha, ccpe.nroParte, c.idCliente,  ");
+                strQuery.Append("select 2 as idTipo, 1 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente,  ");
                 strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, ccpe.monto ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join PartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
@@ -870,6 +872,81 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal) T  ");
                 strQuery.Append("group by tipoperiodo, IdCliente, cliente ");
                 strQuery.Append("order by cliente ");
+            }
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "PendientesCobrosClientes").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
+
+        public static DataTable ListaPendientesCobrosClientesDocumentos(int tipoPeriodo, int idCliente, string fechaDesde, string fechaHasta)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+
+            if (fechaDesde != "")
+                fechaDesde = "'" + fechaDesde + " 00:00:00.000'";
+            else
+            {
+                fechaDesde = DateTime.Today.AddMonths(-2).ToShortDateString();
+                fechaDesde = "'" + fechaDesde + " 00:00:00.000'";
+            }
+
+
+
+            if (fechaHasta != "")
+                fechaHasta = "'" + fechaHasta + " 23:59:59.999'";
+            else
+            {
+                fechaHasta = DateTime.Today.ToShortDateString();
+                fechaHasta = "'" + fechaHasta + " 23:59:59.999'";
+            }
+
+
+            if (tipoPeriodo == 2)
+            {
+
+                strQuery.Append("select tipoperiodo, nroMovimiento, fecha, concepto, monto from ( ");
+                strQuery.Append("select  2 as tipoperiodo, ccr.nroMovimiento, ccr.fecha, ('Remito mensual N° ' + CAST(ccr.nroMovimiento AS varchar(80))) as concepto, ccr.monto ");
+                strQuery.Append("from CtaCteRemitos ccr  ");
+                strQuery.Append("where ccr.estado=1  ");
+                strQuery.Append("and ccr.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append("and ccr.idCliente=" + idCliente);
+                strQuery.Append(" UNION  ");
+                strQuery.Append("select  2 as tipoperiodo, ccpe.nroMovimiento, ccpe.fecha, ('Parte de entrega mensual N° ' + CAST(ccpe.nroMovimiento AS varchar(80))) as concepto, ccpe.monto ");
+                strQuery.Append("from CtaCtePartesEntrega ccpe  ");
+                strQuery.Append("where ccpe.estado=1  ");
+                strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append("and ccpe.idCliente=" + idCliente);
+                strQuery.Append(" ) T ");
+                strQuery.Append("order by fecha ");
+            }
+
+            if (tipoPeriodo == 1)
+            {
+
+                strQuery.Append("select tipoperiodo, nroMovimiento, fecha, concepto, monto from ( ");
+                strQuery.Append("select  2 as tipoperiodo, r.nroRemito as nroMovimiento, r.fecha, ('Remito diario N° ' + CAST(r.nroRemito AS varchar(80))) as concepto, r.monto ");
+                strQuery.Append("from Remitos r  ");
+                strQuery.Append("where r.estado=1 and periodoCobranza=1 ");
+                strQuery.Append("and r.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append("and r.idCliente=" + idCliente);
+                strQuery.Append(" UNION  ");
+                strQuery.Append("select  2 as tipoperiodo, pe.nroParte as nroMovimiento, pe.fecha, ('Parte de entrega diario N° ' + CAST(pe.nroParte AS varchar(80))) as concepto, pe.monto ");
+                strQuery.Append("from PartesEntrega pe  ");
+                strQuery.Append("where pe.estado=1  and periodoCobranza=1 ");
+                strQuery.Append("and pe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append("and pe.idCliente=" + idCliente);
+                strQuery.Append(" ) T ");
+                strQuery.Append("order by fecha ");
             }
 
             try
