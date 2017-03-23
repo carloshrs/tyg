@@ -135,7 +135,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" 
                             EnablePartialRendering="true" EnableScriptGlobalization="True">
          </asp:ScriptManager>
-         <div style="height:530px; border-bottom: 1px #AAA dashed;">
+         <div>
 			<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 				<tr>
 					<td class="text" vAlign="top" width="5"></td>
@@ -174,12 +174,12 @@
 				                            <td colspan="5">
                                                 <div class="expandedList">
                                                     <div>
-								                        <table class="generalTable text" cellspacing="0" cellpadding="3" border="0" id="ctl00_mainArea_ti1" style="border-collapse:collapse; width:90%" align="right">
+								                        <table class="generalTable text" cellspacing="0" cellpadding="3" border="0" id="ctl00_mainArea_ti1" style="border-collapse:collapse; width:80%" align="right">
 									                        <tr class="headRow" style="font-weight: bold; color: #3756A6; background-color: #DFE7F4;">
-										                        <th scope="col" style="width:1%;"></th>
-                                                                <th scope="col">Fecha</th>
-                                                                <th scope="col">Concepto</th>
-                                                                <th scope="col" style="width:10%" align="center">Monto</th>
+										                        <th scope="col" style="width:1%; font-weight:bold;"></th>
+                                                                <th scope="col"style="font-weight:bold;">Fecha</th>
+                                                                <th scope="col"style="font-weight:bold;">Concepto</th>
+                                                                <th scope="col" style="font-weight:bold;" align="center">Monto</th>
 									                        </tr>
                                                             <asp:ListView ID="lvInformes" runat="server">
                                                             <ItemTemplate>
@@ -201,6 +201,7 @@
                         				</div>
                                         </td>
                                        </tr>
+                                       <tr><td><br /><br /></td></tr>
                                             </ItemTemplate>
                                         </asp:ListView>
 
