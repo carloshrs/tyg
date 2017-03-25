@@ -167,7 +167,7 @@
 				                                <td><asp:HiddenField ID="hdIdCliente" runat="server" Value='<%# Eval("idCliente") %>'></asp:HiddenField></td>
                                                 <td class="big" align="center" style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label></td>
                                                 <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCliente" runat="server" Text='<%# Eval("cliente") %>'></asp:Label></td>
-                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblSubtotal" runat="server" Font-Bold="true" Text='<%# Eval("monto") %>'></asp:Label></td>
+                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblSubtotal" runat="server" Font-Bold="true" Text='<%# "$ " + Eval("monto") %>'></asp:Label></td>
 			                                </tr>
                                         
                                         <tr >
@@ -187,7 +187,7 @@
                                                                 <td style="color:#888888;" style="border-bottom: solid 1px #D5D5D5"><asp:HiddenField ID="hdNroMovimiento" runat="server" Value='<%# Eval("NroMovimiento") %>'></asp:HiddenField></td>
                                                                 <td style="border-bottom: solid 1px #D5D5D5"><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("fecha") %>'></asp:Label></td>
                                                                 <td style="border-bottom: solid 1px #D5D5D5"><asp:Label ID="lblConcepto" runat="server" Text='<%# Eval("concepto") %>'></asp:Label></td>
-                                                                <td style="border-bottom: solid 1px #D5D5D5" align="center"><asp:Label ID="lblMonto" runat="server" Text='<%# Eval("monto") %>'></asp:Label></td>
+                                                                <td style="border-bottom: solid 1px #D5D5D5" align="center"><asp:Label ID="lblMonto" runat="server" Text='<%# "$ " + Eval("monto") %>'></asp:Label></td>
 									                        </tr>
                                                             </ItemTemplate>
                                                             </asp:ListView>
