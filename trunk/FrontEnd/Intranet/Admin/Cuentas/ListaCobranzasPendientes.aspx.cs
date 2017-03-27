@@ -103,13 +103,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 
 
 
-
-
-
-
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             ListarCobrosPendientesClientes();
+            //idImprimirDeudaDetalle.s
+
+        }
+
+
+        protected void idImprimir_Click(object sender, EventArgs e)
+        {
+            int tipoPeriodo = 2;
+            tipoPeriodo = (raMensual.Checked) ? 2 : 1;
+            Response.Redirect("imprimirDeudaDetalle.aspx?tipoPeriodo=" + tipoPeriodo + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
 
         }
 }
