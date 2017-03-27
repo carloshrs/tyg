@@ -863,7 +863,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
                 strQuery.Append("UNION ");
                 strQuery.Append("select 2 as idTipo, 1 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente,  ");
-                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, ccpe.monto ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccpe.monto) as monto ");
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join PartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccpe.estado=1 ");

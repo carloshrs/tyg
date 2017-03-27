@@ -391,7 +391,7 @@ function recalcular(tipo, campo) {
 				                                <td><img src="/img/plus.gif" style="cursor:pointer;" onclick="toggleRowVisibility('ctl00_mainArea_iterationsList_iterationsGrid_ct<%# Eval("idtipoInforme") %>', this);" /></td>
                                                 <td class="big" align="center"><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label></td>
                                                 <td><asp:Label ID="lblTipoInforme" runat="server" Text='<%# Eval("tipoInforme") %>'></asp:Label></td>
-                                                <td><asp:Label ID="lblPrecioTotal" runat="server" Text='<%# Eval("precioTotal") %>'></asp:Label></td>
+                                                <td><asp:Label ID="lblPrecioTotal" runat="server" Text='<%# "$" + Eval("precioTotal") %>'></asp:Label></td>
                                                 <td><asp:HiddenField ID="hdTipoInforme" runat="server" Value='<%# Eval("idtipoInforme") %>'></asp:HiddenField></td>
 			                                </tr>
                                         

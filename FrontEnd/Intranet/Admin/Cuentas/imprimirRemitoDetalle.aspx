@@ -121,10 +121,6 @@
 
             precio.value = (cantidad.value * precioUnitario.value);
 
-
-
-
-
         }
 
         function printPage() { print(); }

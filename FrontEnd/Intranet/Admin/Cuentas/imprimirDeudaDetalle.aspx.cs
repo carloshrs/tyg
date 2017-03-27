@@ -22,10 +22,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             if (!Page.IsPostBack)
             {
-                int tipoPeriodo = 2;
-                lblTipoPeriodo.Text = (tipoPeriodo==2) ? "Mensuales" : "Diarios";
+                
                 lblFecha.Text = DateTime.Today.ToShortDateString();
-                ListadoDeuda(tipoPeriodo);
+
+                if (Request.QueryString["tipoPeriodo"] != null && Request.QueryString["tipoPeriodo"] != "")
+                    ListadoDeuda(int.Parse(Request.QueryString["tipoPeriodo"]));
             }
         }
 
@@ -35,15 +36,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             string fechaDesde = "";
             string fechaHasta = "";
-            
 
-            if (lblFechaDesde.Text == "")
+            lblTipoPeriodo.Text = (tipoPeriodo == 2) ? "Mensuales" : "Diarios";
+
+            fechaDesde = Request.QueryString["fechaDesde"];
+            fechaHasta = Request.QueryString["fechaHasta"];
+
+            if (fechaDesde == "")
                 lblFechaDesde.Text = lblFechaDesde.Text = DateTime.Today.AddYears(-7).ToShortDateString();
-            fechaDesde = lblFechaDesde.Text;
+            else
+                lblFechaDesde.Text = fechaDesde;
 
             if (lblFechaHasta.Text == "")
                 lblFechaHasta.Text = DateTime.Today.ToShortDateString();
-            fechaHasta = lblFechaHasta.Text;
+            else
+                lblFechaHasta.Text = fechaHasta;
 
 
             lvListadoClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta).DefaultView;
@@ -88,7 +95,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     //((Label)myItem.FindControl("lblPrecioUnitario")).Text = "$ " + System.Math.Round(decimal.Parse(myItem.Cells[2].Text), 2).ToString();
                     //((Label)myItem.FindControl("lblPrecioTotal")).Text = "$ " + System.Math.Round(decimal.Parse(myItem.Cells[4].Text), 2).ToString();
                     //vTotal = vTotal + float.Parse(myItem.DataItem[2].Text);
-                    vTotal = vTotal + float.Parse(((Label)myItem.FindControl("lblSubtotal")).Text, CultureInfo.InvariantCulture);
+                    vTotal = vTotal + float.Parse(((Label)myItem.FindControl("lblSubtotal")).Text.Replace("$ ", ""), CultureInfo.InvariantCulture);
                 }
                 catch (Exception exc)
                 { }

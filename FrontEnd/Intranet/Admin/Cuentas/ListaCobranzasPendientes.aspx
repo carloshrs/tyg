@@ -14,6 +14,21 @@
             window.print();
             document.getElementById("divBotones").style.display = 'block';
         }
+
+
+        function printIframe() {
+            id = 'idImprimirDeudaDetalle';
+
+            var iframe = document.frames ? document.frames[id] : document.getElementById(id);
+            var ifWin = iframe.contentWindow || iframe;
+
+            
+            iframe.src = "imprimirDeudaDetalle.aspx?tipoPeriodo=" + (document.getElementById("raDiario").checked ? "1" : "2") + "&fechaDesde=" + document.getElementById("txtFechaInicio").value + "&fechaHasta=" + document.getElementById("txtFechaFinal").value;
+            alert(iframe.src)
+            iframe.focus();
+            ifWin.printPage();
+            return false;
+        }
     </script>
 
 	<body leftmargin="0" topmargin="0">
@@ -99,9 +114,13 @@
 								<td class="text" height="38" align="right">
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                                     <div id="divBotones" style="text-align:right">
-                                    <input id="Button1" type="button" value="Imprimir" onclick="imprimir();" />&nbsp; 
+                                        <asp:Button ID="idImprimir" runat="server" Text="Imprimir" 
+                                            onclick="idImprimir_Click" />
+                                    
+                                    &nbsp; 
 									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
                                     </div>
+
 								</td>
 							</tr>
 						</table>
