@@ -460,16 +460,16 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             return true;
         }
 
-        public void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
+        public int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             //int MaxID = 0;
             string strSQL = "";
             float fSaldo = 0;
-
+            int idCajaDetalleFormaPago = 0;
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddFormaPago " + idCajaDetalle + ", " + idFormaPago + ", " + MontoaPagar + ", " + entradasalida;
+            strSQL = "CCAddFormaPago " + idCajaDetalle + ", " + idFormaPago + ", " + MontoaPagar + ", " + entradasalida +", 0";
 
             try
             {
@@ -481,10 +481,50 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 myConsulta.Fill(myDataSet);
                 //fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldo"].ToString());
 
+                idCajaDetalleFormaPago = int.Parse(myDataSet.Tables[0].Rows[0]["idCajaDetalleFormaPago"].ToString());
+
             }
             catch (Exception e)
             {
                 string p = e.Message;
+                //return false;
+                return idCajaDetalleFormaPago;
+            }
+
+            //return true;
+            return idCajaDetalleFormaPago;
+        }
+
+
+        public void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0;
+            
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "CCAddChequeCartera " + idCajaDetalleFormaPago + ", " + MontoaPagar + ", '" + vBanco + "', '" + vNroCheque + "', '" + vFechaEmision + "', '" + vFechaCobro + "'";
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                //fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldo"].ToString());
+
+                //idCajaDetalleFormaPago = int.Parse(myDataSet.Tables[0].Rows[0]["idCajaDetalleFormaPago"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+
+                
                 //return false;
             }
 
