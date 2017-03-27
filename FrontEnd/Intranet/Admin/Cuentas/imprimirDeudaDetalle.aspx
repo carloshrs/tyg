@@ -212,8 +212,8 @@
                                 </asp:Panel>
                                 </td>
 							</tr>
-                                <tr><td class="text">
-                                    
+                                <tr><td class="text" align="right">
+                                    <input type="button" name="Imprimir" onclick="window.print();" value="Imprimir" />
                                     </td></tr>
 						</table>
 					</td>

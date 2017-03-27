@@ -108,19 +108,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     NombreCliente = NombreCliente + ": ";
 
                     vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, NombreCliente + concepto, montoDebe, vMontoTotalPagar, "");
-
+                    int idCajaDetalleFormaPago = 0;
 
                     // Se agrega Forma de Pago
                     if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text), entrada);
+                        idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text), entrada);
 
                     if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text), entrada);
+                        idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text), entrada);
 
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
-                        AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text), entrada);
+                        idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text), entrada);
 
                     // Cheques en Cartera
+                    if(cmbFormaPago1.SelectedValue == "2")
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar1.Text), txtBanco1.Text, txtNroCheque1.Text, txtFechaEmision1.Text, txtFechaCobro1.Text);
+
+
 
                     foreach (GridViewRow myItem in GVlistaCobrar.Rows)
                     {
@@ -220,6 +224,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             ListadoDocumentosPendientesCobroClientes();
         }
 
+
         private void ObtenerSaldoActual() 
         {
             int vIdCliente = int.Parse(hIdCliente.Value);
@@ -269,14 +274,28 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
         }
 
-        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
+        private int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
+            return ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
+
+        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
+        }
+
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/Cuentas/ListaCobranzasPendientes.aspx");
+        }
+        protected void cmbFormaPago1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPago1.SelectedValue == "2")
+                pnlCheque1.Visible = true;
+            else
+                pnlCheque1.Visible = false;
         }
 }
 }

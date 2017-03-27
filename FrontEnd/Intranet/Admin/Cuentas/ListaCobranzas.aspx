@@ -191,10 +191,26 @@
 
 
 
+
+
+
+
+
+
+
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
+
+
+
+
+
+
+
 
 
 
@@ -217,7 +233,17 @@
 
 
 
+
+
+
+
+
+
+
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
+
 
 
 
@@ -230,8 +256,24 @@
 
 
 
+
+
+
+
+
+
+
+
                                     <cc1:CalendarExtender ID="txtFechaInicio_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaInicio" Enabled="True"></cc1:CalendarExtender>
+
+
+
+
+
+
+
+
 
 
 
@@ -244,11 +286,35 @@
 
 
 
+
+
+
+
+
+
+
+
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
 
 
-                                    <asp:CheckBox ID="chBorrador" runat="server" Checked="false" Text="Borrador" />
+
+
+
+
+
+
+
+
+                                    <asp:CheckBox ID="chBorrador" runat="server" Text="Borrador" />
+
+
+
+
+
+
+
+
 
 
 						            <asp:button id="btnBuscar" runat="server" Width="80px" Text="Buscar" 
@@ -258,7 +324,23 @@
 
 
 
+
+
+
+
+
+
+
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
+
+
+
+
+
+
+
 
 
 
@@ -359,14 +441,26 @@
                 
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="cmbFormaPago1" runat="server">
+                    <asp:DropDownList ID="cmbFormaPago1" runat="server" 
+                            OnSelectedIndexChanged="cmbFormaPago1_SelectedIndexChanged" AutoPostBack="True">
                         <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
-                        <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="CC $0,0"/>
+                    <asp:ListItem Value="2" Text="Cheque"/>
+                    <asp:ListItem Value="3" Text="Transferencia"/>
+                    <asp:ListItem Value="4" Text="Depósito"/>
                     </asp:DropDownList>
 
+                    <asp:Panel ID="pnlCheque1" runat="server" Visible="False">
+                    <table width="400px">
+                    <tr><th colspan="2"><b>Datos del cheque</b></th></tr>
+                    <tr><td>Banco:</td><td><asp:TextBox runat="server" ID="txtBanco1" Width="280px"></asp:TextBox></td></tr>
+                    <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque1" 
+                            Width="180px"></asp:TextBox></td></tr>
+                    <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision1" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision1" runat="server" TargetControlID="txtFechaEmision1" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro1" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro1" runat="server" TargetControlID="txtFechaCobro1" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    </table>
+                    </asp:Panel>
                     </div>
                     <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
                         <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
@@ -383,7 +477,6 @@
                         <asp:ListItem Value="2" Text="Cheque"/>
                         <asp:ListItem Value="3" Text="Transferencia"/>
                         <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="CC $0,0"/>
                     </asp:DropDownList>
 
 
@@ -405,7 +498,6 @@
                         <asp:ListItem Value="2" Text="Cheque"/>
                         <asp:ListItem Value="3" Text="Transferencia"/>
                         <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="CC $0,0"/>
                     </asp:DropDownList>
 
 
