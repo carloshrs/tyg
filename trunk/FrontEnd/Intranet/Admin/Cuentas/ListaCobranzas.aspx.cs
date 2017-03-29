@@ -114,15 +114,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text), entrada);
 
+                    // Cheques en Cartera
+                    if (cmbFormaPago1.SelectedValue == "2")
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar1.Text), txtBanco1.Text, txtNroCheque1.Text, txtFechaEmision1.Text, txtFechaCobro1.Text);
+
+
                     if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text), entrada);
+
+                    // Cheques en Cartera
+                    if (cmbFormaPago2.SelectedValue == "2")
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar2.Text), txtBanco2.Text, txtNroCheque2.Text, txtFechaEmision2.Text, txtFechaCobro2.Text);
 
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text), entrada);
 
                     // Cheques en Cartera
-                    if(cmbFormaPago1.SelectedValue == "2")
-                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar1.Text), txtBanco1.Text, txtNroCheque1.Text, txtFechaEmision1.Text, txtFechaCobro1.Text);
+                    if(cmbFormaPago3.SelectedValue == "2")
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar3.Text), txtBanco3.Text, txtNroCheque3.Text, txtFechaEmision3.Text, txtFechaCobro3.Text);
 
 
 
@@ -139,8 +148,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             
 
                             // Agrega documentos de movimientos en CC
-                            bAddMovCC = AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, 0);
-                            bAddMovCaja = AgregarDocumentosMovimientoCaja(idCajaDiaria, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, 0);
+                            bAddMovCC = AgregarDocumentosMovimientoCC(vIdCuentaClienteDetalle, tipoDoc, tipoPeriodo, NroDoc);
+                            bAddMovCaja = AgregarDocumentosMovimientoCaja(vIdCajaDetalle, tipoDoc, tipoPeriodo, NroDoc);
 
                             //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
                             //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
@@ -262,16 +271,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, montoPagar, observaciones);
         }
 
-        private bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        private bool AgregarDocumentosMovimientoCC(int idCuentaClienteDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return ccMovimiento.AgregarDocumentosMovimientoCC(idCuentaClienteDetalle, tipoDoc, tipoPeriodo, NroDoc);
         }
 
-        private bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        private bool AgregarDocumentosMovimientoCaja(int idCajaDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return ccMovimiento.AgregarDocumentosMovimientoCaja(idCajaDetalle, tipoDoc, tipoPeriodo, NroDoc);
         }
 
         private int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
@@ -296,6 +305,49 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 pnlCheque1.Visible = true;
             else
                 pnlCheque1.Visible = false;
+        }
+
+        protected void cmbFormaPago2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPago2.SelectedValue == "2")
+                pnlCheque2.Visible = true;
+            else
+                pnlCheque2.Visible = false;
+        }
+
+        protected void cmbFormaPago3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPago3.SelectedValue == "2")
+                pnlCheque3.Visible = true;
+            else
+                pnlCheque3.Visible = false;
+        }
+        protected void AgregarPago2_Click(object sender, EventArgs e)
+        {
+
+            if (pnlPago2.Visible)
+            {
+                pnlPago2.Visible = false;
+                btnAgregarPago2.Text = "+";
+            }
+            else
+            {
+                pnlPago2.Visible = true;
+                btnAgregarPago2.Text = "-";
+            }
+        }
+        protected void AgregarPago3_Click(object sender, EventArgs e)
+        {
+            if (pnlPago3.Visible)
+            {
+                pnlPago3.Visible = false;
+                btnAgregarPago3.Text = "+";
+            }
+            else
+            {
+                pnlPago3.Visible = true;
+                btnAgregarPago3.Text = "-";
+            }
         }
 }
 }

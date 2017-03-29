@@ -397,7 +397,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         }
 
 
-        public bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public bool AgregarDocumentosMovimientoCC(int idCuentaClienteDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -406,7 +406,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddDocumentosMovimientoCC " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddDocumentosMovimientoCC " + idCuentaClienteDetalle + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc;
 
             try
             {
@@ -429,7 +429,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         }
 
 
-        public bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public bool AgregarDocumentosMovimientoCaja(int idCajaDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -438,7 +438,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddDocumentosMovimientoCaja " + idCuentaCliente + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada;
+            strSQL = "CCAddDocumentosMovimientoCaja " + idCajaDetalle + ", " + tipoDoc + ", " + tipoPeriodo + ", " + NroDoc;
 
             try
             {
