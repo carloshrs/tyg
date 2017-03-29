@@ -115,11 +115,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             if (raIngresaCaja.SelectedItem.Text == "SI")
             {
+                int idCajaDetalleFormaPago = 0;
                 vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, int.Parse(cmbTipoIngreso.SelectedValue), NombreCliente + cmbConcepto.SelectedItem.ToString() + ", " + txtConceptoAdicional.Text, float.Parse(txtMonto.Text), float.Parse(txtMonto.Text), txtObservaciones.Text);
 
                 // Se agrega Forma de Pago
                 if (txtMonto.Text != "" && int.Parse(txtMonto.Text) != 0)
-                    AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago.SelectedValue), float.Parse(txtMonto.Text), int.Parse(cmbTipoIngreso.SelectedValue));
+                    idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago.SelectedValue), float.Parse(txtMonto.Text), int.Parse(cmbTipoIngreso.SelectedValue));
+
+                // Cheques en Cartera
+                if (cmbFormaPago.SelectedValue == "2")
+                    AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMonto.Text), txtBanco.Text, txtNroCheque.Text, txtFechaEmision.Text, txtFechaCobro.Text);
+
             }
 
             Response.Redirect("ListaCuentaCorrienteCliente.aspx?idCliente=" + Request.QueryString["id"]);
@@ -132,10 +138,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar, observaciones);
         }
 
-        private void AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
+        private int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
+            return ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
+        }
+
+        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
+        }
+
+        protected void cmbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPago.SelectedValue == "2")
+                pnlCheque.Visible = true;
+            else
+                pnlCheque.Visible = false;
         }
 }
 }

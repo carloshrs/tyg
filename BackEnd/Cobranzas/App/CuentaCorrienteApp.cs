@@ -64,16 +64,16 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.App
             return gp.AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, montoPagar, observaciones);
         }
 
-        public bool AgregarDocumentosMovimientoCC(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public bool AgregarDocumentosMovimientoCC(int idCuentaClienteDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarDocumentosMovimientoCC(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return gp.AgregarDocumentosMovimientoCC(idCuentaClienteDetalle, tipoDoc, tipoPeriodo, NroDoc);
         }
 
-        public bool AgregarDocumentosMovimientoCaja(int idCuentaCliente, int tipoDoc, int tipoPeriodo, float NroDoc, int entrada, string concepto, float montoDebe, float montoPagar)
+        public bool AgregarDocumentosMovimientoCaja(int idCajaDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarDocumentosMovimientoCaja(idCuentaCliente, tipoDoc, tipoPeriodo, NroDoc, entrada, concepto, montoDebe, montoPagar);
+            return gp.AgregarDocumentosMovimientoCaja(idCajaDetalle, tipoDoc, tipoPeriodo, NroDoc);
         }
 
         public int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)

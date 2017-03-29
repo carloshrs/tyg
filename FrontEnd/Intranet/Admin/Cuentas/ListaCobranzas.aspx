@@ -199,10 +199,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -241,7 +265,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -251,6 +299,18 @@
 
                                     &nbsp;&nbsp;
 						            Fecha desde&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="78px"></asp:textbox>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -279,8 +339,32 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                                     &nbsp; 
                                     Fecha hasta <asp:textbox id="txtFechaFinal" runat="server" Width="78px"></asp:textbox>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -306,7 +390,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                                     <asp:CheckBox ID="chBorrador" runat="server" Text="Borrador" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -332,7 +440,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -433,21 +565,23 @@
                     <asp:Label ID="lblSaldoActual" runat="server" 
                         Font-Size="18pt"></asp:Label>
 
-<asp:Button ID="btnActualizarSaldo" runat="server" Text="Actualizar" />
+                <asp:Button ID="btnActualizarSaldo" runat="server" Text="Actualizar" />
 
                 </div>
 
                 <div style="float:left; width:95%; margin-top:30px; border-bottom: 1px solid #B5C7DE; margin-left:20px;"><h2>Forma de pago</h2></div> 
                 
+                <asp:Panel runat="server" ID="pnlPago1">
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
                     <asp:DropDownList ID="cmbFormaPago1" runat="server" 
                             OnSelectedIndexChanged="cmbFormaPago1_SelectedIndexChanged" AutoPostBack="True">
-                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
-                    <asp:ListItem Value="2" Text="Cheque"/>
-                    <asp:ListItem Value="3" Text="Transferencia"/>
-                    <asp:ListItem Value="4" Text="Depósito"/>
-                    </asp:DropDownList>
+                        <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
+                        <asp:ListItem  Value="1" Text="Efectivo"/>
+                        <asp:ListItem Value="2" Text="Cheque"/>
+                        <asp:ListItem Value="3" Text="Transferencia"/>
+                        <asp:ListItem Value="4" Text="Depósito"/>
+                    </asp:DropDownList><asp:RequiredFieldValidator runat="server" ID="rqValCmbFormaPago1" ControlToValidate="cmbFormaPago1" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
 
                     <asp:Panel ID="pnlCheque1" runat="server" Visible="False">
                     <table width="400px">
@@ -463,55 +597,90 @@
                     </asp:Panel>
                     </div>
                     <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
-                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar1" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox><asp:RequiredFieldValidator runat="server" ID="rqMonto1" ControlToValidate="txtMontoaPagar1" ErrorMessage="Ingrese el monto" Text="*"></asp:RequiredFieldValidator>
 
 
 
 </h3></div>
+                <asp:Button ID="btnAgregarPago2" runat="server" Text="+" Font-Bold="True" 
+                        Font-Size="24px" OnClick="AgregarPago2_Click" CausesValidation="False" />
                 </div>
+                </asp:Panel>
 
+                <asp:Panel runat="server" ID="pnlPago2" Visible="False" >
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="cmbFormaPago2" runat="server">
-                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                    <asp:DropDownList runat="server" ID="cmbFormaPago2"  OnSelectedIndexChanged="cmbFormaPago2_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
+                        <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
                         <asp:ListItem Value="3" Text="Transferencia"/>
                         <asp:ListItem Value="4" Text="Depósito"/>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator runat="server" ID="rqFormaPago2" ControlToValidate="cmbFormaPago2" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
+                    <asp:Panel ID="pnlCheque2" runat="server" Visible="False">
+                    <table width="400px">
+                    <tr><th colspan="2"><b>Datos del cheque</b></th></tr>
+                    <tr><td>Banco:</td><td><asp:TextBox runat="server" ID="txtBanco2" Width="280px"></asp:TextBox></td></tr>
+                    <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque2" 
+                            Width="180px"></asp:TextBox></td></tr>
+                    <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision2" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision2" runat="server" TargetControlID="txtFechaEmision2" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro2" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro2" runat="server" TargetControlID="txtFechaCobro2" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    </table>
+                    </asp:Panel>
 
 
 
 
                     </div>
                     <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
-                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar2" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox><asp:RequiredFieldValidator runat="server" ID="rqMonto2" ControlToValidate="txtMontoaPagar2" ErrorMessage="Ingrese el monto" Text="*"></asp:RequiredFieldValidator>
 
 
 
 </h3></div>
+                <asp:Button ID="btnAgregarPago3" runat="server" Text="+" Font-Bold="True" 
+                        Font-Size="24px" OnClick="AgregarPago3_Click" CausesValidation="False" />
                 </div>
+                
+                </asp:Panel>
 
+                <asp:Panel runat="server" ID="pnlPago3" Visible="False" >
                 <div style="float:left; width:100%;">
                     <div style="float:left; width:250px; margin-top:10px; margin-left:20px;">
-                    <asp:DropDownList ID="cmbFormaPago3" runat="server">
-                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                    <asp:DropDownList runat="server" ID="cmbFormaPago3"  OnSelectedIndexChanged="cmbFormaPago3_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
+                        <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
                         <asp:ListItem Value="3" Text="Transferencia"/>
                         <asp:ListItem Value="4" Text="Depósito"/>
                     </asp:DropDownList>
-
-
+                    <asp:RequiredFieldValidator runat="server" ID="rqFormaPago3" ControlToValidate="cmbFormaPago3" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
+                    <asp:Panel ID="pnlCheque3" runat="server" Visible="False">
+                    <table width="400px">
+                    <tr><th colspan="2"><b>Datos del cheque</b></th></tr>
+                    <tr><td>Banco:</td><td><asp:TextBox runat="server" ID="txtBanco3" Width="280px"></asp:TextBox></td></tr>
+                    <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque3" 
+                            Width="180px"></asp:TextBox></td></tr>
+                    <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision3" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision3" runat="server" TargetControlID="txtFechaEmision3" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro3" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro3" runat="server" TargetControlID="txtFechaCobro3" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    </table>
+                    </asp:Panel>
 
 
                     </div>
                     <div style="float:left; width:40%; margin-left:5px; margin-top:10px;">
-                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox>
+                        <span style="font-size:14px; margin-top:10px; padding-bottom:15px;">$ </span><asp:TextBox ID="txtMontoaPagar3" runat="server" style="font-size:14px; padding:4px;" Width="70px"></asp:TextBox><asp:RequiredFieldValidator runat="server" ID="rqMonto3" ControlToValidate="txtMontoaPagar3" ErrorMessage="Ingrese el monto" Text="*"></asp:RequiredFieldValidator>
 
 
 
 </h3></div>
                 </div>
-               
+               </asp:Panel>
                     
                 <!--<div style="float:left; width:100%;"><asp:Button ID="btnPagar" Text="PAGAR" runat="server" 
                                     style="font-size:16px; font-weight: bold; padding:5px;" 
@@ -519,7 +688,7 @@
                     
                     <div style="float:left; margin-top:15px;">
                         <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Font-Bold="True" Font-Size="16px"></asp:Label>
-
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" />
 
 
 </div>

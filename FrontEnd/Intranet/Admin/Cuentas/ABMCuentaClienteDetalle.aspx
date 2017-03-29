@@ -1,14 +1,18 @@
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas.ABMCuentaClienteDetalle" CodeFile="ABMCuentaClienteDetalle.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
-<HTML>
-	<HEAD>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
 		<title>Lista de cuenta cliente</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 	</HEAD>
 	<body leftmargin="0" topmargin="0">
 		<mnu:menu id="Menu" runat="server"></mnu:menu>
 		<form method="post" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" 
+                            EnablePartialRendering="true" EnableScriptGlobalization="True">
+         </asp:ScriptManager>
 			<table cellSpacing="0" cellPadding="2" width="98%" border="0">
 				<tr>
 					<td class="text" vAlign="top" width="5"></td>
@@ -51,14 +55,27 @@
                                         <tr><td>Concepto:</td><td><asp:DropDownList ID="cmbConcepto" runat="server"></asp:DropDownList> &nbsp;&nbsp;&nbsp;Concepto adicional: <asp:TextBox ID="txtConceptoAdicional" style="text-transform:uppercase;"  runat="server" Width="300"></asp:TextBox></td>
                                         </tr>
                                         <tr><td>Forma de pago:</td><td>&nbsp;
-                    <asp:DropDownList ID="cmbFormaPago" runat="server">
-                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"/>
+                    <asp:DropDownList ID="cmbFormaPago" runat="server" 
+                            OnSelectedIndexChanged="cmbFormaPago_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
+                        <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
                         <asp:ListItem Value="3" Text="Transferencia"/>
                         <asp:ListItem Value="4" Text="Depósito"/>
-                        <asp:ListItem Value="5" Text="CC $0,0"/>
-                    </asp:DropDownList>
+                    </asp:DropDownList><asp:RequiredFieldValidator runat="server" ID="rqValCmbFormaPago" ControlToValidate="cmbFormaPago" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
 
+                    <asp:Panel ID="pnlCheque" runat="server" Visible="False">
+                    <table width="400px">
+                    <tr><th colspan="2"><b>Datos del cheque</b></th></tr>
+                    <tr><td>Banco:</td><td><asp:TextBox runat="server" ID="txtBanco" Width="280px"></asp:TextBox></td></tr>
+                    <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque" 
+                            Width="180px"></asp:TextBox></td></tr>
+                    <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision" runat="server" TargetControlID="txtFechaEmision" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro" 
+                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro" runat="server" TargetControlID="txtFechaCobro" Enabled="True"></cc1:CalendarExtender></td></tr>
+                    </table>
+                    </asp:Panel>
                     </td></tr>
                                         <tr><td>Monto $:</td><td>
                                             <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>

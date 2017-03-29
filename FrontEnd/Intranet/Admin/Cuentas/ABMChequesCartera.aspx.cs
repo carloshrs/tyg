@@ -54,7 +54,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             GestorPrecios ChequeCarteraEncabezado = new GestorPrecios();
             ChequeCarteraEncabezado.CargarChequeCartera(int.Parse(idChequeCartera));
             lblFechaCobro.Text = DateTime.Parse(ChequeCarteraEncabezado.CHFechaCobro).ToShortDateString();
-            lblFechaEmision.Text = ChequeCarteraEncabezado.CHFechaEmision;
+            lblFechaEmision.Text = DateTime.Parse(ChequeCarteraEncabezado.CHFechaEmision).ToShortDateString();
             lblNroCheque.Text = ChequeCarteraEncabezado.CHNumero;
             lblMontoCheque.Text = ChequeCarteraEncabezado.CHMonto.ToString();
             hdMonto.Value = ChequeCarteraEncabezado.CHMonto.ToString();
