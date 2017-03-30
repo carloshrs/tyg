@@ -151,6 +151,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             bAddMovCC = AgregarDocumentosMovimientoCC(vIdCuentaClienteDetalle, tipoDoc, tipoPeriodo, NroDoc);
                             bAddMovCaja = AgregarDocumentosMovimientoCaja(vIdCajaDetalle, tipoDoc, tipoPeriodo, NroDoc);
 
+                            CambioEstadoDocumentos(tipoDoc, tipoPeriodo, NroDoc);
+                            //Cambiar estado
                             //if (Convert.Decimal(((Label)myItem.Cells[1].FindControl("Lbl_Peso")).Text) > 500)
                             //  Cantidades.Add(Convert.Decimal(((Label)fila.Cells[7].FindControl("Lbl_Peso")).Text));
                             //((Label)myItem.FindControl("ID")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
@@ -281,6 +283,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
             return ccMovimiento.AgregarDocumentosMovimientoCaja(idCajaDetalle, tipoDoc, tipoPeriodo, NroDoc);
+        }
+
+            private void CambioEstadoDocumentos(int tipoDoc, int tipoPeriodo, float NroDoc)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.CambioEstadoDocumentos(tipoDoc, tipoPeriodo, NroDoc);
         }
 
         private int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)
