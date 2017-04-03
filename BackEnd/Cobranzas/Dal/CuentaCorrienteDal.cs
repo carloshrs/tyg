@@ -255,22 +255,22 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             strSQL = "WITH CTE " +
                 "AS " +
                 "( " +
-                "SELECT isnull(monto,0) as saldo  " +
+                "SELECT sum(isnull(monto,0)) as saldo  " +
                 "FROM remitos  " +
                 "WHERE idCliente=" + lIdCliente + 
                 " and estado=1 and periodoCobranza=1 " +
                 "union  " +
-                "SELECT isnull(monto,0) as saldo  " +
+                "SELECT sum(isnull(monto,0)) as saldo  " +
                 "FROM partesEntrega  " +
                 "WHERE idCliente=" + lIdCliente + 
                 " and estado=1 and periodoCobranza=1 " +
                 "union " +
-                "SELECT sum(monto) as saldo  " +
+                "SELECT sum(isnull(monto,0)) as saldo  " +
                 "FROM CtaCteRemitos  " +
                 " WHERE idCliente=" + lIdCliente + 
                 " and estado=1 " +
                 "union " +
-                "SELECT isnull(monto,0) as saldo  " +
+                "SELECT sum(isnull(monto,0)) as saldo  " +
                 "FROM CtaCtePartesEntrega  " +
                 "WHERE idCliente=" + lIdCliente + 
                 " and estado=1 " +
