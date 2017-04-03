@@ -70,8 +70,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 ListView lvInformes = (ListView)e.Item.FindControl("lvInformes");
 
                 GestorPrecios gp = new GestorPrecios();
-                if (Request.QueryString["idTipoPeriodo"] != null && Request.QueryString["idTipoPeriodo"] != "")
-                    idTipoPeriodo = int.Parse(Request.QueryString["idTipoPeriodo"]);
+                if (Request.QueryString["tipoPeriodo"] != null && Request.QueryString["tipoPeriodo"] != "")
+                    idTipoPeriodo = int.Parse(Request.QueryString["tipoPeriodo"]);
                 else
                     idTipoPeriodo = 2;
 
