@@ -275,7 +275,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 "WHERE idCliente=" + lIdCliente + 
                 " and estado=1 " +
                 ") " +
-                "SELECT SUM(saldo) as saldo " +
+                "SELECT SUM(isnull(saldo,0)) as saldo " +
                 "FROM CTE";
             try
             {

@@ -968,7 +968,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             DataSet ds = new DataSet();
 
             String strSQL = "Select CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.montoTotal, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, CPFP.descripcion AS FormaPago ";
-            strSQL = strSQL + " From CPCajaDetalle CPCD INNER JOIN CPCajaDetalleFormaPago CPCDFP ON CPCD.idCajaDetalle = CPCDFP.idCajaDetalle INNER JOIN CPFormasPago CPFP ON CPCDFP.idFormaPago= CPFP.idFormaPago ";
+            strSQL = strSQL + " From CPCajaDetalle CPCD LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP ON CPCD.idCajaDetalle = CPCDFP.idCajaDetalle LEFT OUTER JOIN CPFormasPago CPFP ON CPCDFP.idFormaPago= CPFP.idFormaPago ";
             strSQL = strSQL + " Where CPCD.idCajaDetalle = " + idCajaDetalle.ToString();
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
             myConsulta.Fill(ds);
