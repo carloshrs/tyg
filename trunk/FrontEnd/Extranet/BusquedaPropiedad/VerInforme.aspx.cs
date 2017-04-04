@@ -117,32 +117,32 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 		}
 
 
-		private void CargarForm(BusquedaPropiedadApp oBusquedaAuto)
+		private void CargarForm(BusquedaPropiedadApp oBusquedaProp)
 		{
 			CultureInfo myInfo = new CultureInfo("es-AR");
 
-			lblNombre.Text= oBusquedaAuto.Nombre;
-			lblApellido.Text = oBusquedaAuto.Apellido;
-			lblTipoDocumento.Text = LoadTipoDNI(oBusquedaAuto.IdTipoDoc);
-			lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaAuto.EstadoCivil);
-			lblDocumento.Text = oBusquedaAuto.NroDoc.ToString();
-			lblObservaciones.Text = oBusquedaAuto.Observaciones;
-			lblResultado.Text = oBusquedaAuto.Resultado;
+			lblNombre.Text= oBusquedaProp.Nombre;
+			lblApellido.Text = oBusquedaProp.Apellido;
+			lblTipoDocumento.Text = LoadTipoDNI(oBusquedaProp.IdTipoDoc);
+			lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaProp.EstadoCivil);
+			lblDocumento.Text = oBusquedaProp.NroDoc.ToString();
+			lblObservaciones.Text = oBusquedaProp.Observaciones;
+			lblResultado.Text = oBusquedaProp.Resultado;
 			//EMPRESA
-			lblNombreFantasia.Text = oBusquedaAuto.NombreFantasia;
-			lblRazonSocial.Text= oBusquedaAuto.RazonSocial;
-			lblRubro.Text= oBusquedaAuto.Rubro;
-			lblCUIT.Text= oBusquedaAuto.Cuit;
-			lblCalle.Text= oBusquedaAuto.CalleEmpresa;
-			lblBarrio.Text= oBusquedaAuto.BarrioEmpresa;
-			lblNro.Text= oBusquedaAuto.NroEmpresa;
-			lblPiso.Text= oBusquedaAuto.PisoEmpresa;
-			lblDpto.Text= oBusquedaAuto.DptoEmpresa;
-			lblCP.Text= oBusquedaAuto.CPEmpresa;
-			lblTelefono.Text= oBusquedaAuto.TelefonoEmpresa;
-			lblLocalidad.Text = CargarLocalidades(23, oBusquedaAuto.LocalidadEmpresa);
+			lblNombreFantasia.Text = oBusquedaProp.NombreFantasia;
+			lblRazonSocial.Text= oBusquedaProp.RazonSocial;
+			lblRubro.Text= oBusquedaProp.Rubro;
+			lblCUIT.Text= oBusquedaProp.Cuit;
+			lblCalle.Text= oBusquedaProp.CalleEmpresa;
+			lblBarrio.Text= oBusquedaProp.BarrioEmpresa;
+			lblNro.Text= oBusquedaProp.NroEmpresa;
+			lblPiso.Text= oBusquedaProp.PisoEmpresa;
+			lblDpto.Text= oBusquedaProp.DptoEmpresa;
+			lblCP.Text= oBusquedaProp.CPEmpresa;
+			lblTelefono.Text= oBusquedaProp.TelefonoEmpresa;
+			lblLocalidad.Text = CargarLocalidades(23, oBusquedaProp.LocalidadEmpresa);
 
-			if (oBusquedaAuto.IdTipoPersona == 1) 
+			if (oBusquedaProp.IdTipoPersona == 1) 
 			{
 				pnlJuridica.Visible = false;
 				pnlFisica.Visible = true;

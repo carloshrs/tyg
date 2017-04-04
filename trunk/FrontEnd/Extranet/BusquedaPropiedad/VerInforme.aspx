@@ -42,7 +42,7 @@
 				<TR>
 					<td><IMG alt="" src="/img/logo-20-anios.png" width="264"></td>
 					<TD class="title" width="100%"><FONT color="#ffffff">
-							<P align="center"><FONT color="#32528e">Búsqueda de Automotor</FONT>
+							<P align="center"><FONT color="#32528e">Búsqueda de Propiedad</FONT>
 						</FONT></P></TD>
 				</TR>
 				<tr>
