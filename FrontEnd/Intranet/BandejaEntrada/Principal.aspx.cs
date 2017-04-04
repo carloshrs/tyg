@@ -690,10 +690,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     Response.Redirect("../Inhibicion/inhibicion_registro.aspx");
                     break;
                 case 19:
-                    Response.Redirect("../defuncion/importar.aspx");
+                    Response.Redirect("../verifDefuncion/importar.aspx");
                     break;
                 case 20:
-                    Response.Redirect("../defuncion/importar_partidas.aspx");
+                    Response.Redirect("../verifDefuncion/importar_partidas.aspx");
                     break;
             }
         }
