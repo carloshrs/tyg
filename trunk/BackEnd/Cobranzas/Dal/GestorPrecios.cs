@@ -1583,6 +1583,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         {
             OdbcConnection oConnection = this.OpenConnection();
             string strSQL = "";
+            string strSQLMonto = "";
             if (idTipoDocumentacion == 1)
             {
                 strSQL = "DELETE CtaCteMovimientosRemitos " +
@@ -1597,12 +1598,17 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 " AND nroParte=" + nroRemito;
             }
 
+            strSQLMonto = "setMontoDocumentoMensual " + nroMovimiento + ", " + idTipoDocumentacion;
+
             //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
 
             try
             {
                 OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
                 myCommand.ExecuteNonQuery();
+
+                OdbcCommand myCommand2 = new OdbcCommand(strSQLMonto, oConnection);
+                myCommand2.ExecuteNonQuery();
 
                 //MaxID = ObtenerMaxID(strMaxID, oConnection);
             }
