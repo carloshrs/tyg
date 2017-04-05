@@ -80,7 +80,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
         {
             string strRedir = "";
             bool blInformePagado = false;
-            DateTime FechaLimite = DateTime.Today.AddMonths(-1);
+            DateTime FechaLimite = DateTime.Today.AddYears(-1);
             foreach (DataGridItem myItem in dgridEncabezados.Items)
             {
                 ((ImageButton)myItem.FindControl("Pdf")).Visible = false;
