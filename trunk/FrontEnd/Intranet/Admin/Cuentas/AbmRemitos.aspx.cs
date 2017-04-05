@@ -310,6 +310,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             else
             {
                 gp.modificarRemitoParte(idTipoDocumentacion, idtipoCobranza, nroRemito);
+                gp.setearMontoRemito(nroRemito, idTipoDocumentacion, 1);
                 idRemito = nroRemito;
             }
 
