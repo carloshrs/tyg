@@ -983,6 +983,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             }
             else
             {
+                if (int.Parse(cmbTipoCatastral.SelectedValue) == 1)
+                    NumeroCatastro.MaxLength = 15;
+                else
+                    NumeroCatastro.MaxLength = 12;
                 pnlCatastralDireccion.Visible = false;
                 cmbProvinciaCatastro.Enabled = true;
                 cmbLocalidadCatastro.Enabled = true;
