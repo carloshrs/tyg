@@ -74,7 +74,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             lblMonto2.Text = CajaEncabezadoDetalle.Monto2.ToString();
             lblFormaPago3.Text = (CajaEncabezadoDetalle.FormaPago3 == "") ? "Efectivo" : CajaEncabezadoDetalle.FormaPago3;
             lblMonto3.Text = CajaEncabezadoDetalle.Monto3.ToString();
-
+            lblTotal.Text = (CajaEncabezadoDetalle.Monto1 + CajaEncabezadoDetalle.Monto2 + CajaEncabezadoDetalle.Monto3).ToString();
             lblFecha.Text = CajaEncabezadoDetalle.Fecha;
             lblObservaciones.Text = CajaEncabezadoDetalle.Observaciones;
 

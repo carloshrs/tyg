@@ -52,6 +52,7 @@
                                     <tr><td><strong>1 - Forma de pago:</strong> <asp:Label ID="lblFormaPago1" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto1" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td><strong>2 - Forma de pago:</strong> <asp:Label ID="lblFormaPago2" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto2" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td><strong>3 - Forma de pago:</strong> <asp:Label ID="lblFormaPago3" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto3" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td><strong>TOTAL:</strong> <asp:Label ID="lblTotal" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td colspan="2"></td><td>&nbsp;</td></tr>
                                     <tr><td colspan="4" ><strong>Concepto:</strong> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td></tr>
                                     
