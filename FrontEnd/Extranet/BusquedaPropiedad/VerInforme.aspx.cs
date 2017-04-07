@@ -42,7 +42,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 				{	
 					IdInforme = int.Parse(Request.QueryString["id"]);
 					LoadVerifBusqueda(int.Parse(Request.QueryString["id"]));
-					ListarDominios(int.Parse(Request.QueryString["id"]));
+                    ListarMatriculas(int.Parse(Request.QueryString["id"]));
 
 				}
 			}
@@ -121,26 +121,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 		{
 			CultureInfo myInfo = new CultureInfo("es-AR");
 
-			lblNombre.Text= oBusquedaProp.Nombre;
-			lblApellido.Text = oBusquedaProp.Apellido;
-			lblTipoDocumento.Text = LoadTipoDNI(oBusquedaProp.IdTipoDoc);
-			lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaProp.EstadoCivil);
-			lblDocumento.Text = oBusquedaProp.NroDoc.ToString();
-			lblObservaciones.Text = oBusquedaProp.Observaciones;
-			lblResultado.Text = oBusquedaProp.Resultado;
-			//EMPRESA
-			lblNombreFantasia.Text = oBusquedaProp.NombreFantasia;
-			lblRazonSocial.Text= oBusquedaProp.RazonSocial;
-			lblRubro.Text= oBusquedaProp.Rubro;
-			lblCUIT.Text= oBusquedaProp.Cuit;
-			lblCalle.Text= oBusquedaProp.CalleEmpresa;
-			lblBarrio.Text= oBusquedaProp.BarrioEmpresa;
-			lblNro.Text= oBusquedaProp.NroEmpresa;
-			lblPiso.Text= oBusquedaProp.PisoEmpresa;
-			lblDpto.Text= oBusquedaProp.DptoEmpresa;
-			lblCP.Text= oBusquedaProp.CPEmpresa;
-			lblTelefono.Text= oBusquedaProp.TelefonoEmpresa;
-			lblLocalidad.Text = CargarLocalidades(23, oBusquedaProp.LocalidadEmpresa);
+            lblNombre.Text = oBusquedaProp.Nombre;
+            lblApellido.Text = oBusquedaProp.Apellido;
+            lblTipoDocumento.Text = LoadTipoDNI(oBusquedaProp.IdTipoDoc);
+            //lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaProp.EstadoCivil);
+            lblDocumento.Text = oBusquedaProp.NroDoc.ToString();
+            lblObservaciones.Text = oBusquedaProp.Observaciones;
+            lblResultado.Text = oBusquedaProp.Resultado;
+            //EMPRESA
+            lblRazonSocial.Text = oBusquedaProp.RazonSocial;
+            lblCUIT.Text = oBusquedaProp.Cuit;
+            lblProvincia.Text = CargarProvincias(oBusquedaProp.ProvinciaEmpresa);
 
 			if (oBusquedaProp.IdTipoPersona == 1) 
 			{
@@ -160,6 +151,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 			//dgDominios.DataSource = objBusquedaAutomotor.TraerDominios(idInforme);
 			//dgDominios.DataBind();
 		}
+
+        private void ListarMatriculas(int idInforme)
+        {
+            BusquedaPropiedadApp objBusquedaPropiedad = new BusquedaPropiedadApp();
+            dgMatriculas.DataSource = objBusquedaPropiedad.TraerMatriculas(idInforme);
+            dgMatriculas.DataBind();
+        }
 
 		private void Cancelar_Click(object sender, EventArgs e)
 		{
@@ -218,6 +216,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 			return Localidad;
 		}
 
+        private String CargarProvincias(int idProvincia)
+        {
+            UtilesApp Tipos = new UtilesApp();
+            DataTable myTb;
+            string Provincia = "";
+            myTb = Tipos.TraerProvincias();
+            foreach (DataRow myRow in myTb.Rows)
+            {
+                if (idProvincia.ToString() == myRow[0].ToString())
+                {
+                    Provincia = myRow[1].ToString();
+                }
+            }
+            return Provincia;
+        }
 
 	}
 }
