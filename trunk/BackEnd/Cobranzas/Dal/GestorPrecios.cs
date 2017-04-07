@@ -24,8 +24,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         private float floSaldoCheque;
         private int intIdCajaDetalle;
         private string strConcepto;
-        private string strFormaPago;
-        private float floMontoTotal;
+        private string strFormaPago1;
+        private float floMonto1;
+        private string strFormaPago2;
+        private float floMonto2;
+        private string strFormaPago3;
+        private float floMonto3;
         private int intEntradasalida;
         private string strFecha;
         private string strObservaciones;
@@ -160,27 +164,75 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             }
         }
 
-        public string FormaPago
+        public string FormaPago1
         {
             get
             {
-                return strFormaPago;
+                return strFormaPago1;
             }
             set
             {
-                strFormaPago = value;
+                strFormaPago1 = value;
             }
         }
 
-        public float MontoTotal
+        public float Monto1
         {
             get
             {
-                return floMontoTotal;
+                return floMonto1;
             }
             set
             {
-                floMontoTotal = value;
+                floMonto1 = value;
+            }
+        }
+
+        public string FormaPago2
+        {
+            get
+            {
+                return strFormaPago2;
+            }
+            set
+            {
+                strFormaPago2 = value;
+            }
+        }
+
+        public float Monto2
+        {
+            get
+            {
+                return floMonto2;
+            }
+            set
+            {
+                floMonto2 = value;
+            }
+        }
+
+        public string FormaPago3
+        {
+            get
+            {
+                return strFormaPago3;
+            }
+            set
+            {
+                strFormaPago3 = value;
+            }
+        }
+
+        public float Monto3
+        {
+            get
+            {
+                return floMonto3;
+            }
+            set
+            {
+                floMonto3 = value;
             }
         }
 
@@ -967,9 +1019,15 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
 
-            String strSQL = "Select CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.montoTotal, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, CPFP.descripcion AS FormaPago ";
-            strSQL = strSQL + " From CPCajaDetalle CPCD LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP ON CPCD.idCajaDetalle = CPCDFP.idCajaDetalle LEFT OUTER JOIN CPFormasPago CPFP ON CPCDFP.idFormaPago= CPFP.idFormaPago ";
-            strSQL = strSQL + " Where CPCD.idCajaDetalle = " + idCajaDetalle.ToString();
+            String strSQL = "Select  CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, CPCDFP1.monto AS monto1, CPFP1.descripcion AS FormaPago1, CPCDFP2.monto AS monto2, CPFP2.descripcion AS FormaPago2, CPCDFP3.monto AS monto3, CPFP3.descripcion AS FormaPago3 " +
+                " From CPCajaDetalle CPCD " +
+                " LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP1 ON CPCD.idCajaDetalle = CPCDFP1.idCajaDetalle and CPCDFP1.idFormaPago=1 " +
+                " LEFT OUTER JOIN CPFormasPago CPFP1 ON CPCDFP1.idFormaPago= CPFP1.idFormaPago  " +
+                " LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP2 ON CPCD.idCajaDetalle = CPCDFP2.idCajaDetalle and CPCDFP2.idFormaPago=2 " +
+                " LEFT OUTER JOIN CPFormasPago CPFP2 ON CPCDFP2.idFormaPago= CPFP2.idFormaPago  " +
+                " LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP3 ON CPCD.idCajaDetalle = CPCDFP3.idCajaDetalle and CPCDFP3.idFormaPago=3 " +
+                " LEFT OUTER JOIN CPFormasPago CPFP3 ON CPCDFP3.idFormaPago= CPFP3.idFormaPago " +
+                " Where CPCD.idCajaDetalle = " + idCajaDetalle.ToString();
             OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
             myConsulta.Fill(ds);
             try
@@ -981,8 +1039,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             intIdCajaDetalle = int.Parse(ds.Tables[0].Rows[0]["idCajaDetalle"].ToString());
             intIdCaja = int.Parse(ds.Tables[0].Rows[0]["idCaja"].ToString());
             strConcepto = ds.Tables[0].Rows[0]["concepto"].ToString();
-            strFormaPago = ds.Tables[0].Rows[0]["FormaPago"].ToString();
-            floMontoTotal = float.Parse(ds.Tables[0].Rows[0]["montoTotal"].ToString());
+            strFormaPago1 = ds.Tables[0].Rows[0]["FormaPago1"].ToString();
+            floMonto1 = float.Parse(ds.Tables[0].Rows[0]["monto1"].ToString());
+            strFormaPago2 = ds.Tables[0].Rows[0]["FormaPago2"].ToString();
+            floMonto2 = float.Parse(ds.Tables[0].Rows[0]["monto2"].ToString());
+            strFormaPago3 = ds.Tables[0].Rows[0]["FormaPago3"].ToString();
+            floMonto3 = float.Parse(ds.Tables[0].Rows[0]["monto3"].ToString());
             intEntradasalida = int.Parse(ds.Tables[0].Rows[0]["entradasalida"].ToString());
             strFecha = ds.Tables[0].Rows[0]["fecha"].ToString();
             strObservaciones = ds.Tables[0].Rows[0]["observaciones"].ToString();

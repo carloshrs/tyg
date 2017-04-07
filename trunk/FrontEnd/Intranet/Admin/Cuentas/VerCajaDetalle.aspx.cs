@@ -61,12 +61,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             GestorPrecios CajaEncabezadoDetalle = new GestorPrecios();
             CajaEncabezadoDetalle.CargarCajaDetalle(int.Parse(Request.QueryString["idCajaDetalle"]));
             lblConcepto.Text = CajaEncabezadoDetalle.Concepto;
-            lblMonto.Text = CajaEncabezadoDetalle.MontoTotal.ToString();
+            
             if (CajaEncabezadoDetalle.Entradasalida == 0)
                 lblTipo.Text = "Egreso";
             else
                 lblTipo.Text = "Ingreso";
-            lblFormaPago.Text = (CajaEncabezadoDetalle.FormaPago == "") ? "Efectivo" : CajaEncabezadoDetalle.FormaPago;
+            
+            
+            lblFormaPago1.Text = (CajaEncabezadoDetalle.FormaPago1 == "") ? "Efectivo" : CajaEncabezadoDetalle.FormaPago1;
+            lblMonto1.Text = CajaEncabezadoDetalle.Monto1.ToString();
+            lblFormaPago2.Text = (CajaEncabezadoDetalle.FormaPago2 == "") ? "Efectivo" : CajaEncabezadoDetalle.FormaPago2;
+            lblMonto2.Text = CajaEncabezadoDetalle.Monto2.ToString();
+            lblFormaPago3.Text = (CajaEncabezadoDetalle.FormaPago3 == "") ? "Efectivo" : CajaEncabezadoDetalle.FormaPago3;
+            lblMonto3.Text = CajaEncabezadoDetalle.Monto3.ToString();
+
             lblFecha.Text = CajaEncabezadoDetalle.Fecha;
             lblObservaciones.Text = CajaEncabezadoDetalle.Observaciones;
 
