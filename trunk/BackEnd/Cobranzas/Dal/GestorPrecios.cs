@@ -1019,7 +1019,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
 
-            String strSQL = "Select  CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, CPCDFP1.monto AS monto1, CPFP1.descripcion AS FormaPago1, CPCDFP2.monto AS monto2, CPFP2.descripcion AS FormaPago2, CPCDFP3.monto AS monto3, CPFP3.descripcion AS FormaPago3 " +
+            String strSQL = "Select  CPCD.idCajaDetalle, CPCD.idCaja, CPCD.concepto, CPCD.entradasalida, CPCD.fecha, CPCD.observaciones, isnull(CPCDFP1.monto, 0) AS monto1, CPFP1.descripcion AS FormaPago1, isnull(CPCDFP2.monto, 0) AS monto2, CPFP2.descripcion AS FormaPago2, isnull(CPCDFP3.monto, 0) AS monto3, CPFP3.descripcion AS FormaPago3 " +
                 " From CPCajaDetalle CPCD " +
                 " LEFT OUTER JOIN CPCajaDetalleFormaPago CPCDFP1 ON CPCD.idCajaDetalle = CPCDFP1.idCajaDetalle and CPCDFP1.idFormaPago=1 " +
                 " LEFT OUTER JOIN CPFormasPago CPFP1 ON CPCDFP1.idFormaPago= CPFP1.idFormaPago  " +

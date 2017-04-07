@@ -47,13 +47,13 @@
 							<tr style="margin-top:30px;">
 								<td>
 									<table width="500">
-                                    <tr><td ><strong>Fecha:</strong></td><td colspan="3"> <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></td></tr>
-                                    <tr><td ><strong>Tipo:</strong></td><td colspan="3"> <asp:Label ID="lblTipo" runat="server" Text=""></asp:Label></td></tr>
-                                    <tr><td><strong>1 - Forma de pago:</strong></td><td> <asp:Label ID="lblFormaPago1" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong></td><td>$<asp:Label ID="lblMonto1" runat="server" Text=""></asp:Label></td></tr>
-                                    <tr><td><strong>2 - Forma de pago:</strong></td><td> <asp:Label ID="lblFormaPago2" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong></td><td>$<asp:Label ID="lblMonto2" runat="server" Text=""></asp:Label></td></tr>
-                                    <tr><td><strong>3 - Forma de pago:</strong></td><td> <asp:Label ID="lblFormaPago3" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong></td><td>$<asp:Label ID="lblMonto3" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td style="width:80px;" ><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td ><strong>Tipo:</strong> <asp:Label ID="lblTipo" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td><strong>1 - Forma de pago:</strong> <asp:Label ID="lblFormaPago1" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto1" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td><strong>2 - Forma de pago:</strong> <asp:Label ID="lblFormaPago2" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto2" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td><strong>3 - Forma de pago:</strong> <asp:Label ID="lblFormaPago3" runat="server" Text=""></asp:Label></td><td><strong>Monto:</strong> $<asp:Label ID="lblMonto3" runat="server" Text=""></asp:Label></td></tr>
                                     <tr><td colspan="2"></td><td>&nbsp;</td></tr>
-                                    <tr><td ><strong>Concepto:</strong></td><td colspan="3"> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td></tr>
+                                    <tr><td colspan="4" ><strong>Concepto:</strong> <asp:Label ID="lblConcepto" runat="server" Text=""></asp:Label></td></tr>
                                     
                                         
                                     </table>
