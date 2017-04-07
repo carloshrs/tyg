@@ -143,23 +143,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.BusquedaPropiedad
 		}
 
 
-		private void CargarForm(BusquedaPropiedadApp oBusquedaAuto)
+		private void CargarForm(BusquedaPropiedadApp oBusquedaProp)
 		{
 			CultureInfo myInfo = new CultureInfo("es-AR");
 
-			lblNombre.Text= oBusquedaAuto.Nombre;
-			lblApellido.Text = oBusquedaAuto.Apellido;
-			lblTipoDocumento.Text = LoadTipoDNI(oBusquedaAuto.IdTipoDoc);
-			//lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaAuto.EstadoCivil);
-			lblDocumento.Text = oBusquedaAuto.NroDoc.ToString();
-			lblObservaciones.Text = oBusquedaAuto.Observaciones;
-			lblResultado.Text = oBusquedaAuto.Resultado;
+			lblNombre.Text= oBusquedaProp.Nombre;
+			lblApellido.Text = oBusquedaProp.Apellido;
+			lblTipoDocumento.Text = LoadTipoDNI(oBusquedaProp.IdTipoDoc);
+			//lblEstadoCivil.Text = LoadEstadoCivil(oBusquedaProp.EstadoCivil);
+			lblDocumento.Text = oBusquedaProp.NroDoc.ToString();
+			lblObservaciones.Text = oBusquedaProp.Observaciones;
+			lblResultado.Text = oBusquedaProp.Resultado;
 			//EMPRESA
-			lblRazonSocial.Text= oBusquedaAuto.RazonSocial;
-			lblCUIT.Text= oBusquedaAuto.Cuit;
-            lblProvincia.Text = CargarProvincias(oBusquedaAuto.ProvinciaEmpresa);
+			lblRazonSocial.Text= oBusquedaProp.RazonSocial;
+			lblCUIT.Text= oBusquedaProp.Cuit;
+            lblProvincia.Text = CargarProvincias(oBusquedaProp.ProvinciaEmpresa);
 
-			if (oBusquedaAuto.IdTipoPersona == 1) 
+			if (oBusquedaProp.IdTipoPersona == 1) 
 			{
 				pnlJuridica.Visible = false;
 				pnlFisica.Visible = true;

@@ -86,10 +86,10 @@
 													<TABLE class="text" style="BORDER-COLLAPSE: collapse" borderColor="#111111" cellSpacing="0"
 														cellPadding="3" width="100%" border="1">
 														<TR>
-															<TD width="99%" colSpan="4">
+															<TD width="99%" colSpan="3">
 																<TABLE id="Table4" cellSpacing="0" cellPadding="0" width="100%" border="0">
 																	<TR>
-																		<TD class="title" width="100%" bgColor="lightgrey" colSpan="3" height="10">&nbsp;&nbsp; 
+																		<TD class="title" width="100%" bgColor="lightgrey" height="10">&nbsp;&nbsp; 
 																			Persona Física</TD>
 																	</TR>
 																</TABLE>
@@ -101,66 +101,41 @@
 															<TD class="text" vAlign="top" width="25%"><STRONG>Tipo y nº documento:&nbsp;</STRONG>
 																<asp:label id="lblTipoDocumento" runat="server"></asp:label>&nbsp;
 																<asp:label id="lblDocumento" runat="server"></asp:label></TD>
-															<TD class="text" vAlign="top" width="25%" colSpan="2"><STRONG>Estado civil:</STRONG>
+															<TD class="text" vAlign="top" width="25%"><STRONG>Estado civil:</STRONG>
 																<asp:label id="lblEstadoCivil" runat="server"></asp:label></TD>
 														</TR>
 														<TR>
-															<TD width="99%" colSpan="4">&nbsp;</TD>
+															<TD width="99%" colSpan="3">&nbsp;</TD>
 														</TR>
 													</TABLE>
 												</asp:panel>
 												<asp:panel id="pnlJuridica" runat="server">
-													<TABLE class="text" style="BORDER-COLLAPSE: collapse" borderColor="#111111" cellSpacing="0"
-														cellPadding="3" width="100%" border="1">
-														<TR>
-															<TD width="100%" colSpan="4">
-																<TABLE id="Table5" cellSpacing="0" cellPadding="0" width="100%" border="0">
-																	<TR>
-																		<TD class="title" width="100%" bgColor="lightgrey" colSpan="3" height="10">&nbsp;&nbsp; 
-																			Persona Jurídica</TD>
-																	</TR>
-																</TABLE>
-															</TD>
-														</TR>
-														<TR>
-															<TD class="text" width="360" colSpan="2"><STRONG>Razón Social:</STRONG>
-																<asp:label id="lblRazonSocial" runat="server"></asp:label></TD>
-															<TD class="text" width="50%" colSpan="2"><STRONG>Nombre de fantasia:</STRONG>&nbsp;
-																<asp:label id="lblNombreFantasia" runat="server"></asp:label></TD>
-														</TR>
-														<TR>
-															<TD class="text" width="360" colSpan="2"><STRONG>Rubro:&nbsp;</STRONG>
-																<asp:label id="lblRubro" runat="server"></asp:label></TD>
-															<TD class="text" width="50%" colSpan="2"><STRONG>CUIT:&nbsp;</STRONG>
-																<asp:label id="lblCUIT" runat="server"></asp:label></TD>
-														</TR>
-														<TR>
-															<TD class="text" width="360" colSpan="2"><STRONG>Calle:&nbsp;</STRONG>
-																<asp:label id="lblCalle" runat="server"></asp:label></TD>
-															<TD class="text" width="50%" colSpan="2"><STRONG>Barrio:&nbsp;</STRONG>
-																<asp:label id="lblBarrio" runat="server"></asp:label></TD>
-														</TR>
-														<TR>
-															<TD class="text" width="160"><STRONG>Nro:</STRONG>
-																<asp:label id="lblNro" runat="server"></asp:label></TD>
-															<TD class="text" width="209"><STRONG>Piso:</STRONG>
-																<asp:label id="lblPiso" runat="server"></asp:label></TD>
-															<TD class="text" width="25%"><STRONG>Depto.:</STRONG>
-																<asp:label id="lblDpto" runat="server"></asp:label></TD>
-															<TD class="text" width="25%"><STRONG>C.P.:</STRONG>
-																<asp:label id="lblCP" runat="server"></asp:label></TD>
-														</TR>
-														<TR>
-															<TD class="text" width="360" colSpan="2"><STRONG>Teléfono:&nbsp;</STRONG>
-																<asp:label id="lblTelefono" runat="server"></asp:label></TD>
-															<TD class="text" width="50%" colSpan="2"><STRONG>Localidad:&nbsp;</STRONG>
-																<asp:label id="lblLocalidad" runat="server"></asp:label></TD>
-														</TR>
-														<TR>
-															<TD class="text" width="100%" colSpan="4">&nbsp;
-															</TD>
-														</TR>
-													</TABLE>
+                  <TABLE class=text style="BORDER-COLLAPSE: collapse" 
+                  borderColor=#111111 cellSpacing=0 cellPadding=3 width="100%" 
+                  border=1>
+                    <TR>
+                      <TD width="100%" colSpan=4>
+                        <TABLE id=Table3 cellSpacing=0 cellPadding=0 
+                        width="100%" border=0>
+                          <TR>
+                            <TD class=title width="100%" bgColor=lightgrey 
+                            colSpan=3 height=10>&nbsp;&nbsp; Persona 
+                            Jurídica</TD></TR></TABLE></TD></TR>
+                    <TR>
+                      <TD class=text width=360 colSpan=2><STRONG>Razón 
+                        Social:</STRONG> 
+<asp:label id=lblRazonSocial runat="server"></asp:label></TD>
+<TD class=text width="50%" 
+                        colSpan=2><STRONG>CUIT:&nbsp;</STRONG> 
+<asp:label id=lblCUIT runat="server"></asp:label></TD>
+</TR>
+                    <TR>
+                      <TD class=text width="50%" 
+                        colSpan=4><STRONG>Provincia:&nbsp;</STRONG> 
+<asp:label id=lblProvincia runat="server"></asp:label></TD></TR>
+                    <TR>
+                      <TD class=text width="100%" colSpan=4>&nbsp; 
+                    </TD></TR></TABLE>
 												</asp:panel>
 											</TD>
 										</TR>
@@ -193,23 +168,47 @@
 													</TR>
 													<TR>
 														<TD class="text" width="100%" colSpan="2">
-															<asp:datagrid id="dgDominios" runat="server" AutoGenerateColumns="False" BackColor="White" BorderStyle="None"
-																BorderColor="#CCCCCC" CellPadding="3" Font-Size="8pt" BorderWidth="1px" Width="100%">
-																<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#669999"></SelectedItemStyle>
-																<ItemStyle ForeColor="#000066"></ItemStyle>
-																<HeaderStyle Font-Bold="True" ForeColor="White" BackColor="#006699"></HeaderStyle>
-																<FooterStyle ForeColor="#000066" BackColor="White"></FooterStyle>
-																<Columns>
-																	<asp:BoundColumn Visible="False" DataField="idDominio"></asp:BoundColumn>
-																	<asp:BoundColumn DataField="Dominio" HeaderText="Dominio">
-																		<HeaderStyle Width="150px"></HeaderStyle>
-																	</asp:BoundColumn>
-																	<asp:BoundColumn DataField="Registro" HeaderText="Registro donde esta radicado">
-																		<HeaderStyle Width="80%"></HeaderStyle>
-																	</asp:BoundColumn>
-																</Columns>
-																<PagerStyle HorizontalAlign="Left" ForeColor="#000066" BackColor="White" Mode="NumericPages"></PagerStyle>
-															</asp:datagrid></TD>
+															<asp:datagrid id="dgMatriculas" runat="server" Width="100%" AutoGenerateColumns="False" BackColor="White"
+													BorderStyle="None" BorderColor="#CCCCCC" CellPadding="3" Font-Size="8pt" BorderWidth="1px">
+													<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#669999"></SelectedItemStyle>
+													<ItemStyle ForeColor="#000066"></ItemStyle>
+													<HeaderStyle Font-Bold="True" ForeColor="White" BackColor="#006699"></HeaderStyle>
+													<FooterStyle ForeColor="#000066" BackColor="White"></FooterStyle>
+													<Columns>
+														<asp:BoundColumn Visible="False" DataField="idMatricula"></asp:BoundColumn>
+														<asp:BoundColumn DataField="Matricula" HeaderText="Matricula">
+															<HeaderStyle Width="150px"></HeaderStyle>
+														</asp:BoundColumn>
+														<asp:BoundColumn DataField="Dominio" HeaderText="Dominio">
+															<HeaderStyle Width="150px"></HeaderStyle>
+														</asp:BoundColumn>
+														<asp:BoundColumn DataField="Folio" HeaderText="Folio">
+															<HeaderStyle Width="80px"></HeaderStyle>
+														</asp:BoundColumn>
+
+														<asp:BoundColumn DataField="Tomo" HeaderText="Tomo">
+															<HeaderStyle Width="80px"></HeaderStyle>
+														</asp:BoundColumn>
+
+														<asp:BoundColumn DataField="Ano" HeaderText="Año">
+															<HeaderStyle Width="80px"></HeaderStyle>
+														</asp:BoundColumn>
+														
+														<asp:BoundColumn DataField="Legajo" HeaderText="Legajo">
+															<HeaderStyle Width="150px"></HeaderStyle>
+														</asp:BoundColumn>
+														
+														<asp:BoundColumn DataField="FolioLegajo" HeaderText="Folio">
+															<HeaderStyle Width="80px"></HeaderStyle>
+														</asp:BoundColumn>
+														
+														<asp:BoundColumn DataField="AnoLegajo" HeaderText="Año">
+															<HeaderStyle Width="80px"></HeaderStyle>
+														</asp:BoundColumn>
+
+													</Columns>
+													<PagerStyle HorizontalAlign="Left" ForeColor="#000066" BackColor="White" Mode="NumericPages"></PagerStyle>
+												</asp:datagrid></TD>
 													</TR>
 												</TABLE>
 											</td>
