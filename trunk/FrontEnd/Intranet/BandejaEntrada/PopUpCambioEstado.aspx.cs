@@ -215,7 +215,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 case "18":
                     path = "gravamenesDIR";
                     break;
-
+                case "19":
+                    path = "verifDefuncion";
+                    break;
+                case "20":
+                    path = "InformePartidasDefuncion";
+                    break;    
                 case "21":
                     path = "InspeccionAmbientalBancor";
                     break;
