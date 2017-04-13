@@ -82,19 +82,23 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 
         protected void dgChequesCartera_PreRender(object sender, EventArgs e)
         {
+            float vTotal = 0;
             foreach (DataGridItem myItem in dgChequesCartera.Items)
             {
+                
                 try
                 {
                     ((Label)myItem.FindControl("lblFechaCobro")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString();
+                    vTotal = vTotal + float.Parse(myItem.Cells[5].Text);
                     
                 }
                 catch (Exception exc)
                 { }
 
             }
+            lblTotal.Text = "$ " + vTotal;
         }
 
 
-}
+    }
 }
