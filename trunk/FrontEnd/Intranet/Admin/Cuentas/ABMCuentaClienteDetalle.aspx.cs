@@ -22,6 +22,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                 idCliente = Request.QueryString["id"];
                 CuentaCorrienteApp vCCCliente = new CuentaCorrienteApp();
+                vCCCliente.ValClienteCC(int.Parse(idCliente));
                 int idCuentaCliente = vCCCliente.ObtenerNroClienteCC(int.Parse(idCliente));
                 hdIdCuentaCliente.Value = idCuentaCliente.ToString();
 
