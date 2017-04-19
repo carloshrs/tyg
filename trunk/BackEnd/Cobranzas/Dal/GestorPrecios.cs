@@ -1212,6 +1212,13 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 StaticDal.EjecutarComando(strQuery.ToString());
 
 
+                StringBuilder strQuery2 = new StringBuilder(512);
+                strQuery2 = new StringBuilder(512);
+                strQuery2.Append("UPDATE CPCuentaCliente ");
+                strQuery2.Append("SET saldo = " + StaticDal.Traduce(saldo) + ", fechaUltimoMovimiento=getdate() ");
+                strQuery2.Append("WHERE idCuentaCliente=" + StaticDal.Traduce(IdCuentaCliente));
+                StaticDal.EjecutarComando(strQuery2.ToString());
+
             }
             catch (Exception e)
             {
