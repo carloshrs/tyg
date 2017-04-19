@@ -1018,7 +1018,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append(" select c.tipoPeriodo, 0, getdate(), 'SALDO PENDIENTE', (cpc.saldo * -1) as saldo ");
                 strQuery.Append(" from CPCuentaCliente cpc ");
                 strQuery.Append(" inner join clientes c on cpc.idCliente=c.IdCliente ");
-                strQuery.Append(" where c.idCliente=" + idCliente + " and cpc.saldo < 0 and c.tipoPeriodo=2 ");
+                strQuery.Append(" where c.idCliente=" + idCliente + " and cpc.saldo < 0 and c.tipoPeriodo=1 ");
                 strQuery.Append(" ) T ");
                 strQuery.Append("order by fecha ");
             }
