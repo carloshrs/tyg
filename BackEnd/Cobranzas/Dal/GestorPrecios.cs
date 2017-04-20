@@ -899,7 +899,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
                 strQuery.Append("UNION ");
-                strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, cpc.saldo ");
+                strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, (cpc.saldo * -1) as saldo ");
                 strQuery.Append("from CPCuentaCliente cpc ");
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
                 strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=2 ");
@@ -929,7 +929,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal ");
                 strQuery.Append("UNION ");
-                strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, cpc.saldo ");
+                strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, (cpc.saldo * -1) as saldo ");
                 strQuery.Append("from CPCuentaCliente cpc ");
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
                 strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=1 ");
