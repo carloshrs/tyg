@@ -136,6 +136,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     try
                     {
                         ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                        if (int.Parse(myItem.Cells[6].Text) == 2) // Estado "cobrado" no debe poder editar
+                            ((ImageButton)myItem.FindControl("Editar")).Visible = false;
                     }
                     catch (Exception exc)
                     { }
@@ -149,6 +151,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     try
                     {
                         ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                        if (int.Parse(myItem.Cells[6].Text) == 2) // Estado "cobrado" no debe poder editar
+                            ((ImageButton)myItem.FindControl("Editar")).Visible = false;
                     }
                     catch (Exception exc)
                     { }
