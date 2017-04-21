@@ -2179,23 +2179,23 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             DataTable dtSalida = null;
             if (idTipoDocumento == 1)
             {
-                strQuery.Append("select ccr.nroMovimiento, ccr.fecha, count(ccr.nroMovimiento) as cantRemitos ");
+                strQuery.Append("select ccr.nroMovimiento, ccr.fecha, count(ccr.nroMovimiento) as cantRemitos, ccr.estado ");
                 strQuery.Append("from  CtaCteRemitos ccr  ");
                 strQuery.Append("inner join CtaCteMovimientosRemitos ccmr on ccmr.nroMovimiento=ccr.nroMovimiento  ");
                 strQuery.Append("where ccr.idCliente= " + idCliente + " ");
                 strQuery.Append("AND ccr.fecha BETWEEN " + FechaDesde + " AND " + FechaHasta + " ");
-                strQuery.Append("group by ccr.nroMovimiento, ccr.fecha ");
+                strQuery.Append("group by ccr.nroMovimiento, ccr.fecha, ccr.estado ");
                 strQuery.Append("order by ccr.nroMovimiento Desc");
             }
 
             if (idTipoDocumento == 2)
             {
-                strQuery.Append("select ccr.nroMovimiento, ccr.fecha, count(ccr.nroMovimiento) as cantRemitos ");
+                strQuery.Append("select ccr.nroMovimiento, ccr.fecha, count(ccr.nroMovimiento) as cantRemitos, ccr.estado ");
                 strQuery.Append("from  CtaCtePartesEntrega ccr  ");
                 strQuery.Append("inner join CtaCteMovimientosPartesEntrega ccmr on ccmr.nroMovimiento=ccr.nroMovimiento  ");
                 strQuery.Append("where ccr.idCliente= " + idCliente + " ");
                 strQuery.Append("AND ccr.fecha BETWEEN " + FechaDesde + " AND " + FechaHasta + " ");
-                strQuery.Append("group by ccr.nroMovimiento, ccr.fecha ");
+                strQuery.Append("group by ccr.nroMovimiento, ccr.fecha, ccr.estado ");
                 strQuery.Append("order by ccr.nroMovimiento Desc");
             }
 
