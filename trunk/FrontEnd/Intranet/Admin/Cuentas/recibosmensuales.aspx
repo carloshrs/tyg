@@ -312,7 +312,7 @@ function recalcular(tipo, campo) {
                                                         </ItemTemplate>
                                                         </asp:TemplateColumn>
 
-                                                        <asp:BoundColumn DataField="estado" Visible="False">
+                                                        <asp:BoundColumn Visible="False" DataField="estado" HeaderText="estado"></asp:BoundColumn>
                                                         
                                                         </asp:BoundColumn>
                                                    </Columns>
@@ -392,6 +392,7 @@ function recalcular(tipo, campo) {
                                                         </ItemTemplate>
                                                         </asp:TemplateColumn>
 
+                                                        <asp:BoundColumn Visible="False" DataField="estado" HeaderText="estado"></asp:BoundColumn>
                                                    </Columns>
                                                 </asp:datagrid>
                                                 </asp:Panel>
