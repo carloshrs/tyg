@@ -884,7 +884,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             {
                 strQuery.Append("select tipoperiodo, sum(cantidad) as cantidad, IdCliente, cliente, sum(monto) as monto, direccion, telefono from ( ");
                 strQuery.Append("select 1 as idTipo, 2 as tipoperiodo, COUNT(monto) as cantidad, c.idCliente, ");
-                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, c.callesum(ccr.monto) as monto,  ");
+                strQuery.Append("CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, sum(ccr.monto) as monto,  ");
                 strQuery.Append("(c.calle + ' ' + c.numero + ' ' + CASE WHEN isnull(c.piso,'') = '' THEN '' ElSE ', Piso: ' + c.piso END +' ' + CASE WHEN isnull(c.office,'') = '' THEN '' ElSE ', Local: ' + c.office END) as direccion, c.telefono "); 
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente  ");
