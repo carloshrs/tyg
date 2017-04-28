@@ -907,7 +907,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
                 strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=2 ");
                 strQuery.Append(") T ");
-                strQuery.Append("group by tipoperiodo, IdCliente, cliente ");
+                strQuery.Append("group by tipoperiodo, IdCliente, cliente, direccion, telefono ");
                 strQuery.Append("order by cliente ");
             }
 
@@ -940,7 +940,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
                 strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=1 ");
                 strQuery.Append(") T ");
-                strQuery.Append("group by tipoperiodo, IdCliente, cliente ");
+                strQuery.Append("group by tipoperiodo, IdCliente, cliente, direccion, telefono ");
                 strQuery.Append("order by cliente ");
             }
 
