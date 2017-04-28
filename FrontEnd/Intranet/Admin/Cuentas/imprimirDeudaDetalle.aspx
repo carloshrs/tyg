@@ -166,7 +166,7 @@
                                             <tr>
 				                                <td><asp:HiddenField ID="hdIdCliente" runat="server" Value='<%# Eval("idCliente") %>'></asp:HiddenField></td>
                                                 <td class="big" align="center" style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("cantidad") %>'></asp:Label></td>
-                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCliente" runat="server" Text='<%# Eval("cliente") %>'></asp:Label></td>
+                                                <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblCliente" runat="server" Text='<%# Eval("cliente") %>'></asp:Label> - <asp:Label ID="lblDireccion" runat="server" Text='<%# Eval("direccion") %>' Font-Size="10px"></asp:Label>, <asp:Label ID="lblTelefono" runat="server" Text='<%# Eval("telefono") %>' Font-Size="10px"></asp:Label></td>
                                                 <td style="font-weight:bold; font-size:14px;"><asp:Label ID="lblSubtotal" runat="server" Font-Bold="true" Text='<%# "$ " + Eval("monto") %>'></asp:Label></td>
 			                                </tr>
                                         
