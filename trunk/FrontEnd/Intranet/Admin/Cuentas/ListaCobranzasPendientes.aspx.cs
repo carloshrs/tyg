@@ -130,7 +130,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
                         if (!bandera)
                             clientes = myItem.Cells[1].Text;
                         else
-                            clientes = ", " + myItem.Cells[1].Text;
+                            clientes = clientes + ", " + myItem.Cells[1].Text;
                         
                         bandera = true;
                     }
