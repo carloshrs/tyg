@@ -856,7 +856,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         }
 
 
-        public static DataTable ListaPendientesCobrosClientes(int tipoPeriodo, string fechaDesde, string fechaHasta)
+        public static DataTable ListaPendientesCobrosClientes(int tipoPeriodo, string fechaDesde, string fechaHasta, string clientes)
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
@@ -889,6 +889,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCteRemitos ccr on ccr.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccr.estado=1 ");
+                if (clientes != null)
+                    strQuery.Append("and c.idcliente in (" + clientes + ") ");
                 strQuery.Append("and ccr.fecha between "+fechaDesde+" and "+fechaHasta+" ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
                 strQuery.Append("UNION ");
@@ -898,6 +900,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join CtaCtePartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccpe.estado=1 ");
+                if (clientes != null)
+                    strQuery.Append("and c.idcliente in (" + clientes + ") ");
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
                 strQuery.Append("UNION ");
@@ -905,7 +909,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("(c.calle + ' ' + c.numero + ' ' + CASE WHEN isnull(c.piso,'') = '' THEN '' ElSE ', Piso: ' + c.piso END +' ' + CASE WHEN isnull(c.office,'') = '' THEN '' ElSE ', Local: ' + c.office END) as direccion, c.telefono "); 
                 strQuery.Append("from CPCuentaCliente cpc ");
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
-                strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=2 ");
+                strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=2  ");
+                if (clientes != null)
+                    strQuery.Append("and c.idcliente in (" + clientes + ")  ");
                 strQuery.Append(") T ");
                 strQuery.Append("group by tipoperiodo, IdCliente, cliente, direccion, telefono ");
                 strQuery.Append("order by cliente ");
@@ -920,6 +926,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join remitos ccr on ccr.idCliente=c.IdCliente  ");
                 strQuery.Append("where ccr.estado=1 ");
+                if (clientes != null)
+                    strQuery.Append("and c.idcliente in (" + clientes + ") ");
                 strQuery.Append("and ccr.periodoCobranza=1 ");
                 strQuery.Append("and ccr.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
@@ -929,7 +937,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("(c.calle + ' ' + c.numero + ' ' + CASE WHEN isnull(c.piso,'') = '' THEN '' ElSE ', Piso: ' + c.piso END +' ' + CASE WHEN isnull(c.office,'') = '' THEN '' ElSE ', Local: ' + c.office END) as direccion, c.telefono "); 
                 strQuery.Append("from clientes c  ");
                 strQuery.Append("inner join PartesEntrega ccpe on ccpe.idCliente=c.IdCliente  ");
-                strQuery.Append("where ccpe.estado=1 ");
+                strQuery.Append("where ccpe.estado=1  ");
+                if (clientes != null)
+                    strQuery.Append("and c.idcliente in (" + clientes + ") ");
                 strQuery.Append("and ccpe.periodoCobranza=1 ");
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
@@ -939,6 +949,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 strQuery.Append("from CPCuentaCliente cpc ");
                 strQuery.Append("inner join clientes c on cpc.idCliente=c.IdCliente ");
                 strQuery.Append("where cpc.saldo < 0 and c.tipoPeriodo=1 ");
+                if (clientes != null)
+                    strQuery.Append(" and c.idcliente in (" + clientes + ") ");
                 strQuery.Append(") T ");
                 strQuery.Append("group by tipoperiodo, IdCliente, cliente, direccion, telefono ");
                 strQuery.Append("order by cliente ");

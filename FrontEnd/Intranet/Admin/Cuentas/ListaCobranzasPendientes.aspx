@@ -8,7 +8,56 @@
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 	</HEAD>
 
+
+    <script src="/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+    
+
     <script type="text/javascript">
+
+
+        function select_deselectAll(chkVal, idVal, grupo) {
+            var frm = document.forms[0];
+            // Loop through all elements
+            for (i = 0; i < frm.length; i++) {
+                // Look for our Header Template's Checkbox
+                if (idVal.indexOf('CheckAll') != -1) {
+                    // Check if main checkbox is checked, then
+                    //select or deselect datagrid checkboxes
+                    if (frm.elements[i].name.indexOf(grupo) != -1) {
+                        if (chkVal == true) {
+                            frm.elements[i].checked = true;
+                        }
+                        else {
+                            frm.elements[i].checked = false;
+                        }
+                    }
+                    // Work here with the Item Template's multiple checkboxes
+                }
+                else if (idVal.indexOf('DeleteThis') != -1) {
+                    // Check if any of the checkboxes are not
+                    //checked, and then uncheck top select all checkbox
+                    if (frm.elements[i].checked == false) {
+                        frm.elements[1].checked = false; //Uncheck
+                        //main select all checkbox
+                    }
+                }
+            }
+        }
+
+
+        function ShowIcon() {
+            var e = document.getElementById("processing1");
+            e.style.visibility = (e.style.visibility == 'visible') ? 'hidden' : 'visible';
+        }
+
+        function IAmSelected(source, eventArgs) {
+            //alert( " Key : "+ eventArgs.get_text() +"  Value :  "+eventArgs.get_value()); 
+            valor = eventArgs.get_value();
+            document.getElementById("hdSoloClientes").value = valor;
+        }
+
+
         function imprimir() {
             document.getElementById("divBotones").style.display = 'none';
             window.print();
@@ -83,7 +132,15 @@
 										<HeaderStyle Font-Names="Arial" Font-Bold="True" ForeColor="#3756A6" BackColor="#DFE7F4"></HeaderStyle>
 										<FooterStyle ForeColor="Black" BackColor="#CCCCCC"></FooterStyle>
 										<Columns>
-											
+											<asp:TemplateColumn>
+                                                <HeaderTemplate>
+                                                        <asp:CheckBox ID="CheckAll" OnClick="javascript: return select_deselectAll (this.checked, this.id, 'chkCliente');" runat="server" Checked="true" />
+                                                    </HeaderTemplate>
+												<HeaderStyle Width="20px"></HeaderStyle>
+												<ItemTemplate>
+													<asp:CheckBox id="chkCliente" runat="server" Checked="true" />
+												</ItemTemplate>
+											</asp:TemplateColumn>
                                             <asp:BoundColumn DataField="idCliente" HeaderText="Cliente" Visible="false">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>

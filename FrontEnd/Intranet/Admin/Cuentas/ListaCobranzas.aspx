@@ -211,10 +211,14 @@
 
 
 
+
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
+
 
 
 
@@ -277,7 +281,11 @@
 
 
 
+
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
+
 
 
 
@@ -299,6 +307,8 @@
 
                                     &nbsp;&nbsp;
 						            Fecha desde&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="78px"></asp:textbox>
+
+
 
 
 
@@ -351,8 +361,12 @@
 
 
 
+
+
                                     &nbsp; 
                                     Fecha hasta <asp:textbox id="txtFechaFinal" runat="server" Width="78px"></asp:textbox>
+
+
 
 
 
@@ -402,7 +416,11 @@
 
 
 
+
+
                                     <asp:CheckBox ID="chBorrador" runat="server" Text="Borrador" />
+
+
 
 
 
@@ -452,7 +470,11 @@
 
 
 
+
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
+
 
 
 
@@ -579,8 +601,7 @@
                         <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
                         <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="3" Text="Depósito / Transferencia"/>
                     </asp:DropDownList><asp:RequiredFieldValidator runat="server" ID="rqValCmbFormaPago1" ControlToValidate="cmbFormaPago1" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
 
                     <asp:Panel ID="pnlCheque1" runat="server" Visible="False">
@@ -614,8 +635,7 @@
                         <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
                         <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="3" Text="Depósito / Transferencia"/>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator runat="server" ID="rqFormaPago2" ControlToValidate="cmbFormaPago2" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
                     <asp:Panel ID="pnlCheque2" runat="server" Visible="False">
@@ -654,8 +674,7 @@
                         <asp:ListItem Selected="True" Value="0" Text="Seleccione forma de pago" />
                         <asp:ListItem  Value="1" Text="Efectivo"/>
                         <asp:ListItem Value="2" Text="Cheque"/>
-                        <asp:ListItem Value="3" Text="Transferencia"/>
-                        <asp:ListItem Value="4" Text="Depósito"/>
+                        <asp:ListItem Value="3" Text="Depósito / Transferencia"/>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator runat="server" ID="rqFormaPago3" ControlToValidate="cmbFormaPago3" ErrorMessage="Seleccione forma de pago" Text="*" InitialValue="0"></asp:RequiredFieldValidator>
                     <asp:Panel ID="pnlCheque3" runat="server" Visible="False">

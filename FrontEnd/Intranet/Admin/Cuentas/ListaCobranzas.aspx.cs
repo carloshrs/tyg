@@ -98,7 +98,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
                         vMontoTotalPagar = vMontoTotalPagar + float.Parse(txtMontoaPagar3.Text);
 
-                    vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, vMontoTotalPagar);
+                    // Anulamos el ingreso de CC como ingreso ya que toma por el total. Se segmentará segun formas de pago
+                    //vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, vMontoTotalPagar);
 
                     ClienteDal dalCliente = new ClienteDal();
                     dalCliente.Cargar(idCliente);
@@ -112,7 +113,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     // Se agrega Forma de Pago
                     if (txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                    {
+                        vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto + ", (" + cmbFormaPago1.SelectedItem + ")", montoDebe, float.Parse(txtMontoaPagar1.Text));
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago1.SelectedValue), float.Parse(txtMontoaPagar1.Text), entrada);
+                    }
 
                     // Cheques en Cartera
                     if (cmbFormaPago1.SelectedValue == "2")
@@ -120,14 +124,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
 
                     if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
+                    {
+                        vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto + ", (" + cmbFormaPago2.SelectedItem + ")", montoDebe, float.Parse(txtMontoaPagar2.Text));
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago2.SelectedValue), float.Parse(txtMontoaPagar2.Text), entrada);
+                    }
 
                     // Cheques en Cartera
                     if (cmbFormaPago2.SelectedValue == "2")
                         AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar2.Text), txtBanco2.Text, txtNroCheque2.Text, txtFechaEmision2.Text, txtFechaCobro2.Text);
 
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
+                    {
+                        vIdCuentaClienteDetalle = AgregarMovimientoCC(idCuentaCliente, entrada, concepto + ", (" + cmbFormaPago3.SelectedItem + ")", montoDebe, float.Parse(txtMontoaPagar3.Text));
                         idCajaDetalleFormaPago = AgregarFormaPago(vIdCajaDetalle, int.Parse(cmbFormaPago3.SelectedValue), float.Parse(txtMontoaPagar3.Text), entrada);
+                    }
 
                     // Cheques en Cartera
                     if(cmbFormaPago3.SelectedValue == "2")
@@ -246,10 +256,24 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             float SaldoCliente = ccCliente.ObtenerSaldoClienteCC(idCuentaCliente);
             //if (appCliente.ValClienteCC(vIdCliente))
             //{
-                //Si tiene CC el cliente, puede realizar el pago y visualizar el saldo actual
-                lblSaldoActual.Text = SaldoCliente.ToString();
-                btnPagar.Enabled = true;
-                btnActualizarSaldo.Visible = false;
+            //Si tiene CC el cliente, puede realizar el pago y visualizar el saldo actual
+            lblSaldoActual.Text = SaldoCliente.ToString();
+            btnPagar.Enabled = true;
+            btnActualizarSaldo.Visible = false;
+
+            if (SaldoCliente > 0)
+            {
+                ListItem iCC = new ListItem("Saldo en CC $ " + SaldoCliente.ToString(), "4");
+                cmbFormaPago1.Items.Add(iCC);
+                cmbFormaPago2.Items.Add(iCC);
+                cmbFormaPago3.Items.Add(iCC);
+
+                float vMonto = float.Parse(lblMonto.Text.Replace("$ ", ""));
+                if (vMonto <= SaldoCliente)
+                    txtMontoaPagar1.Text = vMonto.ToString();
+                else
+                    txtMontoaPagar1.Text = SaldoCliente.ToString();
+            }
             //}
             //else
             //{

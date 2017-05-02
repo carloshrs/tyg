@@ -36,11 +36,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
         {
             string fechaDesde = "";
             string fechaHasta = "";
+            string clientes = "";
 
             lblTipoPeriodo.Text = (tipoPeriodo == 2) ? "Mensuales" : "Diarios";
 
             fechaDesde = Request.QueryString["fechaDesde"];
             fechaHasta = Request.QueryString["fechaHasta"];
+            clientes = Request.QueryString["clientes"];
 
             if (fechaDesde == "")
                 lblFechaDesde.Text = lblFechaDesde.Text = DateTime.Today.AddYears(-7).ToShortDateString();
@@ -52,8 +54,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             else
                 lblFechaHasta.Text = fechaHasta;
 
-
-            lvListadoClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta).DefaultView;
+            
+            lvListadoClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes).DefaultView;
             lvListadoClientes.DataBind();
 
         }
