@@ -64,6 +64,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             int tipoPeriodo = 0;
             string fechaDesde = "";
             string fechaHasta = "";
+            string clientes = "";
+            clientes = Request.QueryString["clientes"];
 
             if (raDiario.Checked) tipoPeriodo = 1;
             if (raMensual.Checked) tipoPeriodo = 2;
@@ -78,7 +80,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 			//GestorPrecios Adicionales = new GestorPrecios();
             if (tipoPeriodo != 0)
             {
-                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta).DefaultView;
+                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes).DefaultView;
                 dgPendientesCobrosClientes.DataBind();
             }
 
@@ -114,9 +116,33 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
         protected void idImprimir_Click(object sender, EventArgs e)
         {
             int tipoPeriodo = 2;
+            string clientes = "";
+            bool bandera = false;
             tipoPeriodo = (raMensual.Checked) ? 2 : 1;
-            Response.Redirect("imprimirDeudaDetalle.aspx?tipoPeriodo=" + tipoPeriodo + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
+
+            foreach (DataGridItem myItem in dgPendientesCobrosClientes.Items)
+            {
+                try
+                {
+
+                    if (((CheckBox)myItem.FindControl("chkCliente")).Checked)
+                    {
+                        if (!bandera)
+                            clientes = myItem.Cells[1].Text;
+                        else
+                            clientes = ", " + myItem.Cells[1].Text;
+                        
+                        bandera = true;
+                    }
+                    
+                }
+                catch (Exception exc)
+                { }
+            }
+
+            Response.Redirect("imprimirDeudaDetalle.aspx?tipoPeriodo=" + tipoPeriodo + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text + "&clientes=" + clientes);
 
         }
+        
 }
 }
