@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
+using System.Globalization;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 {
@@ -150,6 +151,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         case "11": //Realizar Informe de Propiedad otras Provincias
                             strRedir = "/InformePropiedadProvincias/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=11";
                             break;
+                        case "12": //Catastral
+                            strRedir = "/Catastral/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=12";
+                            break;
                         case "13": //Busqueda de Propiedades
                             strRedir = "/BusquedaPropiedad/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=13";
                             break;
@@ -191,7 +195,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     // 1- Es cliente mensual; 2- Es cliente diarios y está abonado el informe; 3- Si el informe esta pagado
                     if (strRedir != "" && (blObtenerClienteMensual || blHabilitarFinalizados || blInformePagado))
                     {
-                        if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
+                        if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "12" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
                             ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
 
 
@@ -249,9 +253,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
         private void ListaBandeja()
         {
+            DateTimeFormatInfo fmt = (new CultureInfo("es-AR")).DateTimeFormat;
+
+            string FechaDesde = DateTime.Today.AddYears(-1).ToShortDateString();
+            string FechaHasta = DateTime.Today.ToShortDateString();
+            
+            //lblFechaActual.Text = "Córdoba, " + DateTime.Now.ToString("d MMMM yyyy", fmt);
+
             hTipoBusqueda.Value = "0";
-            string FechaDesde = "";
-            string FechaHasta = "";
+            //string FechaDesde = "";
+            //string FechaHasta = "";
             int idUser = -1;
             if (chkSoloMias.Checked) idUser = IdUsuario;
             if (txtFechaInicio.Text == "")
