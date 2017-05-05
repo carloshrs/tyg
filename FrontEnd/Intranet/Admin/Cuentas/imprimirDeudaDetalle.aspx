@@ -207,7 +207,8 @@
 
 
                                         </table>
-                                <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:18px;">TOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
+                                <div style="text-align:right; margin-top:10px; font-weight:bold; font-size:18px;">&nbsp;<asp:Label 
+                                        ID="lblTotal" runat="server" Font-Bold="True" Visible="False"></asp:Label></div>
                                 </div>
                                 </asp:Panel>
                                 </td>

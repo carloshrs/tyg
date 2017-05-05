@@ -110,7 +110,7 @@
                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <asp:RadioButton ID="raDiario" runat="server" GroupName="raTipoPeriodo" Text="Diario" />
                                     <asp:RadioButton ID="raMensual" runat="server" GroupName="raTipoPeriodo" Text="Mensual" />&nbsp;
-
+                                    <asp:CheckBox ID="chkMostrarSubTotal" Checked="false" runat="server" Text="Mostrar Subtotal" />
 						            <asp:button id="btnBuscar" runat="server" Width="80px" Text="Buscar" 
                                         onclick="btnBuscar_Click" style="margin-left:20px;" re></asp:button>
 
