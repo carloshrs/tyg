@@ -43,6 +43,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             fechaDesde = Request.QueryString["fechaDesde"];
             fechaHasta = Request.QueryString["fechaHasta"];
             clientes = Request.QueryString["clientes"];
+            lblTotal.Visible = (Request.QueryString["subtotal"] == "1") ? true : false;
 
             if (fechaDesde == "")
                 lblFechaDesde.Text = lblFechaDesde.Text = DateTime.Today.AddYears(-7).ToShortDateString();
