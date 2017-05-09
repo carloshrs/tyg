@@ -93,7 +93,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.App
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
             gp.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
         }
-        
+
+        public void AjustarCuentaCliente(int idCuentaCliente, float MontoaPagar)
+        {
+            CuentaCorrienteDal gp = new CuentaCorrienteDal();
+            gp.AjustarCuentaCliente(idCuentaCliente, MontoaPagar);
+        }
         
 	}
 }

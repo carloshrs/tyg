@@ -564,6 +564,43 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             //return true;
         }
 
+
+        public void AjustarCuentaCliente(int idCuentaCliente, float MontoaPagar)
+        {
+            //int MaxID = 0;
+            string strSQL = "";
+            float fSaldo = 0;
+
+
+            OdbcConnection oConnection = this.OpenConnection();
+
+            strSQL = "CCAjustarCuentaCliente " + idCuentaCliente + ", " + MontoaPagar;
+
+            try
+            {
+                //OdbcCommand myCommand = new OdbcCommand(strSQL, oConnection);
+                //myCommand.ExecuteNonQuery();
+
+                OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQL, oConnection);
+                DataSet myDataSet = new DataSet();
+                myConsulta.Fill(myDataSet);
+                //fSaldo = float.Parse(myDataSet.Tables[0].Rows[0]["saldo"].ToString());
+
+                //idCajaDetalleFormaPago = int.Parse(myDataSet.Tables[0].Rows[0]["idCajaDetalleFormaPago"].ToString());
+
+            }
+            catch (Exception e)
+            {
+                string p = e.Message;
+
+
+                //return false;
+            }
+
+            //return true;
+        }
+
+
         private static int ObtenerMaxID(string strMaxID, OdbcConnection oConnection)
         {
             DataSet ds = new DataSet();

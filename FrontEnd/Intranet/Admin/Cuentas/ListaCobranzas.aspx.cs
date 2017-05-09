@@ -145,6 +145,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
 
 
+                    // Cuenta Corriente Cliente
+                    if (cmbFormaPago1.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                        AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar1.Text));
+
+                    if (cmbFormaPago2.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                        AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar2.Text));
+
+                    if (cmbFormaPago3.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                        AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar3.Text));
+
+
+
                     foreach (GridViewRow myItem in GVlistaCobrar.Rows)
                     {
                         if (((CheckBox)myItem.FindControl("chkItem")).Checked)
@@ -327,10 +339,18 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
         }
 
+        private void AjustarCuentaCliente(int idCuentaCliente, float MontoaPagar)
+        {
+            CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
+            ccMovimiento.AjustarCuentaCliente(idCuentaCliente, MontoaPagar);
+        }
+        
+
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/Cuentas/ListaCobranzasPendientes.aspx");
         }
+
         protected void cmbFormaPago1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbFormaPago1.SelectedValue == "2")
