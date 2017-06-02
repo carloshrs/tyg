@@ -43,6 +43,49 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
         protected void WzPagosDocumentos_FinishButtonClick(object sender, WizardNavigationEventArgs e)
         {
+
+            realizarCobranzas();
+
+            Response.Redirect("/Admin/Cuentas/ListaCobranzas.aspx");
+            // Agregar movimiento en Caja ultima.
+
+            // 1. Crear Nº de Factura (NO va)
+                
+        }
+
+
+        protected void WzPagosDocumentos_NextButtonClick(object sender, WizardNavigationEventArgs e)
+        {
+            
+            if (txtCobroSubTotal.Value != "" && txtCobroSubTotal.Value != "0")
+            {
+                lblCliente.Text = txtCliente.Text.Replace("/n", "<br>");
+                lblMonto.Text = "$ " + txtCobroSubTotal.Value;
+                txtMontoaPagar1.Text = txtCobroSubTotal.Value;
+
+                ObtenerSaldoActual();
+            }
+            else
+                e.Cancel = true;
+            
+        }
+
+
+        
+        protected void WzPagosDocumentos_SideBarButtonClick(object sender, WizardNavigationEventArgs e)
+        {
+            if (txtCobroSubTotal.Value != "" && txtCobroSubTotal.Value != "0")
+            {
+                lblCliente.Text = txtCliente.Text.Replace("/n", "<br>");
+                lblMonto.Text = "$ " + txtCobroSubTotal.Value;
+            }
+            else
+                e.Cancel = true;
+        }
+
+
+       private void realizarCobranzas()
+        {
             int idCliente = 0;
             string[] arrDoc;
             string[] separators = {"_"};
@@ -52,16 +95,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             int tipoDoc = 0;
             int tipoPeriodo = 0;
             float NroDoc = 0;
-  
+
+
 
             if ((txtMontoaPagar1.Text != "" && txtMontoaPagar1.Text != "0") || (txtMontoaPagar2.Text != "" && txtMontoaPagar2.Text != "0") || (txtMontoaPagar3.Text != "" && txtMontoaPagar3.Text != "0"))
             {
-                
+
                 idCliente = int.Parse(hIdCliente.Value);
 
                 // Begin Transaction
                 CuentaCorrienteApp ccCliente = new CuentaCorrienteApp();
-                 ccCliente.ValClienteCC(idCliente);
+                ccCliente.ValClienteCC(idCliente);
                 int idCuentaCliente = ccCliente.ObtenerNroClienteCC(idCliente);
                 int idCajaDiaria = ccCliente.ObtenerNroCajaDiaria();
                 float SaldoCliente = ccCliente.ObtenerSaldoClienteCC(idCuentaCliente);
@@ -104,8 +148,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     ClienteDal dalCliente = new ClienteDal();
                     dalCliente.Cargar(idCliente);
                     string NombreCliente = dalCliente.NombreFantasia;
-                    if(dalCliente.Sucursal != "")
-                        NombreCliente = NombreCliente +"( " + dalCliente.Sucursal + ")";
+                    if (dalCliente.Sucursal != "")
+                        NombreCliente = NombreCliente + "( " + dalCliente.Sucursal + ")";
                     NombreCliente = NombreCliente + ": ";
 
                     vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, NombreCliente + concepto, montoDebe, vMontoTotalPagar, "");
@@ -140,7 +184,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     }
 
                     // Cheques en Cartera
-                    if(cmbFormaPago3.SelectedValue == "2")
+                    if (cmbFormaPago3.SelectedValue == "2")
                         AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar3.Text), txtBanco3.Text, txtNroCheque3.Text, txtFechaEmision3.Text, txtFechaCobro3.Text);
 
 
@@ -167,7 +211,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             tipoPeriodo = int.Parse(arrDoc[1]);
                             NroDoc = int.Parse(arrDoc[2]);
                             //concepto = myItem.Cells[3].Text;
-                            
+
 
                             // Agrega documentos de movimientos en CC
                             bAddMovCC = AgregarDocumentosMovimientoCC(vIdCuentaClienteDetalle, tipoDoc, tipoPeriodo, NroDoc);
@@ -186,43 +230,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 {
                     lblMensaje.Text = "No hay apertura de caja en el dia " + DateTime.Now.Date.ToShortDateString();
                 }
-
-                Response.Redirect("/Admin/Cuentas/ListaCobranzas.aspx");
-                // Agregar movimiento en Caja ultima.
-
-                // 1. Crear Nº de Factura (NO va)
-                
             }
-
-
-        }
-        protected void WzPagosDocumentos_NextButtonClick(object sender, WizardNavigationEventArgs e)
-        {
-            
-            if (txtCobroSubTotal.Value != "" && txtCobroSubTotal.Value != "0")
-            {
-                lblCliente.Text = txtCliente.Text.Replace("/n", "<br>");
-                lblMonto.Text = "$ " + txtCobroSubTotal.Value;
-                txtMontoaPagar1.Text = txtCobroSubTotal.Value;
-
-                ObtenerSaldoActual();
-            }
-            else
-                e.Cancel = true;
-            
-        }
-
-
-        
-        protected void WzPagosDocumentos_SideBarButtonClick(object sender, WizardNavigationEventArgs e)
-        {
-            if (txtCobroSubTotal.Value != "" && txtCobroSubTotal.Value != "0")
-            {
-                lblCliente.Text = txtCliente.Text.Replace("/n", "<br>");
-                lblMonto.Text = "$ " + txtCobroSubTotal.Value;
-            }
-            else
-                e.Cancel = true;
         }
 
 
