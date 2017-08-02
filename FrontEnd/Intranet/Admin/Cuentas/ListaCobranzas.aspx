@@ -216,10 +216,12 @@
 
 
 
+
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
+
 
 
 
@@ -292,7 +294,9 @@
 
 
 
+
 <asp:HiddenField ID="hIdCliente" runat="server" />
+
 
 
 
@@ -319,6 +323,7 @@
 
                                     &nbsp;&nbsp;
 						            Fecha desde&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="78px"></asp:textbox>
+
 
 
 
@@ -381,8 +386,10 @@
 
 
 
+
                                     &nbsp; 
                                     Fecha hasta <asp:textbox id="txtFechaFinal" runat="server" Width="78px"></asp:textbox>
+
 
 
 
@@ -442,7 +449,9 @@
 
 
 
+
                                     <asp:CheckBox ID="chBorrador" runat="server" Text="Borrador" />
+
 
 
 
@@ -502,7 +511,9 @@
 
 
 
+
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
+
 
 
 
@@ -544,7 +555,8 @@
                                     BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" 
                                     ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" 
                                      onpageindexchanging="GVlistaCobrar_PageIndexChanging" 
-                                    ShowFooter="True"  AllowPaging="True" Width="98%" HorizontalAlign="Center">
+                                    ShowFooter="True"  AllowPaging="True" Width="98%" HorizontalAlign="Center" 
+                                    PageSize="50">
 <AlternatingRowStyle BackColor="#CCCCCC" />
 <Columns>
 <asp:TemplateField><ItemTemplate>
