@@ -20,7 +20,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
            if (!Page.IsPostBack)
             {
                 if (txtFechaInicio.Text == "")
-                    txtFechaInicio.Text = DateTime.Today.AddDays(-60).ToShortDateString();
+                    txtFechaInicio.Text = DateTime.Today.AddDays(-120).ToShortDateString();
                 if (txtFechaFinal.Text == "")
                     txtFechaFinal.Text = DateTime.Today.ToShortDateString();
             }
@@ -240,7 +240,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             if (chBorrador.Checked) vEstado = 3;
             int idCliente = int.Parse(hIdCliente.Value);
             if (txtFechaInicio.Text == "")
-                txtFechaInicio.Text = DateTime.Today.AddDays(-60).ToShortDateString();
+                txtFechaInicio.Text = DateTime.Today.AddDays(-120).ToShortDateString();
             FechaDesde = txtFechaInicio.Text;
 
             if (txtFechaFinal.Text == "")
