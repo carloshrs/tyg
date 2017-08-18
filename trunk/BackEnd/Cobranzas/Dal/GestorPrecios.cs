@@ -1202,12 +1202,20 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                         StaticDal.EjecutarComando(strQuery2.ToString());
 
 
-                        StringBuilder strQuery3  = new StringBuilder(512);
+                        StringBuilder strQuery3 = new StringBuilder(512);
                         strQuery3 = new StringBuilder(512);
                         strQuery3.Append("INSERT CPCajaDetalle (idCaja, Concepto, montoTotal, entradasalida, fecha) VALUES ");
                         strQuery3.Append("(" + StaticDal.Traduce(dtSalida.Rows[0]["idCaja"].ToString()) + ", 'INGRESO DE CHEQUE EN CARTERA', " + StaticDal.Traduce(Monto) + ", 1, getdate())");
                         StaticDal.EjecutarComando(strQuery3.ToString());
-                        
+
+                    }
+                    else
+                    {
+                        StringBuilder strQuery2 = new StringBuilder(512);
+                        strQuery2 = new StringBuilder(512);
+                        strQuery2.Append("UPDATE CPCaja SET saldoCheque = saldoCheque - " + StaticDal.Traduce(Monto) + " ");
+                        strQuery2.Append(" WHERE idCaja = " + StaticDal.Traduce(dtSalida.Rows[0]["idCaja"].ToString()));
+                        StaticDal.EjecutarComando(strQuery2.ToString());
                     }
 
                 }
