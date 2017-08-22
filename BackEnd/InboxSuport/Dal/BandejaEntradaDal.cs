@@ -94,12 +94,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                 "B.DescripcionInf, B.FechaCarga, C.RazonSocial as RazonSocial1, B.Comentarios, " +
                 "E.idEstado, E.NombreEstado, E.NombreEstadoExtra, B.GRAVidTipoGravamen, B.leido, T.descripcion, B.estado, " +
                 "B.PROPTipo, B.PROPMatricula, B.PROPFolio, B.PROPtomo, B.PROPano, E.DescripcionEstado, B.FechaCondicional, " +
-                "B.EstadoCondicional, C.NombreFantasia, C.sucursal, A.path AS pathfilepdf, B.pagado " +
+                "B.EstadoCondicional, C.NombreFantasia, C.sucursal " +
                 "FROM BandejaEntrada B " +
                 "INNER JOIN tiposInformes T ON B.idTipoInforme = T.idTipoInforme " +
                 "INNER JOIN EstadoInformes E ON B.Estado = E.idEstado " +
-                "INNER JOIN Clientes C ON B.idCliente = C.idCliente " +
-                "LEFT OUTER JOIN Archivos A ON B.idEncabezado = A.idInforme ";
+                "INNER JOIN Clientes C ON B.idCliente = C.idCliente ";
 			strSQL = strSQL + "WHERE 1=1 ";
 			if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'","''");
             int iniciopag = (pagina-1) * registros;
@@ -117,6 +116,54 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			return ds.Tables[0];
 
 		}
+
+
+
+        public DataTable ListaEncabezadosExtranet(String SQLWhere, int pagina, int registros)
+        {
+            String strSQLCount = "SELECT COUNT(B.idEncabezado) as Total FROM BandejaEntrada B";
+            if (SQLWhere != "")
+            {
+                SQLWhere = SQLWhere.Replace("''", "'");
+                string SQLWhereC = " WHERE " + SQLWhere.Substring(SQLWhere.IndexOf("AND") + 3);
+                strSQLCount = strSQLCount + SQLWhereC;
+            }
+            IDataReader dr = EjecutarDataReader(strSQLCount);
+            if (dr.Read())
+            {
+                intTotalRegistros = dr.GetInt32(0);
+                int totPaginas = ((int)(intTotalRegistros / registros)) + 1;
+                if (pagina > totPaginas) pagina = totPaginas;
+            }
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "SELECT B.idEncabezado, B.idTipoInforme, B.idCliente, " +
+                "B.DescripcionInf, B.FechaCarga, C.RazonSocial as RazonSocial1, B.Comentarios, " +
+                "E.idEstado, E.NombreEstado, E.NombreEstadoExtra, B.GRAVidTipoGravamen, B.leido, T.descripcion, B.estado, " +
+                "B.PROPTipo, B.PROPMatricula, B.PROPFolio, B.PROPtomo, B.PROPano, E.DescripcionEstado, B.FechaCondicional, " +
+                "B.EstadoCondicional, C.NombreFantasia, C.sucursal, A.path AS pathfilepdf, B.pagado " +
+                "FROM BandejaEntrada B " +
+                "INNER JOIN tiposInformes T ON B.idTipoInforme = T.idTipoInforme " +
+                "INNER JOIN EstadoInformes E ON B.Estado = E.idEstado " +
+                "INNER JOIN Clientes C ON B.idCliente = C.idCliente " +
+                "LEFT OUTER JOIN Archivos A ON B.idEncabezado = A.idInforme ";
+            strSQL = strSQL + "WHERE 1=1 ";
+            if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'", "''");
+            int iniciopag = (pagina - 1) * registros;
+            String strSQLSP = "execute_query '" + strSQL + "', 'FechaCarga DESC', " + pagina + ", " + registros + ", 10";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQLSP, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
 
 		public DataTable GroupTiposInformesEstados()
 		{

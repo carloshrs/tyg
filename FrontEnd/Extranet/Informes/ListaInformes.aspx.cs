@@ -312,7 +312,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
             BandejaEntradaApp bandeja = new BandejaEntradaApp();
             bandeja.RegPorPagina = 10;
             bandeja.Pagina = paginaActual;
-            dgridEncabezados.DataSource = bandeja.ListaEncabezados(idTipoInforme, pFiltro, idCliente, idUser, idEstado, -1, FechaDesde, FechaHasta, 0, false);
+            dgridEncabezados.DataSource = bandeja.ListaEncabezados(idTipoInforme, pFiltro, idCliente, idUser, idEstado, -1, FechaDesde, FechaHasta, 0, true);
             dgridEncabezados.DataBind();
             litPaginador.Text = bandeja.GetPaginador(10);
         }
