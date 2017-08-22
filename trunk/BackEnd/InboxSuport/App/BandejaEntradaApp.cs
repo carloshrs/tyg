@@ -227,7 +227,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.App
             SQLWhere = SQLWhere + " AND B.FechaCarga BETWEEN '" + FechaDesde + "' AND '" + FechaHasta + "'";
 
 			BandejaEntradaDal bandeja = new BandejaEntradaDal();
-            DataTable Datos = bandeja.ListaEncabezados(SQLWhere, Pagina, intRegPorPagina);
+            DataTable Datos;
+            if (Extranet)
+                Datos = bandeja.ListaEncabezadosExtranet(SQLWhere, Pagina, intRegPorPagina);
+            else
+                Datos = bandeja.ListaEncabezados(SQLWhere, Pagina, intRegPorPagina);
             intTotalRegistros = bandeja.TotalRegistros;
             intPaginas = ((int)(intTotalRegistros / intRegPorPagina)) + 1;
 			return Datos;
