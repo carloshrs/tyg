@@ -122,7 +122,7 @@
  
 	</script>
 	</HEAD>
-	<BODY bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0" onload="<% if( !bsqRapida ){ %>javascript:mostrarFiltro(true, '');<%} %>">
+	<BODY bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0">
 		<form id="Tipos" method="post" runat="server">
 			<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 				<TR>
