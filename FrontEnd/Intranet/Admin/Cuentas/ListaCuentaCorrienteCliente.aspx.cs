@@ -66,7 +66,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     lblSaldoAnterior.Text = "$ 0,00";
 
                 vSaldoInformes = vCCCliente.ObtenerSaldoInformesCliente(int.Parse(hIdCliente.Value));
-                if (vSaldoInformes < 0)
+                if (vSaldoInformes > 0)
                 {
                     lblSaldoPendienteCobro.Text = "$ -" + vSaldoInformes.ToString();
                     lblSaldoPendienteCobro.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
@@ -77,6 +77,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                 vTotalDeuda = vSaldoAnterior - vSaldoInformes;
                 lblTotal.Text = "$ " + vTotalDeuda;
+                if (vTotalDeuda < 0)
+                    lblTotal.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
                 //txtFechaInicio.Text = DateTime.Today.AddMonths(-3).ToShortDateString();
                 //txtFechaFinal.Text = DateTime.Today.ToShortDateString();
                 ListaBandeja();
