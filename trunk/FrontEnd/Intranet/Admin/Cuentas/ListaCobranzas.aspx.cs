@@ -164,7 +164,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     // Cheques en Cartera
                     if (cmbFormaPago1.SelectedValue == "2")
-                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar1.Text), txtBanco1.Text, txtNroCheque1.Text, txtFechaEmision1.Text, txtFechaCobro1.Text);
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar1.Text), txtBanco1.Text, txtNroCheque1.Text, txtFechaEmision1.Text, txtFechaCobro1.Text, idCliente);
 
 
                     if (txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
@@ -175,7 +175,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     // Cheques en Cartera
                     if (cmbFormaPago2.SelectedValue == "2")
-                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar2.Text), txtBanco2.Text, txtNroCheque2.Text, txtFechaEmision2.Text, txtFechaCobro2.Text);
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar2.Text), txtBanco2.Text, txtNroCheque2.Text, txtFechaEmision2.Text, txtFechaCobro2.Text, idCliente);
 
                     if (txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
                     {
@@ -185,7 +185,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                     // Cheques en Cartera
                     if (cmbFormaPago3.SelectedValue == "2")
-                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar3.Text), txtBanco3.Text, txtNroCheque3.Text, txtFechaEmision3.Text, txtFechaCobro3.Text);
+                        AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMontoaPagar3.Text), txtBanco3.Text, txtNroCheque3.Text, txtFechaEmision3.Text, txtFechaCobro3.Text, idCliente);
 
 
 
@@ -341,10 +341,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
 
-        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro, int idCliente)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
+            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro, idCliente);
         }
 
         private void AjustarCuentaCliente(int idCuentaCliente, float MontoaPagar)

@@ -49,6 +49,10 @@
 												</ItemTemplate>
 											</asp:TemplateColumn>
 
+                                            <asp:BoundColumn DataField="ch_cliente" HeaderText="Cliente">
+												<ItemStyle HorizontalAlign="Left"></ItemStyle>
+											</asp:BoundColumn>
+
 											<asp:BoundColumn DataField="ch_banco" HeaderText="Banco">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
