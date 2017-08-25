@@ -89,7 +89,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
                 try
                 {
                     ((Label)myItem.FindControl("lblFechaCobro")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString();
-                    vTotal = vTotal + float.Parse(myItem.Cells[5].Text);
+                    vTotal = vTotal + float.Parse(myItem.Cells[6].Text);
                     
                 }
                 catch (Exception exc)
