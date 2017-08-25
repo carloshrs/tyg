@@ -107,7 +107,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             GestorPrecios.CrearCuentaClienteDetalle(int.Parse(hdIdCuentaCliente.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString() + ", " + txtConceptoAdicional.Text, int.Parse(cmbFormaPago.SelectedValue), float.Parse(txtMonto.Text));
 
             ClienteDal dalCliente = new ClienteDal();
-            dalCliente.Cargar(int.Parse(Request.QueryString["id"]));
+            int idCliente = int.Parse(Request.QueryString["id"]);
+            dalCliente.Cargar(idCliente);
             string NombreCliente = dalCliente.NombreFantasia;
             if (dalCliente.Sucursal != "")
                 NombreCliente = NombreCliente + "( " + dalCliente.Sucursal + ")";
@@ -125,7 +126,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
                 // Cheques en Cartera
                 if (cmbFormaPago.SelectedValue == "2")
-                    AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMonto.Text), txtBanco.Text, txtNroCheque.Text, txtFechaEmision.Text, txtFechaCobro.Text);
+                    AgregarChequeCartera(idCajaDetalleFormaPago, float.Parse(txtMonto.Text), txtBanco.Text, txtNroCheque.Text, txtFechaEmision.Text, txtFechaCobro.Text, idCliente);
 
             }
 
@@ -145,10 +146,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarFormaPago(idCajaDetalle, idFormaPago, MontoaPagar, entradasalida);
         }
 
-        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        private void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro, int idCliente)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
+            ccMovimiento.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro, idCliente);
         }
 
         protected void cmbFormaPago_SelectedIndexChanged(object sender, EventArgs e)

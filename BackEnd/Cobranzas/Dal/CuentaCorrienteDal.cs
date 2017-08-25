@@ -529,7 +529,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
             //return true;
         }
 
-        public void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        public void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro, int idCliente)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -538,7 +538,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddChequeCartera " + idCajaDetalleFormaPago + ", " + MontoaPagar + ", '" + vBanco + "', '" + vNroCheque + "', '" + vFechaEmision + "', '" + vFechaCobro + "'";
+            strSQL = "CCAddChequeCartera " + idCajaDetalleFormaPago + ", " + MontoaPagar + ", '" + vBanco + "', '" + vNroCheque + "', '" + vFechaEmision + "', '" + vFechaCobro + "', " + idCliente;
 
             try
             {

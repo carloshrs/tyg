@@ -88,10 +88,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.App
             gp.CambioEstadoDocumentos(tipoDoc, tipoPeriodo, NroDoc);
         }
 
-        public void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro)
+        public void AgregarChequeCartera(int idCajaDetalleFormaPago, float MontoaPagar, string vBanco, string vNroCheque, string vFechaEmision, string vFechaCobro, int idCliente)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            gp.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro);
+            gp.AgregarChequeCartera(idCajaDetalleFormaPago, MontoaPagar, vBanco, vNroCheque, vFechaEmision, vFechaCobro, idCliente);
         }
 
         public void AjustarCuentaCliente(int idCuentaCliente, float MontoaPagar)

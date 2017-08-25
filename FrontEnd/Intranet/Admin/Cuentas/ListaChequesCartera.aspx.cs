@@ -52,7 +52,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
         private void ListarCheques()
 		{
 			//GestorPrecios Adicionales = new GestorPrecios();
-            dgChequesCartera.DataSource = GestorPrecios.ListarChequesCartera().DefaultView;
+            dgChequesCartera.DataSource = GestorPrecios.ListarChequesCartera(1).DefaultView;
 			dgChequesCartera.DataBind();
 
 		}

@@ -837,11 +837,11 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
         }
 
-        public static DataTable ListarChequesCartera()
+        public static DataTable ListarChequesCartera(int idEstado)
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
-            strQuery.Append("select idChequeCartera, ch_fechaCobro, monto, ch_banco, ch_numero from CPChequesCartera where idestadocheque=1 order by ch_fechaCobro ASC");
+            strQuery.Append("select cc.idChequeCartera, cc.ch_fechaCobro, cc.monto, cc.ch_banco, cc.ch_numero, CAST( CASE WHEN c.sucursal = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as ch_cliente from CPChequesCartera cc inner join clientes c on cc.idCliente=c.idCliente WHERE idestadocheque= "  +idEstado + " order by ch_fechaCobro ASC");
 
             try
             {
