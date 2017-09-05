@@ -52,8 +52,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
 			strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Clientes/ListaUsuarios.aspx' imageOut='/img/menu/icon_acces.gif' imageOver='/img/menu/icon_acces_over.gif' idImagenItem='menu4_icon_1' idMenuItem='menu4_item_1' text='Usuarios' separar='0'/>";
 			strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Seguridad/ListaRoles.aspx' imageOut='/img/menu/icon_acces.gif' imageOver='/img/menu/icon_acces_over.gif' idImagenItem='menu4_icon_2' idMenuItem='menu4_item_16' text='Roles' separar='1'/>";
 			strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Seguridad/ListaFunciones.aspx' imageOut='/img/menu/icon_acces.gif' imageOver='/img/menu/icon_acces_over.gif' idImagenItem='menu4_icon_3' idMenuItem='menu4_item_17' text='Funciones' separar='0'/>";
-			
 			strXmlMenu = strXmlMenu + "</menuPrincipal>";
+
+            strXmlMenu = strXmlMenu + "<menuPrincipal text='Reportes' idMenuItem='menu5_item_2' idMenuGroup='menu5_group_1'>";
+            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Reportes/ReporteMovimientosCaja.aspx' imageOut='/img/menu/ico-resumen.png' imageOver='/img/menu/ico-resumen.png' idImagenItem='menu5_icon_1' idMenuItem='menu5_item_1' text='Movimientos caja' separar='0'/>";
+            strXmlMenu = strXmlMenu + "<itemMenu onClick='/Admin/Reportes/ReporteMovimientosCaja.aspx' imageOut='/img/menu/ico-resumen.png' imageOver='/img/menu/ico-resumen.png' idImagenItem='menu5_icon_2' idMenuItem='menu5_item_16' text='Cantidad de informes' separar='1'/>";
+            strXmlMenu = strXmlMenu + "</menuPrincipal>";
 
 			strXmlMenu = strXmlMenu + "</menu>";
 
