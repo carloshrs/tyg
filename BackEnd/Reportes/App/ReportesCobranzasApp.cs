@@ -166,87 +166,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.App
             return Datos;
         }
 
-        public int crearRemitoParte(int idTipoDocumentacion, int idtipoCobranza, int idCliente, int idUsuarioIntra)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            int idRemito = gp.CrearRemitoParte(idTipoDocumentacion, idtipoCobranza, idCliente, idUsuarioIntra);
-            return idRemito;
-        }
-
-        public void modificarRemitoParte(int idTipoDocumentacion, int idtipoCobranza, int nroRemito)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            int idRemito = gp.ModificarRemitoParte(idTipoDocumentacion, idtipoCobranza, nroRemito);
-        }
-
-        /*
-        public void cargarRemitoParte(int idTipoDocumentacion, int nroRemito)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.cargarRemitoParte(idTipoDocumentacion, nroRemito);
-        }
-         */
-
-        public bool eliminarInformeRemito(int tipoDocumentacion, int nroRemito, int id)
-        {
-            bool estado = false;
-            ReportesCobranzas gp = new ReportesCobranzas();
-            estado = gp.eliminarInformeRemito(tipoDocumentacion, nroRemito, id);
-            return estado;
-        }
-
-        public bool eliminarAdicionalRemito(int tipoDocumentacion, int nroRemito, int id)
-        {
-            bool estado = false;
-            ReportesCobranzas gp = new ReportesCobranzas();
-            estado = gp.eliminarAdicionalRemito(tipoDocumentacion, nroRemito, id);
-            return true;
-        }
-
-        public bool eliminarTodosAdicionalesRemitosParteEntrega(int tipoDocumentacion, int nroRemito)
-        {
-            bool estado = false;
-            ReportesCobranzas gp = new ReportesCobranzas();
-            estado = gp.eliminarTodosAdicionalesRemitosParteEntrega(tipoDocumentacion, nroRemito);
-            return true;
-        }
-
-
-        public bool eliminarRemitoMovimiento(int idTipoDocumentacion, int nroMovimiento, int nroRemito)
-        {
-            bool estado = false;
-            ReportesCobranzas gp = new ReportesCobranzas();
-            estado = gp.eliminarRemitoMovimiento(idTipoDocumentacion, nroMovimiento, nroRemito);
-            return estado;
-        }
-
-        public void agregarInformesRemitoParte(int idTipoDocumentacion, int idRemito, int idTipoInforme, int idEncabezado, decimal precio)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.agregarInformesRemitoParte(idTipoDocumentacion, idRemito, idTipoInforme, idEncabezado, precio);
-            //return idRemito;
-        }
-
-        public void agregarAdicionalRemito(int idTipoDocumentacion, int idRemito, int idAdicional, int Cantidad, decimal precio)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.agregarAdicionalRemito(idTipoDocumentacion, idRemito, idAdicional, Cantidad, precio);
-            //return idRemito;
-        }
-
-        public void modificarInformesRemitoParte(int idTipoDocumentacion, int idRemito, int idTipoInforme, int idEncabezado, decimal precio)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.modificarInformesRemitoParte(idTipoDocumentacion, idRemito, idTipoInforme, idEncabezado, precio);
-            //return idRemito;
-        }
-
-        public void modificarAdicionalRemito(int idTipoDocumentacion, int idRemito, int idAdicional, int Cantidad, decimal precio)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.agregarAdicionalRemito(idTipoDocumentacion, idRemito, idAdicional, Cantidad, precio);
-            //return idRemito;
-        }
+        
 
         public string obtenerAdicional(int idAdicional)
         {
@@ -327,19 +247,6 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.App
             return strDescr;
         }
 
-        public int crearMovimiento(int idTipoDocumentacion, int idCliente, int idUsuarioIntra)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            int idMovimiento = gp.CrearMovimiento(idTipoDocumentacion, idCliente, idUsuarioIntra);
-            return idMovimiento;
-        }
-
-        public void agregarRemitoParteEntregaMovimiento(int idTipoDocumentacion, int nroMovimiento, int idRemito)
-        {
-            ReportesCobranzas gp = new ReportesCobranzas();
-            gp.agregarRemitoParteEntregaMovimiento(idTipoDocumentacion, nroMovimiento, idRemito);
-            //return idRemito;
-        }
 
         //Setea el monto al confeccionar el remito o parte de entrega (AbmRemitos)
         public void setearMontoRemito(int idRemito, int idTipoDocumentacion, int tipoPeriodo)

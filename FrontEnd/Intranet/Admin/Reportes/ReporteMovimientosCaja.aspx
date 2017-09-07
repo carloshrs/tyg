@@ -1,5 +1,5 @@
 <%@ Register TagPrefix="mnu" TagName="menu" Src="../../Inc/menu.ascx" %>
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes.ReMovimientosCuentas" CodeFile="ReporteMovimientosCaja.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes.ReMovimientosCuentas" CodeFile="ReporteMovimientosCaja.aspx.cs" Culture="Auto" UICulture="Auto" %>
 <%@ Register assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI" tagprefix="asp" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 <HTML>
@@ -9,7 +9,8 @@
 	</HEAD>
 	<body leftmargin="0" topmargin="0">
 		<form method="post" runat="server">
-			<asp:ScriptManager ID="ScriptManager1" runat="server">
+			<asp:ScriptManager ID="ScriptManager1" runat="server" 
+                EnableScriptGlobalization="True">
             </asp:ScriptManager>
 		<mnu:menu id="Menu" runat="server"></mnu:menu>
 			<table cellSpacing="0" cellPadding="2" width="98%" border="0">
@@ -18,7 +19,7 @@
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td class="title" height="38">&nbsp; <STRONG>REPORTES DE MOVIMIENTOS EN CAJA</STRONG>
+								<td class="title" height="38">&nbsp; <STRONG>REPORTE DE MOVIMIENTOS EN CAJA</STRONG>
 									<HR>
 									<BR>
 								</td>
