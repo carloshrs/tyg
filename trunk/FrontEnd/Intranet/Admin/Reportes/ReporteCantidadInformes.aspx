@@ -76,7 +76,7 @@
                                                 <asp:ListItem Value="2">Años</asp:ListItem>
                                                 
                                                 </asp:DropDownList>
-                                            &nbsp;anteriores en estado <asp:DropDownList ID="cmbEstado" runat="server"  Width="63px">
+                                            &nbsp;anteriores en estado <asp:DropDownList ID="cmbEstado" runat="server"  Width="120px">
                                                 <asp:ListItem Value="1">En espera</asp:ListItem>
                                                 <asp:ListItem Value="2">En proceso</asp:ListItem>
                                                 <asp:ListItem Value="3" Selected>Finalizados</asp:ListItem>
