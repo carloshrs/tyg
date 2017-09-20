@@ -10,7 +10,7 @@ using ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.Informes.Dal;
 
-namespace ar.com.TiempoyGestion.FrontEnd.Intranet.socioAmbiental
+namespace ar.com.TiempoyGestion.FrontEnd.Extranet.socioAmbiental
 {
 	/// <summary>
 	/// Summary description for altaInforme.

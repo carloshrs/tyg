@@ -133,6 +133,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                                     break;
                             }
                             break;
+                        case "4": //Socio Ambiental
+                            //								Response.Redirect("/verifDomParticular/VerInforme.aspx?id="+ e.Item.Cells[0].Text + "&IdTipo=5");
+                            strRedir = "/socioAmbiental/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=4";
+                            break;
                         case "5": //Realizar Verificacion de domicilio particular
                             //								Response.Redirect("/verifDomParticular/VerInforme.aspx?id="+ e.Item.Cells[0].Text + "&IdTipo=5");
                             strRedir = "/verifDomParticular/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=5";

@@ -132,6 +132,8 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         private string strFechaFin = "";
         private string strFechaCondicional = "";
         private int intIdEncabezadoTransferido;
+
+        private string strLogoEmpresa = "";
         
 		public EncabezadoApp() : base()
 		{		}
@@ -1296,6 +1298,17 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
         }
 
+        public string LogoEmpresa
+        {
+            get
+            {
+                return strLogoEmpresa;
+            }
+            set
+            {
+                strLogoEmpresa = value;
+            }
+        }
 
 		#endregion
 
@@ -1915,6 +1928,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             strActaFallecido = ds.Tables[0].Rows[0]["ActaFallecido"].ToString();
             strTomoFallecido = ds.Tables[0].Rows[0]["TomoFallecido"].ToString();
             strFolioFallecido = ds.Tables[0].Rows[0]["FolioFallecido"].ToString();
+            strLogoEmpresa = ds.Tables[0].Rows[0]["logoEmpresa"].ToString();
 		}
 
 		public bool CambiarEstado(int idInforme)

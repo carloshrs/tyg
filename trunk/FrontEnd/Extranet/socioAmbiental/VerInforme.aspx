@@ -1,4 +1,4 @@
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.socioAmbiental.verInforme" CodeFile="VerInforme.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Extranet.socioAmbiental.verInforme" CodeFile="VerInforme.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
   <HEAD>
