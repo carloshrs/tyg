@@ -199,7 +199,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                     // 1- Es cliente mensual; 2- Es cliente diarios y está abonado el informe; 3- Si el informe esta pagado
                     if (strRedir != "" && (blObtenerClienteMensual || blHabilitarFinalizados || blInformePagado))
                     {
-                        if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "12" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
+                        if (myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "4" || myItem.Cells[12].Text == "5" || myItem.Cells[12].Text == "6" || myItem.Cells[12].Text == "7" || myItem.Cells[12].Text == "12" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "21")
                             ((ImageButton)myItem.FindControl("Ver")).Attributes.Add("onclick", "javascript: window.open('" + strRedir + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");
 
 
