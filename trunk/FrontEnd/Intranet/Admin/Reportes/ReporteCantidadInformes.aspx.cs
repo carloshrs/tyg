@@ -117,7 +117,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
                 lblCantidadInformes2.Text = "Informes del " + FechaDesde2 + " al " + FechaHasta2;
                 ReportesCobranzas rsReportes2 = new ReportesCobranzas();
-                dgCantidadInformes2.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde, FechaHasta, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
+                dgCantidadInformes2.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde2, FechaHasta2, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
                 dgCantidadInformes2.DataBind();
             }
 
@@ -138,7 +138,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
                 lblCantidadInformes3.Text = "Informes del " + FechaDesde3 + " al " + FechaHasta3;
                 ReportesCobranzas rsReportes3 = new ReportesCobranzas();
-                dgCantidadInformes3.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde, FechaHasta, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
+                dgCantidadInformes3.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde3, FechaHasta3, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
                 dgCantidadInformes3.DataBind();
             }
 
@@ -160,7 +160,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
                 lblCantidadInformes4.Text = "Informes del " + FechaDesde4 + " al " + FechaHasta4;
                 ReportesCobranzas rsReportes4 = new ReportesCobranzas();
-                dgCantidadInformes4.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde, FechaHasta, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
+                dgCantidadInformes4.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde4, FechaHasta4, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
                 dgCantidadInformes4.DataBind();
             }
 
@@ -181,7 +181,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
                 lblCantidadInformes5.Text = "Informes del " + FechaDesde5 + " al " + FechaHasta5;
                 ReportesCobranzas rsReportes5 = new ReportesCobranzas();
-                dgCantidadInformes5.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde, FechaHasta, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
+                dgCantidadInformes5.DataSource = ReportesCobranzas.ListarCantidadInformes(FechaDesde5, FechaHasta5, vTiposInformes, int.Parse(cmbEstado.SelectedValue)).DefaultView;
                 dgCantidadInformes5.DataBind();
             }
         }
