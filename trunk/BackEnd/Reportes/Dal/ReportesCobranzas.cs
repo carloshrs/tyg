@@ -612,7 +612,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
             if (entradasalida == 1)
                 strQuery.Append(" and entradasalida = 1 ");
             else
-                strQuery.Append(" and entradasalida = 2 ");
+                strQuery.Append(" and entradasalida = 0 ");
 
             strQuery.Append(" Order by fecha asc");
 

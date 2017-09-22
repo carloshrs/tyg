@@ -22,10 +22,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
             
 			if (!Page.IsPostBack)
 			{
-
-                ListaConceptos(0);
+                
 
 			}
+
+            int vEntradaSalida = 0;
+            if (raEntrada.Checked)
+                vEntradaSalida = 1;
+            else
+                vEntradaSalida = 0;
+            ListaConceptos(vEntradaSalida);
 
 		}
 
@@ -110,6 +116,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
         private void ListaConceptos(int idTipoIngreso)
         {
+            string vConcepto = cmbConcepto.SelectedValue;
             cmbConcepto.Items.Clear();
             DataTable myTb;
             myTb = ReportesCobranzas.ListarConceptos("", 1, idTipoIngreso);
@@ -118,6 +125,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
             {
                 myItem = new ListItem(myRow[1].ToString(), myRow[0].ToString());
                 cmbConcepto.Items.Add(myItem);
+
+                if (vConcepto == myRow[0].ToString())
+				{
+					cmbConcepto.SelectedIndex = -1;
+					myItem.Selected = true;
+				}
             }
         }
 
