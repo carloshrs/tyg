@@ -48,12 +48,13 @@
 										<td>&nbsp;</td></tr>
 
 										<tr>
-											<TD class="text" align="left" width="10%" style="height: 30px"><asp:DropDownList ID="cmbConcepto" runat="server">
-                                            </asp:DropDownList></TD>
+											
 											<TD class="text" align="left" width="10%" style="height: 30px">
-                                                <asp:RadioButton ID="raSalida" runat="server" Text="Salida" GroupName="raEntradaSalida" Checked="true" />
-                                                <asp:RadioButton ID="raEntrada" runat="server" Text="Entrada" GroupName="raEntradaSalida" />
+                                                <asp:RadioButton ID="raSalida" runat="server" Text="Salida" GroupName="raEntradaSalida" Checked="true" AutoPostBack="true" />
+                                                <asp:RadioButton ID="raEntrada" runat="server" Text="Entrada" GroupName="raEntradaSalida" AutoPostBack="true" />
                                             </TD>
+                                            <TD class="text" align="left" width="10%" style="height: 30px"><asp:DropDownList ID="cmbConcepto" runat="server">
+                                            </asp:DropDownList></TD>
 										<td><asp:Button ID="btnBuscar" runat="server" Text="Buscar" onclick="btnBuscar_Click" /></td></tr>
 
 									</TABLE>
