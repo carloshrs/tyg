@@ -5,42 +5,39 @@
 		<title>Informe de Propiedad</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 			<script>
-			function ToggleImg(name, src, alt)
-			{
-				name.src = "/img/" + src;
-				name.alt = alt
-			}
-
-			function mostrarFiltro(First, name) {
-			    if (masInfo.style.display == "none") {
-			        masInfo.style.display = "list-item";
-			        ToggleImg(name, 'Cerrar.gif', 'Cerrar Más Info');
+			    function ToggleImg(name, src, alt) {
+			        name.src = "/img/" + src;
+			        name.alt = alt
 			    }
-			    else {
-			        masInfo.style.display = "none";
-			        ToggleImg(name, 'Arrow.gif', 'Más Info');
+
+			    function mostrarFiltro(First, name) {
+			        if (masInfo.style.display == "none") {
+			            masInfo.style.display = "list-item";
+			            ToggleImg(name, 'Cerrar.gif', 'Cerrar Más Info');
+			        }
+			        else {
+			            masInfo.style.display = "none";
+			            ToggleImg(name, 'Arrow.gif', 'Más Info');
+			        }
 			    }
-			}
 
+			    function imprimir() {
+			        panel.style.visibility = 'hidden';
+			        window.print();
+			        panel.style.visibility = 'visible';
+			    }
 
-            function imprimir() {
-                panel.style.visibility = 'hidden';
-                window.print();
-                panel.style.visibility = 'visible';
-            }
-
-            function altoCelda() {
-                if (document.Form1.idTipoPropiedad.value == 4)
-                    tdObservaciones.style.height = '550';
-                else
-                    tdObservaciones.style.height = '120';
-            }
+			    function altoCelda() {
+			        if (document.Form1.idTipoPropiedad.value == 4)
+			            tdObservaciones.style.height = '550';
+			        else
+			            tdObservaciones.style.height = '120';
+			    }
 
 			</script>
 </HEAD>
 	<body topmargin="0" leftmargin="0" onload="altoCelda(); imprimir();">
 		<form id="Form1" method="post" runat="server">
-			
 			<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0">
 				<tr>
 					<td class="title" width="100%">
@@ -94,7 +91,7 @@
 										</tr>
 									</table>
 								</td>
-								<td class="text" align="center" width="15%">&nbsp;Numero: <asp:label id="lblNum" runat="server" Font-Bold="True"></asp:label></td>
+								<td class="text" align="center" width="15%">&nbsp;Numero: <asp:label id="lblNum" runat="server" Font-Bold="True"></asp:label><asp:label id="lblTipoDocumentoPeriodo" runat="server"></asp:label></td>
 							</tr>
 						</TABLE>
 						<TABLE id="Table1" cellSpacing="0" cellPadding="0" width="100%" border="0">
@@ -345,6 +342,24 @@
 								</TD>
 							</TR>
 						</TABLE>
+					</td>
+				</tr>
+				<tr>
+					<td width="100%"></td>
+				</tr>
+							<TR>
+								<TD width="100%" colSpan="4"><div style="font-size:9px; margin-top:10px; line-height:1.5">
+									Este informe es confidencial y solo puede ser usado para la 
+										evaluación y otorgamiento de créditos o celebración de negocios. Esta prohibida 
+										su reproducción, divulgación y entrega a terceros.<BR>
+										No significa emitir juicio de valor sobre las personas ni sobre su 
+										solvencia. Las <U>decisiones a las que arribe el usuario son de su exclusiva 
+											responsabilidad.</U><br />
+											www.tiempoygestion.com.ar &nbsp;&nbsp;//&nbsp;&nbsp; informes@tiempoygestion.com.ar
+											</div></TD>
+							</TR>
+
+			</TABLE>
 			<input id="idEncabezado" type="hidden" name="idEncabezado" runat="server"> <input id="idReferencia" type="hidden" name="idReferencia" runat="server">
 		</form>
 		<p><BR>
