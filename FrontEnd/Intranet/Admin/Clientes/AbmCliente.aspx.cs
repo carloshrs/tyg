@@ -104,6 +104,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
             raTipoPeriodo2.Checked = (dalCliente.TipoPeriodo == 2) ? true : false;
             raHabilitarFinalizadoSI.Checked = (dalCliente.HabilitarFinalizados == 1) ? true : false;
             raHabilitarFinalizadoNO.Checked = (dalCliente.HabilitarFinalizados == 0) ? true : false;
+            if (dalCliente.TipoFactura != 0)
+                raTipoFacturacion.SelectedValue = dalCliente.TipoFactura.ToString();
+            if (dalCliente.TipoEnvio != 0)
+                raTipoEnvio.SelectedValue = dalCliente.TipoEnvio.ToString();
+            if (dalCliente.TipoMorosidad != 0)
+                raTipoMorosidad.SelectedValue = dalCliente.TipoMorosidad.ToString();
 
 			Session.Add("Cliente",dalCliente);
 		}
@@ -228,6 +234,21 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                     habilitarInformeFinalizado = 0;
                 dalCliente.HabilitarFinalizados = habilitarInformeFinalizado;
 
+                int tipoFactura = 4; // default: sin factura
+                if (raTipoFacturacion.SelectedValue != null)
+                    tipoFactura = int.Parse(raTipoFacturacion.SelectedValue);
+                dalCliente.TipoFactura = tipoFactura;
+
+                int tipoEnvio = 1; // default: Se envia a domiciio
+                if (raTipoEnvio.SelectedValue != null)
+                    tipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
+                dalCliente.TipoEnvio = tipoEnvio;
+
+                int tipoMorosidad = 1; // default: normal
+                if (raTipoMorosidad.SelectedValue != null)
+                    tipoMorosidad = int.Parse(raTipoMorosidad.SelectedValue);
+                dalCliente.TipoMorosidad = tipoMorosidad;
+
 				resultado=dalCliente.Crear();				
 			}
 			else
@@ -278,6 +299,22 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 if (raHabilitarFinalizadoNO.Checked)
                     habilitarInformeFinalizado = 0;
                 dalCliente.HabilitarFinalizados = habilitarInformeFinalizado;
+
+
+                int tipoFactura = 4; // default: sin factura
+                if (raTipoFacturacion.SelectedValue != null)
+                    tipoFactura = int.Parse(raTipoFacturacion.SelectedValue);
+                dalCliente.TipoFactura = tipoFactura;
+
+                int tipoEnvio = 1; // default: Se envia a domiciio
+                if (raTipoEnvio.SelectedValue != null)
+                    tipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
+                dalCliente.TipoEnvio = tipoEnvio;
+
+                int tipoMorosidad = 1; // default: normal
+                if (raTipoMorosidad.SelectedValue != null)
+                    tipoMorosidad = int.Parse(raTipoMorosidad.SelectedValue);
+                dalCliente.TipoMorosidad = tipoMorosidad;
 
 				resultado=dalCliente.Modificar();
 			}

@@ -39,6 +39,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private int intTipoDocumento;
         private int intTipoPeriodo;
         private int intHabilitarFinalizados;
+        private int intTipoFactura;
+        private int intTipoEnvio;
+        private int intTipoMorosidad;
 
 
 		public ClienteDal() : base()
@@ -357,6 +360,43 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 intHabilitarFinalizados = value;
             }
         }
+
+        public int TipoFactura
+        {
+            get
+            {
+                return intTipoFactura;
+            }
+            set
+            {
+                intTipoFactura = value;
+            }
+        }
+
+        public int TipoEnvio
+        {
+            get
+            {
+                return intTipoEnvio;
+            }
+            set
+            {
+                intTipoEnvio = value;
+            }
+        }
+
+        public int TipoMorosidad
+        {
+            get
+            {
+                return intTipoMorosidad;
+            }
+            set
+            {
+                intTipoMorosidad = value;
+            }
+        }
+
         
 
 		#endregion
@@ -370,7 +410,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			if (lIdCliente != 0)
 			{
 				StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo, C.habilitarInformeFinalizado ");
+                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo, C.habilitarInformeFinalizado, C.tipoFactura, C.tipoEnvio, C.tipoMorosidad ");
 				strSqlGet.Append(" From Clientes C ");
 				strSqlGet.Append(" Where C.IdCliente = " + Traduce(lIdCliente));
 				try
@@ -425,6 +465,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                             intTipoPeriodo = Convert.ToInt32(drCliente.GetValue(21));
                         if (!drCliente.IsDBNull(22))
                             intHabilitarFinalizados = Convert.ToInt32(drCliente.GetValue(22));
+                        if (!drCliente.IsDBNull(23))
+                            intTipoFactura = Convert.ToInt32(drCliente.GetValue(23));
+                        if (!drCliente.IsDBNull(24))
+                            intTipoEnvio = Convert.ToInt32(drCliente.GetValue(24));
+                        if (!drCliente.IsDBNull(25))
+                            intTipoMorosidad = Convert.ToInt32(drCliente.GetValue(25));
 
 					}
 					drCliente.Close();
@@ -443,7 +489,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             if (nomCliente != "")
             {
                 StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.IdCliente, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo ");
+                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.IdCliente, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo, C.tipoFactura, C.tipoEnvio, C.tipoMorosidad ");
                 strSqlGet.Append(" From Clientes C ");
                 strSqlGet.Append(" Where C.RazonSocial LIKE '" + nomCliente + "%'");
                 try
@@ -495,6 +541,13 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                             intTipoDocumento = drCliente.GetInt16(20);
                         if (!drCliente.IsDBNull(21))
                             intTipoPeriodo = drCliente.GetInt16(21);
+                        if (!drCliente.IsDBNull(22))
+                            intTipoFactura = drCliente.GetInt16(22);
+                        if (!drCliente.IsDBNull(23))
+                            intTipoEnvio = drCliente.GetInt16(23);
+                        if (!drCliente.IsDBNull(24))
+                            intTipoMorosidad = drCliente.GetInt16(24);
+
                     }
                     drCliente.Close();
                 }
@@ -517,22 +570,23 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             int MaxID = ObtenerMaxID(strMaxID, oConnection);
 
 			String strSQL = "INSERT INTO Clientes ";
-			strSQL+="(idCliente, RazonSocial, NombreFantasia, Sucursal, CUIT, NroIngBrutos, Telefono, Fax, Calle, ";
-			strSQL+="Numero, Piso, Office, Barrio, CodPos, IdLocalidad, ";
-            strSQL += "IdProvincia, Email, Encargado, Cargo, Observaciones, tipoDocumento, tipoPeriodo, habilitarInformeFinalizado) ";
+			strSQL +="(idCliente, RazonSocial, NombreFantasia, Sucursal, CUIT, NroIngBrutos, Telefono, Fax, Calle, ";
+			strSQL +="Numero, Piso, Office, Barrio, CodPos, IdLocalidad, ";
+            strSQL += "IdProvincia, Email, Encargado, Cargo, Observaciones, tipoDocumento, tipoPeriodo, habilitarInformeFinalizado, ";
+            strSQL += "tipoFactura, tipoEnvio, tipoMorosidad)";
 			strSQL+="VALUES ";
             strSQL += "('" + MaxID + "'";
             strSQL += ",'" + strRazonSocial.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strNombreFantasia.Trim().Replace("'", "''") + "'";
             strSQL += ",'" + strSucursal.Trim().Replace("'", "''") + "'";
-			strSQL+=",'"+strCUIT.Trim()+"'";
-			strSQL+=",'"+strIngBru.Trim()+"'";
-			strSQL+=",'"+strTelefono.Trim()+"'";
-			strSQL+=",'"+strFax.Trim()+"'";
+			strSQL +=",'"+strCUIT.Trim()+"'";
+			strSQL +=",'"+strIngBru.Trim()+"'";
+			strSQL +=",'"+strTelefono.Trim()+"'";
+			strSQL +=",'"+strFax.Trim()+"'";
             strSQL += ",'" + strCalle.Trim().Replace("'", "''") + "'";
-			strSQL+=",'"+strNumero.Trim()+"'";
-			strSQL+=",'"+strPiso.Trim()+"'";
-			strSQL+=",'"+strDepto.Trim()+"'";
+			strSQL +=",'"+strNumero.Trim()+"'";
+			strSQL +=",'"+strPiso.Trim()+"'";
+			strSQL +=",'"+strDepto.Trim()+"'";
 			strSQL+=",'"+strBarrio.Trim()+"'";
 			strSQL+=",'"+strCodPostal.Trim()+"'";
 			strSQL+=","+intIdLocalidad;
@@ -543,7 +597,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             strSQL+=",'" + strObservaciones.Trim() + "'";
             strSQL+="," + intTipoDocumento + "";
             strSQL+="," + intTipoPeriodo + "";
-            strSQL+="," + intHabilitarFinalizados + ")";
+            strSQL+="," + intHabilitarFinalizados + "";
+            strSQL += "," + intTipoFactura + "";
+            strSQL += "," + intTipoEnvio + "";
+            strSQL += "," + intTipoMorosidad + ")";
 			
 			try
 			{
@@ -597,6 +654,12 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                 strSQL += ",tipoDocumento=" + intTipoDocumento + "";
                 strSQL += ",tipoPeriodo=" + intTipoPeriodo + "";
                 strSQL += ",habilitarInformeFinalizado=" + intHabilitarFinalizados + "";
+                if (intTipoFactura != null)
+                    strSQL += ",tipoFactura=" + intTipoFactura + "";
+                if (intTipoEnvio != null)
+                    strSQL += ",tipoEnvio=" + intTipoEnvio + "";
+                if (intTipoMorosidad != null)
+                    strSQL += ",tipoMorosidad=" + intTipoMorosidad + "";
 				strSQL+=" WHERE IdCliente="+intIdCliente;
 			
 				try

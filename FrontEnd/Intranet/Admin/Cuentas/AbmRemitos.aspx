@@ -233,10 +233,23 @@ function recalcular(tipo, campo) {
 								</td>
 							</tr>
                             <tr>
+								<td class="text" height="38">
+                                    <asp:Panel ID="pnCliente" runat="server">
+                                <br />
+            			<span style="color: #AAA; font-size: 14px; font-weight: bold">Cliente</span> <a href='javascript:void(0);' id='projectSelectionLink' class='projectSelectionLink'>
+                            <asp:Label ID="lblCliente" runat="server"></asp:Label>&nbsp;</a> 
+		
+                                &nbsp;<BR>
+                                <b><span style="color: #AAA; font-size: 14px; font-weight: bold">Dirección: </span><asp:Label ID="lblDireccion" runat="server"></asp:Label></b>
+                                <BR><BR>
+								
+                                    </asp:Panel></td>
+							</tr>
+                            <tr>
 								<td>
                                     <asp:Panel ID="Panel1TipoDoc" runat="server">
                                     </asp:Panel>
-                                <asp:Panel ID="pnlTipoDocumento" runat="server">
+                                <asp:Panel ID="pnlTipoDocumento" runat="server" Width="40%">
                                     <fieldset>
                                     <legend class="text">2 - Tipo de documento</legend>
                                     <div style="width:180px; font-size:12px; ">
@@ -255,7 +268,7 @@ function recalcular(tipo, campo) {
 							</tr>
                             <tr>
 								<td>
-                                <asp:Panel ID="pnlTipoPeriodo" runat="server">
+                                <asp:Panel ID="pnlTipoPeriodo" runat="server" Width="40%">
                                     <fieldset>
                                     <legend class="text">3 - Tipo de período</legend>
                                     <div style="width:180px; font-size:12px; ">
@@ -271,18 +284,48 @@ function recalcular(tipo, campo) {
                                     </fieldset>
                                 </asp:Panel>
                             </td>
-							<tr>
-								<td class="text" height="38">
-                                    <asp:Panel ID="pnCliente" runat="server">
-                                <br />
-            			<span style="color: #AAA; font-size: 14px; font-weight: bold">Cliente</span> <a href='javascript:void(0);' id='projectSelectionLink' class='projectSelectionLink'>
-                            <asp:Label ID="lblCliente" runat="server"></asp:Label>&nbsp;</a> 
-		
-                                &nbsp;<BR>
-                                <b><span style="color: #AAA; font-size: 14px; font-weight: bold">Dirección: </span><asp:Label ID="lblDireccion" runat="server"></asp:Label></b>
-                                <BR><BR>
-								
-                                    </asp:Panel></td>
+							</tr>
+                            <tr>
+								<td>
+                                <asp:Panel ID="pnlTipoFactura" runat="server" Width="40%">
+                                    <fieldset>
+                                    <legend class="text">4 - Tipo de facturación</legend>
+                                    <div style="width:500px; font-size:12px; ">
+                                        <table>
+                                            <tr><td><asp:RadioButtonList runat="server" ID="raTipoFacturacion" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Sin factura" Value="4"></asp:listitem>
+                                                                    <asp:listitem Text="A" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="B" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="C" Value="3"></asp:listitem>
+                                                                    </asp:RadioButtonList></td>
+                                                <td><asp:RequiredFieldValidator ID="reqTipoFacturacion" runat="server" ErrorMessage="Seleccione tipo de facturación" ControlToValidate="raTipoFacturacion" ValidationGroup="Final">*</asp:RequiredFieldValidator></td>
+                                             </tr>
+                                        </table>
+                                    </div>
+                                    </fieldset>
+                                </asp:Panel>
+                            </td>
+							</tr>
+                            <tr>
+								<td>
+                                <asp:Panel ID="pnlTipoEnvio" runat="server" Width="40%">
+                                    <fieldset>
+                                    <legend class="text">5 - Tipo de envío</legend>
+                                    <div style="width:500px; font-size:12px; ">
+                                        <table>
+                                            <tr><td><asp:RadioButtonList runat="server" ID="raTipoEnvio" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Envio a domicilio" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="Lo retira" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="Online" Value="3"></asp:listitem>
+                                                                    </asp:RadioButtonList></td>
+                                                <td class="text"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Seleccione tipo de envío" ControlToValidate="raTipoEnvio" ValidationGroup="Final">*</asp:RequiredFieldValidator>
+                                                    &nbsp;(Característica del cliente, no de remito/parte)</td>
+                                             </tr>
+                                        </table>
+                                    </div>
+                                    </fieldset>
+                                </asp:Panel>
+                            </td>
 							</tr>
                             <tr>
 								<td>
@@ -376,7 +419,7 @@ function recalcular(tipo, campo) {
                                 <tr><td class="text"><br /><br />
                                     <asp:Panel ID="pnRemito" runat="server">
                                     <fieldset>
-                                    <legend>4 - Selección de informes y adicionales</legend>
+                                    <legend>6 - Selección de informes y adicionales</legend>
                                     <table class="generalTable text" cellspacing="0" cellpadding="3" border="0" id="Table1" style="border-collapse:collapse;">
 			                            <tr class="rowTop" style="font-weight: bold; color: #3756A6; background-color: #DFE7F4;">
 				                            <th scope="col" style="width:1%;white-space:nowrap;">&nbsp;</th>
