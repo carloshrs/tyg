@@ -84,6 +84,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             raTipoPeriodo.SelectedIndex = 1;
                     }
 
+                    if (oCargarCliente.TipoEnvio != 0)
+                        raTipoEnvio.SelectedValue = oCargarCliente.TipoEnvio.ToString();
+                    if (oCargarCliente.TipoFactura != 0)
+                        raTipoFacturacion.SelectedValue = oCargarCliente.TipoFactura.ToString();
+
                     ActualizarListadoInformes(int.Parse(tipoDocumentacion.Value), nroRemito);
                     CargarRemitoTipoPropiedad(int.Parse(hIdCliente.Value), txtFechaInicio.Text, txtFechaFinal.Text, int.Parse(tipoDocumentacion.Value), nroRemito);
                     InicializarTablaAdicionales();
@@ -295,6 +300,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             decimal PrecioUnitario = 0;
             int Cantidad = 0;
 
+            int idTipoFactura = 4;
+            int idTipoEnvio = 1;
+
+            idTipoFactura = int.Parse(raTipoFacturacion.SelectedValue);
+            idTipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
+
             //Si no tiene seteado el Tipo de documento (remito o parte) o periodo (diario o mensual)
             ClienteDal oCargarCliente = new ClienteDal();
             oCargarCliente.Cargar(int.Parse(hIdCliente.Value));
@@ -302,8 +313,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             {
                 oCargarCliente.TipoDocumento = idTipoDocumentacion;
                 oCargarCliente.TipoPeriodo = idtipoCobranza;
-                oCargarCliente.Modificar();
             }
+            oCargarCliente.TipoFactura = idTipoFactura;
+            oCargarCliente.TipoEnvio = idTipoEnvio;
+            oCargarCliente.Modificar();
+
 
             if (nroRemito == 0)
                 idRemito = gp.crearRemitoParte(idTipoDocumentacion, idtipoCobranza, idCliente, idUsuarioIntra);
@@ -502,6 +516,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             if (nCargarCliente.TipoPeriodo != null)
                 raTipoPeriodo.SelectedIndex = nCargarCliente.TipoPeriodo - 1;
+
+
+            if (nCargarCliente.TipoEnvio != 0)
+                raTipoEnvio.SelectedValue = nCargarCliente.TipoEnvio.ToString();
+            if (nCargarCliente.TipoFactura != 0)
+                raTipoFacturacion.SelectedValue = nCargarCliente.TipoFactura.ToString();
+
         
         }
 

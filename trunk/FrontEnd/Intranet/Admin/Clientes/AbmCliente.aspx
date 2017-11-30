@@ -222,6 +222,69 @@
                                                             </table>
                                                         </TD>
 													</TR>
+
+                                                    <TR>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Tipo de facturación</TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4">
+                                                            <table cellSpacing="2" cellPadding="4" width="100%" border="0">
+																<TR style="background-color:#eee;">
+																	<TD class="text" width="30%" >Tipo:</TD>
+                                                                    <TD class="text" width="100%">
+                                                                    <asp:RadioButtonList runat="server" ID="raTipoFacturacion" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Sin factura" Value="4"></asp:listitem>
+                                                                    <asp:listitem Text="A" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="B" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="C" Value="3"></asp:listitem>
+                                                                    </asp:RadioButtonList>
+                                                                        </TD>
+                                                                </TR>
+
+                                                            </table>
+                                                        </TD>
+													</TR>
+                                                    <TR>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Tipo de envío</TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4">
+                                                            <table cellSpacing="2" cellPadding="4" width="100%" border="0">
+																<TR style="background-color:#eee;">
+																	<TD class="text" width="30%" >Tipo:</TD>
+                                                                    <TD class="text" width="100%">
+                                                                    <asp:RadioButtonList runat="server" ID="raTipoEnvio" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Envio a domicilio" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="Lo retira" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="Online" Value="3"></asp:listitem>
+                                                                    </asp:RadioButtonList>
+                                                                        </TD>
+                                                                </TR>
+
+                                                            </table>
+                                                        </TD>
+													</TR>
+                                                    <TR>
+														<TD class="title" bgColor="lightgrey" colSpan="4" height="10">&nbsp;&nbsp;Estado de morosidad</TD>
+													</TR>
+                                                    <TR>
+														<TD class="text" colSpan="4">
+                                                            <table cellSpacing="2" cellPadding="4" width="100%" border="0">
+																<TR style="background-color:#eee;">
+																	<TD class="text" width="30%" >Tipo:</TD>
+                                                                    <TD class="text" width="100%">
+                                                                    <asp:RadioButtonList runat="server" ID="raTipoMorosidad" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Normal" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="Tto especial" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="Incobrable" Value="3"></asp:listitem>
+                                                                    <asp:listitem Text="Abogado" Value="4"></asp:listitem>
+                                                                    </asp:RadioButtonList>
+                                                                        </TD>
+                                                                </TR>
+
+                                                            </table>
+                                                        </TD>
+													</TR>
                                                     <TR>
 														<TD class="text" colSpan="4" height="10"></TD>
 													</TR>
