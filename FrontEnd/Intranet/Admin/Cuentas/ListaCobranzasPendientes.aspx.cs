@@ -65,6 +65,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             string fechaDesde = "";
             string fechaHasta = "";
             string clientes = "";
+            int tipoMorosidad = 1;
             clientes = Request.QueryString["clientes"];
 
             if (raDiario.Checked) tipoPeriodo = 1;
@@ -77,10 +78,14 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
             if (txtFechaFinal.Text != "")
                 fechaHasta = txtFechaFinal.Text;
 
+            if (raTipoMorosidad.SelectedValue != "")
+                tipoMorosidad = int.Parse(raTipoMorosidad.SelectedValue);
+
+
 			//GestorPrecios Adicionales = new GestorPrecios();
             if (tipoPeriodo != 0)
             {
-                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes).DefaultView;
+                dgPendientesCobrosClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes, tipoMorosidad).DefaultView;
                 dgPendientesCobrosClientes.DataBind();
             }
 

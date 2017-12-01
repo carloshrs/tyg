@@ -116,6 +116,12 @@
 
                                     &nbsp;</TD>
 				            </TR>
+                            <tr><td><asp:RadioButtonList runat="server" ID="raTipoMorosidad" CssClass="text" RepeatDirection="Horizontal">
+                                                                    <asp:listitem Text="Normal" Value="1" Selected="True"></asp:listitem>
+                                                                    <asp:listitem Text="Tto especial" Value="2"></asp:listitem>
+                                                                    <asp:listitem Text="Incobrable" Value="3"></asp:listitem>
+                                                                    <asp:listitem Text="Abogado" Value="4"></asp:listitem>
+                                                                    </asp:RadioButtonList></td></tr>
 			            </TABLE>
             
                     </div>
