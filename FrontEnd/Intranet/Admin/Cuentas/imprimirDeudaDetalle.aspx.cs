@@ -26,13 +26,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 lblFecha.Text = DateTime.Today.ToShortDateString();
 
                 if (Request.QueryString["tipoPeriodo"] != null && Request.QueryString["tipoPeriodo"] != "")
-                    ListadoDeuda(int.Parse(Request.QueryString["tipoPeriodo"]));
+                    ListadoDeuda(int.Parse(Request.QueryString["tipoPeriodo"]), int.Parse(Request.QueryString["tipoMorosidad"]));
             }
         }
 
 
 
-        private void ListadoDeuda(int tipoPeriodo)
+        private void ListadoDeuda(int tipoPeriodo, int tipoMorosidad)
         {
             string fechaDesde = "";
             string fechaHasta = "";
@@ -56,7 +56,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 lblFechaHasta.Text = fechaHasta;
 
             
-            lvListadoClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes).DefaultView;
+            lvListadoClientes.DataSource = GestorPrecios.ListaPendientesCobrosClientes(tipoPeriodo, fechaDesde, fechaHasta, clientes, tipoMorosidad).DefaultView;
             lvListadoClientes.DataBind();
 
         }
