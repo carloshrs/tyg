@@ -122,10 +122,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
         {
             int tipoPeriodo = 2;
             int mostrarSubtotal = 0;
+            int tipoMorosidad = 1;
             string clientes = "";
             bool bandera = false;
             tipoPeriodo = (raMensual.Checked) ? 2 : 1;
             mostrarSubtotal = (chkMostrarSubTotal.Checked) ? 1 : 0;
+            tipoMorosidad = int.Parse(raTipoMorosidad.SelectedValue);
 
             foreach (DataGridItem myItem in dgPendientesCobrosClientes.Items)
             {
@@ -147,7 +149,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
                 { }
             }
 
-            Response.Redirect("imprimirDeudaDetalle.aspx?tipoPeriodo=" + tipoPeriodo + "&subtotal=" + mostrarSubtotal  + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text + "&clientes=" + clientes);
+            Response.Redirect("imprimirDeudaDetalle.aspx?tipoPeriodo=" + tipoPeriodo + "&tipoMorosidad=" + tipoMorosidad + "&subtotal=" + mostrarSubtotal + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text + "&clientes=" + clientes);
 
         }
         
