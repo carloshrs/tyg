@@ -252,7 +252,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
             EncabezadoApp Encabezado = new EncabezadoApp();
             Encabezado.cargarEncabezado(idEncabezado);
 
-            Encabezado.Cancelar(idEncabezado);
+            Encabezado.Cancelar(idEncabezado, true);
         }
 
         private void ListaBandeja()

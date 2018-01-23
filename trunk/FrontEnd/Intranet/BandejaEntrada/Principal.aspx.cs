@@ -558,7 +558,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.IdCliente = Usuario.IdCliente;
             Encabezado.IdUsuario = Usuario.IdUsuario;
 
-            Encabezado.Cancelar(idEncabezado);
+            Encabezado.Cancelar(idEncabezado, false);
         }
 
 

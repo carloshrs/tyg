@@ -302,7 +302,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.Referencia
 			UsuarioAutenticado Usuario = (UsuarioAutenticado) Session["UsuarioAutenticado"];
 			Encabezado.IdCliente = Usuario.IdCliente;
 
-			Encabezado.Cancelar(idEncabezado);
+			Encabezado.Cancelar(idEncabezado, false);
 		}
 
 		private void dgridEncabezados_ItemCommand(object source, DataGridCommandEventArgs e)

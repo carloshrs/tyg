@@ -256,7 +256,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 			UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
 			Encabezado.IdCliente = Usuario.IdCliente;
 
-			Encabezado.Cancelar(idEncabezado);
+			Encabezado.Cancelar(idEncabezado, true);
 		}
 
 		private void dgridEncabezados_ItemCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)

@@ -313,7 +313,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
 			Encabezado.IdCliente = Usuario.IdCliente;
 
-			Encabezado.Cancelar(idEncabezado);
+			Encabezado.Cancelar(idEncabezado, false);
 		}
 
 
