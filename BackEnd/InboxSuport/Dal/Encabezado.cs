@@ -2134,12 +2134,15 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			return true;
 		}
 
-		public bool Cancelar(int idEncabezado)
+		public bool Cancelar(int idEncabezado, bool Extranet)
 		{
+
 			OdbcConnection oConnection = this.OpenConnection();
 			String strSQL = "UPDATE BandejaEntrada SET Estado = 4";
-			strSQL = strSQL  + ", Observaciones = 'Cancelado por el Cliente";
-			strSQL = strSQL  + "' WHERE idEncabezado = " + idEncabezado.ToString();
+			strSQL = strSQL  + ", Observaciones = 'Cancelado por el Cliente' ";
+			strSQL = strSQL  + " WHERE idEncabezado = " + idEncabezado.ToString();
+            if (Extranet)
+                strSQL = strSQL + " AND estado=1 ";
 
 			String strAuditoria = "INSERT INTO HistoricoAcciones (idCliente, idUsuario, Instante, Evento, Observaciones, idTipoObjeto, idReferencia, idEstado) VALUES (";
 			strAuditoria = strAuditoria  + intIdCliente + "," + intIdUsuario  + ", getdate(), 'Cancelación de Informe', 'Cancelación del Informe Nro." + idEncabezado.ToString() +"' ,1," + idEncabezado.ToString() + ",4)";
