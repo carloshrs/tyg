@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
-<head>
+	<HEAD id="HEAD1" runat="server">
     <title>Alta de Informe</title>
     <link href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 
@@ -612,9 +612,13 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtFecha" runat="server" Width="80px" ReadOnly="True" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;<img
-                                                            id="imgFecha" style="cursor: hand" onclick="popFrame.fPopCalendar(imgFecha, txtFecha, divDateControl);"
-                                                            alt="Abrir Calendario" src="/img/fecha.gif"></td>
+                                                        <asp:TextBox ID="txtFecha" runat="server" Width="80px" ReadOnly="True" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;<cc1:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtFecha" PopupButtonID="imgFecha" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFecha" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" /></td>
                                                     <td class="text">
                                                         <asp:TextBox ID="txtHabita" runat="server" Width="100px" MaxLength="10" Style="text-transform: uppercase;"></asp:TextBox></td>
                                                     <td class="text">
@@ -645,9 +649,13 @@
                                                             ErrorMessage="El monto debe ser numérico" ToolTip="El monto debe ser numérico"
                                                             Operator="DataTypeCheck" Type="Currency">*</asp:CompareValidator></td>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtVencimiento" runat="server" Width="100px" ReadOnly="True" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;<img
-                                                            id="imgFechaVence" style="cursor: hand" onclick="popFrame.fPopCalendar(imgFechaVence, txtVencimiento, divDateControl);"
-                                                            alt="Abrir Calendario" src="/img/fecha.gif"></td>
+                                                        <asp:TextBox ID="txtVencimiento" runat="server" Width="100px" ReadOnly="True" Style="text-transform: uppercase;"></asp:TextBox>&nbsp;<cc1:CalendarExtender ID="txtVencimiento_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtVencimiento" PopupButtonID="imgFechaVencimiento" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFechaVencimiento" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" /></td>
                                                     <td class="text">
                                                         <asp:TextBox ID="txtEnviar" runat="server" Width="140px" MaxLength="40" Style="text-transform: uppercase;"></asp:TextBox></td>
                                                 </tr>

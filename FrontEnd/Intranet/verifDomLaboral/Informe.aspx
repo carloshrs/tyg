@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <HTML>
-  <HEAD>
+	<HEAD id="HEAD1" runat="server">
 		<title>Alta de Informe</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
 		<script src="../Includes/entertab.js" type="text/javascript"></script>
@@ -402,10 +402,15 @@
 										</TR>
 										<TR>
 											<TD class="text" width="261" colSpan="2">
-<asp:textbox id=txtFecha runat="server" Width="100px" style="text-transform:uppercase" disabled="true"></asp:textbox>&nbsp;<IMG 
-                  id=imgFecha style="CURSOR: hand" 
-                  onclick="popFrame.fPopCalendar(imgFecha, txtFecha, divDateControl);" 
-                  alt="Abrir Calendario" src="/img/fecha.gif"></TD>
+<asp:textbox id="txtFecha" runat="server" Width="100px" style="text-transform:uppercase" disabled="true"></asp:textbox>
+&nbsp;<cc1:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtFecha" PopupButtonID="imgFecha" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFecha" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" />
+</TD>
 											<TD class="text" width="50%" colSpan="2">
 <asp:radiobuttonlist id=raTrabajaLugar runat="server" CssClass="text" RepeatDirection="Horizontal">
 																<asp:ListItem Value="1"> Si</asp:ListItem>
@@ -450,11 +455,15 @@
 																<asp:ListItem Value="0"> No</asp:ListItem>
 															</asp:radiobuttonlist></TD>
 														<TD class="text">
-<asp:textbox id=txtFechaFinalizacion runat="server" Width="100px" disabled="true"></asp:textbox>&nbsp;<IMG 
-                        id=imgFechaFin style="CURSOR: hand" 
-                        onclick="popFrame.fPopCalendar(imgFechaFin, txtFechaFinalizacion, divDateControl);" 
-                        alt="Abrir Calendario" 
-                    src="/img/fecha.gif"></TD>
+<asp:textbox id="txtFechaFinalizacion" runat="server" Width="100px" disabled="true"></asp:textbox>
+&nbsp;<cc1:CalendarExtender ID="txtFechaFinalizacion_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtFechaFinalizacion" PopupButtonID="imgFechaInicio" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFechaInicio" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" />
+                                                </TD>
 													</TR>
 												</TABLE>
 												&nbsp;</td>
