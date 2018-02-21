@@ -5,7 +5,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
+<HEAD id="HEAD1" runat="server">
     <title>Alta de Informe</title>
     <link href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
     <script src="../Includes/entertab.js" type="text/javascript"></script>
@@ -589,9 +589,13 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtFecha" runat="server" Width="100px" ReadOnly="True" style="text-transform: uppercase"></asp:TextBox>&nbsp;<img
-                                                            id="imgFecha" style="cursor: hand" onclick="popFrame.fPopCalendar(imgFecha, txtFecha, divDateControl);"
-                                                            alt="Abrir Calendario" src="/img/fecha.gif"></td>
+                                                        <asp:TextBox ID="txtFecha" runat="server" Width="100px" ReadOnly="True" style="text-transform: uppercase"></asp:TextBox>&nbsp;<cc1:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtFecha" PopupButtonID="imgFecha" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFecha" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" /></td>
                                                     <td class="text">
                                                         <asp:TextBox ID="txtOcupacion" runat="server" Width="140px" MaxLength="200" style="text-transform: uppercase"></asp:TextBox></td>
                                                     <td class="text">
@@ -723,9 +727,13 @@
                                                     <td class="text">
                                                         <asp:CheckBox ID="chkVigilancia" runat="server" Text=" si / no"></asp:CheckBox></td>
                                                     <td class="text">
-                                                        <asp:TextBox ID="txtInicio" runat="server" Width="100px" style="text-transform: uppercase"></asp:TextBox>&nbsp;<img
-                                                            id="imgFechaActividad" style="cursor: hand" onclick="popFrame.fPopCalendar(imgFechaActividad, txtInicio, divDateControl);"
-                                                            alt="Abrir Calendario" src="/img/fecha.gif"></td>
+                                                        <asp:TextBox ID="txtInicio" runat="server" Width="100px" style="text-transform: uppercase"></asp:TextBox>&nbsp;<cc1:CalendarExtender ID="txtInicio_CalendarExtender" runat="server" 
+                                                    TargetControlID="txtInicio" PopupButtonID="imgFechaInicio" 
+                                                    PopupPosition="BottomRight" Format="dd/MM/yyyy">
+                                                </cc1:CalendarExtender>
+                                                &nbsp;
+												<img id="imgFechaInicio" style="CURSOR: hand" 
+													alt="Abrir Calendario" src="/img/fecha.gif" /></td>
                                                     <td class="text">
                                                         <asp:TextBox ID="txtCategoriaIVA" runat="server" Width="100px" MaxLength="10" style="text-transform: uppercase"></asp:TextBox></td>
                                                 </tr>
