@@ -187,69 +187,10 @@
 				            <TR>
 					            <TD><asp:label id="lblEstado" runat="server" Font-Bold="True"> Filtro</asp:label>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <BR>
 						            &nbsp;<BR>
 						            Cliente:
 						            <asp:textbox id="txtCliente" runat="server" Width="207px" CssClass="planotext"></asp:textbox>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  <img id="processing" style="visibility:hidden" src="/img/ajaxloader-thumb.gif"  />
@@ -265,284 +206,27 @@
                                                     OnClientItemSelected="IAmSelected" 
                             DelimiterCharacters="" Enabled="True"></cc1:AutoCompleteExtender>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <asp:HiddenField ID="hIdCliente" runat="server" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                     &nbsp;&nbsp;
 						            Fecha desde&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="78px"></asp:textbox>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <cc1:CalendarExtender ID="txtFechaInicio_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaInicio" Enabled="True"></cc1:CalendarExtender>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                     &nbsp; 
                                     Fecha hasta <asp:textbox id="txtFechaFinal" runat="server" Width="78px"></asp:textbox>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <cc1:CalendarExtender ID="txtFechaFinal_CalendarExtender" runat="server" 
                                         TargetControlID="txtFechaFinal" Enabled="True"></cc1:CalendarExtender>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <asp:CheckBox ID="chBorrador" runat="server" Text="Borrador" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 						            <asp:button id="btnBuscar" runat="server" Width="80px" Text="Buscar" 
                                         onclick="btnBuscar_Click" style="margin-left:20px;"></asp:button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     &nbsp;<asp:HiddenField ID="hidFecha" runat="server" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						            
                                 </TD>
 				            </TR>
 			            </TABLE>
@@ -657,9 +341,9 @@
                     <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque1" 
                             Width="180px"></asp:TextBox></td></tr>
                     <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision1" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision1" runat="server" TargetControlID="txtFechaEmision1" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision1" runat="server" TargetControlID="txtFechaEmision1" Enabled="True"  Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro1" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro1" runat="server" TargetControlID="txtFechaCobro1" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro1" runat="server" TargetControlID="txtFechaCobro1" Enabled="True" Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     </table>
                     </asp:Panel>
                     </div>
@@ -692,9 +376,9 @@
                     <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque2" 
                             Width="180px"></asp:TextBox></td></tr>
                     <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision2" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision2" runat="server" TargetControlID="txtFechaEmision2" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision2" runat="server" TargetControlID="txtFechaEmision2" Enabled="True" Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro2" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro2" runat="server" TargetControlID="txtFechaCobro2" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro2" runat="server" TargetControlID="txtFechaCobro2" Enabled="True" Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     </table>
                     </asp:Panel>
 
@@ -732,9 +416,9 @@
                     <tr><td>Número de cheque:</td><td><asp:TextBox runat="server" ID="txtNroCheque3" 
                             Width="180px"></asp:TextBox></td></tr>
                     <tr><td>Fecha emisión:</td><td><asp:TextBox runat="server" ID="txtFechaEmision3" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision3" runat="server" TargetControlID="txtFechaEmision3" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaEmision3" runat="server" TargetControlID="txtFechaEmision3" Enabled="True" Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     <tr><td>Fecha de cobro:</td><td><asp:TextBox runat="server" ID="txtFechaCobro3" 
-                            Width="60px"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro3" runat="server" TargetControlID="txtFechaCobro3" Enabled="True"></cc1:CalendarExtender></td></tr>
+                            Width="60px" placeholder="DD/MM/YYYY"></asp:TextBox><cc1:CalendarExtender ID="CEFechaCobro3" runat="server" TargetControlID="txtFechaCobro3" Enabled="True" Format="dd/MM/yyyy"></cc1:CalendarExtender></td></tr>
                     </table>
                     </asp:Panel>
 
