@@ -597,9 +597,9 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             //fechaHasta = "'" + fechaHasta + " 23:59:59.999'";
             
 
-            strSQL1 = "setRemitoMensualMasivo 13, " + fechaDesde + ", " + fechaHasta;
+            strSQL1 = "setRemitoMensualMasivo 13, '" + fechaDesde + "', '" + fechaHasta + "'";
 
-            strSQL2 = "setParteEntregaMensualMasivo 13, " + fechaDesde + ", " + fechaHasta;
+            strSQL2 = "setParteEntregaMensualMasivo 13, '" + fechaDesde + "', '" + fechaHasta + "'";
 
             //String strMaxID = "SELECT MAX(nroRemito) as MaxId FROM remitos";
 
