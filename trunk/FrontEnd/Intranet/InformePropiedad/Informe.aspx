@@ -322,7 +322,7 @@
                                                                 <td class="text" width="25%">
                                                                     <asp:TextBox ID="txtPH" runat="server" MaxLength="10" Width="100px"></asp:TextBox></td>
                                                                 <td class="text" width="133">
-                                                                    <asp:TextBox ID="txtLote" runat="server" MaxLength="10" Width="100px"></asp:TextBox></td>
+                                                                    <asp:TextBox ID="txtLote" runat="server" MaxLength="100" Width="100px"></asp:TextBox></td>
                                                                 <td class="text" align="left" width="25%">
                                                                     <asp:TextBox ID="txtManzana" runat="server" MaxLength="10" Width="100px"></asp:TextBox></td>
                                                                 <td class="text" align="left" width="25%">
