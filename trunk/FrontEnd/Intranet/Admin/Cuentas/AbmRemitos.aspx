@@ -59,7 +59,15 @@
 
 
         function addAdicional(valor) {
-            alert(valor);
+            vAdicional = document.getElementById("ddAdicional").value;
+            //alert(vAdicional)
+            vTipoEnvio = document.getElementById("raTipoEnvio_0").checked;
+            //alert(vTipoEnvio);
+            if (!((vAdicional < 5 || vAdicional == 9) && vTipoEnvio))
+                if (!confirm("¿Desea agregar el servicio de envío de todos modos?")) return false;
+
+            //alert("si envia")
+            return true;
         }
         /*
         $(document).ready(function () {
@@ -487,7 +495,7 @@ function recalcular(tipo, campo) {
                                 <asp:Panel ID="pnAdicionales" runat="server">
                             Servicios adicionales&nbsp;&nbsp;<asp:DropDownList id="ddAdicional" runat="server">
 												</asp:DropDownList>&nbsp;<asp:Button ID="btn" runat="server" 
-                                        Text="Agregar" CssClass="text" onclick="btn_Click" /><!---<input type="button" id="addAdicional" value="Agregar" onclick="agregarFila(2, document.getElementById('cant_campos'));" onclick="return addAdicional_onclick()" />--->
+                                        Text="Agregar" CssClass="text" onclick="btn_Click" OnClientClick="if(!addAdicional(this)) return false;" /><!---<input type="button" id="addAdicional" value="Agregar" onclick="agregarFila(2, document.getElementById('cant_campos'));" onclick="return addAdicional_onclick()" />--->
 								<br /><br />
                                     </asp:Panel>
 

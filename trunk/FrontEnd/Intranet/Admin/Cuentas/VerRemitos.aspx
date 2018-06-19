@@ -187,9 +187,15 @@ function printIframe() {
     return false;
 }
 
+function noback() {
+    window.location.hash = "no-back-button";
+    window.location.hash = "Again-No-back-button"
+    window.onhashchange = function () { window.location.hash = "no-back-button"; }
+}
+
 
     </script>
-	<body leftMargin="0" topMargin="0">
+	<body leftMargin="0" topMargin="0" onload="noback();">
 		<mnu:menu id="Menu" runat="server"></mnu:menu>
         
 		<form id="Form1" method="post" runat="server">
