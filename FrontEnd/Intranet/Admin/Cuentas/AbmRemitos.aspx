@@ -63,7 +63,7 @@
             //alert(vAdicional)
             vTipoEnvio = document.getElementById("raTipoEnvio_0").checked;
             //alert(vTipoEnvio);
-            if (!((vAdicional < 5 || vAdicional == 9) && vTipoEnvio))
+            if ((vAdicional < 5 || vAdicional == 9) && (!vTipoEnvio))
                 if (!confirm("¿Desea agregar el servicio de envío de todos modos?")) return false;
 
             //alert("si envia")
