@@ -319,10 +319,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             DataSet ds = new DataSet();
             String strSQL = "SELECT (isnull(b.nombre,'''') + '' '' + isnull(B.apellido,'''')) as nombre, B.documento, B.razonsocial, B.calleempresa + '' '' + B.nroempresa  as direccion, " +
                 "B.telefonoempresa as telefono, CASE WHEN (C.sucursal is null) THEN C.nombrefantasia ELSE C.nombrefantasia + '' ('' + C.sucursal + '')'' END AS cliente, + " +
-                "B.cuit, B.FechaCarga, B.DescripcionInf, B.comentarios, P.nom_prov AS provincia, L.nom_loc AS localidad, B.UsuarioCliente, B.CargoEmpresa as cargo " +
+                "B.cuit, B.FechaCarga, B.DescripcionInf, B.comentarios, P.nom_prov AS provincia, L.nom_loc AS localidad, B.UsuarioCliente, B.CargoEmpresa as cargo, TE.Descripcion AS TipoEnvio " +
                 "FROM bandejaentrada B " +
                 "INNER JOIN clientes C ON B.idCliente=C.idCliente " +
                 "INNER JOIN informesCambioEstado G ON B.idEncabezado=G.idInforme " +
+                "INNER JOIN ClientesTipoEnvio TE ON C.tipoEnvio=TE.idTipoEnvio " +
                 "INNER JOIN provin P ON P.cod_prov=B.provinciaempresa " +
                 "INNER JOIN localida L ON L.cod_loc=B.localidadempresa ";
 

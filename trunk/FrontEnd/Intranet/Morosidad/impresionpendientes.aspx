@@ -36,7 +36,7 @@ function imprimir() {
                     </div>
                     <div style="width:50%; float:left;">
                         Fecha:
-                        <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                        <asp:Label ID="lblFecha" runat="server"></asp:Label> - (<asp:Label ID="lblTipoEnvio" runat="server"  Text='<%# Eval("TipoEnvio")%>' Font-Size="Small"></asp:Label>)
                     </div>
                     <asp:Panel ID="pnFisica" runat="server" >
                          <div style="width:50%; float:left;">
