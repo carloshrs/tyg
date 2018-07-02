@@ -50,7 +50,7 @@ public partial class verifDomLaboral_listadopendientes : System.Web.UI.Page
         if (e.Item.ItemType == ListItemType.Item ||
             e.Item.ItemType == ListItemType.AlternatingItem)
         {
-            int nroResto = int.Parse(((DataRowView)e.Item.DataItem).Row.ItemArray[14].ToString()) % 4;
+            int nroResto = int.Parse(((DataRowView)e.Item.DataItem).Row.ItemArray[15].ToString()) % 4;
 
             if (nroResto == 0)
                 //pnSaltoPagina.Visible = true;
