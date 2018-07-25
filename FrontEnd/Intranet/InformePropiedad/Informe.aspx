@@ -131,6 +131,18 @@
                                 Solicitud de Informe de propiedad<br>
                             </td>
                         </tr>
+                        <tr><td>
+                            <table cellSpacing="0" cellPadding="0" width="100%" border="0">
+								<tr>
+									<td class="text">Solicitado por:
+										<asp:label id="lblSolicitante" runat="server" Font-Bold="True"></asp:label></td>
+								</tr>
+								<tr>
+									<td class="text" colSpan="2">Referencia:
+										<asp:label id="lblRef" runat="server" Font-Bold="True"></asp:label></td>
+								</tr>
+							</table><br />
+                        </td></tr>
                         <tr>
 					    <td>
 					        <table width="100%" class="text" cellpadding="1" cellspacing="1">
@@ -515,6 +527,11 @@
                                                 <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
                                                 <br /><br />
                                             </TD></TR>
+
+                                            <tr>
+                                        <td class="text" width="100%">
+                                            Tipo de envío: <asp:Label ID="lblTipoEnvio" runat="server" Font-Bold="true" Font-Size="Larger" ></asp:Label></td>
+                                        </tr>
 										<TR>
 											<td width="100%" colSpan="4">
 												<hr SIZE="2">

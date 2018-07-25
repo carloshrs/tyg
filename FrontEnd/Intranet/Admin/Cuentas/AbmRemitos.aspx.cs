@@ -84,8 +84,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                             raTipoPeriodo.SelectedIndex = 1;
                     }
 
-                    if (oCargarCliente.TipoEnvio != 0)
-                        raTipoEnvio.SelectedValue = oCargarCliente.TipoEnvio.ToString();
+                    if (oCargarCliente.idTipoEnvio != 0)
+                        raTipoEnvio.SelectedValue = oCargarCliente.idTipoEnvio.ToString();
                     if (oCargarCliente.TipoFactura != 0)
                         raTipoFacturacion.SelectedValue = oCargarCliente.TipoFactura.ToString();
 
@@ -315,7 +315,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 oCargarCliente.TipoPeriodo = idtipoCobranza;
             }
             oCargarCliente.TipoFactura = idTipoFactura;
-            oCargarCliente.TipoEnvio = idTipoEnvio;
+            oCargarCliente.idTipoEnvio = idTipoEnvio;
             oCargarCliente.Modificar();
 
 
@@ -518,8 +518,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                 raTipoPeriodo.SelectedIndex = nCargarCliente.TipoPeriodo - 1;
 
 
-            if (nCargarCliente.TipoEnvio != 0)
-                raTipoEnvio.SelectedValue = nCargarCliente.TipoEnvio.ToString();
+            if (nCargarCliente.idTipoEnvio != 0)
+                raTipoEnvio.SelectedValue = nCargarCliente.idTipoEnvio.ToString();
             if (nCargarCliente.TipoFactura != 0)
                 raTipoFacturacion.SelectedValue = nCargarCliente.TipoFactura.ToString();
 

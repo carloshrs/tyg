@@ -106,8 +106,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
             raHabilitarFinalizadoNO.Checked = (dalCliente.HabilitarFinalizados == 0) ? true : false;
             if (dalCliente.TipoFactura != 0)
                 raTipoFacturacion.SelectedValue = dalCliente.TipoFactura.ToString();
-            if (dalCliente.TipoEnvio != 0)
-                raTipoEnvio.SelectedValue = dalCliente.TipoEnvio.ToString();
+            if (dalCliente.idTipoEnvio != 0)
+                raTipoEnvio.SelectedValue = dalCliente.idTipoEnvio.ToString();
             if (dalCliente.TipoMorosidad != 0)
                 raTipoMorosidad.SelectedValue = dalCliente.TipoMorosidad.ToString();
 
@@ -239,10 +239,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                     tipoFactura = int.Parse(raTipoFacturacion.SelectedValue);
                 dalCliente.TipoFactura = tipoFactura;
 
-                int tipoEnvio = 1; // default: Se envia a domiciio
+                int idTipoEnvio = 1; // default: Se envia a domiciio
                 if (raTipoEnvio.SelectedValue != null)
-                    tipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
-                dalCliente.TipoEnvio = tipoEnvio;
+                    idTipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
+                dalCliente.idTipoEnvio = idTipoEnvio;
 
                 int tipoMorosidad = 1; // default: normal
                 if (raTipoMorosidad.SelectedValue != null)
@@ -306,10 +306,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                     tipoFactura = int.Parse(raTipoFacturacion.SelectedValue);
                 dalCliente.TipoFactura = tipoFactura;
 
-                int tipoEnvio = 1; // default: Se envia a domiciio
+                int idTipoEnvio = 1; // default: Se envia a domiciio
                 if (raTipoEnvio.SelectedValue != null)
-                    tipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
-                dalCliente.TipoEnvio = tipoEnvio;
+                    idTipoEnvio = int.Parse(raTipoEnvio.SelectedValue);
+                dalCliente.idTipoEnvio = idTipoEnvio;
 
                 int tipoMorosidad = 1; // default: normal
                 if (raTipoMorosidad.SelectedValue != null)

@@ -505,10 +505,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         pnlParticulares.Visible = true;
                         lblEstadoCivil.Enabled = false;
                         cmbEstadoCivil.Enabled = false;
+                        pnlUrgencia.Visible = false;
                     }
                     else
+                    {
                         pnlDomComercial.Visible = true;
-					pnlUrgencia.Visible = true;
+                        pnlUrgencia.Visible = true;
+                    }
                     reqCalleEmpresa.Enabled = false;
                     reqNroCalleEmpresa.Enabled = false;
 					break;
@@ -533,12 +536,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         pnlParticulares.Visible = true;
                         lblEstadoCivil.Enabled = false;
                         cmbEstadoCivil.Enabled = false;
+                        pnlUrgencia.Visible = false;
                     }
                     else
+                    {
                         pnlDomComercial.Visible = true;
+                        pnlUrgencia.Visible = true;
+                    }
                     reqApellido.Enabled = true;
                     reqNombre.Enabled = true;
-                    pnlUrgencia.Visible = true;
+                   
                     reqCalleEmpresa.Enabled = false;
                     reqNroCalleEmpresa.Enabled = false;
                     break;
