@@ -11,6 +11,7 @@ using ar.com.TiempoyGestion.BackEnd.Informes.Dal;
 using System.IO;
 using System.Configuration;
 using System.Web;
+using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
 {
@@ -88,7 +89,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
 			UsuarioAutenticado Usuario = (UsuarioAutenticado)Session["UsuarioAutenticado"];
 			oInformePropiedad.IdCliente = Usuario.IdCliente;
 			oInformePropiedad.IdUsuario = Usuario.IdUsuario;
-			
+
 			oInformePropiedad.IdInforme = int.Parse(idInformePropiedad.Value);
 			oInformePropiedad.Matricula = txtLegajo.Text;
 			oInformePropiedad.TipoProp = int.Parse(idTipoProp.Value);
@@ -420,6 +421,19 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
                 }
             }
             lblEncObservaciones.Text = enc.Comentarios;
+
+
+            EncabezadoApp oEncabezado = new EncabezadoApp();
+            oEncabezado.cargarEncabezado(int.Parse(idInformePropiedad.Value));
+            lblRef.Text = oEncabezado.NombreReferencia;
+
+            ClienteDal cliente = new ClienteDal();
+            cliente.Cargar(oEncabezado.IdCliente);
+            string strEmpresa = cliente.NombreFantasia;
+            if (cliente.Sucursal != "")
+                strEmpresa = strEmpresa + " (" + cliente.Sucursal + ")";
+            lblSolicitante.Text = strEmpresa;
+            lblTipoEnvio.Text = cliente.TipoEnvio;
         }
 
         #endregion

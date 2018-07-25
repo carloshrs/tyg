@@ -41,6 +41,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
         private int intHabilitarFinalizados;
         private int intTipoFactura;
         private int intTipoEnvio;
+        private string strTipoEnvio;
         private int intTipoMorosidad;
 
 
@@ -373,7 +374,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             }
         }
 
-        public int TipoEnvio
+        public int idTipoEnvio
         {
             get
             {
@@ -382,6 +383,18 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
             set
             {
                 intTipoEnvio = value;
+            }
+        }
+
+        public string TipoEnvio
+        {
+            get
+            {
+                return strTipoEnvio;
+            }
+            set
+            {
+                strTipoEnvio = value;
             }
         }
 
@@ -410,8 +423,9 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
 			if (lIdCliente != 0)
 			{
 				StringBuilder strSqlGet = new StringBuilder(512);
-                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo, C.habilitarInformeFinalizado, C.tipoFactura, C.tipoEnvio, C.tipoMorosidad ");
+                strSqlGet.Append("Select C.RazonSocial, C.nombrefantasia, C.sucursal, C.CUIT, C.NroIngBrutos, C.Telefono, C.Fax, C.Calle, C.Numero, C.Piso, C.Office, C.Barrio, C.CodPos, C.IdLocalidad, C.IdProvincia, C.Email, C.encargado, C.cargo, C.observaciones, C.RazonSocialFox, C.tipoDocumento, C.tipoPeriodo, C.habilitarInformeFinalizado, C.tipoFactura, TE.idtipoEnvio, C.tipoMorosidad, TE.descripcion AS tipoEnvio ");
 				strSqlGet.Append(" From Clientes C ");
+                strSqlGet.Append(" INNER JOIN TipoEnvio TE ON C.tipoEnvio = TE.idTipoEnvio ");
 				strSqlGet.Append(" Where C.IdCliente = " + Traduce(lIdCliente));
 				try
 				{
@@ -471,6 +485,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Clientes.Dal
                             intTipoEnvio = Convert.ToInt32(drCliente.GetValue(24));
                         if (!drCliente.IsDBNull(25))
                             intTipoMorosidad = Convert.ToInt32(drCliente.GetValue(25));
+                        if (!drCliente.IsDBNull(26))
+                            strTipoEnvio = drCliente.GetString(26);
 
 					}
 					drCliente.Close();

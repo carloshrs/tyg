@@ -39,6 +39,7 @@ function imprimir() {
                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionInf")%>' Font-Bold="true" Font-Size="Small"></asp:Label>
                     </div>
                     <div style="width:100%; float:left; border-bottom:#000000 1px solid; padding-bottom:36px;">
+                        Tipo envío: <%# Eval("TipoEnvio")%> <br /><br />
                         Observaciones:
                         <asp:Label ID="lblObservaciones" runat="server" Text='<%# Eval("comentarios")%>'></asp:Label>
                     </div>
@@ -62,6 +63,7 @@ function imprimir() {
                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionInf")%>' Font-Bold="true" Font-Size="Small"></asp:Label>
                     </div>
                     <div style="width:100%; float:left; border-bottom:#000000 1px solid; padding-bottom:36px;">
+                        Tipo envío: <%# Eval("TipoEnvio")%> <br /><br />
                         Observaciones:
                         <asp:Label ID="lblObservaciones" runat="server" Text='<%# Eval("comentarios")%>'></asp:Label>
                     </div>
@@ -84,6 +86,7 @@ function imprimir() {
                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionInf")%>' Font-Bold="true" Font-Size="Small"></asp:Label>
                     </div>
                     <div style="width:100%; float:left; border-bottom:#000000 1px solid; padding-bottom:35px;">
+                        Tipo envío: <%# Eval("TipoEnvio")%> <br /><br />
                         Observaciones:
                         <asp:Label ID="lblObservaciones" runat="server" Text='<%# Eval("comentarios")%>'></asp:Label>
                     </div>
@@ -106,6 +109,7 @@ function imprimir() {
                         <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionInf")%>' Font-Bold="true" Font-Size="Small"></asp:Label>
                     </div>
                     <div style="width:100%; float:left; border-bottom:#000000 1px solid; padding-bottom:35px;">
+                        Tipo envío: <%# Eval("TipoEnvio")%> <br /><br />
                         Observaciones:
                         <asp:Label ID="lblObservaciones" runat="server" Text='<%# Eval("comentarios")%>'></asp:Label>
                     </div>

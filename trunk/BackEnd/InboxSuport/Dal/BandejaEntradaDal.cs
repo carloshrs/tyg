@@ -395,9 +395,10 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
             String strSQL = "SELECT (isnull(b.nombre,'''') + '' '' + isnull(B.apellido,'''')) as nombre, B.documento, B.razonsocial, B.calleempresa + '' '' + B.nroempresa  as direccion, " +
-                "B.telefonoempresa as telefono, C.razonsocial AS Cliente, B.cuit, B.FechaCarga, B.DescripcionInf, B.comentarios, P.nom_prov AS provincia, L.nom_loc AS localidad, B.UsuarioCliente, B.FechaCondicional " +
+                "B.telefonoempresa as telefono, C.razonsocial AS Cliente, B.cuit, B.FechaCarga, B.DescripcionInf, B.comentarios, P.nom_prov AS provincia, L.nom_loc AS localidad, B.UsuarioCliente, B.FechaCondicional, TE.descripcion AS TipoEnvio " +
                 "FROM bandejaentrada B " +
                 "INNER JOIN clientes C ON B.idCliente=C.idCliente " +
+                "INNER JOIN tipoenvio TE ON TE.idTipoEnvio=C.tipoEnvio " +
                 "INNER JOIN provin P ON P.cod_prov=B.provinciaempresa " +
                 "INNER JOIN localida L ON L.cod_loc=B.localidadempresa ";
 
