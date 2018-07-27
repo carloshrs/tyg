@@ -530,7 +530,7 @@
 
                                             <tr>
                                         <td class="text" width="100%">
-                                            Tipo de envío: <asp:Label ID="lblTipoEnvio" runat="server" Font-Bold="true" Font-Size="Larger" ></asp:Label></td>
+                                            Tipo de envío: <asp:Label ID="lblTipoEnvio" runat="server" Font-Bold="true" Font-Size="Larger" ForeColor="Red" ></asp:Label></td>
                                         </tr>
 										<TR>
 											<td width="100%" colSpan="4">
