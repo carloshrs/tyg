@@ -483,10 +483,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         pnlParticulares.Visible = true;
                         lblEstadoCivil.Enabled = false;
                         cmbEstadoCivil.Enabled = false;
+                        pnlUrgencia.Visible = false;
                     }
                     else
+                    {
                         pnlDomComercial.Visible = true;
-					pnlUrgencia.Visible = true;
+                        pnlUrgencia.Visible = true;
+                    }
                     //reqCalleEmpresa.Enabled = false;
                     //reqNroCalleEmpresa.Enabled = false;
 					break;
@@ -508,12 +511,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
                         pnlParticulares.Visible = true;
                         lblEstadoCivil.Enabled = false;
                         cmbEstadoCivil.Enabled = false;
+                        pnlUrgencia.Visible = false;
                     }
                     else
+                    {
                         pnlDomComercial.Visible = true;
-                    reqApellido.Enabled = true;
-                    reqNombre.Enabled = true;
-                    pnlUrgencia.Visible = true;
+                        pnlUrgencia.Visible = true;
+                    }
+                    //reqApellido.Enabled = true;
+                    //reqNombre.Enabled = true;
+                    
                     break;
                 case 17: // Informe de Morosidad
                     pnlTipoPersona.Visible = true;
