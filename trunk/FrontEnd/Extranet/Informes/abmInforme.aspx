@@ -616,7 +616,7 @@ border=0>
 <asp:Label id=lblNumero runat="server">Número</asp:Label></TD></TR>
                     <TR>
                       <TD class=text width="100%">
-<asp:TextBox id=NumeroCatastro runat="server" Width="100%"></asp:TextBox></TD></TR>
+<asp:TextBox id=NumeroCatastro runat="server" Width="100%" style="text-transform: uppercase;" MaxLength="16"></asp:TextBox></TD></TR>
 <asp:panel id=pnlCatastralDireccion runat="server">
                     <TR>
                       <TD class=text width="100%" colSpan=3>

@@ -694,7 +694,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text" width="100%">
-                                                                        <asp:TextBox ID="NumeroCatastro" runat="server" Width="100%" style="text-transform: uppercase;" MaxLength="15"></asp:TextBox>
+                                                                        <asp:TextBox ID="NumeroCatastro" runat="server" Width="100%" style="text-transform: uppercase;" MaxLength="16"></asp:TextBox>
                                                                         <asp:CompareValidator ID="cmpNumeroCatastro" runat="server" ControlToValidate="NumeroCatastro" ErrorMessage="Sólo números" Text="*" Type="Double"></asp:CompareValidator>
                                                                         </td>
                                                                 </tr>
