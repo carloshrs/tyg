@@ -455,8 +455,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 					valObservaciones.Visible = true;
 					break;
 				case 10: // Busqueda Automotor
-					pnlParticulares.Visible = true;
 					pnlTipoPersona.Visible = true;
+                    if (cmbTipoPersona.SelectedItem.Value.Equals("1"))
+                    {
+                        pnlParticulares.Visible = true;
+                    }
+                    else
+                    {
+
+                        pnlDomComercial.Visible = true;
+                    }
 					break;
 				case 11: // Informe Propiedad Otras Provincias
 					//lblTitulo.Text = "Informe Propiedad Otras Provincias";
