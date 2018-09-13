@@ -187,6 +187,7 @@ function recalcular(tipo, campo) {
 			<table cellSpacing="0" cellPadding="0" width="98%" border="0">
 				<tr>
 					<td class="text" vAlign="top" width="5"></td>
+
 					<td class="text" height="38">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
@@ -532,6 +533,20 @@ function recalcular(tipo, campo) {
                                       </fieldset>
                                 </asp:Panel>
                                     </td></tr>
+                                    <TR>
+											<TD class="text" align="left" colSpan="2">
+                                            <asp:Panel runat="server" ID="pnAdjuntar" Visible="false">
+                                                <br />
+                                                Adjuntar PDF<br />
+                                                <asp:FileUpload ID="txtArchivo" runat="server" />
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="reqArchivo" runat="server" 
+                                                    ErrorMessage="Adjuntar factura" Text="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <br />
+                                                <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                                <br /><br />
+                                                </asp:Panel>
+                                            </TD></TR>
 							<tr>
 								<td align="center">
 									<asp:ValidationSummary ID="valSumary" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Final"/>

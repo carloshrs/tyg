@@ -58,10 +58,10 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.App
             return gp.AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
         }
 
-        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
+        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, int idConcepto, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             CuentaCorrienteDal gp = new CuentaCorrienteDal();
-            return gp.AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, montoPagar, observaciones);
+            return gp.AgregarMovimientoCaja(idCajaDiaria, entrada, idConcepto, concepto, montoDebe, montoPagar, observaciones);
         }
 
         public bool AgregarDocumentosMovimientoCC(int idCuentaClienteDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)

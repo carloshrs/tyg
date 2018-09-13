@@ -1143,14 +1143,14 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
         }
 
-        public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, string concepto, float monto, string observaciones)
+        public static void CrearCajaDetalle(int IdCaja, int TipoIngreso, int idConcepto, string concepto, float monto, string observaciones)
         {
             try
             {
                 StringBuilder strQuery = new StringBuilder(512);
                 strQuery = new StringBuilder(512);
-                strQuery.Append("Insert Into CPCajaDetalle (idCaja, concepto, montoTotal, entradasalida, fecha, observaciones) ");
-                strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), " + StaticDal.Traduce(observaciones) + ")");
+                strQuery.Append("Insert Into CPCajaDetalle (idCaja, idConcepto, concepto, montoTotal, entradasalida, fecha, observaciones) ");
+                strQuery.Append(" Values (" + StaticDal.Traduce(IdCaja) + ", " + StaticDal.Traduce(idConcepto) + ", " + StaticDal.Traduce(concepto) + ", " + StaticDal.Traduce(monto) + ", " + StaticDal.Traduce(TipoIngreso) + ", getdate(), " + StaticDal.Traduce(observaciones) + ")");
                 StaticDal.EjecutarComando(strQuery.ToString());
 
                 StringBuilder strQuery2 = new StringBuilder(512);

@@ -118,7 +118,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             if (raIngresaCaja.SelectedItem.Text == "SI")
             {
                 int idCajaDetalleFormaPago = 0;
-                vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, int.Parse(cmbTipoIngreso.SelectedValue), NombreCliente + cmbConcepto.SelectedItem.ToString() + ", " + txtConceptoAdicional.Text, float.Parse(txtMonto.Text), float.Parse(txtMonto.Text), txtObservaciones.Text);
+                vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, int.Parse(cmbTipoIngreso.SelectedValue), int.Parse(cmbConcepto.SelectedValue) ,NombreCliente + cmbConcepto.SelectedItem.ToString() + ", " + txtConceptoAdicional.Text, float.Parse(txtMonto.Text), float.Parse(txtMonto.Text), txtObservaciones.Text);
 
                 // Se agrega Forma de Pago
                 if (txtMonto.Text != "" && int.Parse(txtMonto.Text) != 0)
@@ -133,11 +133,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             Response.Redirect("ListaCuentaCorrienteCliente.aspx?idCliente=" + Request.QueryString["id"]);
         }
 
-        private int AgregarMovimientoCaja(int idCuentaCliente, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
+        private int AgregarMovimientoCaja(int idCuentaCliente, int entrada, int idConcepto, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             //return GestorPrecios.CrearCajaDetalle(0, int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, entrada, concepto, montoDebe, montoPagar, observaciones);
+            return ccMovimiento.AgregarMovimientoCaja(idCuentaCliente, entrada, idConcepto, concepto, montoDebe, montoPagar, observaciones);
         }
 
         private int AgregarFormaPago(int idCajaDetalle, int idFormaPago, float MontoaPagar, int entradasalida)

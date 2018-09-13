@@ -597,7 +597,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
         
 
 
-        public static DataTable ListarCajaMovimientos(string fechaDesde, string fechaHasta, string lConcepto, int entradasalida)
+        public static DataTable ListarCajaMovimientos(string fechaDesde, string fechaHasta, int lConcepto, int entradasalida)
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
@@ -606,8 +606,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
             if (fechaDesde != "")
                 strQuery.Append(" and fecha between '" + fechaDesde + "' and '" + fechaHasta + "'  ");
 
-            if (lConcepto != "")
-                strQuery.Append(" and concepto like '%" + lConcepto + "%'  ");
+            if (lConcepto != null)
+                strQuery.Append(" and idConcepto = " + lConcepto + " ");
 
             if (entradasalida == 1)
                 strQuery.Append(" and entradasalida = 1 ");
@@ -615,6 +615,41 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
                 strQuery.Append(" and entradasalida = 0 ");
 
             strQuery.Append(" Order by fecha asc");
+
+            try
+            {
+                dtSalida = StaticDal.EjecutarDataSet(strQuery.ToString(), "CajaDetalle").Tables[0];
+            }
+            catch
+            {
+                throw;
+            }
+            return dtSalida;
+
+        }
+
+
+        public static DataTable ListarCajaMovimientos(string fechaDesde, string fechaHasta, int lConcepto, int entradasalida, int idFormaPago)
+        {
+            StringBuilder strQuery = new StringBuilder(512);
+            DataTable dtSalida = null;
+            strQuery.Append("Select cd.idCajaDetalle, cd.concepto, cd.montoTotal, cd.entradasalida, cd.fecha, cd.observaciones, fp.descripcion as formapago ");
+            strQuery.Append(" from ");
+            strQuery.Append(" CPCajaDetalle cd ");
+            strQuery.Append(" INNER JOIN CPCajaDetalleFormaPago cdfp on cd.idCajaDetalle=cdfp.idCajaDetalle ");
+            strQuery.Append(" INNER JOIN CPFormasPago fp on fp.idFormaPago=cdfp.idFormaPago ");
+            if (fechaDesde != "")
+                strQuery.Append(" and cd.fecha between '" + fechaDesde + "' and '" + fechaHasta + "'  ");
+
+            //if (lConcepto != null)
+            strQuery.Append(" and cd.idConcepto = " + lConcepto + " ");
+
+            if (entradasalida == 1)
+                strQuery.Append(" and cd.entradasalida = 1 ");
+            else
+                strQuery.Append(" and cd.entradasalida = 0 ");
+
+            strQuery.Append(" Order by cd.fecha asc");
 
             try
             {
