@@ -95,11 +95,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
             int entradasalida = 0;
             if (txtFechaInicio.Text == "")
                 txtFechaInicio.Text = DateTime.Today.AddDays(-60).ToShortDateString();
-            FechaDesde = txtFechaInicio.Text;
+            FechaDesde = txtFechaInicio.Text + " 00:00:00";
 
             if (txtFechaFinal.Text == "")
                 txtFechaFinal.Text = DateTime.Today.ToShortDateString();
-            FechaHasta = txtFechaFinal.Text;
+            FechaHasta = txtFechaFinal.Text +  " 23:59:59";
 
             if (raSalida.Checked)
                 entradasalida = 0;
