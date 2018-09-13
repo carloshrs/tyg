@@ -107,9 +107,20 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
             if (raEntrada.Checked)
                 entradasalida = 1;
 
-            string vConcepto = cmbConcepto.SelectedItem.Text;
+            string vConcepto = cmbConcepto.SelectedValue;
             //GestorPrecios Adicionales = new GestorPrecios();
-            dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, vConcepto, entradasalida).DefaultView;
+            if (rbConceptos.Checked)
+            {
+                // Listado de conceptos
+                dgCajaDiariaDetalle.Columns[5].Visible = false;
+                dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, int.Parse(vConcepto), entradasalida).DefaultView;
+            }
+            else
+            {
+                // Listado de informes
+                dgCajaDiariaDetalle.Columns[5].Visible = true;
+                dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, 0, entradasalida, 0).DefaultView;
+            }
             dgCajaDiariaDetalle.DataBind();
         }
 
@@ -157,7 +168,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
                         ((Label)myItem.FindControl("lblEntrada")).Font.Bold = true;
                     }
 
-                    vTotal = vTotal + float.Parse(myItem.Cells[5].Text);
+                    vTotal = vTotal + float.Parse(myItem.Cells[6].Text);
                 }
                 catch (Exception exc)
                 { }
@@ -166,5 +177,32 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 
             lblTotal.Text = "$ " + vTotal;
         }
+        protected void cmbConcepto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void rbInformes_PreRender(object sender, EventArgs e)
+        {
+            CambiarConcepto();
+        }
+        protected void rbConceptos_CheckedChanged(object sender, EventArgs e)
+        {
+            CambiarConcepto();
+        }
+
+        protected void rbInformes_CheckedChanged(object sender, EventArgs e)
+        {
+            CambiarConcepto();
+        }
+
+
+        private void CambiarConcepto()
+        {
+            if (rbInformes.Checked)
+                cmbConcepto.Enabled = false;
+            else
+                cmbConcepto.Enabled = true;
+        }
+        
 }
 }

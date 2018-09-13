@@ -90,6 +90,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             string[] arrDoc;
             string[] separators = {"_"};
             string vParam ="";
+            int idConcepto = 0;
             string concepto = "";
             float montoDebe = 0;
             int tipoDoc = 0;
@@ -152,7 +153,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                         NombreCliente = NombreCliente + "( " + dalCliente.Sucursal + ")";
                     NombreCliente = NombreCliente + ": ";
 
-                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, NombreCliente + concepto, montoDebe, vMontoTotalPagar, "");
+                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, idConcepto, NombreCliente + concepto, montoDebe, vMontoTotalPagar, "");
                     int idCajaDetalleFormaPago = 0;
 
                     // Se agrega Forma de Pago
@@ -193,10 +194,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                     if (cmbFormaPago1.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
                         AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar1.Text));
 
-                    if (cmbFormaPago2.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                    if (cmbFormaPago2.SelectedValue == "4" && txtMontoaPagar2.Text != "" && int.Parse(txtMontoaPagar2.Text) != 0)
                         AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar2.Text));
 
-                    if (cmbFormaPago3.SelectedValue == "4" && txtMontoaPagar1.Text != "" && int.Parse(txtMontoaPagar1.Text) != 0)
+                    if (cmbFormaPago3.SelectedValue == "4" && txtMontoaPagar3.Text != "" && int.Parse(txtMontoaPagar3.Text) != 0)
                         AjustarCuentaCliente(idCuentaCliente, float.Parse(txtMontoaPagar3.Text));
 
 
@@ -311,10 +312,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             return ccMovimiento.AgregarMovimientoCC(idCuentaCliente, entrada, concepto, montoDebe, montoPagar);
         }
 
-        private int AgregarMovimientoCaja(int idCajaDiaria, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
+        private int AgregarMovimientoCaja(int idCajaDiaria, int entrada, int idConcepto, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             CuentaCorrienteApp ccMovimiento = new CuentaCorrienteApp();
-            return ccMovimiento.AgregarMovimientoCaja(idCajaDiaria, entrada, concepto, montoDebe, montoPagar, observaciones);
+            return ccMovimiento.AgregarMovimientoCaja(idCajaDiaria, entrada, idConcepto, concepto, montoDebe, montoPagar, observaciones);
         }
 
         private bool AgregarDocumentosMovimientoCC(int idCuentaClienteDetalle, int tipoDoc, int tipoPeriodo, float NroDoc)

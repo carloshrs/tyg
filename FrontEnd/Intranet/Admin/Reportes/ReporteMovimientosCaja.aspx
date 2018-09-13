@@ -6,6 +6,24 @@
 	<HEAD runat="server">
 		<title>Lista de Caja</title>
 		<LINK href="/CSS/Estilos.css" type="text/css" rel="stylesheet">
+	    <style type="text/css">
+            .style1
+            {
+                font-family: Arial, Verdana, Helvetica, Sans-Serif;
+                font-size: 8pt;
+                TEXT-DECORATION: none;
+                COLOR: #000000;
+                width: 30%;
+            }
+            .style2
+            {
+                font-family: Arial, Verdana, Helvetica, Sans-Serif;
+                font-size: 8pt;
+                TEXT-DECORATION: none;
+                COLOR: #000000;
+                height: 30px;
+            }
+        </style>
 	</HEAD>
 	<body leftmargin="0" topmargin="0">
 		<form method="post" runat="server">
@@ -29,19 +47,19 @@
                                 <table cellSpacing="0" cellPadding="0" width="50%" border="0">
                         
 										<tr>
-											<TD class="text" align="left" width="30%">&nbsp;Fecha Desde:&nbsp;
+											<TD class="style1" align="left">&nbsp;Fecha Desde:&nbsp;
 											</TD>
 											<TD class="text" align="left" width="30%">&nbsp;Fecha Hasta:&nbsp;
 											</TD>
                                             <td></td>
 										</tr>
 										<tr>
-											<TD class="text" align="left" width="10%" style="height: 30px">&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="77px"></asp:textbox>
+											<TD class="style2" align="left">&nbsp;<asp:textbox id="txtFechaInicio" runat="server" Width="77px" AutoComplete="false"></asp:textbox>
                                                 
                                                <cc1:CalendarExtender ID="ceTxtFechaInicio" runat="server" TargetControlID="txtFechaInicio" Format="dd/MM/yyyy" ></cc1:CalendarExtender>
                                                 &nbsp;&nbsp;
 											</TD>
-											<TD class="text" align="left" width="10%" style="height: 30px">&nbsp;&nbsp;<asp:textbox id="txtFechaFinal" runat="server" Width="88px"></asp:textbox>
+											<TD class="text" align="left" width="10%" style="height: 30px">&nbsp;&nbsp;<asp:textbox id="txtFechaFinal" runat="server" Width="88px" AutoComplete="false"></asp:textbox>
                                                 <cc1:CalendarExtender ID="ceTxtFechaFinal" runat="server"  TargetControlID="txtFechaFinal" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                 &nbsp;&nbsp;
 											</TD>
@@ -49,11 +67,31 @@
 
 										<tr>
 											
-											<TD class="text" align="left" width="10%" style="height: 30px">
+											<TD class="style2" align="left">
                                                 <asp:RadioButton ID="raSalida" runat="server" Text="Salida" GroupName="raEntradaSalida" Checked="true" AutoPostBack="true" />
                                                 <asp:RadioButton ID="raEntrada" runat="server" Text="Entrada" GroupName="raEntradaSalida" AutoPostBack="true" />
                                             </TD>
-                                            <TD class="text" align="left" width="10%" style="height: 30px"><asp:DropDownList ID="cmbConcepto" runat="server">
+                                            <TD class="text" align="left" width="10%" style="height: 30px">
+                                                <br />
+                                            </TD>
+										<td>&nbsp;</td></tr>
+
+										<tr>
+											
+											<TD class="style2" align="left">
+                                                <asp:RadioButton ID="rbInformes" runat="server" AutoPostBack="True" 
+                                                    Checked="True" GroupName="conceptos" 
+                                                    oncheckedchanged="rbInformes_CheckedChanged" onprerender="rbInformes_PreRender" 
+                                                    Text="Todos los informes" />
+                                            </TD>
+                                            <TD class="text" align="left" width="10%" style="height: 30px">
+                                                <asp:RadioButton ID="rbConceptos" runat="server" AutoPostBack="True" 
+                                                    GroupName="conceptos" oncheckedchanged="rbConceptos_CheckedChanged" 
+                                                    Text="Otros conceptos" />
+                                                :<br />
+                                                <br />
+                                                <asp:DropDownList ID="cmbConcepto" runat="server" 
+                                                    onselectedindexchanged="cmbConcepto_SelectedIndexChanged">
                                             </asp:DropDownList></TD>
 										<td><asp:Button ID="btnBuscar" runat="server" Text="Buscar" onclick="btnBuscar_Click" /></td></tr>
 
@@ -96,8 +134,11 @@
 											<asp:BoundColumn DataField="concepto" HeaderText="Concepto">
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
+                                            <asp:BoundColumn DataField="formapago" HeaderText="Forma de pago" Visible="false">
+												<ItemStyle HorizontalAlign="Center" Width="250px"></ItemStyle>
+											</asp:BoundColumn>
                                             <asp:BoundColumn DataField="montoTotal" HeaderText="Monto">
-												<ItemStyle HorizontalAlign="Left" Width="250px"></ItemStyle>
+												<ItemStyle HorizontalAlign="Left" Width="150px"></ItemStyle>
 											</asp:BoundColumn>
                                             
                                             
@@ -106,7 +147,7 @@
 											BackColor="#999999"></PagerStyle>
 									</asp:datagrid>
 
-                                    <div style="text-align:right; margin-top:10px; font-weight:bold; width:60%">TOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
+                                    <div style="text-align:right; margin-top:10px; font-weight:bold; width:60%">SUBTOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
 								</td>
 							</tr>
 							<tr>

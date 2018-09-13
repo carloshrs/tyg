@@ -365,7 +365,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
         }
 
 
-        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, string concepto, float montoDebe, float montoPagar, string observaciones)
+        public int AgregarMovimientoCaja(int idCajaDiaria, int entrada, int idConcepto, string concepto, float montoDebe, float montoPagar, string observaciones)
         {
             //int MaxID = 0;
             string strSQL = "";
@@ -374,7 +374,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
 
             OdbcConnection oConnection = this.OpenConnection();
 
-            strSQL = "CCAddMovimientoCaja " + idCajaDiaria + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", '" + observaciones + "', 0";
+            strSQL = "CCAddMovimientoCaja " + idCajaDiaria + ", " + idConcepto + ", '" + concepto + "', " + montoDebe + ", " + montoPagar + ", " + entrada + ", '" + observaciones + "', 0";
 
             try
             {

@@ -92,7 +92,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
 
             //GestorPrecios CajaEncabezado = new GestorPrecios();
 
-            GestorPrecios.CrearCajaDetalle(int.Parse(hdIdCaja.Value), int.Parse(cmbTipoIngreso.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
+            GestorPrecios.CrearCajaDetalle(int.Parse(hdIdCaja.Value), int.Parse(cmbTipoIngreso.SelectedValue), int.Parse(cmbConcepto.SelectedValue), cmbConcepto.SelectedItem.ToString(), float.Parse(txtMonto.Text), txtObservaciones.Text);
             Response.Redirect("ListaCajaDetalles.aspx?id=" + hdIdCaja.Value);
         }
 }
