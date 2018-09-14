@@ -44,7 +44,7 @@
 							</tr>
                             <tr>
                             <td>
-                                <table cellSpacing="0" cellPadding="0" width="50%" border="0">
+                                <table cellSpacing="8" cellPadding="0" width="50%" border="0">
                         
 										<tr>
 											<TD class="style1" align="left">&nbsp;Fecha Desde:&nbsp;
@@ -68,8 +68,8 @@
 										<tr>
 											
 											<TD class="style2" align="left">
-                                                <asp:RadioButton ID="raSalida" runat="server" Text="Salida" GroupName="raEntradaSalida" Checked="true" AutoPostBack="true" />
-                                                <asp:RadioButton ID="raEntrada" runat="server" Text="Entrada" GroupName="raEntradaSalida" AutoPostBack="true" />
+                                                <asp:RadioButton ID="raSalida" runat="server" Text="Salidas" GroupName="raEntradaSalida" AutoPostBack="true" />
+                                                <asp:RadioButton ID="raEntrada" runat="server" Text="Ingresos" GroupName="raEntradaSalida" Checked="true" AutoPostBack="true" />
                                             </TD>
                                             <TD class="text" align="left" width="10%" style="height: 30px">
                                                 <br />
@@ -78,22 +78,29 @@
 
 										<tr>
 											
-											<TD class="style2" align="left">
+											<TD class="style2" align="left" valign="top" style="background-color:#efefef;">
                                                 <asp:RadioButton ID="rbInformes" runat="server" AutoPostBack="True" 
                                                     Checked="True" GroupName="conceptos" 
                                                     oncheckedchanged="rbInformes_CheckedChanged" onprerender="rbInformes_PreRender" 
-                                                    Text="Todos los informes" />
+                                                    Text="Todos los informes" Font-Bold="true" /><br />
+                                                    <asp:CheckBoxList runat="server" ID="chkFormasPago" CssClass="text">
+                                                        <asp:ListItem Value="1" Text="Efectivo"/>
+                                                        <asp:ListItem Value="2" Text="Cheque"/>
+                                                        <asp:ListItem Value="3" Text="Depósito / Transferencia"/>
+                                                        <asp:ListItem Value="4" Text="Cuenta cliente $"/>
+                                                        <asp:ListItem Value="5" Text="Retenciones"/>
+                                                    </asp:CheckBoxList>
                                             </TD>
-                                            <TD class="text" align="left" width="10%" style="height: 30px">
+                                            <TD class="text" align="left" width="10%" style="height: 30px" valign="top">
                                                 <asp:RadioButton ID="rbConceptos" runat="server" AutoPostBack="True" 
                                                     GroupName="conceptos" oncheckedchanged="rbConceptos_CheckedChanged" 
-                                                    Text="Otros conceptos" />
+                                                    Text="Otros conceptos" Font-Bold="true" />
                                                 :<br />
                                                 <br />
                                                 <asp:DropDownList ID="cmbConcepto" runat="server" 
                                                     onselectedindexchanged="cmbConcepto_SelectedIndexChanged">
                                             </asp:DropDownList></TD>
-										<td><asp:Button ID="btnBuscar" runat="server" Text="Buscar" onclick="btnBuscar_Click" /></td></tr>
+										<td valign="bottom"><asp:Button ID="btnBuscar" runat="server" Text="Buscar" onclick="btnBuscar_Click" /></td></tr>
 
 									</TABLE>
                             

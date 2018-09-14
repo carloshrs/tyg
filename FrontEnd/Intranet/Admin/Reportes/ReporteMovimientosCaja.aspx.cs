@@ -5,6 +5,7 @@ using ar.com.TiempoyGestion.BackEnd.Clientes.Dal;
 using ar.com.TiempoyGestion.BackEnd.Reportes.Dal;
 using System.Data;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
 {
@@ -112,14 +113,30 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Reportes
             if (rbConceptos.Checked)
             {
                 // Listado de conceptos
+                chkFormasPago.Visible = false;
+                chkFormasPago.Enabled = false;
                 dgCajaDiariaDetalle.Columns[5].Visible = false;
                 dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, int.Parse(vConcepto), entradasalida).DefaultView;
             }
             else
             {
                 // Listado de informes
+                chkFormasPago.Visible = true;
+                chkFormasPago.Enabled = true;
                 dgCajaDiariaDetalle.Columns[5].Visible = true;
-                dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, 0, entradasalida, 0).DefaultView;
+                
+
+                List<string> vFormasPago = new List<string>();
+                string strFormasPago = "";
+                foreach (ListItem Item in chkFormasPago.Items)
+                {
+                    if (Item.Selected)
+                        vFormasPago.Add(Item.Value);
+                }
+                strFormasPago = String.Join(", ", vFormasPago.ToArray());
+
+
+                dgCajaDiariaDetalle.DataSource = ReportesCobranzas.ListarCajaMovimientos(FechaDesde, FechaHasta, 0, entradasalida, strFormasPago).DefaultView;
             }
             dgCajaDiariaDetalle.DataBind();
         }
