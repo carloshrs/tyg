@@ -147,7 +147,7 @@
 											BackColor="#999999"></PagerStyle>
 									</asp:datagrid>
 
-                                    <div style="text-align:right; margin-top:10px; font-weight:bold; width:60%">SUBTOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
+                                    <div style="text-align:right; margin-top:10px; font-weight:bold; width:90%">SUBTOTAL: <asp:Label ID="lblTotal" runat="server" Font-Bold="true"></asp:Label></div>
 								</td>
 							</tr>
 							<tr>

@@ -390,6 +390,19 @@ function recalcular(tipo, campo) {
                                                         </ItemTemplate>
                                                         </asp:TemplateColumn>
 
+
+                                                        <asp:TemplateColumn>
+                                                        <HeaderStyle Width="25px">
+                                                        </HeaderStyle>
+
+                                                        <ItemStyle HorizontalAlign="Center">
+                                                        </ItemStyle>
+
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton id="PDF" runat="server" Width="16px" ToolTip="PDF" CommandName="pdf" ImageUrl="/img/menu/pdf.png" BorderWidth="0"></asp:ImageButton>
+                                                        </ItemTemplate>
+                                                        </asp:TemplateColumn>
+
                                                         <asp:BoundColumn Visible="False" DataField="estado" HeaderText="estado"></asp:BoundColumn>
                                                    </Columns>
                                                 </asp:datagrid>
