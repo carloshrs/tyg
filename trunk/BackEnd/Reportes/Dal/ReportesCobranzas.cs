@@ -629,7 +629,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
         }
 
 
-        public static DataTable ListarCajaMovimientos(string fechaDesde, string fechaHasta, int lConcepto, int entradasalida, int idFormaPago)
+        public static DataTable ListarCajaMovimientos(string fechaDesde, string fechaHasta, int lConcepto, int entradasalida, string idFormaPago)
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
@@ -643,6 +643,8 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
 
             //if (lConcepto != null)
             strQuery.Append(" and cd.idConcepto = " + lConcepto + " ");
+            if (idFormaPago != "")
+                strQuery.Append(" and cdfp.idFormaPago in (" + idFormaPago + ") ");
 
             if (entradasalida == 1)
                 strQuery.Append(" and cd.entradasalida = 1 ");
