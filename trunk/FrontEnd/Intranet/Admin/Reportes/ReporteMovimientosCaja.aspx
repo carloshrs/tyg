@@ -105,7 +105,7 @@
 									<asp:datagrid id="dgCajaDiariaDetalle" runat="server" Font-Size="8pt" 
                                         PageSize="20" CellPadding="3" BorderColor="#3657A6"
 										BorderStyle="Solid" BorderWidth="1px" BackColor="White" GridLines="Vertical" AutoGenerateColumns="False"
-										Width="70%" onprerender="dgCajaDiariaDetalle_PreRender1">
+										Width="90%" onprerender="dgCajaDiariaDetalle_PreRender1">
 										<SelectedItemStyle Font-Bold="True" ForeColor="White" BackColor="#008A8C"></SelectedItemStyle>
 										<AlternatingItemStyle BackColor="#FBFBFB"></AlternatingItemStyle>
 										<ItemStyle Font-Size="8pt" Font-Names="Arial" ForeColor="Black" BackColor="#F3F3F3"></ItemStyle>
@@ -125,20 +125,20 @@
 												<ItemStyle HorizontalAlign="Left"></ItemStyle>
 											</asp:BoundColumn>
                                             <asp:TemplateColumn>
-                                            <HeaderStyle Width="120px"></HeaderStyle>
+                                            <HeaderStyle Width="100px"></HeaderStyle>
 												<ItemTemplate>
 													<asp:Label id="lblEntrada" runat="server"></asp:Label>
 												</ItemTemplate>
                                             </asp:TemplateColumn>
 
 											<asp:BoundColumn DataField="concepto" HeaderText="Concepto">
-												<ItemStyle HorizontalAlign="Left"></ItemStyle>
+												<ItemStyle HorizontalAlign="Left" Width="70%"></ItemStyle>
 											</asp:BoundColumn>
                                             <asp:BoundColumn DataField="formapago" HeaderText="Forma de pago" Visible="false">
-												<ItemStyle HorizontalAlign="Center" Width="250px"></ItemStyle>
+												<ItemStyle HorizontalAlign="Center" Width="150px"></ItemStyle>
 											</asp:BoundColumn>
                                             <asp:BoundColumn DataField="montoTotal" HeaderText="Monto">
-												<ItemStyle HorizontalAlign="Left" Width="150px"></ItemStyle>
+												<ItemStyle HorizontalAlign="Left" Width="100px"></ItemStyle>
 											</asp:BoundColumn>
                                             
                                             
