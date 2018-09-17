@@ -153,7 +153,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
                         NombreCliente = NombreCliente + "( " + dalCliente.Sucursal + ")";
                     NombreCliente = NombreCliente + ": ";
 
-                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, idConcepto, NombreCliente + concepto, montoDebe, vMontoTotalPagar, "");
+                    vIdCajaDetalle = AgregarMovimientoCaja(idCajaDiaria, entrada, idConcepto, NombreCliente.Replace("'", "''") + concepto, montoDebe, vMontoTotalPagar, "");
                     int idCajaDetalleFormaPago = 0;
 
                     // Se agrega Forma de Pago
