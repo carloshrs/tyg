@@ -74,8 +74,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
 
 		private void BuscarClientes(string filtro)
 		{
-			ClienteDal dalCliente = new ClienteDal();			
-			dgridClientes.DataSource = dalCliente.Listar(filtro);
+			ClienteDal dalCliente = new ClienteDal();
+            dgridClientes.DataSource = dalCliente.Listar(filtro.Replace("'", "''"));
 			dgridClientes.DataBind();
 		}
 
