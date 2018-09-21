@@ -10,6 +10,7 @@ using ar.com.TiempoyGestion.BackEnd.ControlAcceso.Dal;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.FrontEnd.Intranet.Inc;
+using ar.com.TiempoyGestion.BackEnd.Cobranzas.App;
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 {
@@ -887,6 +888,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 direccion = direccion + " Dpto:" + dCliente.Departamento;
             txtDireccion.Text = direccion;
 
+            CuentaCorrienteApp oCobranzas = new CuentaCorrienteApp();
+            int idCC = oCobranzas.ObtenerNroClienteCC(int.Parse(IdCliente));
+            float saldoActual = oCobranzas.ObtenerSaldoClienteCC(idCC);
+            lblSaldo.Text = "Saldo:" + saldoActual;
 
             VisualizarRecomendado();
 

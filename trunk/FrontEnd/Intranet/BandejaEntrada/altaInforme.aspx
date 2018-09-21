@@ -320,6 +320,9 @@
       </td>
                                     </tr>
                                     <tr>
+                                        <td class="text" width="535"><asp:Label runat="server" ID="lblSaldo" CssClass="text" Font-Size="Large" ForeColor="Red">Saldo: -</asp:Label><br /></td>
+                                    </tr>
+                                    <tr>
                                         <td class="text" width="535">
                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                 <tr>
@@ -1228,7 +1231,7 @@
                                                             Fecha
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Ingrese apellido"
                                                                 ControlToValidate="Apellido">*</asp:RequiredFieldValidator></td>
-                                                                <td class="text" colspan="3">
+                                                                <td class="text" colspan="2">
                                                             Lugar de fallecimiento
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Ingrese nombre"
                                                                 ControlToValidate="Nombre">*</asp:RequiredFieldValidator></td>
@@ -1236,7 +1239,7 @@
                                                     <tr>
                                                         <td class="text" >
                                                             <asp:TextBox ID="txtFechaFallecimiento" runat="server" Width="60" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                            <td class="text" colspan="3">
+                                                            <td class="text" colspan="2">
                                                             <asp:TextBox ID="txtLugarFallecido" runat="server" Width="100%" style="text-transform: uppercase;"></asp:TextBox></td>
                                                     </tr>
                                                     <tr>
