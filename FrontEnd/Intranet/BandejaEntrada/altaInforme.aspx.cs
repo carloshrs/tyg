@@ -891,7 +891,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             CuentaCorrienteApp oCobranzas = new CuentaCorrienteApp();
             int idCC = oCobranzas.ObtenerNroClienteCC(int.Parse(IdCliente));
             float saldoActual = oCobranzas.ObtenerSaldoClienteCC(idCC);
-            lblSaldo.Text = "Saldo:" + saldoActual;
+            lblSaldo.Text = "Estado de cuenta: $" + saldoActual;
 
             VisualizarRecomendado();
 
