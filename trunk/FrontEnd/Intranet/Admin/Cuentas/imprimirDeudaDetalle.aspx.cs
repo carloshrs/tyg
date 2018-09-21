@@ -50,7 +50,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Cuentas
             else
                 lblFechaDesde.Text = fechaDesde;
 
-            if (lblFechaHasta.Text == "")
+            if (fechaHasta == "")
                 lblFechaHasta.Text = DateTime.Today.ToShortDateString();
             else
                 lblFechaHasta.Text = fechaHasta;
