@@ -235,10 +235,27 @@ border=0>
 											<TD class="text" width="50%" colSpan="2">&nbsp;Observaciones</TD>
 											<TD class="text" width="50%" colSpan="2"></TD>
 										</TR>
+
+                                        
 										<TR>
 											<TD class="text" width="50%" colSpan="4">
 												<asp:textbox id="txtObservaciones" runat="server" Width="500px" TextMode="MultiLine" Rows="4">SE REALIZÓ LA BÚSQUEDA DE AUTOMOTORES EN TODO EL PAIS A TRAVÉS DE LA D.N.R.P.A., ARROJANDO COMO RESULTADO</asp:textbox></TD>
 										</TR>
+
+                                        <TR>
+											<TD class="text" align="left" colSpan="2">
+                                                <br />
+                                                Adjuntar PDF<br />
+                                                <asp:FileUpload ID="txtArchivo" runat="server" />
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="reqArchivo" runat="server" 
+                                                    ErrorMessage="Adjuntar archivo de Riesgo Online" Text="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <br />
+                                                <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                                <br /><br />
+                                            </TD>
+                                        </TR>
+
 										<TR>
 											<TD class="text" width="50%" colSpan="2"><IMG height="10" src="/img/shim.gif" width="1"></TD>
 										</TR>

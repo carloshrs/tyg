@@ -435,6 +435,18 @@
                                             <asp:TextBox ID="txtObservaciones" runat="server" Width="100%" TextMode="MultiLine"
                                                 Rows="5" CssClass="Plano"></asp:TextBox></td>
                                     </tr>
+                                    <TR>
+											<TD class="text" align="left" colSpan="2">
+                                                <br />
+                                                Adjuntar PDF<br />
+                                                <asp:FileUpload ID="txtArchivo" runat="server" />
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="reqArchivo" runat="server" 
+                                                    ErrorMessage="Adjuntar archivo de Riesgo Online" Text="*" ControlToValidate="txtArchivo"></asp:RequiredFieldValidator>
+                                                <br />
+                                                <asp:Image ID="imgArchivo" runat="server" ImageUrl="~/Img/shim.gif" />&nbsp;<asp:HyperLink ID="hlArchivo" runat="server" CssClass="text" Target="_blank"><asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label></asp:HyperLink>
+                                                <br /><br />
+                                            </TD></TR>
                                     <tr>
                                         <td class="text" align="center" width="50%">
                                             &nbsp;</td>
