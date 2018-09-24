@@ -9,6 +9,9 @@ using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.Busquedas.Dal;
+using System.Configuration;
+using System.Web;
+using System.IO;
 
 
 namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BusquedaAutomotor
@@ -164,6 +167,16 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BusquedaAutomotor
 			txtObservaciones.Text = oBusquedaAuto.Observaciones;
 			cmbResultado.SelectedValue = oBusquedaAuto.Resultado;
 
+            ArchivoDal vArchivo = new ArchivoDal();
+            vArchivo.Cargar(oBusquedaAuto.IdInforme);
+            hlArchivo.Text = "<b>Descargar archivo</b>";
+            hlArchivo.NavigateUrl = vArchivo.Path;
+            if (vArchivo.Extension == ".pdf")
+                imgArchivo.ImageUrl = "/img/menu/pdf.png";
+
+            if (vArchivo.Path != "")
+                reqArchivo.Enabled = false;
+
 
             EncabezadoApp oEncabezado = new EncabezadoApp();
             oEncabezado.Leido = 1;
@@ -302,6 +315,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BusquedaAutomotor
 			objBusquedaAutomotor.ProvinciaEmpresa = int.Parse(cmbProvinciaEmpresas.SelectedValue);
 			objBusquedaAutomotor.LocalidadEmpresa = int.Parse(cmbLocalidadEmpresas.SelectedValue);
 
+            SubirArchivo();
+
 			if(int.Parse(idReferencia.Value) == 0)
 				objBusquedaAutomotor.Crear();
 			else
@@ -351,6 +366,89 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BusquedaAutomotor
 				comboLocalidades.Items.Add(myItem);
 			}
 		}
+
+        private string SubirArchivo()
+        {
+            string strFileName = "";
+            try
+            {
+                if (txtArchivo.PostedFile != null)
+                {
+                    // subo el Archivo
+                    UploadFile(ref strFileName);
+                }
+            }
+            catch { }
+
+            return strFileName;
+        }
+
+        private void UploadFile(ref string strFileName)
+        {
+            if (txtArchivo.PostedFile != null)
+            {
+                string strPath = ConfigurationManager.AppSettings["PATH"] + "Informes/BusquedaAutomotor/" + DateTime.Today.Year + "/";
+                HttpPostedFile myFile = txtArchivo.PostedFile;
+
+                // Obtengo el tamaño del archivo
+                int nFileLen = myFile.ContentLength;
+
+                // Me aseguro que el tamaño del archivo sea > 0
+                if (nFileLen > 0)
+                {
+                    // Coloco la Info en un Buffer y para luego leerla
+                    byte[] myData = new byte[nFileLen];
+
+                    // La Info a Subir
+                    myFile.InputStream.Read(myData, 0, nFileLen);
+
+                    // Nombre del Archivo a Subir
+                    strFileName = idInforme.Value + "_" + DateTime.Today.Year + DateTime.Today.Month + DateTime.Today.Day + Path.GetExtension(myFile.FileName);
+                    strPath = ChequearCarpeta(strPath);
+                    strFileName = strPath + "/" + strFileName;
+
+                    ArchivoDal vArchivo = new ArchivoDal();
+                    vArchivo.Crear(int.Parse(idInforme.Value), strFileName, Path.GetExtension(myFile.FileName));
+
+                    // Escribo en disco
+                    WriteToFile(Server.MapPath(strFileName), ref myData);
+                    /*
+                    Image imgPhotoVert = Image.FromFile(Server.MapPath(strFileName));
+                    Image imgPhoto = null;
+
+                    imgPhoto = FixedSize(imgPhotoVert, 200, 200);
+                    imgPhoto.Save(Server.MapPath(strFileName) + @"\imageresize_3.jpg", ImageFormat.Jpeg);
+                    imgPhoto.Dispose();
+                    */
+                }
+            }
+        }
+
+        private string ChequearCarpeta(string lPath)
+        {
+            string strFinalPath = lPath + idInforme.Value;
+            try
+            {
+                if (!Directory.Exists(Server.MapPath(strFinalPath)))
+                    Directory.CreateDirectory(Server.MapPath(strFinalPath));
+            }
+            catch
+            { }
+
+            return strFinalPath;
+        }
+
+        private void WriteToFile(string strPath, ref byte[] Buffer)
+        {
+            // Creo el Archivo
+            FileStream newFile = new FileStream(strPath, FileMode.Create);
+
+            // Escribo la Info en el Archivo
+            newFile.Write(Buffer, 0, Buffer.Length);
+
+            // Cierro
+            newFile.Close();
+        }
 			
 	}
 }
