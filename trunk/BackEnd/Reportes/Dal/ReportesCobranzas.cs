@@ -601,7 +601,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Reportes.Dal
         {
             StringBuilder strQuery = new StringBuilder(512);
             DataTable dtSalida = null;
-            strQuery.Append("Select idCajaDetalle, concepto, montoTotal, entradasalida, fecha, observaciones ");
+            strQuery.Append("Select idCajaDetalle, concepto, montoTotal, entradasalida, fecha, observaciones, 'Efectivo' as formapago ");
             strQuery.Append(" From CPCajaDetalle Where 1=1 ");
             if (fechaDesde != "")
                 strQuery.Append(" and fecha between '" + fechaDesde + "' and '" + fechaHasta + "'  ");
