@@ -852,11 +852,17 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             foreach (DataGridItem dgDigi in dgridEnEsperaDigitales.Items)
             {
+
                 chkSelDigital = (CheckBox)dgDigi.FindControl("chkDigital");
                 if (chkSelDigital.Checked)
                 {
                     intIdInforme = int.Parse(dgDigi.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
+                    if (Encabezado.Estado == 5)
+                    {
+                        Encabezado.Comentarios = "** MODIFICADO ** " + Encabezado.Comentarios;
+                        Encabezado.Modificar(intIdInforme);
+                    }
                     Encabezado.Estado = 2;
                     Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
@@ -873,6 +879,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 				{
                     intIdInforme = int.Parse(dgSUrg.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
+                    if (Encabezado.Estado == 5)
+                    {
+                        Encabezado.Comentarios = "** MODIFICADO ** " + Encabezado.Comentarios;
+                        Encabezado.Modificar(intIdInforme);
+                    }
                     Encabezado.Estado = 2;
                     Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
@@ -890,6 +901,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 {
                     intIdInforme = int.Parse(dgUrg.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
+                    if (Encabezado.Estado == 5)
+                    {
+                        Encabezado.Comentarios = "** MODIFICADO ** " + Encabezado.Comentarios;
+                        Encabezado.Modificar(intIdInforme);
+                    }
                     Encabezado.Estado = 2;
                     Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
@@ -907,6 +923,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 {
                     intIdInforme = int.Parse(dgNorm.Cells[0].Text);
                     Encabezado.cargarEncabezado(intIdInforme);
+                    if (Encabezado.Estado == 5)
+                    {
+                        Encabezado.Comentarios = "** MODIFICADO ** " + Encabezado.Comentarios;
+                        Encabezado.Modificar(intIdInforme);
+                    }
                     Encabezado.Estado = 2;
                     Encabezado.IdUsuario = Usuario.IdUsuario;
                     Encabezado.CambiarEstado(intIdInforme);
