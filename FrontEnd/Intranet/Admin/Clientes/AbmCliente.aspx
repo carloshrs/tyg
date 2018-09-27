@@ -192,14 +192,24 @@
 																<TR style="background-color:#eee;">
 																	<TD class="text" width="30%" >Tipo de documento</TD>
                                                                     <TD class="text" width="100%">
-                                                                        <asp:RadioButton ID="raTipoDocumento1" runat="server" Text="Remito" GroupName="TipoDocumento" />&nbsp;&nbsp;&nbsp;
-                                                                        <asp:RadioButton ID="raTipoDocumento2" runat="server" Text="Parte de entrega" GroupName="TipoDocumento" /></TD>
+                                                                        <asp:RadioButtonList ID="raTipoDocumento" runat="server" CssClass="text" 
+                                                                            RepeatDirection="Horizontal">
+                                                                            <asp:ListItem Value="1">Remito</asp:ListItem>
+                                                                            <asp:ListItem Value="2">Parte entrega</asp:ListItem>
+                                                                        </asp:RadioButtonList><asp:RequiredFieldValidator ID="rqTipoDocumento" runat="server" Text="*" ErrorMessage="Tipo documento facturación" ControlToValidate="raTipoDocumento"></asp:RequiredFieldValidator>
+
+                                                                    </TD>
                                                                 </TR>
                                                                  <TR style="background-color:#eee;">
 																	<TD class="text" >Periodo</TD>
                                                                     <TD class="text" width="100%">
-                                                                        <asp:RadioButton ID="raTipoPeriodo1" runat="server" Text="Diario" GroupName="TipoPeriodo" />&nbsp;&nbsp;&nbsp;
-                                                                        <asp:RadioButton ID="raTipoPeriodo2" runat="server" Text="Mensual" GroupName="TipoPeriodo" /></TD>
+                                                                       <asp:RadioButtonList ID="raTipoPeriodo" runat="server" CssClass="text" 
+                                                                                RepeatDirection="Horizontal">
+                                                                                <asp:ListItem Value="1">Diario</asp:ListItem>
+                                                                                <asp:ListItem Value="2">Mensual</asp:ListItem>
+                                                                            </asp:RadioButtonList><asp:RequiredFieldValidator ID="rqTipoPeriodo" runat="server" Text="*" ErrorMessage="Tipo período facturación" ControlToValidate="raTipoPeriodo"></asp:RequiredFieldValidator>
+     
+                                                                   </TD>
                                                                 </TR>
                                                                 
                                                             </table>
@@ -216,7 +226,7 @@
 																	<TD class="text" width="30%" >Habilitar finalizados</TD>
                                                                     <TD class="text" width="100%">
                                                                         <asp:RadioButton ID="raHabilitarFinalizadoSI" runat="server" Text="SI" GroupName="habilitarFinalizados" />&nbsp;&nbsp;&nbsp;
-                                                                        <asp:RadioButton ID="raHabilitarFinalizadoNO" runat="server" Text="NO" GroupName="habilitarFinalizados" /></TD>
+                                                                        <asp:RadioButton ID="raHabilitarFinalizadoNO" runat="server" Text="NO" GroupName="habilitarFinalizados" Checked="true" /></TD>
                                                                 </TR>
                                                                  <tr style="background-color:#eee;"><td colspan="2" class="text"><strong>Aclaración</strong>: los clientes mensuales visualizan SIEMPRE los informes finalizados</td></tr>
                                                             </table>
@@ -238,6 +248,9 @@
                                                                     <asp:listitem Text="B" Value="2"></asp:listitem>
                                                                     <asp:listitem Text="C" Value="3"></asp:listitem>
                                                                     </asp:RadioButtonList>
+                                                                        <asp:RequiredFieldValidator ID="rqTipoPeriodo0" runat="server" Text="*" 
+                                                                            ErrorMessage="Tipo facturación" ControlToValidate="raTipoFacturacion"></asp:RequiredFieldValidator>
+     
                                                                         </TD>
                                                                 </TR>
 
@@ -258,6 +271,9 @@
                                                                     <asp:listitem Text="Lo retira" Value="2"></asp:listitem>
                                                                     <asp:listitem Text="Online" Value="3"></asp:listitem>
                                                                     </asp:RadioButtonList>
+                                                                        <asp:RequiredFieldValidator ID="rqTipoPeriodo1" runat="server" Text="*" 
+                                                                            ErrorMessage="Tipo de envío" ControlToValidate="raTipoEnvio"></asp:RequiredFieldValidator>
+     
                                                                         </TD>
                                                                 </TR>
 
@@ -274,7 +290,7 @@
 																	<TD class="text" width="30%" >Tipo:</TD>
                                                                     <TD class="text" width="100%">
                                                                     <asp:RadioButtonList runat="server" ID="raTipoMorosidad" CssClass="text" RepeatDirection="Horizontal">
-                                                                    <asp:listitem Text="Normal" Value="1"></asp:listitem>
+                                                                    <asp:listitem Text="Normal" Value="1" Selected="True"></asp:listitem>
                                                                     <asp:listitem Text="Tto especial" Value="2"></asp:listitem>
                                                                     <asp:listitem Text="Incobrable" Value="3"></asp:listitem>
                                                                     <asp:listitem Text="Abogado" Value="4"></asp:listitem>

@@ -98,10 +98,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
             txtCargo.Text = dalCliente.Cargo;
             txtObservaciones.Text = dalCliente.Observaciones;
             //bool tipoDocumento = false;
-            raTipoDocumento1.Checked = (dalCliente.TipoDocumento == 1) ? true : false;
-            raTipoDocumento2.Checked = (dalCliente.TipoDocumento == 2) ? true : false;
-            raTipoPeriodo1.Checked = (dalCliente.TipoPeriodo == 1) ? true : false;
-            raTipoPeriodo2.Checked = (dalCliente.TipoPeriodo == 2) ? true : false;
+            raTipoDocumento.SelectedValue = (dalCliente.TipoDocumento == 1) ? "1" : "2";
+            raTipoPeriodo.SelectedValue = (dalCliente.TipoPeriodo == 1) ? "1" : "2";
             raHabilitarFinalizadoSI.Checked = (dalCliente.HabilitarFinalizados == 1) ? true : false;
             raHabilitarFinalizadoNO.Checked = (dalCliente.HabilitarFinalizados == 0) ? true : false;
             if (dalCliente.TipoFactura != 0)
@@ -214,17 +212,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 // 1- DIARIO : 2- MENSUAL
 
                 int tipoDocumento = 0;
-                if (raTipoDocumento1.Checked)
-                    tipoDocumento = 1;
-                if (raTipoDocumento2.Checked)
-                    tipoDocumento = 2;
+                tipoDocumento = int.Parse(raTipoDocumento.SelectedValue);
                 dalCliente.TipoDocumento = tipoDocumento;
 
                 int tipoPeriodo = 0;
-                if (raTipoPeriodo1.Checked)
-                    tipoPeriodo = 1;
-                if (raTipoPeriodo2.Checked)
-                    tipoPeriodo = 2;
+                tipoPeriodo = int.Parse(raTipoPeriodo.SelectedValue);
                 dalCliente.TipoPeriodo = tipoPeriodo;
 
                 int habilitarInformeFinalizado = 0;
@@ -280,17 +272,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Clientes
                 // 1- DIARIO : 2- MENSUAL
 
                 int tipoDocumento = 0;
-                if (raTipoDocumento1.Checked)
-                    tipoDocumento = 1;
-                if (raTipoDocumento2.Checked)
-                    tipoDocumento = 2;
+                tipoDocumento = int.Parse(raTipoDocumento.SelectedValue);
                 dalCliente.TipoDocumento = tipoDocumento;
 
                 int tipoPeriodo = 0;
-                if (raTipoPeriodo1.Checked)
-                    tipoPeriodo = 1;
-                if (raTipoPeriodo2.Checked)
-                    tipoPeriodo = 2;
+                tipoPeriodo = int.Parse(raTipoPeriodo.SelectedValue);
                 dalCliente.TipoPeriodo = tipoPeriodo;
 
                 int habilitarInformeFinalizado = 0;
