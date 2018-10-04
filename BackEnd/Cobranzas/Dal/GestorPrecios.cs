@@ -905,6 +905,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                 if (clientes != null)
                     strQuery.Append(" and c.idcliente in (" + clientes + ") ");
                 strQuery.Append(" and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append(" and monto >0 ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
                 strQuery.Append("UNION ");
                 strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, (cpc.saldo * -1) as saldo, ");
@@ -947,6 +948,7 @@ namespace ar.com.TiempoyGestion.BackEnd.Cobranzas.Dal
                     strQuery.Append(" and c.idcliente in (" + clientes + ") ");
                 strQuery.Append(" and ccpe.periodoCobranza=1 ");
                 strQuery.Append("and ccpe.fecha between " + fechaDesde + " and " + fechaHasta + " ");
+                strQuery.Append(" and monto >0 ");
                 strQuery.Append("group by c.idCliente, c.nombrefantasia, c.sucursal, c.calle, c.numero, c.piso, c.office, c.telefono ");
                 strQuery.Append("UNION ");
                 strQuery.Append("select c.tipoDocumento, c.tipoPeriodo, 1, c.IdCliente, CAST( CASE WHEN isnull(c.sucursal,'') = '' THEN c.nombrefantasia  ElSE  c.nombrefantasia + ' (' + c.sucursal +')' END AS varchar (80)) as cliente, (cpc.saldo * -1) as saldo, ");
