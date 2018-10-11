@@ -196,7 +196,7 @@
                                                 <tr><td>
                                                 <div style="float:left; width:600px">
                                                 <div style="float:left; margin:5px;" class="text">
-												Que contenga :<br />
+												Busqueda de informes solicitados:<br />
 												<asp:textbox id="TxtContengan" runat="server" CssClass="planotext" Width="207px"></asp:textbox></div>
                                                 <div style="float:left; margin:5px;"  class="text">
                                                 &nbsp;Fecha desde<br />
