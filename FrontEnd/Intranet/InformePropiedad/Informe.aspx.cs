@@ -457,7 +457,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.InformePropiedad
                 pnTitulares.Visible = false;
                 pnGravamenes.Visible = false;
                 pnInformesAnteriores.Visible = false;
-                pnResultado.Visible = false;
+                pnResultado.Visible = true;
                 pnPlanilla.Visible = true;
             }
         }
