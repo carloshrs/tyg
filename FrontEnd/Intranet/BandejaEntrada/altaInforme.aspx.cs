@@ -888,10 +888,49 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 direccion = direccion + " Dpto:" + dCliente.Departamento;
             txtDireccion.Text = direccion;
 
-            CuentaCorrienteApp oCobranzas = new CuentaCorrienteApp();
-            int idCC = oCobranzas.ObtenerNroClienteCC(int.Parse(IdCliente));
-            float saldoActual = oCobranzas.ObtenerSaldoClienteCC(idCC);
-            lblSaldo.Text = "Estado de cuenta: $" + saldoActual;
+
+            // Estado de cuenta cliente
+            CuentaCorrienteApp vCCCliente = new CuentaCorrienteApp();
+            int idCC = vCCCliente.ObtenerNroClienteCC(int.Parse(IdCliente));
+            float vTotalDeuda = 0;
+            float vSaldoAnterior = 0;
+            float vSaldoInformes = 0;
+
+            
+            vSaldoAnterior = vCCCliente.ObtenerSaldoClienteCC(idCC);
+            if (vSaldoAnterior != -1)
+            {
+
+                lblSaldoAnterior.Text = "$ " + vSaldoAnterior.ToString();
+                if (vSaldoAnterior > 0)
+                {
+                    lblSaldoAnterior.ForeColor = System.Drawing.ColorTranslator.FromHtml("#0072ff");
+                    lblPendienteFavor.Text = "a favor";
+                }
+                else
+                {
+                    lblSaldoAnterior.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
+                    lblPendienteFavor.Text = "pendiente";
+                }
+            }
+            else
+                lblSaldoAnterior.Text = "$ 0,00";
+
+            vSaldoInformes = vCCCliente.ObtenerSaldoInformesCliente(int.Parse(IdCliente));
+            if (vSaldoInformes > 0)
+            {
+                lblSaldoPendienteCobro.Text = "$ -" + vSaldoInformes.ToString();
+                lblSaldoPendienteCobro.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
+            }
+            else
+                lblSaldoPendienteCobro.Text = "$ 0,00";
+
+
+            vTotalDeuda = vSaldoAnterior - vSaldoInformes;
+            lblTotal.Text = "$ " + vTotalDeuda;
+            if (vTotalDeuda < 0)
+                lblTotal.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ff0200");
+            hlCuentaCliente.NavigateUrl = "/Admin/Cuentas/ListaCuentaCorrienteCliente.aspx?IdCliente=" + IdCliente;
 
             VisualizarRecomendado();
 

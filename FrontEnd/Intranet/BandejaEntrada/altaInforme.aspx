@@ -320,7 +320,15 @@
       </td>
                                     </tr>
                                     <tr>
-                                        <td class="text" width="535"><asp:Label runat="server" ID="lblSaldo" CssClass="text" Font-Size="Large" ForeColor="Red">Saldo: -</asp:Label><br /></td>
+                                        <td class="text" width="535" style="padding:5px; background-color:#eee;"><h2>Estado de cuenta</h2><asp:HyperLink runat="server" ID="hlCuentaCliente" NavigateUrl="#" Font-Underline="false">
+                                        
+                                        Saldo <asp:Label runat="server" ID="lblPendienteFavor" Text="pendiente"></asp:Label>&nbsp;anterior
+                                                :&nbsp;<asp:Label ID="lblSaldoAnterior" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											    <br />
+                                                Informes pendientes de cobro:&nbsp;<asp:Label ID="lblSaldoPendienteCobro" runat="server" Text="" Font-Bold="true" Font-Size="16px"></asp:Label>
+											    <br />
+                                                Total: <asp:Label ID="lblTotal" runat="server" Text="" Font-Bold="true" Font-Size="20px"></asp:Label>
+                                        </asp:HyperLink><br /><br /></td>
                                     </tr>
                                     <tr>
                                         <td class="text" width="535">
