@@ -10,7 +10,7 @@ public class Search : IHttpHandler {
     public void ProcessRequest (HttpContext context)
     {
         string searchText = context.Request.QueryString["q"];
-        SqlConnection con = new SqlConnection("Data Source=SERVERTYG; Initial Catalog=tiempoygestion; Password=r3d3f1n3;Persist Security Info=True;User ID=sa;");
+        SqlConnection con = new SqlConnection("Data Source=CARLOS-SSD; Initial Catalog=tiempoygestion; Password=r3d3f1n3;Persist Security Info=True;User ID=sa;");
         con.Open();
         string mySQL = "select distinct c.IdCliente, c.nombrefantasia, c.sucursal, c.Calle, c.Numero, c.piso, c.office, c.telefono, c.email, " +
             "(select STUFF( " +
