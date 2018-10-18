@@ -107,6 +107,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 		private void CargarForm(EncabezadoApp Encabezado)
 		{
 			CargarComboTipoInforme(Encabezado.IdTipoInforme);
+            cmbTipoPersona.SelectedValue = Encabezado.IdTipoPersona.ToString();
 			CambioPaneles(Encabezado.IdTipoInforme, Encabezado.IdTipoPersona);
 			idEncabezado.Value = Encabezado.IdEncabezado.ToString();
             if (Encabezado.idReferencia.ToString() != null)
@@ -122,7 +123,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 lblObserva.Text = Encabezado.Observaciones;
             }
 			Observaciones.Text = Encabezado.Comentarios;
-			cmbTipoPersona.SelectedValue = Encabezado.IdTipoPersona.ToString();
+			
             ListaEstados(Encabezado.Estado);
 			Nombre.Text = Encabezado.Nombre;
 			Apellido.Text = Encabezado.Apellido;
