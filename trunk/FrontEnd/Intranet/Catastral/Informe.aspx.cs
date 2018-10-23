@@ -157,8 +157,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Catastral
             if (vArchivo.Extension == ".pdf")
                 imgArchivo.ImageUrl = "/img/menu/pdf.png";
 
-            if (vArchivo.Path != "")
-                reqArchivo.Enabled = false;
+            //if (vArchivo.Path != "")
+            //    reqArchivo.Enabled = false;
 		}
 
 
