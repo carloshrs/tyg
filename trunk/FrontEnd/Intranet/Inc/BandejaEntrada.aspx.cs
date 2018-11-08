@@ -144,6 +144,12 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Inc
                 InspeccionAmbientalBancor.Text = "Inspección Ambiental Bancor <B>(" + registros[20].ToString() + ")</B>";
             else
                 InspeccionAmbientalBancor.Text = "Inspección Ambiental Bancor (" + registros[20].ToString() + ")";
+
+            Mensajeria.NavigateUrl = "/BandejaEntrada/Principal.aspx?idTipo=22";
+            if (registros[21] > 0)
+                Mensajeria.Text = "Mensajería <B>(" + registros[21].ToString() + ")</B>";
+            else
+                Mensajeria.Text = "Mensajería (" + registros[21].ToString() + ")";
             
 
 

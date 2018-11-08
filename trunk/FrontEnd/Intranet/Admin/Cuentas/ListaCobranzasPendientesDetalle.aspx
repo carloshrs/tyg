@@ -67,7 +67,11 @@
                                             <HeaderStyle Width="160px" />
                                             </asp:BoundColumn>
                                             <asp:BoundColumn DataField="Documento" HeaderText="Concepto" />
-                                            <asp:BoundColumn DataField="monto" HeaderText="Precio Unitario" />
+                                            <asp:BoundColumn DataField="monto" HeaderText="Precio Unitario">
+                                                <HeaderStyle Width="80px" HorizontalAlign="Center" />
+                                                <ItemStyle HorizontalAlign="Center"/>
+                                                
+                                            </asp:BoundColumn>
 										</Columns>
 										<PagerStyle NextPageText="Siguiente" PrevPageText="Anterior" HorizontalAlign="Center" ForeColor="Black"
 											BackColor="#999999"></PagerStyle>
@@ -79,7 +83,7 @@
                                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                                     <div id="divBotones" style="text-align:right">
                                     <input id="Button1" type="button" value="Imprimir" onclick="imprimir();" />&nbsp; 
-									<asp:Button id="btnVolver" runat="server" Text="Volver" OnClientClick="javascript:history.back();"></asp:Button> 
+									<input type="button" id="btnVolver" value="Volver" onclick="javascript:history.back();" />
                                     </div>
 								</td>
 							</tr>
