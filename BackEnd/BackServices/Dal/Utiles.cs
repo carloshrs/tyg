@@ -224,6 +224,22 @@ namespace ar.com.TiempoyGestion.BackEnd.BackServices.Dal
 			return ds.Tables[0];
 		}
 
+
+        public DataTable TraerLocalidadesMensajeria(int IdProvincia)
+        {
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter("select COD_LOC as Id, NOM_LOC as Nombre from localida Where MENSAJERIA=1 AND COD_PROV=" + IdProvincia + " Order by Nombre", oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+        }
+
 		#endregion
 
         #region DataTable TraerBarrios(int IdLocalidad, string Criterio)

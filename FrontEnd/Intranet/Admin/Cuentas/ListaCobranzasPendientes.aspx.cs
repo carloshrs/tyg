@@ -95,13 +95,13 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Admin.Seguridad.Admin.Cuentas
 
         protected void dgPendientesCobrosClientes_ItemCommand(object source, DataGridCommandEventArgs e)
 		{
-			if (e.Item.Cells[0].Text != "")
+			if (e.Item.Cells[1].Text != "")
 			{
 				switch(((ImageButton)e.CommandSource).CommandName)
 				{
 
                     case "Detalle":
-                        Response.Redirect("ListaCobranzasPendientesDetalle.aspx?idCliente=" + e.Item.Cells[0].Text + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
+                        Response.Redirect("ListaCobranzasPendientesDetalle.aspx?idCliente=" + e.Item.Cells[1].Text + "&fechaDesde=" + txtFechaInicio.Text + "&fechaHasta=" + txtFechaFinal.Text);
                         break;
 
 				}

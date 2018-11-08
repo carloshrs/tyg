@@ -199,6 +199,20 @@
 									</div>
 								</td>
 							</tr>
+                            <tr>
+								<td width="150">
+									<table>
+										<tr>
+											<td width="16"><img ID="Img6" Runat="server" src="/img/ico-delivery.jpg"></td>
+											<td><asp:hyperlink Runat="server" CssClass="linkt" NavigateUrl="/BandejaEntrada/Principal.aspx?bsqrapida=22" ID="Mensajeria" Target="Main">Mensajería</asp:hyperlink></td>
+										</tr>
+									</table>
+									<div id="Div1" style="DISPLAY: none;TEXT-ALIGN: center" runat="server">
+										<table align="left" cellpadding="0" cellspacing="0">
+										</table>
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<td width="150">
 									<table>

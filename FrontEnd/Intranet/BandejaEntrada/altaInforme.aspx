@@ -1048,7 +1048,7 @@
                                                                                 <td class="text" width="50%">
                                                                                     Razón Social&nbsp;
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Ingrese razón social"
-                                                                            ControlToValidate="RazonSocial">*</asp:RequiredFieldValidator></td></td>
+                                                                            ControlToValidate="RazonSocial">*</asp:RequiredFieldValidator></td>
                                                                                 <td class="text" width="10%">
                                                                                     Cargo </td>
                                                                             </tr>
@@ -1222,6 +1222,225 @@
                                                                 </tr>
                                                             </table>
                                                         </asp:Panel>
+
+                                                        <asp:Panel ID="pnlMensajeria" runat="server">
+                                                            <table cellspacing="0" cellpadding="3" width="100%" border="0">
+                                                                <tr>
+                                                                    <td width="536" colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="title" width="100%" bgcolor="lightgrey" height="10">
+                                                                                    &nbsp;&nbsp;
+                                                                                    <asp:Label class="title" ID="lblMensajeria" runat="server">Mensajería</asp:Label></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="100%" colspan="4">
+                                                                        <b>Dirección de recolección</b></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="50%" colspan="2">
+                                                                        Contacto</td>
+            
+                                                                    <td class="text" width="50%" colspan="2">
+                                                                        Empresa</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="50%" colspan="2">
+                                                                        <asp:TextBox ID="txtContactoOrigen" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="50%"  colspan="2">
+                                                                        <asp:TextBox ID="txtEmpresaOrigen" runat="server" Width="306px" style="text-transform: uppercase;"></asp:TextBox></td>
+            
+                                                                </tr>
+        
+                                                                <tr>
+                                                                    <td class="text" width="70%">
+                                                                        Calle</td>
+                                                                    <td class="text" width="10%">
+                                                                        Nro.</td>
+                                                                    <td class="text" width="10%">
+                                                                        Dpto.</td>
+                                                                    <td class="text" width="10%">
+                                                                        Piso</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="70%">
+                                                                        <asp:TextBox ID="txtMensajeriaCalleOrigen" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaNroOrigen" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaDptoOrigen" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaPisoOrigen" runat="server" Width="47px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="text" width="50%" >
+                                                                                    Barrio</td>
+                                                                                <td class="text" width="50%">
+                                                                                    Localidad</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:TextBox ID="txtMensajeriaBarrioOrigen" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:DropDownList ID="cmbMensajeriaLocalidadOrigen" runat="server" Width="240px"></asp:DropDownList></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="text" width="100%" colspan="2">
+                                                                                    Horario de recolección</td>
+                        
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    Fecha</td>
+                                                                                <td class="text" width="50%">
+                                                                                    Hora</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:TextBox ID="txtFechaRecoleccion" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                                    
+                                                                                    </td>
+                                                                                <td class="text" width="50%">
+                                                                                Desde <asp:TextBox ID="txtHoraDesdeRecoleccion" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                                Hasta <asp:TextBox ID="txtHoraHastaRecoleccion" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                                    </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="100%" colspan="4">
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="100%" colspan="4">
+                                                                        <b>Dirección de entrega</b></td>
+                                                                </tr>
+        
+                                                                <tr>
+                                                                    <td class="text" width="50%"  colspan="2">
+                                                                        Contacto</td>
+            
+                                                                    <td class="text" width="50%"  colspan="2">
+                                                                        Empresa</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="50%" colspan="2">
+                                                                        <asp:TextBox ID="txtContactoDestino" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="50%" colspan="2">
+                                                                        <asp:TextBox ID="txtEmpresaDestino" runat="server" Width="306px" style="text-transform: uppercase;"></asp:TextBox></td>
+            
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="text" width="70%">
+                                                                        Calle</td>
+                                                                    <td class="text" width="10%">
+                                                                        Nro.</td>
+                                                                    <td class="text" width="10%">
+                                                                        Dpto.</td>
+                                                                    <td class="text" width="10%">
+                                                                        Piso</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="70%">
+                                                                        <asp:TextBox ID="txtMensajeriaCalleDestino" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaNroDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaDptoDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaPisoDestino" runat="server" Width="47px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    Barrio</td>
+                                                                                <td class="text" width="50%">
+                                                                                    Localidad</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:TextBox ID="txtMensajeriaBarrioDestino" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:DropDownList ID="cmbMensajeriaLocalidadDestino" runat="server" Width="240px"></asp:DropDownList></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="100%" colspan="4">Que quieres enviar?</td>
+            
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text" width="100%">
+                                                                        <asp:TextBox ID="txtMensajeria" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+            
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="text" width="100%" colspan="2">
+                                                                                    Horario de entrega</td>
+                        
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    Fecha</td>
+                                                                                <td class="text" width="50%">
+                                                                                    Hora</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    <asp:TextBox ID="txtFechaEntrega" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                                <td class="text" width="50%">
+                                                                                Desde <asp:TextBox ID="txtHoraDesdeEntrega" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                                Hasta <asp:TextBox ID="txtHoraHastaEntrega" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                                    </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                                            <tr>
+                                                                                <td class="text" width="50%">
+                                                                                    Pago en:</td>
+                        
+                                                                            </tr>
+                                                                            <tr>
+                        
+                                                                                <td class="text" width="10%">
+                                                                                    <asp:DropDownList ID="cmbPago" runat="server" Width="240px">
+                                                                                        <asp:listitem Value="1">Origen</asp:listitem>
+                                                                                        <asp:listitem Value="2">Destino</asp:listitem>
+                                                                                    </asp:DropDownList></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="4"></rd>
+                                                                </tr>
+                                                            </table>
+                                                        </asp:Panel>
                                                     </td>
                                                 </tr>
 
@@ -1264,12 +1483,12 @@
 
                                                         <td class="text" width="25">
                                                             &nbsp;<asp:TextBox ID="txtActaFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                            </td>
+                                                            
                                                         <td class="text" width="235">
                                                             &nbsp;<asp:TextBox ID="txtTomoFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                           <td class="text" width="161">
                                                             &nbsp;<asp:TextBox ID="txtFolioFallecido" runat="server" Width="144px" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                            </td>                                                          
+                                                                                                                  
                                                     </tr>
                                                     <tr>
                                                         <td class="text" width="535" colspan="3" height="10">

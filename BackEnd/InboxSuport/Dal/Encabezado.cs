@@ -125,6 +125,33 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         private string strFolioFallecido = "";
 
 
+        // Mensajeria
+        private string strMsnRetiroCalle;
+        private string strMsnRetiroNro;
+        private string strMsnRetiroPiso;
+        private string strMsnRetiroDpto;
+        private string strMsnRetiroBarrio;
+        private int intMsnRetiroLocalidad;
+        private string strMsnRetiroContacto;
+        private string strMsnRetiroEmpresa;
+        private string strMsnRetiroDia;
+        private string strMsnRetiroHoraDesde;
+        private string strMsnRetiroHoraHasta;
+        private string strMsnEnvioCalle;
+        private string strMsnEnvioNro;
+        private string strMsnEnvioPiso;
+        private string strMsnEnvioDpto;
+        private string strMsnEnvioBarrio;
+        private int strMsnEnvioLocalidad;
+        private string strMsnEnvioContacto;
+        private string strMsnEnvioEmpresa;
+        private string strMsnMensajeria;
+        private string strMsnEnvioDia;
+        private string strMsnEnvioHoraDesde;
+        private string strMsnEnvioHoraHasta;
+        private int strMsnPago = 0;
+
+
         //Integración FOX
         private int intIdFOX = 0;
 
@@ -1310,6 +1337,297 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
         }
 
+        // Mensajeria
+
+        public string MsnRetiroCalle
+        {
+            get
+            {
+                return strMsnRetiroCalle;
+            }
+            set
+            {
+                strMsnRetiroCalle = value;
+            }
+        }
+
+        public string MsnRetiroNro
+        {
+            get
+            {
+                return strMsnRetiroNro;
+            }
+            set
+            {
+                strMsnRetiroNro = value;
+            }
+        }
+
+        public string MsnRetiroPiso
+        {
+            get
+            {
+                return strMsnRetiroPiso;
+            }
+            set
+            {
+                strMsnRetiroPiso = value;
+            }
+        }
+
+        public string MsnRetiroDpto
+        {
+            get
+            {
+                return strMsnRetiroDpto;
+            }
+            set
+            {
+                strMsnRetiroDpto = value;
+            }
+        }
+
+        public string MsnRetiroBarrio
+        {
+            get
+            {
+                return strMsnRetiroBarrio;
+            }
+            set
+            {
+                strMsnRetiroBarrio = value;
+            }
+        }
+
+        public int MsnRetiroLocalidad
+        {
+            get
+            {
+                return intMsnRetiroLocalidad;
+            }
+            set
+            {
+                intMsnRetiroLocalidad = value;
+            }
+        }
+
+        public string MsnRetiroContacto
+        {
+            get
+            {
+                return strMsnRetiroContacto;
+            }
+            set
+            {
+                strMsnRetiroContacto = value;
+            }
+        }
+
+        public string MsnRetiroEmpresa
+        {
+            get
+            {
+                return strMsnRetiroEmpresa;
+            }
+            set
+            {
+                strMsnRetiroEmpresa = value;
+            }
+        }
+
+        public string MsnRetiroDia
+        {
+            get
+            {
+                return strMsnRetiroDia;
+            }
+            set
+            {
+                strMsnRetiroDia = value;
+            }
+        }
+
+        public string MsnRetiroHoraDesde
+        {
+            get
+            {
+                return strMsnRetiroHoraDesde;
+            }
+            set
+            {
+                strMsnRetiroHoraDesde = value;
+            }
+        }
+
+        public string MsnRetiroHoraHasta
+        {
+            get
+            {
+                return strMsnRetiroHoraHasta;
+            }
+            set
+            {
+                strMsnRetiroHoraHasta = value;
+            }
+        }
+
+        public string MsnEnvioCalle
+        {
+            get
+            {
+                return strMsnEnvioCalle;
+            }
+            set
+            {
+                strMsnEnvioCalle = value;
+            }
+        }
+
+        public string MsnEnvioNro
+        {
+            get
+            {
+                return strMsnEnvioNro;
+            }
+            set
+            {
+                strMsnEnvioNro = value;
+            }
+        }
+
+        public string MsnEnvioPiso
+        {
+            get
+            {
+                return strMsnEnvioPiso;
+            }
+            set
+            {
+                strMsnEnvioPiso = value;
+            }
+        }
+
+        public string MsnEnvioDpto
+        {
+            get
+            {
+                return strMsnEnvioDpto;
+            }
+            set
+            {
+                strMsnEnvioDpto = value;
+            }
+        }
+
+        public string MsnEnvioBarrio
+        {
+            get
+            {
+                return strMsnEnvioBarrio;
+            }
+            set
+            {
+                strMsnEnvioBarrio = value;
+            }
+        }
+
+        public int MsnEnvioLocalidad
+        {
+            get
+            {
+                return strMsnEnvioLocalidad;
+            }
+            set
+            {
+                strMsnEnvioLocalidad = value;
+            }
+        }
+
+        public string MsnEnvioContacto
+        {
+            get
+            {
+                return strMsnEnvioContacto;
+            }
+            set
+            {
+                strMsnEnvioContacto = value;
+            }
+        }
+
+        public string MsnEnvioEmpresa
+        {
+            get
+            {
+                return strMsnEnvioEmpresa;
+            }
+            set
+            {
+                strMsnEnvioEmpresa = value;
+            }
+        }
+
+        public string MsnMensajeria
+        {
+            get
+            {
+                return strMsnMensajeria;
+            }
+            set
+            {
+                strMsnMensajeria = value;
+            }
+        }
+
+        public string MsnEnvioDia
+        {
+            get
+            {
+                return strMsnEnvioDia;
+            }
+            set
+            {
+                strMsnEnvioDia = value;
+            }
+        }
+
+        public string MsnEnvioHoraDesde
+        {
+            get
+            {
+                return strMsnEnvioHoraDesde;
+            }
+            set
+            {
+                strMsnEnvioHoraDesde = value;
+            }
+        }
+
+        public string MsnEnvioHoraHasta
+        {
+            get
+            {
+                return strMsnEnvioHoraHasta;
+            }
+            set
+            {
+                strMsnEnvioHoraHasta = value;
+            }
+        }
+
+        public int MsnPago
+        {
+            get
+            {
+                return strMsnPago;
+            }
+            set
+            {
+                strMsnPago = value;
+            }
+        }
+        
+
 		#endregion
 
 		#region Métodos Publicos
@@ -1348,6 +1666,9 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			//EMPRESA
 			strSQL = strSQL  + "RazonSocial, NombreFantasia, CargoEmpresa, TelefonoEmpresa, Rubro, Cuit, CalleEmpresa, NroEmpresa, DptoEmpresa, PisoEmpresa, BarrioEmpresa, CPEmpresa, LocalidadEmpresa, ProvinciaEmpresa,";
 			strSQL = strSQL  + "RegPubFolio, RegPubTomo, RegPubAno, ";
+            //MENSAJERIA
+            strSQL = strSQL + "msn_retirocalle, msn_retironro, msn_retiropiso, msn_retirodpto, msn_retirobarrio, msn_retirolocalidad, msn_retirocontacto, msn_retiroempresa, msn_retirodia, msn_retirohoradesde, msn_retirohorahasta, msn_enviocalle, msn_envionro, msn_enviopiso, msn_enviodpto, msn_enviobarrio, msn_enviolocalidad, msn_enviocontacto, msn_envioempresa, msn_mensajeria, msn_enviodia, msn_enviohoradesde, msn_enviohorahasta, msn_pago, ";
+            
 
             strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad, Sexo, FechaFallecido, LugarFallecido, ActaFallecido, TomoFallecido, FolioFallecido) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
 			if (intidReferencia != 0)
@@ -1365,7 +1686,10 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             strSQL = strSQL + "'," + intTipoCatastro.ToString() + ",'" + strNumeroCatastro + "','" + strCatCalle.Replace("'", "''") + "','" + strCatNro + "','" + strCatDpto + "','" + strCatPiso + "','" + strCatBarrio + "','" + strCatCP + "'," + intCatLocalidad + "," + intCatProvincia;
             strSQL = strSQL + ",'" + strRazonSocial.Replace("'", "''") + "','" + strNombreFantasia + "','" + strCargo + "','" + strTelefonoEmpresa + "','" + strRubro + "','" + strCuit + "','" + strCalleEmpresa.Replace("'", "''") + "','" + strNroEmpresa + "','" + strDptoEmpresa + "','" + strPisoEmpresa + "','" + strBarrioEmpresa.Replace("'", "''") + "','" + strCPEmpresa + "'," + intLocalidadEmpresa + "," + intProvinciaEmpresa; 	
 			strSQL = strSQL  + ",'" + strRegPubFolio + "','" + strRegPubTomo + "','" + strRegPubAno;
-            strSQL = strSQL + "'," + ConFoto.ToString() + "," + Caracter.ToString() + ",'" + TraerDescripcionInforme().Replace("'", "''") + "'";
+            //Mensajeria
+            strSQL = strSQL + "','" + strMsnRetiroCalle + "', '" + strMsnRetiroNro + "', '" + strMsnRetiroPiso + "', '" + strMsnRetiroDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnRetiroContacto + "', '" + strMsnRetiroEmpresa + "', '" + strMsnRetiroDia + "', '" + strMsnRetiroHoraDesde + "', '" + strMsnRetiroHoraHasta + "', '" + strMsnEnvioCalle + "', '" + strMsnEnvioNro + "', '" + strMsnEnvioPiso + "', '" + strMsnEnvioDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnEnvioContacto + "', '" + strMsnEnvioEmpresa + "', '" + strMsnMensajeria + "', '" + strMsnEnvioDia + "', '" + strMsnEnvioHoraDesde + "', '" + strMsnEnvioHoraHasta + "', " + strMsnPago;
+
+            strSQL = strSQL + "," + ConFoto.ToString() + "," + Caracter.ToString() + ",'" + TraerDescripcionInforme().Replace("'", "''") + "'";
             if (dtFechaCarga != "")
                 strSQL = strSQL + ",'" + dtFechaCarga +"'";
             else
@@ -1594,6 +1918,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
                     break;
                 case 21: // Inspección Socio Ambiental
                     Descripcion = "<B>Apellido y Nombre: </B>" + strApellido + ", " + strNombre + " - <B> " + strTipoDocumento + ":</B> " + strDocumento;
+                    break;
+                case 22: // Mensajeria
+                    //Descripcion = "<b>De:</b> " + strMsnRetiroContacto + " <B>Dirección de recolección: </B>" + strMsnRetiroCalle + " " + strMsnRetiroNro + ", Piso: " + strMsnRetiroPiso + ", Dpto: " + strMsnRetiroDpto;
+                    Descripcion = "<b>A:</b> " + strMsnEnvioContacto + " <B>Dirección de envío: </B>" + strMsnEnvioCalle + " " + strMsnEnvioNro + ", Piso: " + strMsnEnvioPiso + ", Dpto: " + strMsnEnvioDpto + " - horario: " + strMsnEnvioHoraDesde + " a " + strMsnEnvioHoraHasta;
+                    //Descripcion = Descripcion + "<br><b>Llevar:</b> " + strMsnObjeto + ", el día " + strMsnEnvioDia + " desde " + strMsnEnvioHoraDesde + " hasta " + strMsnEnvioHoraHasta;
                     break;
 			}
 						

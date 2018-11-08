@@ -122,6 +122,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             // Informe Propiedad Otras provincias
             CargarComboProvincias(cmbProvinciaOtra, 3);
             CargarComboLocalidades(cmbProvinciaOtra, cmbLocalidadOtra, "24");
+            //Mensajeria
+            CargarComboLocalidadesMensajeria(cmbMensajeriaLocalidadOrigen, "1");
+            CargarComboLocalidadesMensajeria(cmbMensajeriaLocalidadDestino, "1");
 			InitializeComponent();
 			base.OnInit(e);
 		}
@@ -265,6 +268,34 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.ActaFallecido = txtActaFallecido.Text;
             Encabezado.FechaFallecido = txtFechaFallecimiento.Text;
             Encabezado.LugarFallecido = txtLugarFallecido.Text;
+
+            //Mensajeria
+
+            Encabezado.MsnRetiroCalle = txtMensajeriaCalleOrigen.Text;
+            Encabezado.MsnRetiroNro = txtMensajeriaNroOrigen.Text;
+            Encabezado.MsnRetiroPiso = txtMensajeriaPisoOrigen.Text;
+            Encabezado.MsnRetiroDpto = txtMensajeriaDptoOrigen.Text;
+            Encabezado.MsnRetiroBarrio = txtMensajeriaBarrioOrigen.Text;
+            Encabezado.MsnRetiroLocalidad = int.Parse(cmbMensajeriaLocalidadOrigen.SelectedValue);
+            Encabezado.MsnRetiroContacto = txtContactoOrigen.Text;
+            //Encabezado.MsnRetiroEmpresa = txtEmpresaOrigen.Text;
+            Encabezado.MsnRetiroDia = txtFechaRecoleccion.Text;
+            Encabezado.MsnRetiroHoraDesde = txtHoraDesdeRecoleccion.Text;
+            Encabezado.MsnRetiroHoraHasta = txtHoraHastaRecoleccion.Text;
+
+            Encabezado.MsnEnvioCalle = txtMensajeriaCalleDestino.Text;
+            Encabezado.MsnEnvioNro = txtMensajeriaNroDestino.Text;
+            Encabezado.MsnEnvioPiso = txtMensajeriaPisoDestino.Text;
+            Encabezado.MsnEnvioDpto = txtMensajeriaDptoDestino.Text;
+            Encabezado.MsnEnvioBarrio = txtMensajeriaBarrioDestino.Text;
+            Encabezado.MsnEnvioLocalidad = int.Parse(cmbMensajeriaLocalidadDestino.SelectedValue);
+            Encabezado.MsnEnvioContacto = txtContactoDestino.Text;
+            //Encabezado.msnEnvioEmpresa = txtEmpresaDestino.Text;
+            Encabezado.MsnEnvioDia = txtFechaEntrega.Text;
+            Encabezado.MsnEnvioHoraDesde = txtHoraDesdeEntrega.Text;
+            Encabezado.MsnEnvioHoraHasta = txtHoraHastaEntrega.Text;
+            Encabezado.MsnPago = int.Parse(cmbPago.SelectedValue);
+            Encabezado.MsnMensajeria = txtMensajeria.Text;
 
 
 
@@ -413,6 +444,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			reqNombre.Enabled = true;
 			pnlTipoPersona.Visible = false;
             pnlPartidas.Visible = false;
+            pnlMensajeria.Visible = false;
 			switch (Informe)
 			{
 				case 1: // Propiedad
@@ -597,6 +629,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     //lblDatosParticulares.Text = "Relevamiento ambiental BANCOR";
                     pnlFoto.Visible = true;
                     break;
+                case 22: // Mensajeria
+                    //pnlTipoPersona.Visible = true;
+                    
+                    pnlMensajeria.Visible = true;
+                    break;
 			}
 		}
 
@@ -743,6 +780,26 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 				comboLocalidades.Items.Add(myItem);
 			}
 		}
+
+
+        private void CargarComboLocalidadesMensajeria(DropDownList comboLocalidades, string IdLocalidad)
+        {
+            UtilesApp Tipos = new UtilesApp();
+            comboLocalidades.Items.Clear();
+            DataTable myTb;
+            myTb = Tipos.TraerLocalidadesMensajeria(2);
+            ListItem myItem;
+            foreach (DataRow myRow in myTb.Rows)
+            {
+                myItem = new ListItem(myRow[1].ToString(), myRow[0].ToString());
+                if (IdLocalidad == myRow[0].ToString())
+                {
+                    comboLocalidades.SelectedIndex = -1;
+                    myItem.Selected = true;
+                }
+                comboLocalidades.Items.Add(myItem);
+            }
+        }
 
 		#endregion
 
