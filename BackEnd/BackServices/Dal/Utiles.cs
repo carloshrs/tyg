@@ -224,7 +224,11 @@ namespace ar.com.TiempoyGestion.BackEnd.BackServices.Dal
 			return ds.Tables[0];
 		}
 
+        #endregion
 
+
+
+        #region DataTable TraerLocalidadesMensajeria(int IdProvincia)
         public DataTable TraerLocalidadesMensajeria(int IdProvincia)
         {
             OdbcConnection oConnection = this.OpenConnection();
