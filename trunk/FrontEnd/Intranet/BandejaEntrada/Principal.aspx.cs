@@ -45,7 +45,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 			else IdTipo = -1;
 
             if (IdTipo == 1) btnPropiedadRegistro.Visible = true;
-            if (IdTipo == 6 || IdTipo == 17) btnImprimir.Visible = true;
+            if (IdTipo == 6 || IdTipo == 17 || IdTipo == 22) btnImprimir.Visible = true;
 			
 			UsuarioAutenticado Usuario = (UsuarioAutenticado) Session["UsuarioAutenticado"];
 			IdUsuario = Usuario.IdUsuario;
@@ -351,6 +351,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                         strRedir = "/InspeccionAmbientalBancor/VerInforme.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
                         strRedirCalle = "/InspeccionAmbientalBancor/VerInformeCalle.aspx?id=" + myItem.Cells[0].Text + "&IdTipo=21";
                         break;
+                    case "22":
+                        ((ImageButton)myItem.FindControl("Realizar")).Attributes.Add("onclick", "cambioEstado(22, " + myItem.Cells[0].Text + ")");
+                        break;
 
 				}
 				if (myItem.Cells[12].Text == "3")
@@ -382,7 +385,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 					((ImageButton)myItem.FindControl("VerEncabezado")).Attributes.Add("src",@"/img/printer.gif");
 
                     // Informes que NO visualiza la impresion de form. calle
-                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17" || myItem.Cells[14].Text == "18" || myItem.Cells[14].Text == "19" || myItem.Cells[14].Text == "20") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
+                    if (myItem.Cells[14].Text == "1" || myItem.Cells[14].Text == "2" || myItem.Cells[14].Text == "3" || myItem.Cells[14].Text == "10" || myItem.Cells[14].Text == "11" || myItem.Cells[14].Text == "12" || myItem.Cells[14].Text == "13" || myItem.Cells[14].Text == "14" || myItem.Cells[14].Text == "16" || myItem.Cells[14].Text == "17" || myItem.Cells[14].Text == "18" || myItem.Cells[14].Text == "19" || myItem.Cells[14].Text == "20" || myItem.Cells[14].Text == "22") ((ImageButton)myItem.FindControl("VerEncabezado")).Visible = false;
 
                     // Informe de Morosidad
                     if (myItem.Cells[14].Text == "17" && myItem.Cells[12].Text != "2") { ((ImageButton)myItem.FindControl("realizar")).Visible = false; }
@@ -652,6 +655,11 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     //btnPropiedadRegistro.Text = "Importar / Imprimir";
                     break;
 
+                case 22: // Mensajeria
+                    lblTipo.Text = " - Mensajería";
+                    //btnPropiedadRegistro.Text = "Importar / Imprimir";
+                    break;
+
 			}
 		}
 
@@ -707,6 +715,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                     break;
                 case 17:
                     Response.Redirect("../Morosidad/pendientes.aspx");
+                    break;
+                case 22:
+                    Response.Redirect("../Mensajeria/pendientes.aspx");
                     break;
             }
         }

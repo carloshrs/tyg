@@ -346,6 +346,54 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         }
 
 
+        public DataTable ListaEncabezadosGruposMensajeria(String SQLWhere, int pagina, int registros)
+        {
+            String strSQLCount = "SELECT COUNT(idEncabezado) AS total FROM BandejaEntrada B" +
+            " INNER JOIN informesCambioEstado G ON B.idEncabezado=G.idInforme ";
+            if (SQLWhere != "")
+            {
+                SQLWhere = SQLWhere.Replace("''", "'");
+                string SQLWhereC = " WHERE " + SQLWhere.Substring(SQLWhere.IndexOf("AND") + 3);
+                strSQLCount = strSQLCount + SQLWhereC;
+            }
+            IDataReader dr = EjecutarDataReader(strSQLCount);
+            if (dr.Read())
+            {
+                intTotalRegistros = dr.GetInt32(0);
+                int totPaginas = ((int)(intTotalRegistros / registros)) + 1;
+                if (pagina > totPaginas) pagina = totPaginas;
+            }
+            OdbcConnection oConnection = this.OpenConnection();
+            DataSet ds = new DataSet();
+            String strSQL = "SELECT B.FechaCarga, CASE WHEN (C.sucursal is null) THEN C.nombrefantasia ELSE C.nombrefantasia + '' ('' + C.sucursal + '')'' END AS cliente, " + 
+                "B.msn_retirocalle, B.msn_retironro, B.msn_retiropiso, B.msn_retirodpto, B.msn_retirolocalidad, B.msn_retirocontacto, B.msn_retiroempresa, B.msn_retirodia, B.msn_retirohoradesde, B.msn_retirohorahasta, " +
+                "B.msn_enviocalle, B.msn_envionro, B.msn_enviopiso, B.msn_enviodpto, B.msn_enviolocalidad, B.msn_enviocontacto, B.msn_envioempresa, B.msn_mensajeria, B.msn_enviodia, B.msn_enviohoradesde, B.msn_enviohorahasta, CASE WHEN (B.msn_pago = 1) THEN ''remitente'' ELSE ''destinatario'' END AS msn_pago , B.comentarios, TE.Descripcion AS TipoEnvio " +
+                "FROM bandejaentrada B " +
+                "INNER JOIN clientes C ON B.idCliente=C.idCliente " +
+                "INNER JOIN informesCambioEstado G ON B.idEncabezado=G.idInforme " +
+                "INNER JOIN ClientesTipoEnvio TE ON C.tipoEnvio=TE.idTipoEnvio " +
+                "INNER JOIN localida L1 ON L1.cod_loc=B.msn_retirolocalidad " +
+                "INNER JOIN localida L2 ON L2.cod_loc=B.msn_enviolocalidad ";
+
+            strSQL = strSQL + "WHERE 1=1 ";
+            if (SQLWhere != "") strSQL = strSQL + SQLWhere.Replace("'", "''");
+            int iniciopag = (pagina - 1) * registros;
+            String strSQLSP = "execute_query '" + strSQL + "', 'FechaCarga ASC', " + pagina + ", " + registros + ", 10";
+
+            OdbcDataAdapter myConsulta = new OdbcDataAdapter(strSQLSP, oConnection);
+            myConsulta.Fill(ds);
+            try
+            {
+
+                oConnection.Close();
+            }
+            catch { }
+
+            return ds.Tables[0];
+
+        }
+
+
 
         public DataTable ListarHistorialInformesEnviados(int idTipoInforme)
         {
