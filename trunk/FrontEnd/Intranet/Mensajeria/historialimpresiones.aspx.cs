@@ -7,7 +7,7 @@ using ar.com.TiempoyGestion.BackEnd.ControlAcceso.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.App;
 using ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal;
 
-namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Morosidad
+namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Mensajeria
 {
     /// <summary>
     /// Summary description for Principal.
@@ -67,7 +67,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.Morosidad
 
             if (rpHistorial.Items.Count == 0)
             {
-                lblMensaje.Text = "No hay historial de Informes de Morosidad.";
+                lblMensaje.Text = "No hay historial de Mensajeria.";
                 lblMensaje.Visible = true;
             }
 

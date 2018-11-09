@@ -1,4 +1,4 @@
-<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Morosidad.historialimpresiones" CodeFile="historialimpresiones.aspx.cs" %>
+<%@ Page language="c#" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.Mensajeria.historialimpresiones" CodeFile="historialimpresiones.aspx.cs" %>
 <%@ Register TagPrefix="uc1" TagName="menu" Src="../Inc/menu.ascx" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
@@ -34,7 +34,7 @@
 				<tr>
 					<TD width="2%">&nbsp;</TD>
 					<td class="title" width="100%">
-                        Historial de Informes de Morosidad
+                        Historial de Mensajeria
 						<BR>
 						<HR>
 						<BR>
