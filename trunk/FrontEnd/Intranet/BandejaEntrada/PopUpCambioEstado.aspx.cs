@@ -230,7 +230,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
 
             }
 
-            if (idTipo != "9" && idTipo != "17")
+            if (idTipo != "9" && idTipo != "17" && idTipo != "22")
             {
                 if (Request.QueryString["Problema"] != "1" && Request.QueryString["Condicional"] != "1") //Request.QueryString["Problema"] != null && 
                 {
