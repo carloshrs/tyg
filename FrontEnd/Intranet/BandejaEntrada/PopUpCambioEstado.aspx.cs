@@ -224,6 +224,9 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
                 case "21":
                     path = "InspeccionAmbientalBancor";
                     break;
+                case "22":
+                    path = "Mensajeria";
+                    break;
 
             }
 
