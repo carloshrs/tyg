@@ -35,8 +35,8 @@ function imprimir() {
                         <asp:Label ID="lblRow" runat="server" Text='<%# Eval("row_no") %>' Visible="false"></asp:Label>
                     </div>
                     <div style="width:50%; float:left;">
-                        Fecha:
-                        <asp:Label ID="lblFecha" runat="server"></asp:Label> 
+                        Fecha de solicitud:
+                        <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("FechaCarga") %>'></asp:Label> 
                     </div>
                     
                     <div style="width:50%; float:left; margin-top:7px;">
@@ -45,10 +45,12 @@ function imprimir() {
                         <asp:Label ID="lblContactoRetiro" runat="server" Text='<%# Eval("msn_retirocontacto")%>' Font-Size="Small"></asp:Label> / <asp:Label ID="lblEmpresaRetiro" runat="server" Text='<%# Eval("msn_retiroempresa")%>' Font-Size="Small"></asp:Label><br />
                         Domicilio retiro:
                         <asp:Label ID="lblCalleRetiro" runat="server" Text='<%# Eval("msn_retirocalle") %>' Font-Size="Small"></asp:Label> <asp:Label ID="lblNroRetiro" runat="server" Text='<%# Eval("msn_retironro") %>' Font-Size="Small"></asp:Label>, piso: <asp:Label ID="lblPisoRetiro" runat="server" Text='<%# Eval("msn_retiropiso") %>' Font-Size="Small"></asp:Label>, dpto: <asp:Label ID="lblDptoRetiro" runat="server" Text='<%# Eval("msn_retirodpto") %>' Font-Size="Small"></asp:Label><br />
-                        Fecha y horario de retiro:
+                        Fecha y horario de retiro estimativo:
                         <asp:Label ID="lblFechaRetiro" runat="server" Text='<%# Bind("msn_retirodia", "{0:d}") %>' Font-Size="Small"></asp:Label>, entre las <asp:Label ID="lblHoraDesdeRetiro" runat="server" Text='<%# Eval("msn_retirohoradesde") %>' Font-Size="Small"></asp:Label> y <asp:Label ID="lblHoraHastaRetiro" runat="server" Text='<%# Eval("msn_retirohorahasta") %>' Font-Size="Small"></asp:Label><br /><br />
+                        
+                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
                         Nombre completo:<br />
-                        DNI:<br />
+                        DNI:<br /><br />
                         Firma:<br />
                     </div>
                     <div style="width:50%; float:left;margin-top:7px;">
@@ -57,10 +59,11 @@ function imprimir() {
                         <asp:Label ID="lblContactoEnvio" runat="server" Text='<%# Eval("msn_Enviocontacto")%>' Font-Size="Small"></asp:Label> / <asp:Label ID="lblEmpresaEnvio" runat="server" Text='<%# Eval("msn_Envioempresa")%>' Font-Size="Small"></asp:Label><br />
                         Domicilio Envio:
                         <asp:Label ID="lblCalleEnvio" runat="server" Text='<%# Eval("msn_Enviocalle") %>' Font-Size="Small"></asp:Label> <asp:Label ID="lblNroEnvio" runat="server" Text='<%# Eval("msn_Envionro") %>' Font-Size="Small"></asp:Label>, piso: <asp:Label ID="lblPisoEnvio" runat="server" Text='<%# Eval("msn_Enviopiso") %>' Font-Size="Small"></asp:Label>, dpto: <asp:Label ID="lblDptoEnvio" runat="server" Text='<%# Eval("msn_Enviodpto") %>' Font-Size="Small"></asp:Label><br />
-                        Fecha y horario de Envio:
+                        Fecha y horario de envio estimativo:
                         <asp:Label ID="lblFechaEnvio" runat="server" Text='<%# Bind("msn_Enviodia", "{0:d}") %>' Font-Size="Small"></asp:Label>, entre las <asp:Label ID="lblHoraDesdeEnvio" runat="server" Text='<%# Eval("msn_Enviohoradesde") %>' Font-Size="Small"></asp:Label> y <asp:Label ID="lblHoraHastaEnvio" runat="server" Text='<%# Eval("msn_Enviohorahasta") %>' Font-Size="Small"></asp:Label><br /><br />
+                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
                         Nombre completo:<br />
-                        DNI:<br />
+                        DNI:<br /><br />
                         Firma:<br />
                     </div>
                     
