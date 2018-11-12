@@ -50,7 +50,7 @@ public partial class mensajeria_listadopendientes : System.Web.UI.Page
         if (e.Item.ItemType == ListItemType.Item ||
             e.Item.ItemType == ListItemType.AlternatingItem)
         {
-            ((Label)e.Item.FindControl("lblFecha")).Text = ((DataRowView)e.Item.DataItem).Row.ItemArray[7].ToString();
+            //((Label)e.Item.FindControl("lblFecha")).Text = ((DataRowView)e.Item.DataItem).Row.ItemArray[7].ToString();
             int nroResto = int.Parse(((DataRowView)e.Item.DataItem).Row.ItemArray[26].ToString()) % 10;
 
             if (nroResto == 0)
