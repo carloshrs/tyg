@@ -204,7 +204,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Extranet.Informes
 
 
                         //Se filtran los informes de inhibicion, propiedad y morosidad (pdf), en estado finalizado, fecha limite 1 mes a la fecha actual
-                        if ((myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "16" || myItem.Cells[12].Text == "17") && myItem.Cells[10].Text == "3" && (DateTime.Parse(myItem.Cells[1].Text) >= FechaLimite) && myItem.Cells[16].Text != "&nbsp;")
+                        if ((myItem.Cells[12].Text == "1" || myItem.Cells[12].Text == "2" || myItem.Cells[12].Text == "10" || myItem.Cells[12].Text == "12" || myItem.Cells[12].Text == "13" || myItem.Cells[12].Text == "16" || myItem.Cells[12].Text == "17") && myItem.Cells[10].Text == "3" && (DateTime.Parse(myItem.Cells[1].Text) >= FechaLimite) && myItem.Cells[16].Text != "&nbsp;")
                         {
                             ((ImageButton)myItem.FindControl("Pdf")).Visible = true;
                             ((ImageButton)myItem.FindControl("Pdf")).Attributes.Add("onclick", "javascript: window.open('" + myItem.Cells[16].Text + "','','tools=no,width=720,scrollbars=yes,menus=no'); return false;");

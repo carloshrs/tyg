@@ -1361,7 +1361,7 @@
                                                                         <asp:TextBox ID="txtMensajeriaNroDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                                     <td class="text" width="10%">
                                                                         <asp:TextBox ID="txtMensajeriaDptoDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                                    <td class="text" width="10%">
+                                                                    <td class="text" width="10%"> 
                                                                         <asp:TextBox ID="txtMensajeriaPisoDestino" runat="server" Width="47px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                                 </tr>
                                                                 <tr>
