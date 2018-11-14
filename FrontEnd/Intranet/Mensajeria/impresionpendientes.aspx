@@ -28,7 +28,7 @@ function imprimir() {
             ShowHeader="False" Width="100%" OnItemDataBound="Item_Bound">
             <ItemTemplate>
                 <asp:Panel ID="pnSolicitud" runat="server" 
-    style="width:100%; float:left; border-bottom: solid 1px #000000; margin:0px; padding:10px; height:156px;">
+    style="width:100%; float:left; border-bottom: solid 1px #000000; margin:0px; padding:10px; height:176px;">
                     <div style="width:50%; float:left;">
                         Solicitado por:
                         <asp:Label ID="lblCliente" runat="server" Font-Bold="True" Text='<%# Eval("Cliente") %>'></asp:Label>
@@ -48,7 +48,7 @@ function imprimir() {
                         Fecha y horario de retiro estimativo:
                         <asp:Label ID="lblFechaRetiro" runat="server" Text='<%# Bind("msn_retirodia", "{0:d}") %>' Font-Size="Small"></asp:Label>, entre las <asp:Label ID="lblHoraDesdeRetiro" runat="server" Text='<%# Eval("msn_retirohoradesde") %>' Font-Size="Small"></asp:Label> y <asp:Label ID="lblHoraHastaRetiro" runat="server" Text='<%# Eval("msn_retirohorahasta") %>' Font-Size="Small"></asp:Label><br /><br />
                         
-                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
+                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
                         Nombre completo:<br />
                         DNI:<br /><br />
                         Firma:<br />
@@ -61,7 +61,7 @@ function imprimir() {
                         <asp:Label ID="lblCalleEnvio" runat="server" Text='<%# Eval("msn_Enviocalle") %>' Font-Size="Small"></asp:Label> <asp:Label ID="lblNroEnvio" runat="server" Text='<%# Eval("msn_Envionro") %>' Font-Size="Small"></asp:Label>, piso: <asp:Label ID="lblPisoEnvio" runat="server" Text='<%# Eval("msn_Enviopiso") %>' Font-Size="Small"></asp:Label>, dpto: <asp:Label ID="lblDptoEnvio" runat="server" Text='<%# Eval("msn_Enviodpto") %>' Font-Size="Small"></asp:Label><br />
                         Fecha y horario de envio estimativo:
                         <asp:Label ID="lblFechaEnvio" runat="server" Text='<%# Bind("msn_Enviodia", "{0:d}") %>' Font-Size="Small"></asp:Label>, entre las <asp:Label ID="lblHoraDesdeEnvio" runat="server" Text='<%# Eval("msn_Enviohoradesde") %>' Font-Size="Small"></asp:Label> y <asp:Label ID="lblHoraHastaEnvio" runat="server" Text='<%# Eval("msn_Enviohorahasta") %>' Font-Size="Small"></asp:Label><br /><br />
-                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
+                        Fecha: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hora: <br />
                         Nombre completo:<br />
                         DNI:<br /><br />
                         Firma:<br />
@@ -70,8 +70,9 @@ function imprimir() {
                     
                     
                         <div style="width:100%; float:left; margin-top:7px;">
+                            Servicio: <asp:Label ID="lblServicio" runat="server" Text='<%# Eval("msn_servicio") %>'></asp:Label> - 
                             Pago: 
-                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("msn_pago") %>'></asp:Label> - 
+                             $<asp:Label ID="lblPago" runat="server" Text='<%# Eval("msn_pago") %>'></asp:Label> - 
                             Contenido a enviar:
                             <asp:Label ID="lblContenido" runat="server" Text='<%# Eval("msn_mensajeria") %>'></asp:Label><br />
                             Observaciones:

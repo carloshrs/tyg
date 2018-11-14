@@ -1,7 +1,6 @@
 <%@ Reference Page="~/Inc/Encabezado.aspx" %>
 
-<%@ Page Language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.altaInformeIntra"
-    CodeFile="altaInforme.aspx.cs" %>
+<%@ Page Language="c#" AutoEventWireup="true" Inherits="ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada.altaInformeIntra" CodeFile="altaInforme.aspx.cs" %>
 
 <%@ Register TagPrefix="uc1" TagName="menu" Src="../Inc/menu.ascx" %>
 
@@ -496,14 +495,14 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="536">
+                                        <td>
                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                 <tr>
                                                     <td class="text" width="50%">
                                                         <asp:Panel ID="pnlAutomotor" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td >
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -609,7 +608,7 @@
                                                         <asp:Panel ID="pnlDomicilioParticular" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" style="height: 10px">
@@ -620,7 +619,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="text" width="70%">
@@ -650,7 +649,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="text" width="25%">Lote&nbsp;</td>
@@ -669,7 +668,7 @@
                                                                 </tr>
                                                                                         
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="text" width="50%">
@@ -690,7 +689,7 @@
                                                                 </tr>
                                                                 <asp:Panel ID="pnlAmbientalExtra" runat="server">
                                                                     <tr>
-                                                                        <td width="536" colspan="4">
+                                                                        <td colspan="4">
                                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                                 <tr>
                                                                                     <td class="text" width="40%">
@@ -711,7 +710,7 @@
                                                                     </tr>
                                                                 </asp:Panel>
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="text" width="50%">
@@ -742,7 +741,7 @@
                                                         <asp:Panel ID="pnlPropiedad" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -752,7 +751,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                     <asp:Panel ID="pnInformePropiedadOtraProvincia" runat="server" Width="100%" Visible="false">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
@@ -836,7 +835,7 @@
                                                         <asp:Panel ID="pnlCatastral" runat="server" Width="100%">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -859,7 +858,7 @@
                                                                         </asp:DropDownList></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="text" width="50%">
@@ -921,7 +920,7 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td width="536" colspan="4">
+                                                                        <td colspan="4">
                                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                                 <tr>
                                                                                     <td class="text" width="50%">
@@ -946,7 +945,7 @@
                                                         <asp:Panel ID="pnlRegistroPublico" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536" colspan="3">
+                                                                    <td colspan="3">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -984,7 +983,7 @@
                                                         <asp:Panel ID="pnlAmbiental" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536" colspan="2">
+                                                                    <td colspan="2">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -1031,7 +1030,7 @@
                                                         <asp:Panel ID="pnlDomComercial" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536">
+                                                                    <td>
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -1181,7 +1180,7 @@
                                                         <asp:Panel ID="pnlGravamenes" runat="server">
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536" colspan="3">
+                                                                    <td colspan="3">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -1226,7 +1225,7 @@
                                                         <asp:Panel ID="pnlMensajeria" runat="server">
                                                             <table cellspacing="0" cellpadding="3" width="100%" border="0">
                                                                 <tr>
-                                                                    <td width="536" colspan="4">
+                                                                    <td colspan="4">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
                                                                                 <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -1254,6 +1253,10 @@
                                                                         <asp:TextBox ID="txtEmpresaOrigen" runat="server" Width="306px" style="text-transform: uppercase;"></asp:TextBox></td>
             
                                                                 </tr>
+
+                                                                <tr><td colspan="4">
+                                                                <table width="100%" cellpadding="2" cellspacing="1" border="0">
+                                                                
         
                                                                 <tr>
                                                                     <td class="text" width="70%">
@@ -1261,9 +1264,10 @@
                                                                     <td class="text" width="10%">
                                                                         Nro.</td>
                                                                     <td class="text" width="10%">
-                                                                        Dpto.</td>
-                                                                    <td class="text" width="10%">
                                                                         Piso</td>
+                                                                    <td class="text" width="10%">
+                                                                        Dpto.</td>
+                                                                    
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text" width="70%">
@@ -1271,10 +1275,13 @@
                                                                     <td class="text" width="10%">
                                                                         <asp:TextBox ID="txtMensajeriaNroOrigen" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                                     <td class="text" width="10%">
-                                                                        <asp:TextBox ID="txtMensajeriaDptoOrigen" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                                    <td class="text" width="10%">
                                                                         <asp:TextBox ID="txtMensajeriaPisoOrigen" runat="server" Width="47px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaDptoOrigen" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    
                                                                 </tr>
+                                                                </table>
+                                                                </td></tr>
                                                                 <tr>
                                                                     <td colspan="4">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
@@ -1310,7 +1317,6 @@
                                                                             <tr>
                                                                                 <td class="text" width="50%">
                                                                                     <asp:TextBox ID="txtFechaRecoleccion" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
-                                                                                    
                                                                                     </td>
                                                                                 <td class="text" width="50%">
                                                                                 Desde <asp:TextBox ID="txtHoraDesdeRecoleccion" runat="server" Width="70px" style="text-transform: uppercase;"></asp:TextBox>
@@ -1343,27 +1349,34 @@
                                                                         <asp:TextBox ID="txtEmpresaDestino" runat="server" Width="306px" style="text-transform: uppercase;"></asp:TextBox></td>
             
                                                                 </tr>
-
-                                                                <tr>
-                                                                    <td class="text" width="70%">
-                                                                        Calle</td>
-                                                                    <td class="text" width="10%">
-                                                                        Nro.</td>
-                                                                    <td class="text" width="10%">
-                                                                        Dpto.</td>
-                                                                    <td class="text" width="10%">
-                                                                        Piso</td>
-                                                                </tr>
-                                                                <tr>
+                                                                <tr><td colspan="4">
+                                                                    <table width="100%" cellpadding="2" cellspacing="1" border="0">
+                                                                    <tr>
+                                                                        <td class="text" width="70%">
+                                                                            Calle</td>
+                                                                        <td class="text" width="10%">
+                                                                            Nro.</td>
+                                                                        <td class="text" width="10%">
+                                                                            Piso</td>
+                                                                        <td class="text" width="10%">
+                                                                            Dpto.</td>
+                                                                    
+                                                                    </tr>
+                                                                    <tr>
                                                                     <td class="text" width="70%">
                                                                         <asp:TextBox ID="txtMensajeriaCalleDestino" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                                     <td class="text" width="10%">
                                                                         <asp:TextBox ID="txtMensajeriaNroDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
-                                                                    <td class="text" width="10%">
-                                                                        <asp:TextBox ID="txtMensajeriaDptoDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox></td>
                                                                     <td class="text" width="10%"> 
                                                                         <asp:TextBox ID="txtMensajeriaPisoDestino" runat="server" Width="47px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="10%">
+                                                                        <asp:TextBox ID="txtMensajeriaDptoDestino" runat="server" Width="46px" style="text-transform: uppercase;"></asp:TextBox>
+                                                                        &nbsp;</td>
+                                                                    
                                                                 </tr>
+                                                                    </table>
+                                                                    </td></tr>
+                                                                
                                                                 <tr>
                                                                     <td colspan="4">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
@@ -1387,8 +1400,8 @@
             
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text" width="100%">
-                                                                        <asp:TextBox ID="txtMensajeria" runat="server" Width="320px" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                                    <td class="text" width="100%" colspan="4">
+                                                                        <asp:TextBox ID="txtMensajeria" runat="server" Width="600px" TextMode="MultiLine" Rows="2" style="text-transform: uppercase;"></asp:TextBox></td>
             
                                                                 </tr>
 
@@ -1421,14 +1434,26 @@
                                                                     <td colspan="4">
                                                                         <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                             <tr>
-                                                                                <td class="text" width="50%">
+                                                                                <td class="text" width="33%">
+                                                                                    Servicio:</td>
+                                                                                <td class="text" width="33%">
+                                                                                    Monto a pagar:</td>
+                                                                                    <td class="text" width="33%">
                                                                                     Pago en:</td>
                         
                                                                             </tr>
                                                                             <tr>
+                                                                                <td class="text" width="33%">
+                                                                                    <asp:DropDownList ID="cmbMensajeriaServicio" runat="server" Width="140px">
+                                                                                        <asp:listitem Value="1">Sólo ida</asp:listitem>
+                                                                                        <asp:listitem Value="2">Ida y vuelta</asp:listitem>
+                                                                                    </asp:DropDownList></td>
                         
-                                                                                <td class="text" width="10%">
-                                                                                    <asp:DropDownList ID="cmbPago" runat="server" Width="240px">
+                                                                                <td class="text" width="33%">
+                                                                                    <asp:TextBox runat="server" ID="txtMensajeriaMontoPagar" Width="140px"></asp:TextBox> </td>
+                        
+                                                                                <td class="text" width="33%">
+                                                                                    <asp:DropDownList ID="cmbMensajeriaPago" runat="server" Width="240px">
                                                                                         <asp:listitem Value="1">Origen</asp:listitem>
                                                                                         <asp:listitem Value="2">Destino</asp:listitem>
                                                                                     </asp:DropDownList></td>
@@ -1437,7 +1462,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td colspan="4"></rd>
+                                                                    <td colspan="4"></td>
                                                                 </tr>
                                                             </table>
                                                         </asp:Panel>
@@ -1465,7 +1490,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="text" >
-                                                            <asp:TextBox ID="txtFechaFallecimiento" runat="server" Width="60" style="text-transform: uppercase;"></asp:TextBox></td>
+                                                            <asp:TextBox ID="txtFechaFallecimiento" runat="server" Width="60" style="text-transform: uppercase;"></asp:TextBox>
+                                                            </td>
                                                             <td class="text" colspan="2">
                                                             <asp:TextBox ID="txtLugarFallecido" runat="server" Width="100%" style="text-transform: uppercase;"></asp:TextBox></td>
                                                     </tr>
@@ -1508,7 +1534,7 @@
                                             <asp:Panel ID="pnlTitulo" runat="server">
                                                 <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                     <tr>
-                                                        <td width="536">
+                                                        <td>
                                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                 <tr>
                                                                     <td class="title" width="100%" bgcolor="lightgrey" height="10">
@@ -1576,7 +1602,7 @@
                                                 ErrorMessage="Ingrese observaciones">*</asp:RequiredFieldValidator></td>
                                     </tr>
                                     <tr>
-                                        <td class="text" width="535">
+                                        <td class="text" colspan="4">
                                             <asp:TextBox ID="Observaciones" runat="server" Width="480px" style="text-transform: uppercase;" CssClass="Plano" TextMode="MultiLine"
                                                 MaxLength="255" Rows="5" Height="79px"></asp:TextBox></td>
                                     </tr>
@@ -1622,7 +1648,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="536">
+                                        <td>
                                             <table cellspacing="0" cellpadding="0" width="100%" border="0">
                                                 <tr>
                                                     <td class="text" width="60%">
