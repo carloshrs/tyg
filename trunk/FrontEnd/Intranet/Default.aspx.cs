@@ -80,7 +80,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet
             {
                 try
                 {
-                    ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToShortTimeString();
+                    ((Label)myItem.FindControl("lblFecha")).Text = DateTime.Parse(myItem.Cells[1].Text).ToShortDateString() + " " + DateTime.Parse(myItem.Cells[1].Text).ToString("HH:mm:ss");
                 }
                 catch (Exception exc)
                 { }

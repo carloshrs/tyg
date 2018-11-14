@@ -142,14 +142,16 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         private string strMsnEnvioPiso;
         private string strMsnEnvioDpto;
         private string strMsnEnvioBarrio;
-        private int strMsnEnvioLocalidad;
+        private int intMsnEnvioLocalidad;
         private string strMsnEnvioContacto;
         private string strMsnEnvioEmpresa;
         private string strMsnMensajeria;
         private string strMsnEnvioDia;
         private string strMsnEnvioHoraDesde;
         private string strMsnEnvioHoraHasta;
-        private int strMsnPago = 0;
+        private int intMsnPago = 0;
+        private float floMsnMonto = 0;
+        private int intMsnServicio = 0;
 
 
         //Integración FOX
@@ -1535,11 +1537,11 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         {
             get
             {
-                return strMsnEnvioLocalidad;
+                return intMsnEnvioLocalidad;
             }
             set
             {
-                strMsnEnvioLocalidad = value;
+                intMsnEnvioLocalidad = value;
             }
         }
 
@@ -1619,11 +1621,35 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
         {
             get
             {
-                return strMsnPago;
+                return intMsnPago;
             }
             set
             {
-                strMsnPago = value;
+                intMsnPago = value;
+            }
+        }
+
+        public float MsnMonto
+        {
+            get
+            {
+                return floMsnMonto;
+            }
+            set
+            {
+                floMsnMonto = value;
+            }
+        }
+
+        public int MsnServicio
+        {
+            get
+            {
+                return intMsnServicio;
+            }
+            set
+            {
+                intMsnServicio = value;
             }
         }
         
@@ -1667,7 +1693,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
 			strSQL = strSQL  + "RazonSocial, NombreFantasia, CargoEmpresa, TelefonoEmpresa, Rubro, Cuit, CalleEmpresa, NroEmpresa, DptoEmpresa, PisoEmpresa, BarrioEmpresa, CPEmpresa, LocalidadEmpresa, ProvinciaEmpresa,";
 			strSQL = strSQL  + "RegPubFolio, RegPubTomo, RegPubAno, ";
             //MENSAJERIA
-            strSQL = strSQL + "msn_retirocalle, msn_retironro, msn_retiropiso, msn_retirodpto, msn_retirobarrio, msn_retirolocalidad, msn_retirocontacto, msn_retiroempresa, msn_retirodia, msn_retirohoradesde, msn_retirohorahasta, msn_enviocalle, msn_envionro, msn_enviopiso, msn_enviodpto, msn_enviobarrio, msn_enviolocalidad, msn_enviocontacto, msn_envioempresa, msn_mensajeria, msn_enviodia, msn_enviohoradesde, msn_enviohorahasta, msn_pago, ";
+            strSQL = strSQL + "msn_retirocalle, msn_retironro, msn_retiropiso, msn_retirodpto, msn_retirobarrio, msn_retirolocalidad, msn_retirocontacto, msn_retiroempresa, msn_retirodia, msn_retirohoradesde, msn_retirohorahasta, msn_enviocalle, msn_envionro, msn_enviopiso, msn_enviodpto, msn_enviobarrio, msn_enviolocalidad, msn_enviocontacto, msn_envioempresa, msn_mensajeria, msn_enviodia, msn_enviohoradesde, msn_enviohorahasta, msn_pago, msn_monto, msn_servicio, ";
             
 
             strSQL = strSQL + "ConFoto, Caracter, DescripcionInf,FechaCarga,IdFOX,leido, txtLocalidad, Sexo, FechaFallecido, LugarFallecido, ActaFallecido, TomoFallecido, FolioFallecido) values (" + intIdTipoInforme + "," + intIdCliente + "," + intIdUsuario + ",'" + strUsuarioCliente + "'," + intEstado + ",'" + Comentarios + "','" + Nombre.Replace("'", "''") + "','" + Apellido.Replace("'", "''") + "',";
@@ -1687,7 +1713,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             strSQL = strSQL + ",'" + strRazonSocial.Replace("'", "''") + "','" + strNombreFantasia + "','" + strCargo + "','" + strTelefonoEmpresa + "','" + strRubro + "','" + strCuit + "','" + strCalleEmpresa.Replace("'", "''") + "','" + strNroEmpresa + "','" + strDptoEmpresa + "','" + strPisoEmpresa + "','" + strBarrioEmpresa.Replace("'", "''") + "','" + strCPEmpresa + "'," + intLocalidadEmpresa + "," + intProvinciaEmpresa; 	
 			strSQL = strSQL  + ",'" + strRegPubFolio + "','" + strRegPubTomo + "','" + strRegPubAno;
             //Mensajeria
-            strSQL = strSQL + "','" + strMsnRetiroCalle + "', '" + strMsnRetiroNro + "', '" + strMsnRetiroPiso + "', '" + strMsnRetiroDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnRetiroContacto + "', '" + strMsnRetiroEmpresa + "', '" + strMsnRetiroDia + "', '" + strMsnRetiroHoraDesde + "', '" + strMsnRetiroHoraHasta + "', '" + strMsnEnvioCalle + "', '" + strMsnEnvioNro + "', '" + strMsnEnvioPiso + "', '" + strMsnEnvioDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnEnvioContacto + "', '" + strMsnEnvioEmpresa + "', '" + strMsnMensajeria + "', '" + strMsnEnvioDia + "', '" + strMsnEnvioHoraDesde + "', '" + strMsnEnvioHoraHasta + "', " + strMsnPago;
+            strSQL = strSQL + "','" + strMsnRetiroCalle + "', '" + strMsnRetiroNro + "', '" + strMsnRetiroPiso + "', '" + strMsnRetiroDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnRetiroContacto + "', '" + strMsnRetiroEmpresa + "', '" + strMsnRetiroDia + "', '" + strMsnRetiroHoraDesde + "', '" + strMsnRetiroHoraHasta + "', '" + strMsnEnvioCalle + "', '" + strMsnEnvioNro + "', '" + strMsnEnvioPiso + "', '" + strMsnEnvioDpto + "', '" + strMsnRetiroBarrio + "', " + intMsnRetiroLocalidad + ", '" + strMsnEnvioContacto + "', '" + strMsnEnvioEmpresa + "', '" + strMsnMensajeria + "', '" + strMsnEnvioDia + "', '" + strMsnEnvioHoraDesde + "', '" + strMsnEnvioHoraHasta + "', " + intMsnPago + ", " + floMsnMonto + ", " + intMsnServicio;
 
             strSQL = strSQL + "," + ConFoto.ToString() + "," + Caracter.ToString() + ",'" + TraerDescripcionInforme().Replace("'", "''") + "'";
             if (dtFechaCarga != "")

@@ -270,7 +270,6 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.LugarFallecido = txtLugarFallecido.Text;
 
             //Mensajeria
-
             Encabezado.MsnRetiroCalle = txtMensajeriaCalleOrigen.Text;
             Encabezado.MsnRetiroNro = txtMensajeriaNroOrigen.Text;
             Encabezado.MsnRetiroPiso = txtMensajeriaPisoOrigen.Text;
@@ -294,10 +293,10 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.MsnEnvioDia = txtFechaEntrega.Text;
             Encabezado.MsnEnvioHoraDesde = txtHoraDesdeEntrega.Text;
             Encabezado.MsnEnvioHoraHasta = txtHoraHastaEntrega.Text;
-            Encabezado.MsnPago = int.Parse(cmbPago.SelectedValue);
+            Encabezado.MsnPago = int.Parse(cmbMensajeriaPago.SelectedValue);
             Encabezado.MsnMensajeria = txtMensajeria.Text;
-
-
+            Encabezado.MsnMonto = float.Parse(txtMensajeriaMontoPagar.Text);
+            Encabezado.MsnServicio = int.Parse(cmbMensajeriaServicio.SelectedValue);
 
 
             if (hIdTransferido.Value != "")
