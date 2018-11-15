@@ -295,7 +295,8 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.MsnEnvioHoraHasta = txtHoraHastaEntrega.Text;
             Encabezado.MsnPago = int.Parse(cmbMensajeriaPago.SelectedValue);
             Encabezado.MsnMensajeria = txtMensajeria.Text;
-            Encabezado.MsnMonto = float.Parse(txtMensajeriaMontoPagar.Text);
+            if (txtMensajeriaMontoPagar.Text != "")
+                Encabezado.MsnMonto = float.Parse(txtMensajeriaMontoPagar.Text);
             Encabezado.MsnServicio = int.Parse(cmbMensajeriaServicio.SelectedValue);
 
 
