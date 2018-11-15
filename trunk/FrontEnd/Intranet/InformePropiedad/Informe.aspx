@@ -549,7 +549,8 @@
                                     <tr>
                                         <td width="535" colspan="4">
                                             <asp:ValidationSummary ID="VSVerifDomParticular" runat="server" CssClass="text" ShowMessageBox="True"
-                                                ShowSummary="False" ValidationGroup="principal"></asp:ValidationSummary>
+                                                ShowSummary="True" ValidationGroup="principal"></asp:ValidationSummary>
+
                                         </td>
                                     </tr>
                                     <tr>
