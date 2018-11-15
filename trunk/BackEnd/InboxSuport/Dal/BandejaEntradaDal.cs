@@ -365,7 +365,7 @@ namespace ar.com.TiempoyGestion.BackEnd.InboxSuport.Dal
             }
             OdbcConnection oConnection = this.OpenConnection();
             DataSet ds = new DataSet();
-            String strSQL = "SELECT B.FechaCarga, CASE WHEN (C.sucursal is null) THEN C.nombrefantasia ELSE C.nombrefantasia + '' ('' + C.sucursal + '')'' END AS cliente, " + 
+            String strSQL = "SELECT B.idEncabezado, B.FechaCarga, CASE WHEN (C.sucursal is null) THEN C.nombrefantasia ELSE C.nombrefantasia + '' ('' + C.sucursal + '')'' END AS cliente, " + 
                 "B.msn_retirocalle, B.msn_retironro, B.msn_retiropiso, B.msn_retirodpto, B.msn_retirolocalidad, B.msn_retirocontacto, B.msn_retiroempresa, B.msn_retirodia, B.msn_retirohoradesde, B.msn_retirohorahasta, " +
                 "B.msn_enviocalle, B.msn_envionro, B.msn_enviopiso, B.msn_enviodpto, B.msn_enviolocalidad, B.msn_enviocontacto, B.msn_envioempresa, B.msn_mensajeria, B.msn_enviodia, B.msn_enviohoradesde, B.msn_enviohorahasta, CASE WHEN (B.msn_pago = 1) THEN ''remitente'' ELSE ''destinatario'' END AS msn_pago , B.comentarios, TE.Descripcion AS TipoEnvio, CASE WHEN (B.msn_servicio = 1) THEN ''Sólo ida'' ELSE ''Ida y vuelta'' END AS msn_servicio, B.msn_monto " +
                 "FROM bandejaentrada B " +
