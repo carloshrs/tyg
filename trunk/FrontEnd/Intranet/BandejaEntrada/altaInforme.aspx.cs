@@ -277,7 +277,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.MsnRetiroBarrio = txtMensajeriaBarrioOrigen.Text;
             Encabezado.MsnRetiroLocalidad = int.Parse(cmbMensajeriaLocalidadOrigen.SelectedValue);
             Encabezado.MsnRetiroContacto = txtContactoOrigen.Text;
-            //Encabezado.MsnRetiroEmpresa = txtEmpresaOrigen.Text;
+            Encabezado.MsnRetiroEmpresa = txtEmpresaOrigen.Text;
             Encabezado.MsnRetiroDia = txtFechaRecoleccion.Text;
             Encabezado.MsnRetiroHoraDesde = txtHoraDesdeRecoleccion.Text;
             Encabezado.MsnRetiroHoraHasta = txtHoraHastaRecoleccion.Text;
@@ -289,7 +289,7 @@ namespace ar.com.TiempoyGestion.FrontEnd.Intranet.BandejaEntrada
             Encabezado.MsnEnvioBarrio = txtMensajeriaBarrioDestino.Text;
             Encabezado.MsnEnvioLocalidad = int.Parse(cmbMensajeriaLocalidadDestino.SelectedValue);
             Encabezado.MsnEnvioContacto = txtContactoDestino.Text;
-            //Encabezado.msnEnvioEmpresa = txtEmpresaDestino.Text;
+            Encabezado.MsnEnvioEmpresa = txtEmpresaDestino.Text;
             Encabezado.MsnEnvioDia = txtFechaEntrega.Text;
             Encabezado.MsnEnvioHoraDesde = txtHoraDesdeEntrega.Text;
             Encabezado.MsnEnvioHoraHasta = txtHoraHastaEntrega.Text;
